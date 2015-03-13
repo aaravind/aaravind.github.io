@@ -38,7 +38,7 @@
  
 		
    	 <div class="input-group search">
-            <input type="text" class="form-control greensear" placeholder="Search" name="srch-term" id="srch-term" ng-model="query" style="margin-left:5px;z-index:0">
+            <input type="text" class="form-control greensear" placeholder="Search" name="srch-term" id="srch-term" ng-model="query" style="margin-left:5px;z-index:0" ng-change="redrawpage()">
             <div class="input-group-btn">
                 <button class="btn btn-default searchBtn" type="submit" style="z-index:1" ng-click="searchTasks()"><i class="glyphicon glyphicon-search greencolor"></i></button>
             </div>
