@@ -78,7 +78,7 @@ excelApp.config(['$routeProvider',
 excelApp.controller('HomeController', ['$scope','$rootScope','NcbService','configService','$location','$anchorScroll','$window',
     function($scope,$rootScope,NcbService,configService,$location,$anchorScroll,$window){
 
-d3.csv("../excel/report.csv", function(data) {
+d3.csv("../excel/sample_data.csv", function(data) {
 $scope.data = data;
 			$scope.redrawpage = function(){
 		$scope.table = $('.footable').footable();

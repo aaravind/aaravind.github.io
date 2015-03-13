@@ -52,22 +52,62 @@
         	<table class="footable table">
 	<thead>
 		<tr>
-			<th title="CUSTOMER NUMBER">CUSTOMER NUMBER</th>		
-			<th  title="PARTY ID"data-hide="phone">PARTY ID</th>
-			<th title="ECN ID"data-hide="phone">ECN ID</th>
-			<th title="FIRST NAME"data-hide="phone,tablet">FIRST NAME</th>
-			<th title="LAST NAME"data-hide="phone,tablet">LAST NAME</th>
-			<th title="ACTION"class='footable-last-column' style="text-align:center">Balance</th>
+			<th title="Serial Number" data-hide="phone,tablet">Serial Number</th>		
+			<th  title="Product Name">Product Name</th>
+			<th title="Store">Store</th>
+			<th title="MRP"data-hide="phone">MRP</th>
+			<th title="Selling Price"data-hide="phone,tablet">Selling Price</th>
+			<th title="Discount"data-hide="phone,tablet">Discount</th>
+			<th title="Price Change"data-hide="phone,tablet">Price Change</th>
+			<th title="Stock Status"data-hide="phone,tablet">Stock Status</th>
+			<th title="SKU"data-hide="all">SKU</th>
+			<th title="Product URL">Product URL</th>
+			<th title="Brand"data-hide="phone,tablet">Brand</th>
+			<th title="Category"data-hide="all">Category</th>
+			<th title="Sub Category"data-hide="all">Sub Category</th>
+			<th title="Offers"data-hide="all">Offers</th>
+			<th title="Cashback"data-hide="all">Cashback</th>
+			<th title="Shipping Time"data-hide="all">Shipping Time</th>
+			<th title="Shipping Charges"data-hide="all">Shipping Charges</th>
+			<th title="Warranty"data-hide="all">Warranty</th>
+			<th title="Crawl Time"data-hide="all">Crawl Time</th>
+			<th title="Size"data-hide="all">Size</th>
+			<th title="Rating"data-hide="phone,tablet">Rating</th>
+			<th title="Reviews"data-hide="all">Reviews</th>
+			<th title="Images"data-hide="phone,tablet">Images</th>
+			<th title="Image Count" data-hide="all">Image Count</th>
+			<th title="Image Resolution"class='footable-last-column' style="text-align:center" data-hide="all">Image Resolution</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat='task in data |  filter:rolequery | filter:query'>
-		<td title={{task.Customer_Number}}>{{task.Customer_Number}}</td>
-		<td title={{task.Party_Id}>{{task.Party_Id}}</td> 
-		<td title={{task.Ecn_Id}}>{{task.Ecn_Id}}</td>
-		<td title={{task.FirstName}>{{task.FirstName}}</td>
-		<td title={{task.LastName}}>{{task.LastName}}</td>
-		<td title={{task.Salary}}>{{task.Salary | currency:"$"}}</td>
+		<td title={{task.SlNo}}>{{task.SlNo}}</td>
+		<td title={{task.ProductName}}>{{task.ProductName}}</td> 
+		<td title={{task.Store}}>{{task.Store}}</td>
+		<td title={{task.MRP}}>{{task.MRP}}</td>
+		<td title={{task.SellingPrice}}>{{task.SellingPrice}}</td>
+		<td title={{task.Discount}}>{{task.Discount}}</td>
+		<td title={{task.PriceChange}}>{{task.PriceChange}}</td>
+		<td title={{task.StockStatus}}>{{task.StockStatus}}</td>
+		<td title={{task.SKU}}>{{task.SKU}}</td>
+		<td title={{task.ProductURL}}><a href='{{task.ProductURL}}' target="_blank">{{task.ProductURL}}</a></td>
+		<td title={{task.Brand}}>{{task.Brand}}</td>
+		<td title={{task.Category}}>{{task.Category}}</td>
+		<td title={{task.SubCategory}}>{{task.SubCategory}}</td>
+		<td title={{task.Offers}}>{{task.Offers}}</td>
+		<td title={{task.Cashback}}>{{task.Cashback}}</td>
+		<td title={{task.ShippingTime}}>{{task.ShippingTime}}</td>
+		<td title={{task.ShippingCharges}}>{{task.ShippingCharges}}</td>
+		<td title={{task.Warranty}}>{{task.Warranty}}</td>
+		<td title={{task.CrawlTime}}>{{task.CrawlTime}}</td>
+		<td title={{task.Size}}>{{task.Size}}</td>
+		<td title={{task.Rating}}>{{task.Rating}}</td>
+		<td title={{task.Reviews}}>{{task.Reviews}}</td>
+		<td title={{task.Images}}><a type="text" href="{{task.Images}}" target="_blank">{{task.Images}}</a></td>
+		<td title={{task.ImageCount}}>{{task.ImageCount}}</td>
+		<td title={{task.ImageResolution}}>{{task.ImageResolution}}</td>
+		
+	
 		</tr>
 		<tr class="hiderow" style="text-align:center" ><td colspan="100%" style="text-align:center">No More Records to Display for this Search</td></tr>
 	</tbody>
@@ -93,7 +133,7 @@
   
 
 <div class="" style="z-index:0">
-  <div class="" style="position:fixed;bottom:0;margin-top:5px;width:99%">
+  <div class="" style="position:fixed;bottom:0;margin-top:5px;width:100%">
  <div id="footer" style="height:35px;line-height:35px">
         <div >	
             <p class="text-muted credit" style="text-align:center"><span class="glyphicon glyphicon-copyright-mark"></span>Aravind</p>
