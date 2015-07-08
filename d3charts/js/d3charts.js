@@ -67,36 +67,36 @@ var barchart = {
     "data": [
         {
             "label": "OverPriced",
-            "value": 100
+            "value": 0
         },
         {
             "label": "EquallyPriced",
-            "value": 1000
+            "value": 100
         },
         {
             "label": "UnderPriced",
-            "value": 10
+            "value": 150
         }
         ,
         {
             "label": "UnderPriced5",
-            "value": 1000
-        }
-        ,
-        {
-            "label": "UnderPriced6",
             "value": 0
         }
         ,
         {
+            "label": "UnderPriced6",
+            "value": 300
+        }
+        ,
+        {
             "label": "UnderPriced7",
-            "value": 10
+            "value": 500
         }
         
         ,
         {
             "label": "UnderPriced2",
-            "value": 1340
+            "value": 0
         }
 
     ]
@@ -155,9 +155,9 @@ var barchart12 = {
         "showValue":true,
         "color":"white",
         "fontsize":15,
-        "slant":false,
+        "slant":true,
         "slantdegree":"45",
-        "pallattecolor":["#f8bd19","#e44a00","#008ee4","#33bdda","#6baa01","#583e78","#BE3243"]
+        "pallattecolor":["#f8bd19","#e44a00","#008ee4","#33bdda","#6baa01","#583e78","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324CC"]
     },
     "export":{
         "showexport": true,
@@ -165,26 +165,72 @@ var barchart12 = {
     },
     "data": [
         {
-            "label": "OverPriced",
-            "value": 100
+            "label": "01-08-2015",
+            "value": 56,
+            "tooltext":"Snapdeal"
         },
         {
-            "label": "EquallyPriced",
-            "value": 234
+            "label": "02-08-2015",
+            "value": 23,
+            "tooltext":"Flipkart"
         },
         {
-            "label": "UnderPriced",
-            "value": 300
+            "label": "03-08-2015",
+            "value": 87,
+            "tooltext":"Amazon"
         }
         ,
         {
-            "label": "UnderPriced5",
-            "value": 854
+            "label": "04-08-2015",
+            "value": 10,
+            "tooltext":"Paytm"
         }
         ,
         {
-            "label": "UnderPriced6",
-            "value": 645
+            "label": "05-08-2015",
+            "value": 67,
+            "tooltext":"Shopclues"
+        }
+        ,
+        {
+            "label": "06-08-2015",
+            "value": 50,
+            "tooltext":"Jabong"
+        }
+        ,
+        {
+            "label": "07-08-2015",
+            "value": 66,
+            "tooltext":"Myntra"
+        }
+        ,
+        {
+            "label": "08-08-2015",
+            "value": 12,
+            "tooltext":"Trends"
+        },
+        {
+            "label": "09-08-2015",
+            "value": 98,
+            "tooltext":"Mocha"
+        }
+        ,
+        {
+            "label": "10-08-2015",
+            "value": 55,
+            "tooltext":"Waves"
+        }
+        ,
+        {
+            "label": "11-08-2015",
+            "value": 88,
+            "tooltext":"Snapdeal"
+        }
+        ,
+        {
+            "label": "12-08-2015",
+            "value": 44,
+            "tooltext":"Flipkart"
         }
         
 
@@ -373,7 +419,7 @@ var barchart7 = {
 }, {
     "category": "ABC",
     "label": "D",
-    "value": 300
+    "value": 0
 }, {
     "category": "ABC",
     "label": "E",
@@ -389,7 +435,7 @@ var barchart7 = {
 }, {
     "category": "XYZ",
     "label": "B",
-    "value": 750
+    "value": 0
 }, {
     "category": "XYZ",
     "label": "C",
@@ -735,7 +781,7 @@ var barchart14 = {
         ,
         {
             "label": "UnderPriced5",
-            "value": 1000
+            "value": 0
         }
         ,
         {
@@ -787,7 +833,7 @@ var barchart13 = {
 }, {
     "category": "ABC",
     "label": "C",
-    "value": 200
+    "value": 0
 }, {
     "category": "ABC",
     "label": "D",
@@ -803,7 +849,7 @@ var barchart13 = {
 }, {
     "category": "XYZ",
     "label": "A",
-    "value": 1000
+    "value": 0
 }, {
     "category": "XYZ",
     "label": "B",
@@ -839,7 +885,7 @@ var barchart13 = {
 }, {
     "category": "QWE",
     "label": "D",
-    "value": 500
+    "value": 0
 }, {
     "category": "QWE",
     "label": "E",
@@ -847,7 +893,7 @@ var barchart13 = {
 }, {
     "category": "QWE",
     "label": "F",
-    "value": 1000
+    "value": 0
 }]
 }
 
@@ -883,7 +929,7 @@ var barchart15 = {
 }, {
     "category": "ABC",
     "label": "C",
-    "value": 200
+    "value": 0
 }, {
     "category": "ABC",
     "label": "D",
@@ -895,7 +941,7 @@ var barchart15 = {
 }, {
     "category": "ABC",
     "label": "F",
-    "value": 900
+    "value": 100
 }, {
     "category": "XYZ",
     "label": "A",
@@ -903,7 +949,7 @@ var barchart15 = {
 }, {
     "category": "XYZ",
     "label": "B",
-    "value": 600
+    "value": 0
 }, {
     "category": "XYZ",
     "label": "C",
@@ -939,7 +985,7 @@ var barchart15 = {
 }, {
     "category": "QWE",
     "label": "E",
-    "value": 300
+    "value": 0
 }, {
     "category": "QWE",
     "label": "F",
@@ -982,7 +1028,7 @@ var barchart16 = {
         ,
         {
             "label": "Project4",
-            "value": 1000
+            "value": 0
         }
         ,
         {
@@ -1028,7 +1074,7 @@ var barchart17 = {
         },
         {
             "label": "Project2",
-            "value": 1000
+            "value": 0
         },
         {
             "label": "Project3",
@@ -1042,7 +1088,7 @@ var barchart17 = {
         ,
         {
             "label": "Project5",
-            "value": 300
+            "value": 123
         }
         ,
         {
@@ -1102,7 +1148,7 @@ var barchart18 = {
         ,
         {
             "label": "Project6",
-            "value": 350
+            "value": 0
         }
         
         ,
@@ -1144,7 +1190,7 @@ var barchart19 = {
 }, {
     "category": "ABC",
     "label": "C",
-    "value": 200
+    "value": 56
 }, {
     "category": "ABC",
     "label": "D",
@@ -1156,7 +1202,7 @@ var barchart19 = {
 }, {
     "category": "ABC",
     "label": "F",
-    "value": 900
+    "value": 0
 }, {
     "category": "XYZ",
     "label": "A",
@@ -1164,11 +1210,11 @@ var barchart19 = {
 }, {
     "category": "XYZ",
     "label": "B",
-    "value": 600
+    "value": 100
 }, {
     "category": "XYZ",
     "label": "C",
-    "value": 450
+    "value": 23
 }, {
     "category": "XYZ",
     "label": "D",
@@ -1180,11 +1226,11 @@ var barchart19 = {
 }, {
     "category": "XYZ",
     "label": "F",
-    "value": 680
+    "value": 0
 }, {
     "category": "QWE",
     "label": "A",
-    "value": 789
+    "value": 80
 }, {
     "category": "QWE",
     "label": "B",
@@ -1196,11 +1242,11 @@ var barchart19 = {
 }, {
     "category": "QWE",
     "label": "D",
-    "value": 500
+    "value": 0
 }, {
     "category": "QWE",
     "label": "E",
-    "value": 300
+    "value": 600
 }, {
     "category": "QWE",
     "label": "F",
@@ -1243,7 +1289,7 @@ var barchart20 = {
 }, {
     "category": "ABC",
     "label": "D",
-    "value": 600
+    "value": 0
 }, {
     "category": "ABC",
     "label": "E",
@@ -1259,7 +1305,7 @@ var barchart20 = {
 }, {
     "category": "XYZ",
     "label": "B",
-    "value": 600
+    "value": 0
 }, {
     "category": "XYZ",
     "label": "C",
@@ -1271,7 +1317,7 @@ var barchart20 = {
 }, {
     "category": "XYZ",
     "label": "E",
-    "value": 900
+    "value": 0
 }, {
     "category": "XYZ",
     "label": "F",
