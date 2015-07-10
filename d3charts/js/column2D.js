@@ -28,8 +28,14 @@ var column2D = function (chartId, chartdata) {
     if (d3.select(chartId).select('svg')[0][0] != null)
         d3.select(chartId).select('svg').remove();
     var bottommargin = chartdata.chart.slant ? 100 : 50;
+    if (!chartdata.chart.twoxaxis)
+        topval = 20;
+    if (chartdata.chart.twoxaxis && chartdata.chart.slant)
+        topval = 100;
+    if (chartdata.chart.twoxaxis && !chartdata.chart.slant)
+        topval = 50;
     var color = d3.scale.category20c();
-    var margin = { top: 20, right: 20, bottom: bottommargin, left: 50 };
+    var margin = { top: topval, right: 20, bottom: bottommargin, left: 50 };
     var chartcontent = d3.select(chartId);
     var width = chartcontent[0][0].offsetWidth - margin.left - margin.right;
     var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
@@ -38,12 +44,25 @@ var column2D = function (chartId, chartdata) {
     .attr("style", " position: absolute;opacity:0;text-align: center;width: auto;height: auto;padding: 2px;font: 12px sans-serif;background: black;border: 0px;border-radius: 8px;pointer-events: none;color:white");
     var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
+
+    if (chartdata.chart.twoxaxis == true) {
+        var x1 = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+        var xaxis1 = d3.svg.axis()
+    .scale(x1)
+    .orient("top")
+    .ticks(5);
+        x1.domain(chartdata.data.map(function (d) { return d.label; }));
+    }
+
     var y = d3.scale.linear()
     .range([height, 0]);
     var xaxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
     .ticks(5);
+
+
     var yAxis = d3.svg.axis()
       .scale(y)
       .orient("left");
@@ -66,15 +85,22 @@ var column2D = function (chartId, chartdata) {
         .attr('preserveAspectRatio', 'xMinYMin')
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    if (chartdata.chart.twoxaxis == true)
+        ytop = 15 - (margin.top / 1);
+    else
+        ytop = 5 - (margin.top / 2);
     svg.append("text")
         .attr("x", (width / 2))
-        .attr("y", 5 - (margin.top / 2))
+        .attr("y", ytop)
         .attr("text-anchor", "middle")
         .style("font-size", "14px")
         .style("text-decoration", "underline")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption);
     x.domain(chartdata.data.map(function (d) { return d.label; }));
+
+
+
     y.domain([0, d3.max(chartdata.data, function (d) { return d.value; })]);
 
 
@@ -94,12 +120,46 @@ var column2D = function (chartId, chartdata) {
             .attr("transform", function (d) {
                 return rotatevalue
             });
+
+        if (chartdata.chart.twoxaxis == true) {
+            svg.append("g")
+      .attr("style", styleborder)
+      .attr("class", "texttop")
+      .attr("transform", "translate(0," + 0 + ")")
+      .call(xaxis1)
+      .selectAll("text")
+            .style("text-anchor", "start")
+            .attr("x", "1.5em")
+            .attr("dx", "-.8em")
+            .attr("dy", "1em")
+            .attr("transform", function (d) {
+                return rotatevalue
+            });
+            d3.selectAll(".texttop").selectAll("text").data(chartdata.data)
+    .text(function (d) {
+        return d.axistop;
+    });
+        }
     }
     else {
         svg.append("g")
       .attr("style", styleborder)
+      .attr("class", "xtick")
       .attr("transform", "translate(0," + height + ")")
       .call(xaxis);
+
+        if (chartdata.chart.twoxaxis == true) {
+            svg.append("g")
+      .attr("style", styleborder)
+      .attr("class", "texttop")
+      .attr("transform", "translate(0," + 0 + ")")
+      .call(xaxis1);
+            d3.selectAll(".texttop").selectAll("text").data(chartdata.data)
+    .text(function (d) {
+        return d.axistop;
+    });
+        }
+
     }
     svg.append("g")
   .attr("class", "grid")
@@ -120,13 +180,11 @@ var column2D = function (chartId, chartdata) {
                 .duration(0)
                 .style("opacity", .9);
         d3.selectAll('.' + chartId.replace('#', '') + d.label).style("display", "block");
-                      if(window.innerWidth <700)
-                      var xattr = ((this.getAttribute('x') / 1) + (this.getAttribute('width')/1)+25) + 'px';
-                      else
-                       var xattr = ((this.getAttribute('x') / 1) + (0.9*this.getAttribute('width')/1)) + 'px';
-            var bodyRect = document.body.getBoundingClientRect();
-            var elemRect = this.getBoundingClientRect();
-            var yattr = (elemRect.top - bodyRect.top - 50) + 'px';
+
+        var xattr = ((this.getAttribute('x') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
+        var bodyRect = document.body.getBoundingClientRect();
+        var elemRect = this.getBoundingClientRect();
+        var yattr = (elemRect.top - bodyRect.top - 50) + 'px';
         if (chartdata.data[i].tooltext != undefined) {
             div.html(chartdata.data[i].tooltext + '<br><hr>' + chartdata.data[i].value)
        .style("left", xattr)
@@ -180,5 +238,22 @@ var column2D = function (chartId, chartdata) {
     })
     .attr("style", "stroke:black;fill:none;stroke-width:2;display:none");
 
+
+    if (chartdata.chart.tickinterval != undefined && chartdata.chart.tickinterval > 0) {
+        d3.select(chartId).selectAll(".xtick .tick text").style("display", function (d, i) {
+            chartlength = chartdata.data.length - 1;
+            ticklength = chartdata.chart.tickinterval-1;
+            if (i == 0)
+                return "block"
+            if (i == chartlength)
+                return "block"
+            else {       
+                    if (i % ticklength == 0 && (i < (chartlength - ticklength)))
+                        return "block"
+                    else
+                        return "none"
+                }         
+        });
+    }
 
 }

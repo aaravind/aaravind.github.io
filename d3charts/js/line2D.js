@@ -7,7 +7,25 @@
  */
 var currentchartdata;
 var line2D = function (chartType, chartId, chartdata) {
+    function tickspace(datacur) {
 
+        if (chartdata.chart.tickinterval != undefined && chartdata.chart.tickinterval > 1) {
+            d3.select(chartId).selectAll(".xtick .tick text").style("display", function (d, i) {
+                chartlength = datacur.length - 1;
+                ticklength = chartdata.chart.tickinterval - 1;
+                if (i == 0)
+                    return "block"
+                if (i == chartlength)
+                    return "block"
+                else {
+                    if (i % ticklength == 0 && (i < (chartlength - ticklength)))
+                        return "block"
+                    else
+                        return "none"
+                }
+            });
+        }
+    }
     if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
         function change() {
             var selectedIndex = select.property('selectedIndex'),
@@ -104,9 +122,11 @@ var line2D = function (chartType, chartId, chartdata) {
         svg.append("g")
       .attr("style", styleborder)
       .attr("transform", "translate(0," + height + ")")
-      .attr("class", "grid xgrid")
+      .attr("class", "grid xgrid xtick")
       .call(xAxis()
-       .tickSize(-height, 0, 0)
+             .innerTickSize(-height)
+    .outerTickSize(0)
+    .tickPadding(10)
             )
       .selectAll("text")
             .style("text-anchor", "end")
@@ -115,15 +135,19 @@ var line2D = function (chartType, chartId, chartdata) {
             .attr("transform", function (d) {
                 return rotatevalue
             });
+
     }
     else {
         svg.append("g")
       .attr("style", styleborder)
       .attr("transform", "translate(0," + height + ")")
-       .attr("class", "grid xgrid")
+       .attr("class", "grid xgrid xtick")
       .call(xAxis()
-       .tickSize(-height, 0, 0)
-            )
+        .innerTickSize(-height)
+    .outerTickSize(0)
+    .tickPadding(10)
+            );
+
 
     }
     svg.append("g")
@@ -144,6 +168,7 @@ var line2D = function (chartType, chartId, chartdata) {
     if (chartType == 'Line2D' || chartType == 'MultiLine2D' || chartType == 'StepLine2D' || chartType == 'MultiStepLine2D') {
         var valueline = d3.svg.line()
     .defined(function (d, i) {
+
         if (d.value == 0) {
             if (i == 0 && currentchartdata[i].value == 0) {
                 xprev = x(currentchartdata[i].label) + x.rangeBand() / 2;
@@ -151,25 +176,43 @@ var line2D = function (chartType, chartId, chartdata) {
             }
 
             else {
-                xprev = x(currentchartdata[i - 1].label) + x.rangeBand() / 2;
-                yprev = y(currentchartdata[i - 1].value);
+
+                for (j = i; j > 0; j--) {
+                    if (currentchartdata[j - 1].value != 0) {
+                        xprev = x(currentchartdata[j - 1].label) + x.rangeBand() / 2;
+                        yprev = y(currentchartdata[j - 1].value);
+
+                        break;
+                    }
+
+                }
+
             }
+
+
             if (chartType == 'Line2D' || chartType == 'MultiLine2D') {
                 if (i + 1 == currentchartdata.length) {
                     xnext = x(currentchartdata[i].label) + x.rangeBand() / 2;
                     ynext = y(currentchartdata[i].value);
                     dottedlinearr.push('M' + xprev + ',' + yprev + 'L' + xnext + ',' + ynext);
                 }
+
                 else {
 
-                    xnext = x(currentchartdata[i + 1].label) + x.rangeBand() / 2;
-                    ynext = y(currentchartdata[i + 1].value);
-                    dottedlinearr.push('M' + xprev + ',' + yprev + 'L' + xnext + ',' + ynext);
+                    for (j = i; j < currentchartdata.length; j++) {
+                        if (currentchartdata[j + 1].value != 0) {
+                            xnext = x(currentchartdata[j + 1].label) + x.rangeBand() / 2;
+                            ynext = y(currentchartdata[j + 1].value);
+                            dottedlinearr.push('M' + xprev + ',' + yprev + 'L' + xnext + ',' + ynext);
+                            break;
+                        }
+
+                    }
 
                 }
+
             }
             else {
-
                 if (i == 0) {
                     xnext1 = x(currentchartdata[i + 1].label) + x.rangeBand() / 2;
                     xnext2 = x(currentchartdata[i + 1].label) + x.rangeBand() / 2;
@@ -185,12 +228,41 @@ var line2D = function (chartType, chartId, chartdata) {
                     dottedlinearr.push('M' + xprev + ',' + yprev + 'L' + xnext1 + ',' + ynext1 + 'L' + xnext2 + ',' + ynext2);
                 }
                 else {
+                    var count = 0;
+                    var yval;
+                    for (j = i; j >= 0; j--) {
+                        if (j == 0)
+                            yval = y(currentchartdata[j].value);
+                        else {
+                            if (currentchartdata[j - 1].value != 0) {
+                                yval = y(currentchartdata[j - 1].value);
+                                break;
+                            }
+                        }
 
-                    xnext1 = x(currentchartdata[i + 1].label) + x.rangeBand() / 2;
-                    xnext2 = x(currentchartdata[i + 1].label) + x.rangeBand() / 2;
-                    ynext1 = y(currentchartdata[i - 1].value);
-                    ynext2 = y(currentchartdata[i + 1].value);
-                    dottedlinearr.push('M' + xprev + ',' + yprev + 'L' + xnext1 + ',' + ynext1 + 'L' + xnext2 + ',' + ynext2);
+                    }
+                    for (j = i; j <= currentchartdata.length; j++) {
+                        if (j == currentchartdata.length - 1) {
+
+                            xnext1 = x(currentchartdata[j].label) + x.rangeBand() / 2;
+                            xnext2 = x(currentchartdata[j].label) + x.rangeBand() / 2;
+                            ynext1 = yval;
+                            ynext2 = y(currentchartdata[j].value);
+                            dottedlinearr.push('M' + xprev + ',' + yprev + 'L' + xnext1 + ',' + ynext1 + 'L' + xnext2 + ',' + ynext2);
+                            break;
+                        }
+                        else {
+                            if (currentchartdata[j + 1].value != 0) {
+                                xnext1 = x(currentchartdata[j + 1].label) + x.rangeBand() / 2;
+                                xnext2 = x(currentchartdata[j + 1].label) + x.rangeBand() / 2;
+                                ynext1 = yval;
+                                ynext2 = y(currentchartdata[j + 1].value);
+                                dottedlinearr.push('M' + xprev + ',' + yprev + 'L' + xnext1 + ',' + ynext1 + 'L' + xnext2 + ',' + ynext2);
+                                break;
+                            }
+                        }
+
+                    }
 
                 }
             }
@@ -219,7 +291,7 @@ var line2D = function (chartType, chartId, chartdata) {
     });
         }
         else {
-               var valueline = d3.svg.line()
+            var valueline = d3.svg.line()
     .defined(function (d) {
         return d.value != 0;
     })
@@ -229,8 +301,8 @@ var line2D = function (chartType, chartId, chartdata) {
     .y(function (d) {
         return y(d.value);
     });
-             }
-     
+        }
+
 
 
     }
@@ -267,11 +339,13 @@ var line2D = function (chartType, chartId, chartdata) {
         .duration(1000)
         .ease("linear")
         .attr("stroke-dashoffset", 0);
+        tickspace(chartdata.data);
     }
 
     else if (chartType == 'Scatter2D') {
         var color = chartdata.chart.pallattecolor[0];
         drawCircle('Scatter2D', chartdata.data, color, chartdata.data[0].label);
+        tickspace(chartdata.data);
     }
 
     else if (chartType == 'MultiScatter2D') {
@@ -288,7 +362,9 @@ var line2D = function (chartType, chartId, chartdata) {
         .attr('style', colorstyle);
 
             drawCircle('MultiScatter2D', d.values, color, d.key);
+
         });
+        tickspace(dataGroup[0].values);
         if (chartdata.chart.showlegend) {
             var legend = svg.selectAll('.legend')
         .data(dataGroup)
@@ -353,6 +429,7 @@ var line2D = function (chartType, chartId, chartdata) {
         .attr("d", area);
         svg.selectAll('.xgrid').selectAll('line')
           .style("stroke-dasharray", ("3, 3"));
+        tickspace(chartdata.data);
     }
     else if (chartType == 'MultiLine2D' || chartType == 'MultiStepLine2D' || chartType == 'MultiCurve2D') {
         dataGroup.forEach(function (d, i) {
@@ -381,7 +458,7 @@ var line2D = function (chartType, chartId, chartdata) {
 
             drawCircle(chartType, d.values, color, d.key);
         });
-
+        tickspace(dataGroup[0].values);
         if (chartdata.chart.showlegend) {
             var legend = svg.selectAll('.legend')
         .data(dataGroup)
@@ -452,7 +529,7 @@ var line2D = function (chartType, chartId, chartdata) {
           .style("stroke-dasharray", ("3, 3"));
 
         });
-
+        tickspace(dataGroup[0].values);
         if (chartdata.chart.showlegend) {
             var legend = svg.selectAll('.legend')
         .data(dataGroup)

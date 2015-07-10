@@ -86,7 +86,9 @@
       .attr("transform", "translate(0," + height + ")")
       .attr("class", "grid xgrid")
       .call(xAxis()
-       .tickSize(-height, 0, 0)
+              .innerTickSize(-height)
+    .outerTickSize(0)
+    .tickPadding(10)
             )
       .selectAll("text")
             .style("text-anchor", "end")
@@ -102,7 +104,9 @@
       .attr("transform", "translate(0," + height + ")")
        .attr("class", "grid xgrid")
       .call(xAxis()
-       .tickSize(-height, 0, 0)
+             .innerTickSize(-height)
+    .outerTickSize(0)
+    .tickPadding(10)
 
             )
 

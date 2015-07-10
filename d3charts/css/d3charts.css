@@ -3,6 +3,12 @@ svg {
     background-color: ghostwhite;
 }  
 
+@media screen and (max-width: 450px) {
+    svg text {
+        font-size: 8px;
+    }
+}
+
  path { 
     stroke: lightgrey;
     stroke-width: 2;

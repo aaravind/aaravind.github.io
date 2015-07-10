@@ -22,40 +22,150 @@ var linedata = {
         "showexport": true,
          "format": ["-Select-","jpeg","png","pdf"]
     },
-    "data": [
+    "data":  [
         {
-            "label": "OverPriced",
+            "label": "01-08-2015",
+            "value": 56
+        },
+        {
+            "label": "02-08-2015",
+            "value": 23
+        },
+        {
+            "label": "03-08-2015",
+            "value": 87
+
+        }
+        ,
+        {
+            "label": "04-08-2015",
+            "value": 10
+        }
+        ,
+        {
+            "label": "05-08-2015",
+            "value": 67
+        }
+        ,
+        {
+            "label": "06-08-2015",
+            "value": 50
+        }
+        ,
+        {
+            "label": "07-08-2015",
+            "value": 66
+        }
+        ,
+        {
+            "label": "08-08-2015",
             "value": 0
         },
         {
-            "label": "EquallyPriced",
-            "value": 100
-        },
-        {
-            "label": "UnderPriced",
-            "value": 150
+            "label": "09-08-2015",
+            "value": 98
         }
         ,
         {
-            "label": "UnderPriced5",
+            "label": "10-08-2015",
+            "value": 55
+        }
+        ,
+        {
+            "label": "11-08-2015",
+            "value": 88
+        }
+        ,
+        {
+            "label": "12-08-2015",
+            "value": 44
+        } ,
+        {
+            "label": "13-08-2015",
+            "value": 55
+        } ,
+        {
+            "label": "14-08-2015",
+            "value": 89
+        },
+        {
+            "label": "15-08-2015",
+            "value": 23
+        },
+        {
+            "label": "16-08-2015",
+            "value": 33
+        },
+        {
+            "label": "17-08-2015",
+            "value": 0
+        },
+        {
+            "label": "18-08-2015",
+            "value": 0
+
+        }
+        ,
+        {
+            "label": "19-08-2015",
+            "value": 11
+        }
+        ,
+        {
+            "label": "20-08-2015",
+            "value": 45
+        }
+        ,
+        {
+            "label": "21-08-2015",
+            "value": 76
+        }
+        ,
+        {
+            "label": "22-08-2015",
+            "value": 77
+        }
+        ,
+        {
+            "label": "23-08-2015",
+            "value": 5
+        },
+        {
+            "label": "24-08-2015",
             "value": 0
         }
         ,
         {
-            "label": "UnderPriced6",
-            "value": 300
+            "label": "25-08-2015",
+            "value": 80
         }
         ,
         {
-            "label": "UnderPriced7",
-            "value": 500
+            "label": "26-08-2015",
+            "value": 34
         }
+        ,
+        {
+            "label": "27-08-2015",
+            "value": 12
+        } ,
+        {
+            "label": "28-08-2015",
+            "value": 6
+        } ,
+        {
+            "label": "29-08-2015",
+            "value": 89
+
+        },
+        {
+            "label": "30-08-2015",
+            "value": 23
+
+        }
+
+
         
-        ,
-        {
-            "label": "UnderPriced2",
-            "value": 0
-        }
 
     ]
 }
@@ -63,16 +173,18 @@ var linedata = {
 
 
 var columndata = {
-    "chart": {
-        "caption": "Price Leadership Chart",
+   "chart": {
+        "caption": "Column Chart",
         "captionColor":"blue",
         "yaxisname": "Revenue",
         "showValue":true,
         "color":"white",
         "fontsize":15,
         "slant":true,
+        "twoxaxis":true,
         "slantdegree":"90",
-        "pallattecolor":["#f8bd19","#e44a00","#008ee4","#33bdda","#6baa01","#583e78","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324CC"]
+        "pallattecolor":["#f8bd19","#e44a00","#008ee4","#33bdda","#6baa01","#583e78","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C"
+        ,"#f8bd19","#e44a00","#008ee4","#33bdda","#6baa01","#583e78","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008ee4","#33bdda","#6baa01","#583e78"]
     },
     "export":{
         "showexport": true,
@@ -82,71 +194,173 @@ var columndata = {
         {
             "label": "01-08-2015",
             "value": 56,
-            "tooltext":"Snapdeal"
+            "axistop":"Snapdeal"
         },
         {
             "label": "02-08-2015",
             "value": 23,
-            "tooltext":"Flipkart"
+            "axistop":"Flipkart"
         },
         {
             "label": "03-08-2015",
             "value": 87,
-            "tooltext":"Amazon"
+            "axistop":"Amazon"
+
         }
         ,
         {
             "label": "04-08-2015",
             "value": 10,
-            "tooltext":"Paytm"
+            "axistop":"Paytm"
         }
         ,
         {
             "label": "05-08-2015",
             "value": 67,
-            "tooltext":"Shopclues"
+            "axistop":"Shopclues"
         }
         ,
         {
             "label": "06-08-2015",
             "value": 50,
-            "tooltext":"Jabong"
+            "axistop":"Jabong"
         }
         ,
         {
             "label": "07-08-2015",
             "value": 66,
-            "tooltext":"Myntra"
+            "axistop":"Myntra"
         }
         ,
         {
             "label": "08-08-2015",
             "value": 12,
-            "tooltext":"Trends"
+            "axistop":"Trends"
         },
         {
             "label": "09-08-2015",
             "value": 98,
-            "tooltext":"Mocha"
+            "axistop":"Mocha"
         }
         ,
         {
             "label": "10-08-2015",
             "value": 55,
-            "tooltext":"Waves"
+            "axistop":"Waves"
         }
         ,
         {
             "label": "11-08-2015",
             "value": 88,
-            "tooltext":"Snapdeal"
+            "axistop":"Snapdeal"
         }
         ,
         {
             "label": "12-08-2015",
             "value": 44,
-            "tooltext":"Flipkart"
+            "axistop":"Flipkart"
+        } ,
+        {
+            "label": "13-08-2015",
+            "value": 55,
+            "axistop":"Jabong"
+        } ,
+        {
+            "label": "14-08-2015",
+            "value": 89,
+            "axistop":"Myntra"
+        },
+        {
+            "label": "15-08-2015",
+            "value": 23,
+            "axistop":"Paytm"
+        },
+        {
+            "label": "16-08-2015",
+            "value": 33,
+            "axistop":"Snapdeal"
+        },
+        {
+            "label": "17-08-2015",
+            "value": 66,
+            "axistop":"Flipkart"
+        },
+        {
+            "label": "18-08-2015",
+            "value": 76,
+            "axistop":"Amazon"
+
         }
+        ,
+        {
+            "label": "19-08-2015",
+            "value": 11,
+            "axistop":"Paytm"
+        }
+        ,
+        {
+            "label": "20-08-2015",
+            "value": 45,
+            "axistop":"Shopclues"
+        }
+        ,
+        {
+            "label": "21-08-2015",
+            "value": 76,
+            "axistop":"Jabong"
+        }
+        ,
+        {
+            "label": "22-08-2015",
+            "value": 77,
+            "axistop":"Myntra"
+        }
+        ,
+        {
+            "label": "23-08-2015",
+            "value": 5,
+            "axistop":"Trends"
+        },
+        {
+            "label": "24-08-2015",
+            "value": 0,
+            "axistop":"Mocha"
+        }
+        ,
+        {
+            "label": "25-08-2015",
+            "value": 80,
+            "axistop":"Waves"
+        }
+        ,
+        {
+            "label": "26-08-2015",
+            "value": 34,
+            "axistop":"Snapdeal"
+        }
+        ,
+        {
+            "label": "27-08-2015",
+            "value": 12,
+            "axistop":"Flipkart"
+        } ,
+        {
+            "label": "28-08-2015",
+            "value": 6,
+            "axistop":"Jabong"
+        } ,
+        {
+            "label": "29-08-2015",
+            "value": 89,
+            "axistop":"Myntra"
+        },
+        {
+            "label": "30-08-2015",
+            "value": 23,
+            "axistop":"Paytm"
+        }
+
+
         
 
     ]
