@@ -623,51 +623,51 @@ var barchart7 = {
     },
     "data": [{
     "category": "ABC",
-    "label": "A",
+    "label": "Product1",
     "value": 100
 }, {
     "category": "ABC",
-    "label": "B",
+    "label": "Product2",
     "value": 200
 }, {
     "category": "ABC",
-    "label": "C",
+    "label": "Product3",
     "value": 500
 }, {
     "category": "ABC",
-    "label": "D",
+    "label": "Product4",
     "value": 0
 }, {
     "category": "ABC",
-    "label": "E",
+    "label": "Product5",
     "value": 700
 }, {
     "category": "ABC",
-    "label": "F",
+    "label": "Product6",
     "value": 800
 }, {
     "category": "XYZ",
-    "label": "A",
+    "label": "Product1",
     "value": 500
 }, {
     "category": "XYZ",
-    "label": "B",
+    "label": "Product2",
     "value": 0
 }, {
     "category": "XYZ",
-    "label": "C",
+    "label": "Product3",
     "value": 300
 }, {
     "category": "XYZ",
-    "label": "D",
+    "label": "Product4",
     "value": 950
 }, {
     "category": "XYZ",
-    "label": "E",
+    "label": "Product5",
     "value": 1000
 }, {
     "category": "XYZ",
-    "label": "F",
+    "label": "Product6",
     "value": 900
 }]
 }

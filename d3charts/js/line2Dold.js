@@ -60,7 +60,7 @@ var line2D = function (chartType, chartId, chartdata) {
     var showlegendwidth = chartdata.chart.showlegend == true ? 20 : 0
     var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
     var div = d3.select("body").append("div")
-    .attr("style", " position: absolute;opacity:0;text-align: left;width: auto;height: auto;padding: 2px;font: 12px sans-serif;background: black;border: 0px;border-radius: 8px;pointer-events: none;color:white");
+    .attr("style", " position: absolute;opacity:0;text-align: center;width: auto;height: auto;padding: 2px;font: 12px sans-serif;background: black;border: 0px;border-radius: 8px;pointer-events: none;color:white");
     var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
     var y = d3.scale.linear()
@@ -582,27 +582,12 @@ var line2D = function (chartType, chartId, chartdata) {
     .attr("class", function (d) { return cType + d.label })
     .style("fill", function (d, i) { return d.value == 0 ? "grey" : color; })
     .on("mouseover", function (d, i) {
-        div.transition()
-                .duration(0)
-                .style("opacity", .9);
-        var xattr = bodyRect = elemRect = yattr = 0;
-        var xattr = ((this.getAttribute('cx') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
-        var bodyRect = document.body.getBoundingClientRect();
-        var elemRect = this.getBoundingClientRect();
-        var yattr = (elemRect.top - bodyRect.top - 10) + 'px';
-
-        div.html(this.nextSibling.textContent)
-       .style("left", xattr)
-                .style("top", yattr);
-
-
-
+        this.nextSibling.style.display = 'block';
+        this.nextSibling.nextSibling.style.display = 'block';
     })
         .on("mouseout", function (d, i) {
-            div.transition()
-                .duration(0)
-                .style("opacity", 0);
-
+            this.nextSibling.style.display = 'none';
+            this.nextSibling.nextSibling.style.display = 'none';
         })
     .attr("cx", function (d)
     { return x(d.label) + x.rangeBand() / 2; })
@@ -617,14 +602,25 @@ var line2D = function (chartType, chartId, chartdata) {
       .attr("class", function (d) { return cType + d.label })
 	    .text(function (d) {
 	        if (chartType == 'Line2D' || chartType == 'Scatter2D' || chartType == 'StepLine2D' || chartType == 'Curve2D')
-	            return d.label + ':' + d.value;
+	            return d.label;
 	        else
-	            return d.category + ':' + d.value;
+	            return d.category;
 	    })
         .attr('style', function (d) {
             var colorval = (d.value == 0) ? "grey" : color;
             return 'display:none;z-index:9999999;fill:' + colorval + ';font-size:15px'
         });
+
+        circletext.append('text')
+    .attr("dx", function (d)
+    { return x(d.label) + x.rangeBand() / 2 + 10; })
+     .attr("dy", function (d) { return y(d.value) + 10; })
+      .attr("class", function (d) { return cType + d.label })
+	    .text(function (d) { return d.value })
+         .attr('style', function (d) {
+             var colorval = (d.value == 0) ? "grey" : color;
+             return 'display:none;z-index:9999999;fill:' + colorval + ';font-size:15px'
+         });
 
         svg.selectAll(chartId + ' .xgrid').selectAll('line')
           .style("stroke-dasharray", 3)
@@ -641,30 +637,11 @@ var line2D = function (chartType, chartId, chartdata) {
          .duration(0)
          .style('opacity', .8);
 
-             var alltext = d3.selectAll('text' + '.' + cType + d);
-             if (chartType.search('Multi') == -1)
-                 var htmlcontent = '';
-             else
-                 var htmlcontent = '<span style=\"height:10px!important\">Node: ' + d + '</span><hr>';
-             for (i = 0; i < alltext[0].length; i++)
-                 htmlcontent = htmlcontent + alltext[0][i].textContent + '<br>';
-
-
-             div.transition()
-                .duration(0)
-                .style("opacity", .9);
-
-             var xattr = bodyRect = elemRect = yattr = 0;
-             var bodyRect = document.body.getBoundingClientRect();
-             var elemRect = this.getBoundingClientRect();
-             var xattr = (elemRect.left - bodyRect.left + 10) + 'px';
-             var yattr = (elemRect.top - bodyRect.top + height / 2 - margin.top) + 'px';
-
-             div.html(htmlcontent)
-       .style("left", xattr)
-                .style("top", yattr);
-
-
+             d3.selectAll('text' + '.' + cType + d)
+        .transition()
+         .duration(0)
+         .style('opacity', 1)
+         .style('display', 'block');
          })
           .on('mouseout', function (d) {
               d3.select(this)
@@ -677,9 +654,11 @@ var line2D = function (chartType, chartId, chartdata) {
           .transition()
          .duration(0)
          .style('opacity', 1);
-              div.transition()
-                .duration(0)
-                .style("opacity", 0);
+              d3.selectAll('text' + '.' + cType + d)
+        .transition()
+         .duration(0)
+         .style('opacity', 1)
+         .style('display', 'none');
           });
 
     };
