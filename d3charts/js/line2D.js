@@ -97,7 +97,7 @@ var line2D = function (chartType, chartId, chartdata) {
         .attr("x", (width / 2))
         .attr("y", 5 - (margin.top / 2))
         .attr("text-anchor", "middle")
-        .style("font-size", "14px")
+        .style("font-size", "18px")
         .style("text-decoration", "underline")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption);
@@ -122,6 +122,7 @@ var line2D = function (chartType, chartId, chartdata) {
         svg.append("g")
       .attr("style", styleborder)
       .attr("transform", "translate(0," + height + ")")
+
       .attr("class", "grid xgrid xtick")
       .call(xAxis()
              .innerTickSize(-height)
@@ -372,7 +373,7 @@ var line2D = function (chartType, chartId, chartdata) {
       .append('g')
         .attr('class', 'legend');
             legend.append('rect')
-        .attr('x', width - 30)
+        .attr('x', width)
         .attr('y', function (d, i) { return (i + 1) * 20; })
         .attr('width', 10)
         .attr('height', 10)
@@ -381,7 +382,7 @@ var line2D = function (chartType, chartId, chartdata) {
         });
 
             legend.append('text')
-        .attr('x', width - 18)
+        .attr('x', width +12)
         .attr('y', function (d, i) { return ((i + 1) * 20) + 9; })
         .text(function (d) { return d.key; })
         .style('fill', function (d, i) {
@@ -428,7 +429,9 @@ var line2D = function (chartType, chartId, chartdata) {
         .attr("style", "stroke:transparent ;fill:" + color + ";opacity:.8")
         .attr("d", area);
         svg.selectAll('.xgrid').selectAll('line')
-          .style("stroke-dasharray", ("3, 3"));
+          .style("stroke-dasharray", ("3, 3"))
+               .style("opacity", 0)
+                .style("stroke-width", 3);
         tickspace(chartdata.data);
     }
     else if (chartType == 'MultiLine2D' || chartType == 'MultiStepLine2D' || chartType == 'MultiCurve2D') {
@@ -466,7 +469,7 @@ var line2D = function (chartType, chartId, chartdata) {
       .append('g')
         .attr('class', 'legend');
             legend.append('rect')
-        .attr('x', width - 30)
+        .attr('x', width)
         .attr('y', function (d, i) { return (i + 1) * 20; })
         .attr('width', 10)
         .attr('height', 10)
@@ -475,7 +478,7 @@ var line2D = function (chartType, chartId, chartdata) {
         });
 
             legend.append('text')
-        .attr('x', width - 18)
+        .attr('x', width +12)
         .attr('y', function (d, i) { return ((i + 1) * 20) + 9; })
         .text(function (d) { return d.key; })
         .style('fill', function (d, i) {
@@ -526,7 +529,9 @@ var line2D = function (chartType, chartId, chartdata) {
          .attr("data-categorycolumn", d.key)
         .attr("class", chartType + keyid.replace(/\s+/g, ''));
             svg.selectAll('.xgrid').selectAll('line')
-          .style("stroke-dasharray", ("3, 3"));
+          .style("stroke-dasharray", ("3, 3"))
+          .style("opacity", 0)
+           .style("stroke-width", 3);
 
         });
         tickspace(dataGroup[0].values);
@@ -537,7 +542,7 @@ var line2D = function (chartType, chartId, chartdata) {
       .append('g')
         .attr('class', 'legend');
             legend.append('rect')
-        .attr('x', width - 30)
+        .attr('x', width)
         .attr('y', function (d, i) { return (i + 1) * 20; })
         .attr('width', 10)
         .attr('height', 10)
@@ -546,7 +551,7 @@ var line2D = function (chartType, chartId, chartdata) {
         });
 
             legend.append('text')
-        .attr('x', width - 18)
+        .attr('x', width +12)
         .attr('y', function (d, i) { return ((i + 1) * 20) + 9; })
         .text(function (d) { return d.key; })
         .style('fill', function (d, i) {
@@ -628,13 +633,16 @@ var line2D = function (chartType, chartId, chartdata) {
 
         svg.selectAll(chartId + ' .xgrid').selectAll('line')
           .style("stroke-dasharray", 3)
+          .style("stroke-width", 3)
           .style("cursor", "pointer")
+         .style("opacity", "0")
          .on('mouseover', function (d, i) {
              d3.select(this)
          .transition()
          .duration(0)
          .attr('stroke', '#4AC3FF')
         .style("stroke-dasharray", 0)
+      .style("opacity", "1")
              d3.selectAll('.' + cType + d)
         .attr("r", 8)
         .transition()
@@ -671,6 +679,7 @@ var line2D = function (chartType, chartId, chartdata) {
           .transition()
          .duration(0)
          .attr('stroke', '')
+          .style("opacity", "0")
          .style("stroke-dasharray", 3)
               d3.selectAll('.' + cType + d)
          .attr("r", 5)

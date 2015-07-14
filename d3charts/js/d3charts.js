@@ -58,7 +58,7 @@ var barchart = {
         "fontsize":15,
         "slant":false,
         "slantdegree":"45",
-        "tickinterval":3,
+        "tickinterval":5,
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
     "export":{

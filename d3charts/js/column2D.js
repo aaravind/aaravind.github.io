@@ -184,7 +184,7 @@ var column2D = function (chartId, chartdata) {
         var xattr = ((this.getAttribute('x') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
-        var yattr = (elemRect.top - bodyRect.top - 50) + 'px';
+        var yattr = (elemRect.top - bodyRect.top-30) + 'px';
         if (chartdata.data[i].tooltext != undefined) {
             div.html(chartdata.data[i].tooltext + '<br><hr>' + chartdata.data[i].value)
        .style("left", xattr)
