@@ -219,7 +219,7 @@ var linedata = {
             "value": 23
         },
         {
-            "category": "Snapdeal",
+    
             "category": "Snapdeal",
             "label": "03-08",
             "value": 87

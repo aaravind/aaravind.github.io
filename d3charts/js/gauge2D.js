@@ -84,7 +84,7 @@ var gauge2D = function (chartId, chartdata) {
         .attr("x", 0)
         .attr("y", -10 - height / 2)
         .attr("text-anchor", "middle")
-        .style("font-size", "14px")
+        .style("font-size", "18px")
         .style("text-decoration", "underline")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption);

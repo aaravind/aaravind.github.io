@@ -52,7 +52,7 @@ var barchart = {
     "chart": {
         "caption": "Line Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "color":"white",
         "fontsize":15,
@@ -218,7 +218,7 @@ var barchart11 = {
     "chart": {
         "caption": "Bar Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "color":"white",
         "fontsize":15,
@@ -262,7 +262,7 @@ var barchart12 = {
     "chart": {
         "caption": "Column Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "color":"white",
         "fontsize":15,
@@ -458,7 +458,7 @@ var barchart3 = {
     "chart": {
         "caption": "Pie Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":false,
         "color":"white",
@@ -474,15 +474,15 @@ var barchart3 = {
 
     "data": [
         {
-            "label": "OverPriced",
+            "label": "Over Priced",
             "value": 1000
         },
         {
-            "label": "EquallyPriced",
+            "label": "Equally Priced",
             "value": 2000
         },
         {
-            "label": "UnderPriced",
+            "label": "Under Priced",
             "value": 1340
         }
         
@@ -495,7 +495,7 @@ var barchart4 = {
     "chart": {
         "caption": "Doughnut Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":true,
         "color":"white",
@@ -511,15 +511,15 @@ var barchart4 = {
    
     "data": [
         {
-            "label": "OverPriced",
+            "label": "Over Priced",
             "value": 1000
         },
         {
-            "label": "EquallyPriced",
+            "label": "Equally Priced",
             "value": 2000
         },
         {
-            "label": "UnderPriced",
+            "label": "Under Priced",
             "value": 1340
         }
         
@@ -532,7 +532,7 @@ var barchart5 = {
     "chart": {
         "caption": " Semi Pie Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":true,
         "color":"white",
@@ -548,15 +548,15 @@ var barchart5 = {
    
     "data": [
         {
-            "label": "OverPriced",
+            "label": "Over Priced",
             "value": 1000
         },
         {
-            "label": "EquallyPriced",
+            "label": "Equally Priced",
             "value": 2000
         },
         {
-            "label": "UnderPriced",
+            "label": "Under Priced",
             "value": 1340
         }
         
@@ -569,7 +569,7 @@ var barchart6 = {
     "chart": {
         "caption": " Semi Doughnut Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":false,
         "color":"white",
@@ -585,15 +585,15 @@ var barchart6 = {
  
     "data": [
         {
-            "label": "OverPriced",
+            "label": "Over Priced",
             "value": 1000
         },
         {
-            "label": "EquallyPriced",
+            "label": "Equally Priced",
             "value": 2000
         },
         {
-            "label": "UnderPriced",
+            "label": "Under Priced",
             "value": 1340
         }
         
@@ -606,7 +606,7 @@ var barchart7 = {
     "chart": {
         "caption": "Multi Line Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":true,
         "color":"white",
@@ -622,52 +622,52 @@ var barchart7 = {
          "format": ["-Select-","jpeg","png","pdf"]
     },
     "data": [{
-    "category": "ABC",
-    "label": "Product1",
+    "category": "Clothing",
+    "label": "Snapdeal",
     "value": 100
 }, {
-    "category": "ABC",
-    "label": "Product2",
+    "category": "Clothing",
+    "label": "Paytm",
     "value": 200
 }, {
-    "category": "ABC",
-    "label": "Product3",
+    "category": "Clothing",
+    "label": "Shopclues",
     "value": 500
 }, {
-    "category": "ABC",
-    "label": "Product4",
+    "category": "Clothing",
+    "label": "Rediff",
     "value": 0
 }, {
-    "category": "ABC",
-    "label": "Product5",
+    "category": "Clothing",
+    "label": "Trendsin",
     "value": 700
 }, {
-    "category": "ABC",
-    "label": "Product6",
+    "category": "Clothing",
+    "label": "Zovi",
     "value": 800
 }, {
-    "category": "XYZ",
-    "label": "Product1",
+    "category": "Electronic",
+    "label": "Snapdeal",
     "value": 500
 }, {
-    "category": "XYZ",
-    "label": "Product2",
+    "category": "Electronic",
+    "label": "Paytm",
     "value": 0
 }, {
-    "category": "XYZ",
-    "label": "Product3",
+    "category": "Electronic",
+    "label": "Shopclues",
     "value": 300
 }, {
-    "category": "XYZ",
-    "label": "Product4",
+    "category": "Electronic",
+    "label": "Rediff",
     "value": 950
 }, {
-    "category": "XYZ",
-    "label": "Product5",
+    "category": "Electronic",
+    "label": "Trendsin",
     "value": 1000
 }, {
-    "category": "XYZ",
-    "label": "Product6",
+    "category": "Electronic",
+    "label": "Zovi",
     "value": 900
 }]
 }
@@ -679,7 +679,7 @@ var barchart2 = {
     "chart": {
         "caption": "Area Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":true,
         "color":"white",
@@ -729,7 +729,7 @@ var barchart8 = {
     "chart": {
         "caption": "Multi Area Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":true,
         "color":"white",
@@ -826,7 +826,7 @@ var barchart9 = {
     "chart": {
         "caption": "Scatter Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":true,
         "color":"white",
@@ -876,7 +876,7 @@ var barchart10 = {
     "chart": {
         "caption": "Multi Scatter Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":true,
         "color":"white",
@@ -974,7 +974,7 @@ var barchart14 = {
     "chart": {
         "caption": "Step Line Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "color":"white",
         "fontsize":15,
@@ -989,36 +989,36 @@ var barchart14 = {
     },
     "data": [
         {
-            "label": "OverPriced",
+            "label": "Over Priced",
             "value": 100
         },
         {
-            "label": "EquallyPriced",
+            "label": "Equally Priced",
             "value": 1000
         },
         {
-            "label": "UnderPriced",
+            "label": "Under Priced",
             "value": 10
         }
         ,
         {
-            "label": "UnderPriced5",
+            "label": "Good",
             "value": 0
         }
         ,
         {
-            "label": "UnderPriced6",
+            "label": "Very Good",
             "value": 300
         }
         ,
         {
-            "label": "UnderPriced7",
+            "label": "Ok",
             "value": 10
         }
         
         ,
         {
-            "label": "UnderPriced2",
+            "label": "Best",
             "value": 1340
         }
 
@@ -1030,7 +1030,7 @@ var barchart13 = {
     "chart": {
         "caption": "Multi Step Line Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":true,
         "color":"white",
@@ -1126,7 +1126,7 @@ var barchart15 = {
     "chart": {
         "caption": "Multi Step Area Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":true,
         "color":"white",
@@ -1223,7 +1223,7 @@ var barchart16 = {
     "chart": {
         "caption": "Step Area Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "color":"white",
         "fontsize":15,
@@ -1238,36 +1238,36 @@ var barchart16 = {
     },
     "data": [
         {
-            "label": "Project1",
+            "label": "Project 1",
             "value": 100
         },
         {
-            "label": "Project2",
+            "label": "Project 2",
             "value": 1000
         },
         {
-            "label": "Project3",
+            "label": "Project 3",
             "value": 700
         }
         ,
         {
-            "label": "Project4",
+            "label": "Project 4",
             "value": 0
         }
         ,
         {
-            "label": "Project5",
+            "label": "Project 5",
             "value": 300
         }
         ,
         {
-            "label": "Project6",
+            "label": "Project 6",
             "value": 350
         }
         
         ,
         {
-            "label": "Project7",
+            "label": "Project 7",
             "value": 1340
         }
 
@@ -1279,7 +1279,7 @@ var barchart17 = {
     "chart": {
         "caption": "Curve Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "color":"white",
         "fontsize":15,
@@ -1294,36 +1294,36 @@ var barchart17 = {
     },
     "data": [
         {
-            "label": "Project1",
+            "label": "Project 1",
             "value": 100
         },
         {
-            "label": "Project2",
+            "label": "Project 2",
             "value": 0
         },
         {
-            "label": "Project3",
+            "label": "Project 3",
             "value": 700
         }
         ,
         {
-            "label": "Project4",
+            "label": "Project 4",
             "value": 1000
         }
         ,
         {
-            "label": "Project5",
+            "label": "Project 5",
             "value": 123
         }
         ,
         {
-            "label": "Project6",
+            "label": "Project 6",
             "value": 350
         }
         
         ,
         {
-            "label": "Project7",
+            "label": "Project 7",
             "value": 1340
         }
 
@@ -1335,7 +1335,7 @@ var barchart18 = {
     "chart": {
         "caption": "Curve Area Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "color":"white",
         "fontsize":15,
@@ -1350,36 +1350,36 @@ var barchart18 = {
     },
     "data": [
         {
-            "label": "Project1",
+            "label": "Project 1",
             "value": 100
         },
         {
-            "label": "Project2",
+            "label": "Project 2",
             "value": 1000
         },
         {
-            "label": "Project3",
+            "label": "Project 3",
             "value": 700
         }
         ,
         {
-            "label": "Project4",
+            "label": "Project 4",
             "value": 1000
         }
         ,
         {
-            "label": "Project5",
+            "label": "Project 5",
             "value": 300
         }
         ,
         {
-            "label": "Project6",
+            "label": "Project 6",
             "value": 0
         }
         
         ,
         {
-            "label": "Project7",
+            "label": "Project 7",
             "value": 1340
         }
 
@@ -1391,7 +1391,7 @@ var barchart19 = {
     "chart": {
         "caption": "Multi Curve Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":true,
         "color":"white",
@@ -1488,7 +1488,7 @@ var barchart20 = {
     "chart": {
         "caption": "Multi Curve Area Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":true,
         "color":"white",
@@ -1584,7 +1584,7 @@ var barchart21 = {
     "chart": {
         "caption": "Availability Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "showlegend":true,
         "color":"white",
@@ -1726,7 +1726,7 @@ var barchart22 = {
     "chart": {
         "caption": "Gauge Chart",
         "captionColor":"blue",
-        "yaxisname": "Revenue",
+        "yaxisname": "",
         "showValue":true,
         "color":"white",
         "fontsize":15,

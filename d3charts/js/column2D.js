@@ -179,7 +179,7 @@ var column2D = function (chartId, chartdata) {
         div.transition()
                 .duration(0)
                 .style("opacity", .9);
-        d3.selectAll('.' + chartId.replace('#', '') + d.label).style("display", "block");
+        d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "")).style("display", "block");
 
         var xattr = ((this.getAttribute('x') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
         var bodyRect = document.body.getBoundingClientRect();
@@ -199,7 +199,7 @@ var column2D = function (chartId, chartdata) {
 
     })
         .on("mouseout", function (d, i) {
-            d3.selectAll('.' + chartId.replace('#', '') + d.label).style("display", "none");
+            d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "")).style("display", "none");
             div.transition()
                 .duration(0)
                 .style("opacity", 0);
@@ -218,7 +218,7 @@ var column2D = function (chartId, chartdata) {
     var columncirlce = svg.selectAll('.columncirlce')
      .data(chartdata.data)
     .enter().append('circle')
-    .attr("class", function (d) { return chartId.replace('#', '') + d.label })
+    .attr("class", function (d) { return chartId.replace('#', '') + d.label.replace(" ", "") })
     .style("fill", "black")
         .attr("cx", function (d)
         { return x(d.label) + x.rangeBand() / 2; })
@@ -229,7 +229,7 @@ var column2D = function (chartId, chartdata) {
     var columnpath = svg.selectAll('.columnpath')
      .data(chartdata.data)
     .enter().append('path')
-    .attr("class", function (d) { return chartId.replace('#', '') + d.label })
+    .attr("class", function (d) { return chartId.replace('#', '') + d.label.replace(" ", "") })
     .attr("d", function (d) {
         var xatt = x(d.label) + x.rangeBand() / 2;
         var yatt = y(d.value);

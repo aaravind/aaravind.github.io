@@ -57,7 +57,7 @@ var line2D = function (chartType, chartId, chartdata) {
     var chartcontent = d3.select(chartId);
     var width = chartcontent[0][0].offsetWidth - margin.left - margin.right;
     var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
-    var showlegendwidth = chartdata.chart.showlegend == true ? 20 : 0
+    var showlegendwidth = chartdata.chart.showlegend == true ? 30 : 0
     var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
     var div = d3.select("body").append("div")
     .attr("style", " position: absolute;opacity:0;text-align: left;width: auto;height: auto;padding: 2px;font: 12px sans-serif;background: black;border: 0px;border-radius: 8px;pointer-events: none;color:white");
@@ -620,7 +620,7 @@ var line2D = function (chartType, chartId, chartdata) {
     .attr("dx", function (d)
     { return x(d.label) + x.rangeBand() / 2 + 10; })
      .attr("dy", function (d) { return y(d.value) - 5; })
-      .attr("class", function (d) { return cType + d.label })
+      .attr("class", function (d) { return cType + d.label.replace(" ", "") })
 	    .text(function (d) {
 	        if (chartType == 'Line2D' || chartType == 'Scatter2D' || chartType == 'StepLine2D' || chartType == 'Curve2D')
 	            return d.label + ':' + d.value;
@@ -644,13 +644,13 @@ var line2D = function (chartType, chartId, chartdata) {
          .attr('stroke', '#4AC3FF')
         .style("stroke-dasharray", 0)
       .style("opacity", "1")
-             d3.selectAll('.' + cType + d)
+             d3.selectAll('.' + cType + d.replace(" ", ""))
         .attr("r", 8)
         .transition()
          .duration(0)
          .style('opacity', .8);
 
-             var alltext = d3.selectAll('text' + '.' + cType + d);
+             var alltext = d3.selectAll('text' + '.' + cType + d.replace(" ", ""));
              if (chartType.search('Multi') == -1)
                  var htmlcontent = '';
              else
@@ -682,7 +682,7 @@ var line2D = function (chartType, chartId, chartdata) {
          .attr('stroke', '')
           .style("opacity", "0")
          .style("stroke-dasharray", 3)
-              d3.selectAll('.' + cType + d)
+              d3.selectAll('.' + cType + d.replace(" ", ""))
          .attr("r", 5)
           .transition()
          .duration(0)

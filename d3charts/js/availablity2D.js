@@ -69,7 +69,7 @@
         .attr("x", (width / 2))
         .attr("y", 5 - (margin.top / 2))
         .attr("text-anchor", "middle")
-        .style("font-size", "14px")
+        .style("font-size", "18px")
         .style("text-decoration", "underline")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption);
