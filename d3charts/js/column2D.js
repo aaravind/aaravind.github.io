@@ -184,7 +184,9 @@ var column2D = function (chartId, chartdata) {
         var xattr = ((this.getAttribute('x') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
-        var yattr = (elemRect.top - bodyRect.top-30) + 'px';
+        // var yattr = (elemRect.top - bodyRect.top) + 'px';
+        var yattr = document.getElementById(chartId.replace("#","")).offsetTop + (height-this.getAttribute('height')/1 -25) + 'px';
+        // var yattr = (bodyRect.top-document.getElementById('barchart12').getBoundingClientRect().top + (this.getAttribute('x') / 1))+ 'px';
         if (chartdata.data[i].tooltext != undefined) {
             div.html(chartdata.data[i].tooltext + '<br><hr>' + chartdata.data[i].value)
        .style("left", xattr)
@@ -242,17 +244,17 @@ var column2D = function (chartId, chartdata) {
     if (chartdata.chart.tickinterval != undefined && chartdata.chart.tickinterval > 0) {
         d3.select(chartId).selectAll(".xtick .tick text").style("display", function (d, i) {
             chartlength = chartdata.data.length - 1;
-            ticklength = chartdata.chart.tickinterval-1;
+            ticklength = chartdata.chart.tickinterval - 1;
             if (i == 0)
                 return "block"
             if (i == chartlength)
                 return "block"
-            else {       
-                    if (i % ticklength == 0 && (i < (chartlength - ticklength)))
-                        return "block"
-                    else
-                        return "none"
-                }         
+            else {
+                if (i % ticklength == 0 && (i < (chartlength - ticklength)))
+                    return "block"
+                else
+                    return "none"
+            }
         });
     }
 

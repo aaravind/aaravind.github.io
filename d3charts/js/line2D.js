@@ -590,16 +590,21 @@ var line2D = function (chartType, chartId, chartdata) {
         div.transition()
                 .duration(0)
                 .style("opacity", .9);
-        var xattr = bodyRect = elemRect = yattr = 0;
-        var xattr = ((this.getAttribute('cx') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
+       var xattr = bodyRect = elemRect = yattr = 0;
+       // var xattr = ((this.getAttribute('cx') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
-        var yattr = (elemRect.top - bodyRect.top- margin.top/2) + 'px';
+      //  var yattr = (elemRect.top - bodyRect.top- margin.top/2) + 'px';
+
+
+         var xattr = (elemRect.left - bodyRect.left - margin.left/2 +10) + 'px';
+         //    var yattr = (elemRect.top - bodyRect.top - margin.top +5) + 'px';
+   var yattr = document.getElementById(chartId.replace("#","")).offsetTop + (this.getAttribute('cy')/1 +7) + 'px';
 
         div.html(this.nextSibling.textContent)
        .style("left", xattr)
                 .style("top", yattr)
-                 .style("margin-top", "20px");
+                 .style("margin-top", "35px");
 
 
 
