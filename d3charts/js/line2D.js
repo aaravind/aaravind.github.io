@@ -594,11 +594,12 @@ var line2D = function (chartType, chartId, chartdata) {
         var xattr = ((this.getAttribute('cx') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
-        var yattr = (elemRect.top - bodyRect.top - 10) + 'px';
+        var yattr = (elemRect.top - bodyRect.top- margin.top/2) + 'px';
 
         div.html(this.nextSibling.textContent)
        .style("left", xattr)
-                .style("top", yattr);
+                .style("top", yattr)
+                 .style("margin-top", "20px");
 
 
 

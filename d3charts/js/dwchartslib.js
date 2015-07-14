@@ -201,7 +201,7 @@ var linedata = {
         "tickinterval":5,
         "slant":false,
         "slantdegree":"90",
-        "pallattecolor":["#008ee4","#000FFF","#f8bd19"]
+        "pallattecolor":["#008ee4","#34495e","#f8bd19"]
     },
     "export":{
         "showexport": true,
