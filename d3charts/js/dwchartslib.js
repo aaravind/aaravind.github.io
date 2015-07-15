@@ -212,511 +212,511 @@ var linedata = {
     "data":  [
         {
              "category": "Snapdeal",
-            "label": "01-08",
+            "label": "01-08-15",
             "value": 56
         },
         { 
             "category": "Snapdeal",
-            "label": "02-08",
+            "label": "02-08-15",
             "value": 23
         },
         {
     
             "category": "Snapdeal",
-            "label": "03-08",
+            "label": "03-08-15",
             "value": 87
 
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "04-08",
+            "label": "04-08-15",
             "value": 10
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "05-08",
+            "label": "05-08-15",
             "value": 67
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "06-08",
+            "label": "06-08-15",
             "value": 50
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "07-08",
+            "label": "07-08-15",
             "value": 66
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "08-08",
+            "label": "08-08-15",
             "value": 0
         },
         {
             "category": "Snapdeal",
-            "label": "09-08",
+            "label": "09-08-15",
             "value": 98
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "10-08",
+            "label": "10-08-15",
             "value": 55
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "11-08",
+            "label": "11-08-15",
             "value": 88
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "12-08",
+            "label": "12-08-15",
             "value": 44
         } ,
         {
             "category": "Snapdeal",
-            "label": "13-08",
+            "label": "13-08-15",
             "value": 55
         } ,
         {
             "category": "Snapdeal",
-            "label": "14-08",
+            "label": "14-08-15",
             "value": 89
         },
         {
             "category": "Snapdeal",
-            "label": "15-08",
+            "label": "15-08-15",
             "value": 23
         },
         {
             "category": "Snapdeal",
-            "label": "16-08",
+            "label": "16-08-15",
             "value": 33
         },
         {
             "category": "Snapdeal",
-            "label": "17-08",
+            "label": "17-08-15",
             "value": 0
         },
         {
             "category": "Snapdeal",
-            "label": "18-08",
+            "label": "18-08-15",
             "value": 0
 
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "19-08",
+            "label": "19-08-15",
             "value": 11
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "20-08",
+            "label": "20-08-15",
             "value": 45
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "21-08",
+            "label": "21-08-15",
             "value": 76
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "22-08",
+            "label": "22-08-15",
             "value": 77
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "23-08",
+            "label": "23-08-15",
             "value": 5
         },
         {
             "category": "Snapdeal",
-            "label": "24-08",
+            "label": "24-08-15",
             "value": 0
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "25-08",
+            "label": "25-08-15",
             "value": 80
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "26-08",
+            "label": "26-08-15",
             "value": 3
         }
         ,
         {
             "category": "Snapdeal",
-            "label": "27-08",
+            "label": "27-08-15",
             "value": 12
         } ,
         {
             "category": "Snapdeal",
-            "label": "28-08",
+            "label": "28-08-15",
             "value": 6
         } ,
         {
             "category": "Snapdeal",
-            "label": "29-08",
+            "label": "29-08-15",
             "value": 89
 
         },
         {
             "category": "Snapdeal",
-            "label": "30-08",
+            "label": "30-08-15",
             "value": 23
 
         }, {
              "category": "Paytm",
-            "label": "01-08",
+            "label": "01-08-15",
             "value": 46
         },
         { 
             "category": "Paytm",
-            "label": "02-08",
+            "label": "02-08-15",
             "value": 27
         },
         {
             "category": "Paytm",
             "category": "Paytm",
-            "label": "03-08",
+            "label": "03-08-15",
             "value": 34
 
         }
         ,
         {
             "category": "Paytm",
-            "label": "04-08",
+            "label": "04-08-15",
             "value": 90
         }
         ,
         {
             "category": "Paytm",
-            "label": "05-08",
+            "label": "05-08-15",
             "value": 55
         }
         ,
         {
             "category": "Paytm",
-            "label": "06-08",
+            "label": "06-08-15",
             "value": 33
         }
         ,
         {
             "category": "Paytm",
-            "label": "07-08",
+            "label": "07-08-15",
             "value": 87
         }
         ,
         {
             "category": "Paytm",
-            "label": "08-08",
+            "label": "08-08-15",
             "value": 34
         },
         {
             "category": "Paytm",
-            "label": "09-08",
+            "label": "09-08-15",
             "value": 0
         }
         ,
         {
             "category": "Paytm",
-            "label": "10-08",
+            "label": "10-08-15",
             "value": 11
         }
         ,
         {
             "category": "Paytm",
-            "label": "11-08",
+            "label": "11-08-15",
             "value": 0
         }
         ,
         {
             "category": "Paytm",
-            "label": "12-08",
+            "label": "12-08-15",
             "value": 0
         } ,
         {
             "category": "Paytm",
-            "label": "13-08",
+            "label": "13-08-15",
             "value": 77
         } ,
         {
             "category": "Paytm",
-            "label": "14-08",
+            "label": "14-08-15",
             "value": 33
         },
         {
             "category": "Paytm",
-            "label": "15-08",
+            "label": "15-08-15",
             "value": 22
         },
         {
             "category": "Paytm",
-            "label": "16-08",
+            "label": "16-08-15",
             "value": 77
         },
         {
             "category": "Paytm",
-            "label": "17-08",
+            "label": "17-08-15",
             "value": 0
         },
         {
             "category": "Paytm",
-            "label": "18-08",
+            "label": "18-08-15",
             "value": 22
 
         }
         ,
         {
             "category": "Paytm",
-            "label": "19-08",
+            "label": "19-08-15",
             "value": 0
         }
         ,
         {
             "category": "Paytm",
-            "label": "20-08",
+            "label": "20-08-15",
             "value": 0
         }
         ,
         {
             "category": "Paytm",
-            "label": "21-08",
+            "label": "21-08-15",
             "value": 77
         }
         ,
         {
             "category": "Paytm",
-            "label": "22-08",
+            "label": "22-08-15",
             "value": 55
         }
         ,
         {
             "category": "Paytm",
-            "label": "23-08",
+            "label": "23-08-15",
             "value": 15
         },
         {
             "category": "Paytm",
-            "label": "24-08",
+            "label": "24-08-15",
             "value": 0
         }
         ,
         {
             "category": "Paytm",
-            "label": "25-08",
+            "label": "25-08-15",
             "value": 44
         }
         ,
         {
             "category": "Paytm",
-            "label": "26-08",
+            "label": "26-08-15",
             "value": 0
         }
         ,
         {
             "category": "Paytm",
-            "label": "27-08",
+            "label": "27-08-15",
             "value": 4
         } ,
         {
             "category": "Paytm",
-            "label": "28-08",
+            "label": "28-08-15",
             "value": 76
         } ,
         {
             "category": "Paytm",
-            "label": "29-08",
+            "label": "29-08-15",
             "value": 22
 
         },
         {
             "category": "Paytm",
-            "label": "30-08",
+            "label": "30-08-15",
             "value": 66
 
         }, {
              "category": "Flipkart",
-            "label": "01-08",
+            "label": "01-08-15",
             "value": 22
         },
         { 
             "category": "Flipkart",
-            "label": "02-08",
+            "label": "02-08-15",
             "value": 33
         },
         {
             "category": "Flipkart",
-            "label": "03-08",
+            "label": "03-08-15",
             "value": 44
 
         }
         ,
         {
             "category": "Flipkart",
-            "label": "04-08",
+            "label": "04-08-15",
             "value": 55
         }
         ,
         {
             "category": "Flipkart",
-            "label": "05-08",
+            "label": "05-08-15",
             "value": 44
         }
         ,
         {
             "category": "Flipkart",
-            "label": "06-08",
+            "label": "06-08-15",
             "value": 0
         }
         ,
         {
             "category": "Flipkart",
-            "label": "07-08",
+            "label": "07-08-15",
             "value": 0
         }
         ,
         {
             "category": "Flipkart",
-            "label": "08-08",
+            "label": "08-08-15",
             "value": 88
         },
         {
             "category": "Flipkart",
-            "label": "09-08",
+            "label": "09-08-15",
             "value": 77
         }
         ,
         {
             "category": "Flipkart",
-            "label": "10-08",
+            "label": "10-08-15",
             "value": 77
         }
         ,
         {
             "category": "Flipkart",
-            "label": "11-08",
+            "label": "11-08-15",
             "value": 0
         }
         ,
         {
             "category": "Flipkart",
-            "label": "12-08",
+            "label": "12-08-15",
             "value": 66
         } ,
         {
             "category": "Flipkart",
-            "label": "13-08",
+            "label": "13-08-15",
             "value": 55
         } ,
         {
             "category": "Flipkart",
-            "label": "14-08",
+            "label": "14-08-15",
             "value": 44
         },
         {
             "category": "Flipkart",
-            "label": "15-08",
+            "label": "15-08-15",
             "value": 76
         },
         {
             "category": "Flipkart",
-            "label": "16-08",
+            "label": "16-08-15",
             "value": 34
         },
         {
             "category": "Flipkart",
-            "label": "17-08",
+            "label": "17-08-15",
             "value": 0
         },
         {
             "category": "Flipkart",
-            "label": "18-08",
+            "label": "18-08-15",
             "value": 0
 
         }
         ,
         {
             "category": "Flipkart",
-            "label": "19-08",
+            "label": "19-08-15",
             "value": 33
         }
         ,
         {
             "category": "Flipkart",
-            "label": "20-08",
+            "label": "20-08-15",
             "value": 0
         }
         ,
         {
             "category": "Flipkart",
-            "label": "21-08",
+            "label": "21-08-15",
             "value": 22
         }
         ,
         {
             "category": "Flipkart",
-            "label": "22-08",
+            "label": "22-08-15",
             "value": 11
         }
         ,
         {
             "category": "Flipkart",
-            "label": "23-08",
+            "label": "23-08-15",
             "value": 44
         },
         {
             "category": "Flipkart",
-            "label": "24-08",
+            "label": "24-08-15",
             "value": 66
         }
         ,
         {
             "category": "Flipkart",
-            "label": "25-08",
+            "label": "25-08-15",
             "value": 43
         }
         ,
         {
             "category": "Flipkart",
-            "label": "26-08",
+            "label": "26-08-15",
             "value": 78
         }
         ,
         {
             "category": "Flipkart",
-            "label": "27-08",
+            "label": "27-08-15",
             "value": 4
         } ,
         {
             "category": "Flipkart",
-            "label": "28-08",
+            "label": "28-08-15",
             "value": 2
         } ,
         {
             "category": "Flipkart",
-            "label": "29-08",
+            "label": "29-08-15",
             "value": 33
 
         },
         {
             "category": "Flipkart",
-            "label": "30-08",
+            "label": "30-08-15",
             "value": 95
 
         }
