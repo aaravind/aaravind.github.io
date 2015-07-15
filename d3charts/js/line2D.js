@@ -60,7 +60,7 @@ var line2D = function (chartType, chartId, chartdata) {
     var showlegendwidth = chartdata.chart.showlegend == true ? 30 : 0
     var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
     var div = d3.select("body").append("div")
-    .attr("style", " position: absolute;opacity:0;text-align: left;width: auto;height: auto;padding: 2px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 8px;pointer-events: none;color:black");
+    .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
     var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
     var y = d3.scale.linear()
@@ -168,7 +168,7 @@ var line2D = function (chartType, chartId, chartdata) {
         if (i == 0)
             return 2;
         else
-            return 1;
+            return 0;
     }
     );
     var dottedlinearr = [];
@@ -398,14 +398,14 @@ var line2D = function (chartType, chartId, chartdata) {
         })
          .on("click", function (d, i) {
              var graphselect = chartType + d.key.replace(/\s+/g, '');
-              this.parentElement.getElementsByTagName('rect')[0].style.opacity = 0.5;
+             this.parentElement.getElementsByTagName('rect')[0].style.opacity = 0.5;
              if (d3.selectAll('.circletext.' + graphselect).style('display') == 'inline') {
                  d3.selectAll('.' + graphselect).attr("data-visibilitypath", "false");
                  d3.selectAll('.circletext.' + graphselect).style('display', 'none');
              }
 
              else {
-                  this.parentElement.getElementsByTagName('rect')[0].style.opacity = 1;
+                 this.parentElement.getElementsByTagName('rect')[0].style.opacity = 1;
                  d3.selectAll('.' + graphselect).attr("data-visibilitypath", "true");
                  d3.selectAll('.circletext.' + graphselect).style('display', 'inline');
              }
@@ -441,7 +441,7 @@ var line2D = function (chartType, chartId, chartdata) {
         svg.selectAll('.xgrid').selectAll('line')
           .style("stroke-dasharray", ("3, 3"))
                .style("opacity", 0)
-                .style("stroke-width", 3);
+                .style("stroke-width", 8);
         tickspace(chartdata.data);
     }
     else if (chartType == 'MultiLine2D' || chartType == 'MultiStepLine2D' || chartType == 'MultiCurve2D') {
@@ -483,7 +483,7 @@ var line2D = function (chartType, chartId, chartdata) {
         .attr('y', function (d, i) { return (i + 1) * 20; })
         .attr('width', 10)
         .attr('height', 10)
-        .style('opacity',1)
+        .style('opacity', 1)
         .style('fill', function (d, i) {
             return chartdata.chart.pallattecolor[i];
         });
@@ -544,7 +544,7 @@ var line2D = function (chartType, chartId, chartdata) {
             svg.selectAll('.xgrid').selectAll('line')
           .style("stroke-dasharray", ("3, 3"))
           .style("opacity", 0)
-           .style("stroke-width", 3);
+           .style("stroke-width", 8);
 
         });
         tickspace(dataGroup[0].values);
@@ -559,7 +559,7 @@ var line2D = function (chartType, chartId, chartdata) {
         .attr('y', function (d, i) { return (i + 1) * 20; })
         .attr('width', 10)
         .attr('height', 10)
-        .style('opacity',1)
+        .style('opacity', 1)
         .style('fill', function (d, i) {
             return chartdata.chart.pallattecolor[i];
         });
@@ -604,35 +604,44 @@ var line2D = function (chartType, chartId, chartdata) {
     .style("fill", function (d, i) { return d.value == 0 ? "none" : color; })
     .style("opacity", '0.3')
     .on("mouseover", function (d, i) {
-        this.style.opacity = 1;
-        div.transition()
+        if (chartType.search('Multi') == -1) {
+            this.style.opacity = 1;
+            div.transition()
                 .duration(0)
                 .style("opacity", .9);
-        var xattr = bodyRect = elemRect = yattr = 0;
-        // var xattr = ((this.getAttribute('cx') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
-        var bodyRect = document.body.getBoundingClientRect();
-        var elemRect = this.getBoundingClientRect();
-        //  var yattr = (elemRect.top - bodyRect.top- margin.top/2) + 'px';
+            var xattr = bodyRect = elemRect = yattr = 0;
+            // var xattr = ((this.getAttribute('cx') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
+            var bodyRect = document.body.getBoundingClientRect();
+            var elemRect = this.getBoundingClientRect();
+            //  var yattr = (elemRect.top - bodyRect.top- margin.top/2) + 'px';
 
 
-        var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 10) + 'px';
-        //    var yattr = (elemRect.top - bodyRect.top - margin.top +5) + 'px';
-        var yattr = document.getElementById(chartId.replace("#", "")).offsetTop + (this.getAttribute('cy') / 1 + 7) + 'px';
+            var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 10) + 'px';
+            //    var yattr = (elemRect.top - bodyRect.top - margin.top +5) + 'px';
+            var currentdivattr = document.getElementById(chartId.replace("#", "")).offsetTop + height / 2;
+            var currentcirclepos = document.getElementById(chartId.replace("#", "")).offsetTop + (this.getAttribute('cy') / 1);
+            if (currentcirclepos > currentdivattr)
+                var yattr = (currentcirclepos - 45) + 'px';
+                else
+                 var yattr = (currentcirclepos + 7) + 'px';
+           // var yattr = document.getElementById(chartId.replace("#", "")).offsetTop + (this.getAttribute('cy') / 1 + 7) + 'px';
 
-        div.html(this.nextSibling.textContent)
+            div.html(this.nextSibling.textContent)
+            .style('color', this.nextSibling.style.fill)
        .style("left", xattr)
                 .style("top", yattr)
                  .style("margin-top", "35px");
 
-
+        }
 
     })
         .on("mouseout", function (d, i) {
-            this.style.opacity = 0.3;
-            div.transition()
+            if (chartType.search('Multi') == -1) {
+                this.style.opacity = 0.3;
+                div.transition()
                 .duration(0)
                 .style("opacity", 0);
-
+            }
         })
     .attr("cx", function (d)
     { return x(d.label) + x.rangeBand() / 2; })
@@ -646,29 +655,37 @@ var line2D = function (chartType, chartId, chartdata) {
      .attr("dy", function (d) { return y(d.value) - 5; })
       .attr("class", function (d) { return cType + d.label.replace(" ", "") })
 	    .text(function (d) {
-	        if (chartType == 'Line2D' || chartType == 'Scatter2D' || chartType == 'StepLine2D' || chartType == 'Curve2D')
-	            return d.label + ':' + d.value;
-	        else
-	            return d.category + ':' + d.value;
+	        if (chartType == 'Line2D' || chartType == 'Scatter2D' || chartType == 'StepLine2D' || chartType == 'Curve2D') {
+	            if (d.value != 0)
+	                return d.label + ' : ' + d.value;
+	            else
+	                return d.label + ' : ' + 'N/A';
+	        }
+
+	        else {
+	            if (d.value != 0)
+	                return d.category + ' : ' + d.value;
+	            else
+	                return d.category + ' : ' + 'N/A';
+	        }
 	    })
         .attr('style', function (d) {
-            var colorval = (d.value == 0) ? "grey" : color;
+            var colorval = (d.value == 0) ? "none" : color;
             return 'display:none;z-index:9999999;fill:' + colorval + ';font-size:15px'
         });
 
         svg.selectAll(chartId + ' .xgrid').selectAll('line')
-          .style("stroke-dasharray", 3)
-          .style("stroke-width", 3)
+          .style("stroke-width", 20)
           .style("cursor", "pointer")
          .style("opacity", "0")
          .on('mouseover', function (d, i) {
              if (chartType != 'Line2D' && chartType != 'Curve2D' && chartType != 'Area2D' && chartType != 'StepLine2D' && chartType != 'Scatter2D') {
                  d3.select(this)
-         .transition()
+                  .transition()
          .duration(0)
-         .attr('stroke', 'grey')
-        .style("stroke-dasharray", 0)
-      .style("opacity", "0.8")
+         .attr('stroke', '#666')
+          .style("stroke-width", 1.2)
+      .style("opacity", "1")
                  d3.selectAll('.' + cType + d.replace(" ", ""))
         .attr("r", 8)
         .transition()
@@ -687,16 +704,18 @@ var line2D = function (chartType, chartId, chartdata) {
 
                  if (this.getBoundingClientRect().left < window.innerWidth / 2) {
                      for (i = 0; i < alltext[0].length; i++)
-                         htmlcontent = htmlcontent + '<span style=\'float:left\'>' + '<div style=\'background:' + alltext[0][i].style.fill + ';color:black;border-radius:50%;width:10px;height:10px;margin-top:1px\'></div>' + '</span>' + '<span style=\'margin-left:10px;float:left\'>' + alltext[0][i].textContent + '</span>' + '<br>';
+                         htmlcontent = htmlcontent + '<div style=\'color:' + alltext[0][i].style.fill + '\'>' + alltext[0][i].textContent + '</div>';
+                     //   htmlcontent = htmlcontent + '<span style=\'float:left\'>' + '<div style=\'background:' + alltext[0][i].style.fill + ';color:black;border-radius:50%;width:10px;height:10px;margin-top:1px\'></div>' + '</span>' + '<span style=\'margin-left:10px;float:left\'>' + alltext[0][i].textContent + '</span>' + '<br>';             
                  }
                  else {
                      for (i = 0; i < alltext[0].length; i++)
+                     //   htmlcontent = htmlcontent +'<div style=\'color:' + alltext[0][i].style.fill + '\'>'+ alltext[0][i].textContent +'</div>';
                          htmlcontent = htmlcontent + '<span style=\'float:right\'>' + '<div style=\'background:' + alltext[0][i].style.fill + ';color:black;border-radius:50%;width:10px;height:10px;margin-top:1px\'></div>' + '</span>' + '<span style=\'margin-right:10px;float:right\'>' + alltext[0][i].textContent + '</span>' + '<br>';
                  }
 
 
                  div.transition()
-                .duration(0)
+                .duration(100)
                 .style("opacity", .9);
 
                  var xattr = bodyRect = elemRect = yattr = 0;
@@ -717,18 +736,18 @@ var line2D = function (chartType, chartId, chartdata) {
           .on('mouseout', function (d) {
               if (chartType != 'Line2D' && chartType != 'Curve2D' && chartType != 'Area2D' && chartType != 'StepLine2D') {
                   d3.select(this)
-          .transition()
+                  .transition()
          .duration(0)
          .attr('stroke', '')
+          .style("stroke-width", 20)
           .style("opacity", "0")
-         .style("stroke-dasharray", 3)
                   d3.selectAll('.' + cType + d.replace(" ", ""))
               .style('opacity', 0.3)
          .attr("r", 5)
           .transition()
          .duration(0);
                   div.transition()
-                .duration(0)
+                .duration(100)
                 .style("opacity", 0);
               }
           });

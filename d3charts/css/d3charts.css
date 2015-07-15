@@ -17,7 +17,7 @@ svg {
 
  path { 
     stroke: lightgrey;
-    stroke-width: 2;
+    stroke-width: 1;
     fill: none;
 }
 .slice path {
