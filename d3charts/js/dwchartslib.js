@@ -33,7 +33,7 @@ var linedata = {
         "slant":false,
         "slantdegree":"90",
           "tickinterval":5,
-        "pallattecolor":["#008ee4","#008eFF","#f8bd19"]
+        "pallattecolor":["#008ee4","red"]
     },
     "export":{
         "showexport": true,
@@ -200,9 +200,10 @@ var linedata = {
         "fontsize":15,
         "showlegend":true,
         "tickinterval":5,
+        "tooltipheader":"Date",
         "slant":false,
         "slantdegree":"90",
-        "pallattecolor":["#008ee4","#34495e","#f8bd19"]
+        "pallattecolor":["#008ee4","red","red"]
     },
     "export":{
         "showexport": true,
@@ -548,6 +549,175 @@ var linedata = {
             "category": "Paytm",
             "label": "30-08",
             "value": 66
+
+        }, {
+             "category": "Flipkart",
+            "label": "01-08",
+            "value": 22
+        },
+        { 
+            "category": "Flipkart",
+            "label": "02-08",
+            "value": 33
+        },
+        {
+            "category": "Flipkart",
+            "label": "03-08",
+            "value": 44
+
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "04-08",
+            "value": 55
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "05-08",
+            "value": 44
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "06-08",
+            "value": 0
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "07-08",
+            "value": 0
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "08-08",
+            "value": 88
+        },
+        {
+            "category": "Flipkart",
+            "label": "09-08",
+            "value": 77
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "10-08",
+            "value": 77
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "11-08",
+            "value": 0
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "12-08",
+            "value": 66
+        } ,
+        {
+            "category": "Flipkart",
+            "label": "13-08",
+            "value": 55
+        } ,
+        {
+            "category": "Flipkart",
+            "label": "14-08",
+            "value": 44
+        },
+        {
+            "category": "Flipkart",
+            "label": "15-08",
+            "value": 76
+        },
+        {
+            "category": "Flipkart",
+            "label": "16-08",
+            "value": 34
+        },
+        {
+            "category": "Flipkart",
+            "label": "17-08",
+            "value": 0
+        },
+        {
+            "category": "Flipkart",
+            "label": "18-08",
+            "value": 0
+
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "19-08",
+            "value": 33
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "20-08",
+            "value": 0
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "21-08",
+            "value": 22
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "22-08",
+            "value": 11
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "23-08",
+            "value": 44
+        },
+        {
+            "category": "Flipkart",
+            "label": "24-08",
+            "value": 66
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "25-08",
+            "value": 43
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "26-08",
+            "value": 78
+        }
+        ,
+        {
+            "category": "Flipkart",
+            "label": "27-08",
+            "value": 4
+        } ,
+        {
+            "category": "Flipkart",
+            "label": "28-08",
+            "value": 2
+        } ,
+        {
+            "category": "Flipkart",
+            "label": "29-08",
+            "value": 33
+
+        },
+        {
+            "category": "Flipkart",
+            "label": "30-08",
+            "value": 95
 
         }
 

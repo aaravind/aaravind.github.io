@@ -10,9 +10,8 @@ var asd, data;
 function exportfile(chartid,chartdata,filename,format,charttype)
 {
     chartdataval = chartdata.data;
-    d3.selectAll( chartid +" svg").attr("style", "background-color:#F7F7F7");
     d3.selectAll(chartid +" path.domain").attr("style", "stroke: lightgrey;stroke-width: 2;fill: none");
-    d3.selectAll(chartid +" .grid .tick line").attr("style", "stroke-width: 2;stroke: lightgrey;opacity: 0.7;fill: none;shape-rendering: crispEdges;font:12px sans-serif;");
+  //  d3.selectAll(chartid +" .grid .tick line").attr("style", "stroke-width: 2;stroke: lightgrey;opacity: 0.7;fill: none;shape-rendering: crispEdges;font:12px sans-serif;");
     var chart = document.getElementById(chartid.replace('#',''));
      
 
