@@ -25,7 +25,7 @@ window.onresize = function (event) {
 var linedata = {
     "chart": {
         "caption": "Line Chart",
-        "captionColor":"blue",
+        "captionColor":"black",
         "yaxisname": "",
         "showValue":true,
         "color":"white",
@@ -37,7 +37,7 @@ var linedata = {
     },
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png","pdf"]
+         "format": ["-Select-","jpeg","png"]
     },
     "data":  [
         {
@@ -189,10 +189,10 @@ var linedata = {
 }
     d3charts("Line2D", "#linechart", linedata);
 
-    var Multilinedata = {
+ var Multilinedata = {
     "chart": {
         "caption": "Multi Line Chart",
-        "captionColor":"blue",
+        "captionColor":"black",
         "yaxisname": "",
         "showValue":true,
         "showlegend":true,
@@ -207,49 +207,49 @@ var linedata = {
     },
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png","pdf"]
+         "format": ["-Select-","jpeg","png"]
     },
     "data":  [
         {
-             "category": "Snapdeal",
+            "category": "Snapdeal",
             "label": "01-08-15",
-            "value": 56
+            "value": 256
         },
         { 
             "category": "Snapdeal",
             "label": "02-08-15",
-            "value": 23
+            "value": 223
         },
         {
     
             "category": "Snapdeal",
             "label": "03-08-15",
-            "value": 87
+            "value": 287
 
         }
         ,
         {
             "category": "Snapdeal",
             "label": "04-08-15",
-            "value": 10
+            "value": 210
         }
         ,
         {
             "category": "Snapdeal",
             "label": "05-08-15",
-            "value": 67
+            "value": 0
         }
         ,
         {
             "category": "Snapdeal",
             "label": "06-08-15",
-            "value": 50
+            "value": 250
         }
         ,
         {
             "category": "Snapdeal",
             "label": "07-08-15",
-            "value": 66
+            "value": 212
         }
         ,
         {
@@ -260,45 +260,45 @@ var linedata = {
         {
             "category": "Snapdeal",
             "label": "09-08-15",
-            "value": 98
+            "value": 298
         }
         ,
         {
             "category": "Snapdeal",
             "label": "10-08-15",
-            "value": 55
+            "value": 255
         }
         ,
         {
             "category": "Snapdeal",
             "label": "11-08-15",
-            "value": 88
+            "value": 288
         }
         ,
         {
             "category": "Snapdeal",
             "label": "12-08-15",
-            "value": 44
+            "value": 278
         } ,
         {
             "category": "Snapdeal",
             "label": "13-08-15",
-            "value": 55
+            "value": 255
         } ,
         {
             "category": "Snapdeal",
             "label": "14-08-15",
-            "value": 89
+            "value": 289
         },
         {
             "category": "Snapdeal",
             "label": "15-08-15",
-            "value": 23
+            "value": 223
         },
         {
             "category": "Snapdeal",
             "label": "16-08-15",
-            "value": 33
+            "value": 280
         },
         {
             "category": "Snapdeal",
@@ -315,31 +315,31 @@ var linedata = {
         {
             "category": "Snapdeal",
             "label": "19-08-15",
-            "value": 11
+            "value": 211
         }
         ,
         {
             "category": "Snapdeal",
             "label": "20-08-15",
-            "value": 45
+            "value": 0
         }
         ,
         {
             "category": "Snapdeal",
             "label": "21-08-15",
-            "value": 76
+            "value": 276
         }
         ,
         {
             "category": "Snapdeal",
             "label": "22-08-15",
-            "value": 77
+            "value": 277
         }
         ,
         {
             "category": "Snapdeal",
             "label": "23-08-15",
-            "value": 5
+            "value": 259
         },
         {
             "category": "Snapdeal",
@@ -350,82 +350,81 @@ var linedata = {
         {
             "category": "Snapdeal",
             "label": "25-08-15",
-            "value": 80
+            "value": 280
         }
         ,
         {
             "category": "Snapdeal",
             "label": "26-08-15",
-            "value": 3
+            "value": 0
         }
         ,
         {
             "category": "Snapdeal",
             "label": "27-08-15",
-            "value": 12
+            "value": 212
         } ,
         {
             "category": "Snapdeal",
             "label": "28-08-15",
-            "value": 6
+            "value": 0
         } ,
         {
             "category": "Snapdeal",
             "label": "29-08-15",
-            "value": 89
+            "value": 289
 
         },
         {
             "category": "Snapdeal",
             "label": "30-08-15",
-            "value": 23
+            "value": 223
 
         }, {
              "category": "Paytm",
             "label": "01-08-15",
-            "value": 46
+            "value": 206
         },
         { 
             "category": "Paytm",
             "label": "02-08-15",
-            "value": 27
+            "value": 227
         },
         {
             "category": "Paytm",
-            "category": "Paytm",
             "label": "03-08-15",
-            "value": 34
+            "value": 204
 
         }
         ,
         {
             "category": "Paytm",
             "label": "04-08-15",
-            "value": 90
+            "value": 290
         }
         ,
         {
             "category": "Paytm",
             "label": "05-08-15",
-            "value": 55
+            "value": 255
         }
         ,
         {
             "category": "Paytm",
             "label": "06-08-15",
-            "value": 33
+            "value": 245
         }
         ,
         {
             "category": "Paytm",
             "label": "07-08-15",
-            "value": 87
+            "value": 287
         }
         ,
         {
             "category": "Paytm",
             "label": "08-08-15",
-            "value": 34
+            "value": 222
         },
         {
             "category": "Paytm",
@@ -436,7 +435,7 @@ var linedata = {
         {
             "category": "Paytm",
             "label": "10-08-15",
-            "value": 11
+            "value": 211
         }
         ,
         {
@@ -453,22 +452,22 @@ var linedata = {
         {
             "category": "Paytm",
             "label": "13-08-15",
-            "value": 77
+            "value": 277
         } ,
         {
             "category": "Paytm",
             "label": "14-08-15",
-            "value": 33
+            "value": 237
         },
         {
             "category": "Paytm",
             "label": "15-08-15",
-            "value": 22
+            "value": 222
         },
         {
             "category": "Paytm",
             "label": "16-08-15",
-            "value": 77
+            "value": 277
         },
         {
             "category": "Paytm",
@@ -478,7 +477,7 @@ var linedata = {
         {
             "category": "Paytm",
             "label": "18-08-15",
-            "value": 22
+            "value": 222
 
         }
         ,
@@ -497,19 +496,19 @@ var linedata = {
         {
             "category": "Paytm",
             "label": "21-08-15",
-            "value": 77
+            "value": 277
         }
         ,
         {
             "category": "Paytm",
             "label": "22-08-15",
-            "value": 55
+            "value": 255
         }
         ,
         {
             "category": "Paytm",
             "label": "23-08-15",
-            "value": 15
+            "value": 215
         },
         {
             "category": "Paytm",
@@ -520,7 +519,7 @@ var linedata = {
         {
             "category": "Paytm",
             "label": "25-08-15",
-            "value": 44
+            "value": 273
         }
         ,
         {
@@ -532,51 +531,51 @@ var linedata = {
         {
             "category": "Paytm",
             "label": "27-08-15",
-            "value": 4
+            "value": 0
         } ,
         {
             "category": "Paytm",
             "label": "28-08-15",
-            "value": 76
+            "value": 276
         } ,
         {
             "category": "Paytm",
             "label": "29-08-15",
-            "value": 22
+            "value": 150
 
         },
         {
             "category": "Paytm",
             "label": "30-08-15",
-            "value": 66
+            "value": 123
 
         }, {
              "category": "Flipkart",
             "label": "01-08-15",
-            "value": 22
+            "value": 150
         },
         { 
             "category": "Flipkart",
             "label": "02-08-15",
-            "value": 33
+            "value": 210
         },
         {
             "category": "Flipkart",
             "label": "03-08-15",
-            "value": 44
+            "value": 264
 
         }
         ,
         {
             "category": "Flipkart",
             "label": "04-08-15",
-            "value": 55
+            "value": 255
         }
         ,
         {
             "category": "Flipkart",
             "label": "05-08-15",
-            "value": 44
+            "value": 244
         }
         ,
         {
@@ -594,18 +593,18 @@ var linedata = {
         {
             "category": "Flipkart",
             "label": "08-08-15",
-            "value": 88
+            "value": 288
         },
         {
             "category": "Flipkart",
             "label": "09-08-15",
-            "value": 77
+            "value": 277
         }
         ,
         {
             "category": "Flipkart",
             "label": "10-08-15",
-            "value": 77
+            "value": 277
         }
         ,
         {
@@ -617,27 +616,27 @@ var linedata = {
         {
             "category": "Flipkart",
             "label": "12-08-15",
-            "value": 66
+            "value": 206
         } ,
         {
             "category": "Flipkart",
             "label": "13-08-15",
-            "value": 55
+            "value": 255
         } ,
         {
             "category": "Flipkart",
             "label": "14-08-15",
-            "value": 44
+            "value": 230
         },
         {
             "category": "Flipkart",
             "label": "15-08-15",
-            "value": 76
+            "value": 276
         },
         {
             "category": "Flipkart",
             "label": "16-08-15",
-            "value": 34
+            "value": 210
         },
         {
             "category": "Flipkart",
@@ -654,7 +653,7 @@ var linedata = {
         {
             "category": "Flipkart",
             "label": "19-08-15",
-            "value": 33
+            "value": 0
         }
         ,
         {
@@ -666,58 +665,58 @@ var linedata = {
         {
             "category": "Flipkart",
             "label": "21-08-15",
-            "value": 22
+            "value": 222
         }
         ,
         {
             "category": "Flipkart",
             "label": "22-08-15",
-            "value": 11
+            "value": 211
         }
         ,
         {
             "category": "Flipkart",
             "label": "23-08-15",
-            "value": 44
+            "value": 0
         },
         {
             "category": "Flipkart",
             "label": "24-08-15",
-            "value": 66
+            "value": 210
         }
         ,
         {
             "category": "Flipkart",
             "label": "25-08-15",
-            "value": 43
+            "value": 220
         }
         ,
         {
             "category": "Flipkart",
             "label": "26-08-15",
-            "value": 78
+            "value": 278
         }
         ,
         {
             "category": "Flipkart",
             "label": "27-08-15",
-            "value": 4
+            "value": 0
         } ,
         {
             "category": "Flipkart",
             "label": "28-08-15",
-            "value": 2
+            "value": 224
         } ,
         {
             "category": "Flipkart",
             "label": "29-08-15",
-            "value": 33
+            "value": 0
 
         },
         {
             "category": "Flipkart",
             "label": "30-08-15",
-            "value": 95
+            "value": 295
 
         }
 
@@ -728,12 +727,12 @@ var linedata = {
 }
 
 
-d3charts("MultiLine2D","#Multiline", Multilinedata);
+d3charts("MultiStepLine2D","#Multiline", Multilinedata);
 
 var columndata = {
     "chart": {
         "caption": "Column Chart",
-        "captionColor":"blue",
+        "captionColor":"black",
         "yaxisname": "",
         "showValue":true,
         "color":"white",
@@ -747,7 +746,7 @@ var columndata = {
     },
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png","pdf"]
+         "format": ["-Select-","jpeg","png"]
     },
     "data": [
         {

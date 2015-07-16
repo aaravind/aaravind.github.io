@@ -648,7 +648,7 @@ var barchart7 = {
 }, {
     "category": "Electronic",
     "label": "Snapdeal",
-    "value": 500
+    "value": 0
 }, {
     "category": "Electronic",
     "label": "Paytm",
@@ -656,19 +656,19 @@ var barchart7 = {
 }, {
     "category": "Electronic",
     "label": "Shopclues",
-    "value": 300
+    "value": 0
 }, {
     "category": "Electronic",
     "label": "Rediff",
-    "value": 950
+    "value": 0
 }, {
     "category": "Electronic",
     "label": "Trendsin",
-    "value": 1000
+    "value": 0
 }, {
     "category": "Electronic",
     "label": "Zovi",
-    "value": 900
+    "value": 0
 }]
 }
 
@@ -1071,7 +1071,7 @@ var barchart13 = {
 }, {
     "category": "XYZ",
     "label": "A",
-    "value": 0
+    "value": 123
 }, {
     "category": "XYZ",
     "label": "B",
@@ -1095,15 +1095,15 @@ var barchart13 = {
 }, {
     "category": "QWE",
     "label": "A",
-    "value": 0
+    "value": 300
 }, {
     "category": "QWE",
     "label": "B",
-    "value": 0
+    "value": 345
 }, {
     "category": "QWE",
     "label": "C",
-    "value": 0
+    "value": 123
 }, {
     "category": "QWE",
     "label": "D",
