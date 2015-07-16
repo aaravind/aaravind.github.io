@@ -727,7 +727,7 @@ var linedata = {
 }
 
 
-d3charts("MultiStepLine2D","#Multiline", Multilinedata);
+d3charts("MultiLine2D","#Multiline", Multilinedata);
 
 var columndata = {
     "chart": {
