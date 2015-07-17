@@ -18,32 +18,29 @@ function redrawchart(chart,id,data) {
 window.onresize = function (event) {
 
     d3charts("Line2D", "#linechart", linedata);
-    redrawchart("MultiLine2D","#Multiline", Multilinedata);
+    redrawchart("MultiLine2D","#Multiline", Multilinedata); // For Multiline call Redraw Function to Save the legends interactions
        d3charts("Column2D", "#column", columndata);
 };
 
 var linedata = {
     "chart": {
-        "caption": "Line Chart",
-        "captionColor":"black",
-        "yaxisname": "",
-        "showValue":true,
-        "color":"white",
-        "fontsize":15,
-        "slant":false,
-        "slantdegree":"90",
-          "credits":{
-            "text":"© priceweave.com",
-            "color":"#666"
+        "caption": "Line Chart", //Name of the chart Header
+        "captionColor":"black", // Color of the Chart Header
+        "yaxisname": "", // Name which gets displayed in the Yaxis
+        "slant":false, // X axis label slant
+        "slantdegree":"90", // Slant based on the degree specified
+          "credits":{            // Credits
+            "text":"© priceweave.com", // Credit Name
+            "color":"#666" // Credit Value
         },
-          "tickinterval":5,
-        "pallattecolor":["#008ee4","red"]
+          "tickinterval":5, // Number of label visible in the X axis
+         "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"] // Pallette colors for 30 values
     },
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png"]
+         "format": ["-Select-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
     },
-    "data":  [
+    "data":  [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
         {
 
             "label": "01-08-15",
@@ -191,6 +188,13 @@ var linedata = {
 
     ]
 }
+// Single Type chart: Line2D,Curve2D,StepLine2D,Scatter2D
+// Area Type Chart: Area2D,StepArea2D,CurveArea2D
+// Multi Type Chart: MultiLine2D,MultiArea2D,MultiScatter2D,MultiStepLine2D,MultiStepArea2D,MultiCurve2D,MultiCurveArea2D
+//d3charts(ChartType,Id,Data) 
+//where ChartType is one of the options mentioned above;
+// Id is the Div Id where the chart to be placed;
+// Data is the above formed Data
     d3charts("Line2D", "#linechart", linedata);
 
  var Multilinedata = {
@@ -198,26 +202,22 @@ var linedata = {
         "caption": "Multi Line Chart",
         "captionColor":"black",
         "yaxisname": "",
-        "showValue":true,
-        "showlegend":true,
-        "color":"white",
-        "fontsize":15,
         "showlegend":true,
         "tickinterval":5,
-        "tooltipheader":"Date",
+        "tooltipheader":"Date", //Header in the TooTip if Not specified taken as Node
         "slant":false,
         "slantdegree":"90",
           "credits":{
             "text":"© priceweave.com",
             "color":"#666"
         },
-        "pallattecolor":["#008ee4","red","red"]
+        "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
     },
     "export":{
         "showexport": true,
          "format": ["-Select-","jpeg","png"]
     },
-    "data":  [
+    "data":  [ // Data Format example for Multi chart Type
         {
             "category": "Snapdeal",
             "label": "01-08-15",
@@ -742,7 +742,6 @@ var columndata = {
         "caption": "Column Chart",
         "captionColor":"black",
         "yaxisname": "",
-        "showValue":true,
         "color":"white",
         "fontsize":15,
         "slant":false,
@@ -753,7 +752,7 @@ var columndata = {
             "text":"© priceweave.com",
             "color":"#666"
         },
-        "pallattecolorsingle":true,
+        "pallattecolorsingle":true, // if set to True: Only First Value is Considered ; if set to False all values in the Pallate is considered
          "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
     },
     "export":{

@@ -46,9 +46,9 @@ function exportfile(chartid,chartdata,filename,format,charttype)
 }
 
 function download(canvas,chartdataval,filename,format,charttype,chartid) {
-    if (format == '.pdf')
+    /*  if (format == '.pdf')
     { 
-
+  
       var canvas1 = document.createElement('canvas');
     canvas1.height = "600px";
     canvas1.width = "1800px";
@@ -114,9 +114,9 @@ setTimeout(function () {
       doc.save(filename + '.pdf');
      }, 1000);  
 
-
+   
     }
-    else
+    else  */
   download_in_ie(canvas, filename,format) || download_with_link(canvas, filename,format);
     
  /* var content = canvas.toDataURL('image/jpeg');

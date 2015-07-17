@@ -197,7 +197,7 @@ var column2D = function (chartId, chartdata) {
             div.html(chartdata.data[i].tooltext + ': ' + chartdata.data[i].value)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
-           return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth / 2 + div[0][0].innerText.length) + 'px';
+           return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth / 2 + div[0][0].textContent.length) + 'px';
        })
                 .style("top", yattr);
         }
@@ -206,7 +206,7 @@ var column2D = function (chartId, chartdata) {
             div.html(chartdata.data[i].label + ': ' + chartdata.data[i].value)
              .style("left", function (d, i) {
                  var asdfg = div[0][0];
-                 return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth / 2 + div[0][0].innerText.length) + 'px';
+                 return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth / 2 + div[0][0].textContent.length) + 'px';
              })
                 .style("top", yattr);
         }
