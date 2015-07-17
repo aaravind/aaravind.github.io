@@ -346,7 +346,7 @@ var line2D = function (chartType, chartId, chartdata) {
       .attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
       .transition()
-        .duration(1000)
+        .duration(2000)
         .ease("linear")
         .attr("stroke-dashoffset", 0);
         tickspace(chartdata.data);
@@ -404,14 +404,14 @@ var line2D = function (chartType, chartId, chartdata) {
         })
          .on("click", function (d, i) {
              var graphselect = chartType + d.key.replace(/\s+/g, '');
-             this.parentElement.getElementsByTagName('rect')[0].style.opacity = 0.5;
+             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.5;
              if (d3.selectAll('.circletext.' + graphselect).style('display') == 'inline') {
                  d3.selectAll('.' + graphselect).attr("data-visibilitypath", "false");
                  d3.selectAll('.circletext.' + graphselect).style('display', 'none');
              }
 
              else {
-                 this.parentElement.getElementsByTagName('rect')[0].style.opacity = 1;
+                 this.parentNode.getElementsByTagName('rect')[0].style.opacity = 1;
                  d3.selectAll('.' + graphselect).attr("data-visibilitypath", "true");
                  d3.selectAll('.circletext.' + graphselect).style('display', 'inline');
              }
@@ -468,6 +468,18 @@ var line2D = function (chartType, chartId, chartdata) {
            .attr("data-categorycolumn", d.key)
         .attr('style', colorstyle);
 
+
+           var totalLength = path.node().getTotalLength();
+
+        path
+      .attr("stroke-dasharray", totalLength + " " + totalLength)
+      .attr("stroke-dashoffset", totalLength)
+      .transition()
+        .duration(2000)
+        .ease("linear")
+        .attr("stroke-dashoffset", 0);
+
+
             for (i = 0; i < dottedlinearr.length; i++) {
                 svg.append("path")
         .attr("class", "line")
@@ -512,7 +524,7 @@ var line2D = function (chartType, chartId, chartdata) {
         })
         .on("click", function (d, i) {
             var graphselect = chartType + d.key.replace(/\s+/g, '');
-            this.parentElement.getElementsByTagName('rect')[0].style.opacity = 0.5;
+            this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.5;
             if (d3.selectAll('.' + graphselect).style('display') == 'inline') {
                 d3.selectAll('.' + graphselect).style('display', 'none');
                 d3.selectAll('.' + graphselect).attr("data-visibilitypath", "false");
@@ -520,7 +532,7 @@ var line2D = function (chartType, chartId, chartdata) {
             }
 
             else {
-                this.parentElement.getElementsByTagName('rect')[0].style.opacity = 1;
+                this.parentNode.getElementsByTagName('rect')[0].style.opacity = 1;
                 d3.selectAll('.' + graphselect).style('display', 'inline');
                 d3.selectAll('.' + graphselect).attr("data-visibilitypath", "true");
             }
@@ -593,14 +605,14 @@ var line2D = function (chartType, chartId, chartdata) {
         })
          .on("click", function (d, i) {
              var graphselect = chartType + d.key.replace(/\s+/g, '');
-             this.parentElement.getElementsByTagName('rect')[0].style.opacity = 0.5;
+             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.5;
              if (d3.selectAll('.' + graphselect).style('display') == 'inline') {
                  d3.selectAll('.' + graphselect).style('display', 'none');
                  d3.selectAll('.' + graphselect).attr("data-visibilitypath", "false");
              }
 
              else {
-                 this.parentElement.getElementsByTagName('rect')[0].style.opacity = 1;
+                 this.parentNode.getElementsByTagName('rect')[0].style.opacity = 1;
                  d3.selectAll('.' + graphselect).style('display', 'inline');
                  d3.selectAll('.' + graphselect).attr("data-visibilitypath", "true");
              }
@@ -759,11 +771,11 @@ var line2D = function (chartType, chartId, chartdata) {
                  if (elemRect.left > window.innerWidth / 2)
                      var xattr = (elemRect.left - bodyRect.left - div[0][0].offsetWidth) + 'px';
                  else
-                     var xattr = (elemRect.left - bodyRect.left + 10) + 'px';
+                     var xattr = (elemRect.left - bodyRect.left + 20) + 'px';
                  var yattr = (elemRect.top - bodyRect.top + height / 2 - margin.top / 2 - margin.bottom / 2) + 'px';
                  //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
                  div.html(htmlcontent)
-       .style("left", xattr)
+       .style("left",xattr)
                 .style("top", yattr);
              }
 

@@ -11,9 +11,9 @@ function exportfile(chartid,chartdata,filename,format,charttype)
 {
     chartdataval = chartdata.data;
     d3.selectAll(chartid +" path.domain").attr("style", "stroke: lightgrey;stroke-width: 1.2;fill: none");
-    d3.selectAll(chartid+' .grid .tick text').style('stroke-width', 0.7).style('font-weight', 200).style('font-family','Source Sans Pro,Trebuchet MS,Helvetica Neue, Helvetica,Lucida Grande,Arial,Verdana,sans-serif');
+    d3.selectAll(chartid+' .tick text').style('stroke-width', 0.7).style('font-weight', 200).style('font-family','Source Sans Pro,Trebuchet MS,Helvetica Neue, Helvetica,Lucida Grande,Arial,Verdana,sans-serif');
         d3.selectAll(chartid+' .legend text').style('font-family','Source Sans Pro,Trebuchet MS,Helvetica Neue, Helvetica,Lucida Grande,Arial,Verdana,sans-serif');
-  
+  d3.selectAll(chartid +" .exportgrid .tick line").attr("style", "stroke-width: 1.2;stroke: lightgrey;opacity: 0.7;fill: none;shape-rendering: crispEdges;font:12px sans-serif;");
     d3.selectAll(chartid +" .gridy .tick line").attr("style", "stroke-width: 1.2;stroke: lightgrey;opacity: 0.7;fill: none;shape-rendering: crispEdges;font:12px sans-serif;");
     var chart = document.getElementById(chartid.replace('#',''));
      

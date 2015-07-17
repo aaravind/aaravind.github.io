@@ -66,11 +66,13 @@
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     svg.append("text")
-        .attr("x", (width / 2))
+        .attr("x", 0)
         .attr("y", 5 - (margin.top / 2))
-        .attr("text-anchor", "middle")
+        .attr("text-anchor", "start")
         .style("font-size", "18px")
-        .style("text-decoration", "underline")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "normal")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption);
     x.domain(chartdata.data.map(function (d) { return d.label; }));

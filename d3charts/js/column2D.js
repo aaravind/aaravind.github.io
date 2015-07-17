@@ -41,7 +41,7 @@ var column2D = function (chartId, chartdata) {
     var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
     var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
     var div = d3.select("body").append("div")
-    .attr("style", " position: absolute;opacity:0;text-align: center;width: auto;height: auto;padding: 2px;font: 12px sans-serif;background: black;border: 0px;border-radius: 8px;pointer-events: none;color:white");
+    .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
     var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 
@@ -90,18 +90,20 @@ var column2D = function (chartId, chartdata) {
     else
         ytop = 5 - (margin.top / 2);
     svg.append("text")
-        .attr("x", (width / 2))
-        .attr("y", ytop)
-        .attr("text-anchor", "middle")
-        .style("font-size", "14px")
-        .style("text-decoration", "underline")
+        .attr("x", 0)
+        .attr("y", 5 - (margin.top / 2))
+        .attr("text-anchor", "start")
+        .style("font-size", "18px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "normal")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption);
     x.domain(chartdata.data.map(function (d) { return d.label; }));
 
+    var domainmaxcol = d3.max(chartdata.data, function (d) { return d.value; });
 
-
-    y.domain([0, d3.max(chartdata.data, function (d) { return d.value; })]);
+    y.domain([0, domainmaxcol]);
 
 
     if (chartdata.chart.slant) {
@@ -162,7 +164,7 @@ var column2D = function (chartId, chartdata) {
 
     }
     svg.append("g")
-  .attr("class", "grid")
+  .attr("class", "grid exportgrid")
       .call(yaxis()
        .tickSize(-width, 0, 0)
             )
@@ -176,6 +178,7 @@ var column2D = function (chartId, chartdata) {
       .data(chartdata.data)
     .enter().append("rect")
     .on("mouseover", function (d, i) {
+        this.style.opacity = 1;
         div.transition()
                 .duration(0)
                 .style("opacity", .9);
@@ -185,28 +188,44 @@ var column2D = function (chartId, chartdata) {
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
         // var yattr = (elemRect.top - bodyRect.top) + 'px';
-        var yattr = document.getElementById(chartId.replace("#","")).offsetTop + (height-this.getAttribute('height')/1 -25) + 'px';
+       if(d.value < domainmaxcol/2)
+        var yattr = document.getElementById(chartId.replace("#", "")).offsetTop + (height - this.getAttribute('height') / 1 - 10) + 'px';
+        else
+        var yattr = document.getElementById(chartId.replace("#", "")).offsetTop + (height - this.getAttribute('height') / 1 + 50) + 'px';
         // var yattr = (bodyRect.top-document.getElementById('barchart12').getBoundingClientRect().top + (this.getAttribute('x') / 1))+ 'px';
-        if (chartdata.data[i].tooltext != undefined) {
-            div.html(chartdata.data[i].tooltext + '<br><hr>' + chartdata.data[i].value)
-       .style("left", xattr)
+        if (chartdata.data[i].tooltext != undefined && chartdata.data[i].tooltext != '') {
+            div.html(chartdata.data[i].tooltext + ': ' + chartdata.data[i].value)
+       .style("left", function (d, i) {
+           var asdfg = div[0][0];
+           return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth / 2 + div[0][0].innerText.length) + 'px';
+       })
                 .style("top", yattr);
         }
         else {
 
-            div.html(chartdata.data[i].label + '<br><hr>' + chartdata.data[i].value)
-             .style("left", xattr)
+            div.html(chartdata.data[i].label + ': ' + chartdata.data[i].value)
+             .style("left", function (d, i) {
+           var asdfg = div[0][0];
+           return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth / 2 + div[0][0].innerText.length) + 'px';
+       })
                 .style("top", yattr);
         }
 
     })
         .on("mouseout", function (d, i) {
+            this.style.opacity = 0.5;
             d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "")).style("display", "none");
             div.transition()
                 .duration(0)
                 .style("opacity", 0);
         })
-      .attr("fill", function (d, i) { return chartdata.chart.pallattecolor[i]; })
+      .attr("fill", function (d, i) {
+          if (chartdata.chart.pallattecolorsingle == false || chartdata.chart.pallattecolorsingle == undefined || chartdata.chart.pallattecolorsingle == '')
+              return chartdata.chart.pallattecolor[i];
+          else
+              return chartdata.chart.pallattecolor[0];
+      })
+      .style("opacity", 0.5)
       .attr("x", function (d) { return x(d.label); })
       .attr("width", x.rangeBand())
       .attr("y", height)
@@ -221,7 +240,7 @@ var column2D = function (chartId, chartdata) {
      .data(chartdata.data)
     .enter().append('circle')
     .attr("class", function (d) { return chartId.replace('#', '') + d.label.replace(" ", "") })
-    .style("fill", "black")
+    .attr("fill", "rgb(128, 128, 128)")
         .attr("cx", function (d)
         { return x(d.label) + x.rangeBand() / 2; })
      .attr("cy", function (d) { return y(d.value); })
@@ -235,10 +254,13 @@ var column2D = function (chartId, chartdata) {
     .attr("d", function (d) {
         var xatt = x(d.label) + x.rangeBand() / 2;
         var yatt = y(d.value);
+        if(d.value < domainmaxcol/2)
         var yattnext = yatt - 20;
+         if(d.value > domainmaxcol/2)
+        var yattnext = yatt + 20;
         return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
     })
-    .attr("style", "stroke:black;fill:none;stroke-width:2;display:none");
+    .attr("style", "stroke:rgb(128, 128, 128);fill:none;stroke-width:2;display:none");
 
 
     if (chartdata.chart.tickinterval != undefined && chartdata.chart.tickinterval > 0) {
@@ -257,5 +279,10 @@ var column2D = function (chartId, chartdata) {
             }
         });
     }
+    d3.selectAll(chartId + ' path.domain').style('opacity', function (d, i) {
+        if (i != 0)
+            this.setAttribute('d', '')
+    });
+    d3.selectAll(chartId + ' .xtick .tick line').style('display', 'none');
 
 }

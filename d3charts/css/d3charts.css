@@ -45,11 +45,16 @@ svg {
     opacity: 0.7;
     fill: none;  shape-rendering: crispEdges;font:12px serif;
 }
-    .grid text,.gridy text {
+    .grid text,.gridy text,.tick text {
     stroke: #000;
     stroke-width: 0.7;
       font-weight: 200;
     }
+.tick line {
+
+stroke-width: 1.2;
+}
+
 .polyline{
 	opacity: .3;
 	stroke: black;

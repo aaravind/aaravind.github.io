@@ -38,9 +38,8 @@ var gauge2D = function (chartId, chartdata) {
     var radius = Math.min(width, height) / 2;
     var innerradius = radius / 2;
     var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
-    var div = d3.select("body").append("div")
-    .attr("style", " position: absolute;opacity:0;text-align: center;width: auto;height: auto;padding: 2px;font: 12px sans-serif;background: black;border: 0px;border-radius: 8px;pointer-events: none;color:white");
-
+     var div = d3.select("body").append("div")
+    .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
     len = height / 3;
     rad = len / 6;
     var recalcPointerPos = function (perc) {
@@ -85,7 +84,10 @@ var gauge2D = function (chartId, chartdata) {
         .attr("y", -10 - height / 2)
         .attr("text-anchor", "middle")
         .style("font-size", "18px")
-        .style("text-decoration", "underline")
+     .style("font-size", "18px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "normal")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption);
 
@@ -137,7 +139,7 @@ var gauge2D = function (chartId, chartdata) {
                       var rangefirst = 0
                   else
                       var rangefirst = chartdata.gauge.range * (i);
-                  div.html(chartdata.data[i].label + '<br><hr>' + rangefirst + '-' + (chartdata.gauge.range * (i + 1)))
+                  div.html(chartdata.data[i].label + ': ' + rangefirst + '-' + (chartdata.gauge.range * (i + 1)))
              .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
               }

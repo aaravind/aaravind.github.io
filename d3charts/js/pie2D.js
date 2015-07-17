@@ -40,8 +40,8 @@
     var radius = 2 * Math.min(width, height) / 5;
     var innerradius = chartType == "Doughnut2D" || chartType == "SemiDoughnut2D" ? radius / 2 : 0;
     var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
-    var div = d3.select("body").append("div")
-    .attr("style", " position: absolute;opacity:0;text-align: center;width: auto;height: auto;padding: 2px;font: 12px sans-serif;background: black;border: 0px;border-radius: 8px;pointer-events: none;color:white");
+   var div = d3.select("body").append("div")
+    .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
     var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
     var y = d3.scale.linear()
@@ -75,8 +75,10 @@
         .attr("x", 0)
         .attr("y", -10 - height / 2)
         .attr("text-anchor", "middle")
-        .style("font-size", "18px")
-        .style("text-decoration", "underline")
+    .style("font-size", "18px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "normal")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption);
 
@@ -131,7 +133,7 @@
                 .style("top", (d3.event.pageY - 28) + "px");
               }
               else {
-                  div.html(chartdata.data[i].label + '<br><hr>' + chartdata.data[i].value)
+                  div.html(chartdata.data[i].label + ': ' + chartdata.data[i].value)
              .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
               }
@@ -172,7 +174,9 @@
         legend.append('text')
         .attr('x', width / 4 + 10)
         .attr('y', function (d, i) { return (i * 20) + 9 - height / 2; })
-        .text(function (d) { return d.label; })
+        .text(function (d) { return d.label.toUpperCase(); })
+        .style('text-transform', 'uppercase')
+        .style('font-size', '12px')
         .style('fill', function (d, i) {
             return chartdata.chart.pallattecolor[i]
         });
