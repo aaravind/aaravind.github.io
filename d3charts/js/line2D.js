@@ -51,13 +51,13 @@ var line2D = function (chartType, chartId, chartdata) {
 
     if (d3.select(chartId).select('svg')[0][0] != null)
         d3.select(chartId).select('svg').remove();
-    var bottommargin = chartdata.chart.slant ? 100 : 25;
+    var bottommargin = chartdata.chart.slant ? 50 : 25;
     var colorfunc = d3.scale.category20c();
     var margin = { top: 20, right: 20, bottom: bottommargin, left: 50 };
     var chartcontent = d3.select(chartId);
     var width = chartcontent[0][0].offsetWidth - margin.left - margin.right;
     var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
-    var showlegendwidth = chartdata.chart.showlegend == true ? 30 : 0
+    var showlegendwidth = chartdata.chart.showlegend == true ? 30 : 0;
     var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
     var div = d3.select("body").append("div")
     .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
@@ -432,7 +432,7 @@ var line2D = function (chartType, chartId, chartdata) {
     })
     .y0(height)
     .y1(function (d) {
-               if (d.value != 0)
+        if (d.value != 0)
             return y(d.value);
         else
             return y(domainmin);
@@ -469,9 +469,9 @@ var line2D = function (chartType, chartId, chartdata) {
         .attr('style', colorstyle);
 
 
-           var totalLength = path.node().getTotalLength();
+            var totalLength = path.node().getTotalLength();
 
-        path
+            path
       .attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
       .transition()
@@ -775,7 +775,7 @@ var line2D = function (chartType, chartId, chartdata) {
                  var yattr = (elemRect.top - bodyRect.top + height / 2 - margin.top / 2 - margin.bottom / 2) + 'px';
                  //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
                  div.html(htmlcontent)
-       .style("left",xattr)
+       .style("left", xattr)
                 .style("top", yattr);
              }
 
@@ -807,4 +807,22 @@ var line2D = function (chartType, chartId, chartdata) {
         if (i != 0)
             this.setAttribute('d', '')
     });
+
+    if (chartdata.chart.credits != undefined) {
+        if (chartdata.chart.credits.text != undefined && chartdata.chart.credits.text != '') {
+            var credits = svg.selectAll('.credits')
+    .data([1])
+    .enter().append('text')
+    .attr("class", 'credits' + chartId.replace("#", ''))
+     .attr("x", d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1)
+        .attr("y", height + margin.bottom + 5)
+        .attr("text-anchor", "end")
+        .style("font-size", "12px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "normal")
+        .style("fill", chartdata.chart.credits.color)
+        .text(chartdata.chart.credits.text.toUpperCase());
+        }
+    }
 }

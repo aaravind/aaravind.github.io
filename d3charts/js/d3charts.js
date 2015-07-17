@@ -57,6 +57,10 @@ var barchart = {
         "color":"white",
         "fontsize":15,
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"45",
         "tickinterval":5,
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
@@ -223,6 +227,10 @@ var barchart11 = {
         "color":"white",
         "fontsize":15,
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"90",
         "pallattecolor":["#f8bd19","#e44a00","#008ee4","#33bdda","#6baa01","#583e78","#BE3243"]
     },
@@ -267,9 +275,17 @@ var barchart12 = {
         "color":"white",
         "fontsize":15,
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "twoxaxis":false,
         "tickinterval":5,
         "slantdegree":"65",
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "pallattecolor":["#f8bd19","#e44a00","#008ee4","#33bdda","#6baa01","#583e78","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C"
         ,"#f8bd19","#e44a00","#008ee4","#33bdda","#6baa01","#583e78","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008ee4","#33bdda","#6baa01","#583e78"]
     },
@@ -614,6 +630,10 @@ var barchart7 = {
         "showlegend":true,
 
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"90",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
@@ -687,6 +707,10 @@ var barchart2 = {
         "showlegend":false,
 
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"90",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
@@ -737,6 +761,10 @@ var barchart8 = {
         "showlegend":true,
 
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"90",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
@@ -834,6 +862,10 @@ var barchart9 = {
         "showlegend":false,
 
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"90",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
@@ -884,6 +916,10 @@ var barchart10 = {
         "showlegend":true,
 
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"90",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
@@ -980,6 +1016,10 @@ var barchart14 = {
         "fontsize":15,
         
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"45",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
@@ -1037,6 +1077,10 @@ var barchart13 = {
         "fontsize":15,
         "showlegend":true,
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"90",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
@@ -1134,6 +1178,10 @@ var barchart15 = {
         "showlegend":true,
 
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"90",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
@@ -1229,6 +1277,10 @@ var barchart16 = {
         "fontsize":15,
 
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"45",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
@@ -1285,6 +1337,10 @@ var barchart17 = {
         "fontsize":15,
 
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"90",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
@@ -1341,6 +1397,10 @@ var barchart18 = {
         "fontsize":15,
 
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"45",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
@@ -1399,6 +1459,10 @@ var barchart19 = {
         "showlegend":true,
 
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"90",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },
@@ -1495,6 +1559,10 @@ var barchart20 = {
         "fontsize":15,
 
         "slant":false,
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "slantdegree":"90",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
     },

@@ -32,6 +32,10 @@ var linedata = {
         "fontsize":15,
         "slant":false,
         "slantdegree":"90",
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
           "tickinterval":5,
         "pallattecolor":["#008ee4","red"]
     },
@@ -203,6 +207,10 @@ var linedata = {
         "tooltipheader":"Date",
         "slant":false,
         "slantdegree":"90",
+          "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "pallattecolor":["#008ee4","red","red"]
     },
     "export":{
@@ -741,6 +749,10 @@ var columndata = {
         "twoxaxis":false,
         "tickinterval":5,
         "slantdegree":"65",
+        "credits":{
+            "text":"© priceweave.com",
+            "color":"#666"
+        },
         "pallattecolorsingle":true,
          "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
     },

@@ -188,10 +188,10 @@ var column2D = function (chartId, chartdata) {
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
         // var yattr = (elemRect.top - bodyRect.top) + 'px';
-       if(d.value < domainmaxcol/2)
-        var yattr = document.getElementById(chartId.replace("#", "")).offsetTop + (height - this.getAttribute('height') / 1 - 10) + 'px';
+        if (d.value < domainmaxcol / 2)
+            var yattr = document.getElementById(chartId.replace("#", "")).offsetTop + (height - this.getAttribute('height') / 1 - 10) + 'px';
         else
-        var yattr = document.getElementById(chartId.replace("#", "")).offsetTop + (height - this.getAttribute('height') / 1 + 50) + 'px';
+            var yattr = document.getElementById(chartId.replace("#", "")).offsetTop + (height - this.getAttribute('height') / 1 + 50) + 'px';
         // var yattr = (bodyRect.top-document.getElementById('barchart12').getBoundingClientRect().top + (this.getAttribute('x') / 1))+ 'px';
         if (chartdata.data[i].tooltext != undefined && chartdata.data[i].tooltext != '') {
             div.html(chartdata.data[i].tooltext + ': ' + chartdata.data[i].value)
@@ -205,9 +205,9 @@ var column2D = function (chartId, chartdata) {
 
             div.html(chartdata.data[i].label + ': ' + chartdata.data[i].value)
              .style("left", function (d, i) {
-           var asdfg = div[0][0];
-           return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth / 2 + div[0][0].innerText.length) + 'px';
-       })
+                 var asdfg = div[0][0];
+                 return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth / 2 + div[0][0].innerText.length) + 'px';
+             })
                 .style("top", yattr);
         }
 
@@ -254,13 +254,13 @@ var column2D = function (chartId, chartdata) {
     .attr("d", function (d) {
         var xatt = x(d.label) + x.rangeBand() / 2;
         var yatt = y(d.value);
-        if(d.value < domainmaxcol/2)
-        var yattnext = yatt - 20;
-         if(d.value > domainmaxcol/2)
-        var yattnext = yatt + 20;
+        if (d.value < domainmaxcol / 2)
+            var yattnext = yatt - 20;
+        if (d.value > domainmaxcol / 2)
+            var yattnext = yatt + 20;
         return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
     })
-    .attr("style", "stroke:rgb(128, 128, 128);fill:none;stroke-width:2;display:none");
+    .attr("style", "stroke:rgb(128, 128, 128);fill:none;stroke-width:2;display:none");  
 
 
     if (chartdata.chart.tickinterval != undefined && chartdata.chart.tickinterval > 0) {
@@ -284,5 +284,22 @@ var column2D = function (chartId, chartdata) {
             this.setAttribute('d', '')
     });
     d3.selectAll(chartId + ' .xtick .tick line').style('display', 'none');
-
+     if (chartdata.chart.credits != undefined) {
+        if (chartdata.chart.credits.text != undefined && chartdata.chart.credits.text != '')
+        { 
+            var credits = svg.selectAll('.credits')
+    .data([1])
+    .enter().append('text')
+    .attr("class", 'credits'+chartId.replace("#",''))
+     .attr("x",d3.select(chartId+ ' .grid .tick line')[0][0].getAttribute('x2')/1)
+        .attr("y",height+margin.bottom-20)
+        .attr("text-anchor", "end")
+        .style("font-size", "12px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "normal")
+        .style("fill", chartdata.chart.credits.color)
+        .text(chartdata.chart.credits.text.toUpperCase());
+        }
+    }
 }
