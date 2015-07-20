@@ -39,10 +39,16 @@ function exportfile(chartid,chartdata,filename,format,charttype)
     
 
  data = new XMLSerializer().serializeToString(asd);
-   canvg(canvas, data);
+ // canvg(canvas, data);
+
+  canvg(canvas, data, { renderCallback: function () {
+var img = canvas.toDataURL("image/png");
     download(canvas,chartdataval,filename,format,charttype,chartid);
+
+}});
      asd.setAttribute('width', prevwidth);
     asd.setAttribute('height', prevheight);
+
 }
 
 function download(canvas,chartdataval,filename,format,charttype,chartid) {

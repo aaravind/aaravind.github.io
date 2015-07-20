@@ -260,7 +260,7 @@ var column2D = function (chartId, chartdata) {
             var yattnext = yatt + 20;
         return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
     })
-    .attr("style", "stroke:rgb(128, 128, 128);fill:none;stroke-width:2;display:none");  
+    .attr("style", "stroke:rgb(128, 128, 128);fill:none;stroke-width:2;display:none");
 
 
     if (chartdata.chart.tickinterval != undefined && chartdata.chart.tickinterval > 0) {
@@ -284,15 +284,15 @@ var column2D = function (chartId, chartdata) {
             this.setAttribute('d', '')
     });
     d3.selectAll(chartId + ' .xtick .tick line').style('display', 'none');
-     if (chartdata.chart.credits != undefined) {
-        if (chartdata.chart.credits.text != undefined && chartdata.chart.credits.text != '')
-        { 
+    if (chartdata.chart.credits != undefined) {
+        if (chartdata.chart.credits.text != undefined && chartdata.chart.credits.text != '') {
             var credits = svg.selectAll('.credits')
     .data([1])
-    .enter().append('text')
-    .attr("class", 'credits'+chartId.replace("#",''))
-     .attr("x",d3.select(chartId+ ' .grid .tick line')[0][0].getAttribute('x2')/1)
-        .attr("y",height+margin.bottom-20)
+    .enter().append('g');
+            credits.append('text')
+    .attr("class", 'credits' + chartId.replace("#", ''))
+    .attr("x", d3.select(chartId + ' .grid .tick line')[0][0].getAttribute('x2') / 1)   
+        .attr("y", height + margin.bottom - 20)
         .attr("text-anchor", "end")
         .style("font-size", "12px")
         .style("text-decoration", "none")
@@ -300,6 +300,37 @@ var column2D = function (chartId, chartdata) {
          .style("font-weight", "normal")
         .style("fill", chartdata.chart.credits.color)
         .text(chartdata.chart.credits.text.toUpperCase());
+            if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '') {
+                function getBase64FromImageUrl(url) {
+                    var img = new Image();
+
+                    img.onload = function () {
+                        var canvas2 = document.createElement("canvas");
+                        canvas2.width = this.width;
+                        canvas2.height = this.height;
+
+                        var ctx2 = canvas2.getContext("2d");
+                        ctx2.drawImage(this, 0, 0);
+
+                        var dataURL = canvas2.toDataURL("image/png");
+
+
+                        credits.append('image')
+        .attr('x', d3.select(chartId + ' .grid .tick line')[0][0].getAttribute('x2') / 1 - 10)
+        .attr("y", height + margin.bottom - 40)
+        .attr("width", 40)
+        .attr("height", 30)
+        .attr("xlink:href", dataURL);
+
+
+
+                    };
+
+                    img.src = url;
+                }
+                getBase64FromImageUrl(chartdata.chart.credits.imageurl);
+            }
+
         }
     }
 }

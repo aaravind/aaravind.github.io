@@ -811,18 +811,75 @@ var line2D = function (chartType, chartId, chartdata) {
     if (chartdata.chart.credits != undefined) {
         if (chartdata.chart.credits.text != undefined && chartdata.chart.credits.text != '') {
             var credits = svg.selectAll('.credits')
-    .data([1])
-    .enter().append('text')
-    .attr("class", 'credits' + chartId.replace("#", ''))
-     .attr("x", d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1)
-        .attr("y", height + margin.bottom + 5)
-        .attr("text-anchor", "end")
-        .style("font-size", "12px")
-        .style("text-decoration", "none")
-         .style("text-transform", "uppercase")
-         .style("font-weight", "normal")
-        .style("fill", chartdata.chart.credits.color)
-        .text(chartdata.chart.credits.text.toUpperCase());
+            .data([1])
+            .enter().append('g');
+            var positionwidth;
+            var imagewidth;
+            if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '' && showlegendwidth == 0) {
+                positionwidth = 30;
+                imagewidth = 40;
+            }
+             else if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '' && showlegendwidth != 0) {
+                positionwidth = 0;
+                imagewidth = 10;
+            }
+            else
+                positionwidth = 10;
+            credits.append('text')
+            .attr("class", 'credits' + chartId.replace("#", ''))
+            // .attr("x", d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1)
+           .attr("x", document.getElementById(chartId.replace('#', '')).offsetWidth - positionwidth)
+            .attr("y", height + margin.bottom + 5)
+            .attr("text-anchor", "end")
+            .style("font-size", "12px")
+            .style("text-decoration", "none")
+            .style("text-transform", "uppercase")
+            .style("font-weight", "normal")
+            .style("fill", chartdata.chart.credits.color)
+            .text(chartdata.chart.credits.text.toUpperCase());
+
+
+            if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '') {
+                function getBase64FromImageUrl(url) {
+                    var img = new Image();
+
+                    img.onload = function () {
+                        var canvas2 = document.createElement("canvas");
+                        canvas2.width = this.width;
+                        canvas2.height = this.height;
+
+                        var ctx2 = canvas2.getContext("2d");
+                        ctx2.drawImage(this, 0, 0);
+
+                        var dataURL = canvas2.toDataURL("image/png");
+
+
+                        credits.append('image')
+                        //.attr('x', d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1 - 10)
+            .attr('x', document.getElementById(chartId.replace('#', '')).offsetWidth - imagewidth)
+            .attr("y", height + margin.bottom - 15)
+            .attr("width", 40)
+            .attr("height", 30)
+            .attr("xlink:href", dataURL);
+
+
+
+                    };
+
+                    img.src = url;
+                }
+                getBase64FromImageUrl(chartdata.chart.credits.imageurl);
+            }
+
+
+            /*var credits= d3.select(chartId).append('div').attr('style','font-size: 11px;float: right;margin-right: 10px;margin-top: -25px;');
+            credits.append('span').style('dispaly','inline-block')
+            .append('p').style('top','-15px').style('position','relative').style('display','inline-block').text('POWERED BY');
+            credits.append('span')
+            .style('display','inline-block')
+            .append('img')
+            .attr('style','width: 30px;height: 30px;top: -5px;position: relative;')
+            .attr('src','http://stage.priceweave.com/stylesheets/images/small-badge-grey-padding.png');*/
         }
     }
 }

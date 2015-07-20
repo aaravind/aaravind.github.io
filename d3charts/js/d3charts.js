@@ -631,8 +631,9 @@ var barchart7 = {
 
         "slant":false,
           "credits":{
-            "text":"© priceweave.com",
-            "color":"#666"
+            "text":"Powered By",
+            "color":"#666",
+            "imageurl":"../images/logo.png"
         },
         "slantdegree":"90",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]
@@ -1017,8 +1018,9 @@ var barchart14 = {
         
         "slant":false,
           "credits":{
-            "text":"© priceweave.com",
-            "color":"#666"
+            "text":"Powered By",
+            "color":"#666",
+            "imageurl":"../images/logo.png"
         },
         "slantdegree":"45",
         "pallattecolor":["#008ee4","#6baa01","#f8bd19"]

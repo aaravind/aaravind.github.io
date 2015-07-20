@@ -30,8 +30,9 @@ var linedata = {
         "slant":false, // X axis label slant
         "slantdegree":"90", // Slant based on the degree specified
           "credits":{            // Credits
-            "text":"© priceweave.com", // Credit Name
-            "color":"#666" // Credit Value
+            "text":"Powered By", // Credit Name
+            "color":"#666",
+            "imageurl":"../images/logo.png"
         },
           "tickinterval":5, // Number of label visible in the X axis
          "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"] // Pallette colors for 30 values
@@ -208,8 +209,10 @@ var linedata = {
         "slant":false,
         "slantdegree":"90",
           "credits":{
-            "text":"© priceweave.com",
-            "color":"#666"
+            "text":"Powered By",
+            "color":"#666",
+            "imageurl":"../images/logo.png"
+    
         },
         "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
     },
@@ -749,8 +752,9 @@ var columndata = {
         "tickinterval":5,
         "slantdegree":"65",
         "credits":{
-            "text":"© priceweave.com",
-            "color":"#666"
+               "text":"Powered By",
+            "color":"#666",
+            "imageurl":"../images/logo.png"
         },
         "pallattecolorsingle":true, // if set to True: Only First Value is Considered ; if set to False all values in the Pallate is considered
          "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
