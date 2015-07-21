@@ -85,14 +85,14 @@ var line2D = function (chartType, chartId, chartdata) {
               return prefix.scale(d) + prefix.symbol;
           })
     }
-
     var svg = d3.select(chartId).append("svg")
     .attr("width", "100%")
     .attr("height", "100%")
-    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right + 40 + showlegendwidth) + ' ' + (height + margin.top + margin.bottom))
+    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right + 40 + showlegendwidth) + ' ' + (height + margin.top + margin.bottom + 10))
         .attr('preserveAspectRatio', 'xMinYMin')
-  .append("g")
+        .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    d3.select(chartId + ' svg').insert('rect',':first-child').attr('width', '100%').attr('height', '100%').attr('x', '0').attr('y', '0').style('fill', 'white');
     svg.append("text")
         .attr("x", 0)
         .attr("y", 5 - (margin.top / 2))
@@ -819,7 +819,7 @@ var line2D = function (chartType, chartId, chartdata) {
                 positionwidth = 30;
                 imagewidth = 40;
             }
-             else if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '' && showlegendwidth != 0) {
+            else if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '' && showlegendwidth != 0) {
                 positionwidth = 0;
                 imagewidth = 10;
             }
@@ -829,7 +829,7 @@ var line2D = function (chartType, chartId, chartdata) {
             .attr("class", 'credits' + chartId.replace("#", ''))
             // .attr("x", d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1)
            .attr("x", document.getElementById(chartId.replace('#', '')).offsetWidth - positionwidth)
-            .attr("y", height + margin.bottom + 5)
+            .attr("y", height + margin.bottom + 7)
             .attr("text-anchor", "end")
             .style("font-size", "12px")
             .style("text-decoration", "none")
@@ -857,7 +857,7 @@ var line2D = function (chartType, chartId, chartdata) {
                         credits.append('image')
                         //.attr('x', d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1 - 10)
             .attr('x', document.getElementById(chartId.replace('#', '')).offsetWidth - imagewidth)
-            .attr("y", height + margin.bottom - 15)
+            .attr("y", height + margin.bottom - 13)
             .attr("width", 40)
             .attr("height", 30)
             .attr("xlink:href", dataURL);

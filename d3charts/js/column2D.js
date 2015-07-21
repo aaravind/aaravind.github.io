@@ -81,10 +81,11 @@ var column2D = function (chartId, chartdata) {
     var svg = d3.select(chartId).append("svg")
     .attr("width", "100%")
     .attr("height", "100%")
-    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right) + ' ' + (height + margin.top + margin.bottom))
+    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right) + ' ' + (height + margin.top + margin.bottom +10))
         .attr('preserveAspectRatio', 'xMinYMin')
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        d3.select(chartId + ' svg').insert('rect',':first-child').attr('width', '100%').attr('height', '100%').attr('x', '0').attr('y', '0').style('fill', 'white');
     if (chartdata.chart.twoxaxis == true)
         ytop = 15 - (margin.top / 1);
     else
@@ -292,7 +293,7 @@ var column2D = function (chartId, chartdata) {
             credits.append('text')
     .attr("class", 'credits' + chartId.replace("#", ''))
     .attr("x", d3.select(chartId + ' .grid .tick line')[0][0].getAttribute('x2') / 1)   
-        .attr("y", height + margin.bottom - 20)
+        .attr("y", height + margin.bottom - 15)
         .attr("text-anchor", "end")
         .style("font-size", "12px")
         .style("text-decoration", "none")
@@ -317,7 +318,7 @@ var column2D = function (chartId, chartdata) {
 
                         credits.append('image')
         .attr('x', d3.select(chartId + ' .grid .tick line')[0][0].getAttribute('x2') / 1 - 10)
-        .attr("y", height + margin.bottom - 40)
+        .attr("y", height + margin.bottom - 35)
         .attr("width", 40)
         .attr("height", 30)
         .attr("xlink:href", dataURL);
