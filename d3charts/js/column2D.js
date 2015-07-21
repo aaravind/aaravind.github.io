@@ -14,7 +14,7 @@ var column2D = function (chartId, chartdata) {
                 exportfile(chartId, chartdata, 'Column2D', '.' + data, false);
         }
         if (chartdata.export.showexport == true) {
-            var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:25px ;border: 0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;'),
+            var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:25px ;height:20px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
     options = select.selectAll('option').data(chartdata.export.format); // Data join
 
             // Enter selection
@@ -185,10 +185,11 @@ var column2D = function (chartId, chartdata) {
                 .style("opacity", .9);
         d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "")).style("display", "block");
 
-        var xattr = ((this.getAttribute('x') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
+        //var xattr = ((this.getAttribute('x') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
         // var yattr = (elemRect.top - bodyRect.top) + 'px';
+            var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 10) + 'px';
         if (d.value < domainmaxcol / 2)
             var yattr = document.getElementById(chartId.replace("#", "")).offsetTop + (height - this.getAttribute('height') / 1 - 10) + 'px';
         else
@@ -198,7 +199,7 @@ var column2D = function (chartId, chartdata) {
             div.html(chartdata.data[i].tooltext + ': ' + chartdata.data[i].value)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
-           return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth / 2 + div[0][0].textContent.length) + 'px';
+           return xattr;
        })
                 .style("top", yattr);
         }
