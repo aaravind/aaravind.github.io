@@ -81,11 +81,11 @@ var column2D = function (chartId, chartdata) {
     var svg = d3.select(chartId).append("svg")
     .attr("width", "100%")
     .attr("height", "100%")
-    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right) + ' ' + (height + margin.top + margin.bottom +10))
+    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right) + ' ' + (height + margin.top + margin.bottom + 10))
         .attr('preserveAspectRatio', 'xMinYMin')
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-        d3.select(chartId + ' svg').insert('rect',':first-child').attr('width', '100%').attr('height', '100%').attr('x', '0').attr('y', '0').style('fill', 'white');
+    d3.select(chartId + ' svg').insert('rect', ':first-child').attr('width', '100%').attr('height', '100%').attr('x', '0').attr('y', '0').style('fill', 'white');
     if (chartdata.chart.twoxaxis == true)
         ytop = 15 - (margin.top / 1);
     else
@@ -189,7 +189,7 @@ var column2D = function (chartId, chartdata) {
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
         // var yattr = (elemRect.top - bodyRect.top) + 'px';
-            var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 10) + 'px';
+        var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 10) + 'px';
         if (d.value < domainmaxcol / 2)
             var yattr = document.getElementById(chartId.replace("#", "")).offsetTop + (height - this.getAttribute('height') / 1 - 10) + 'px';
         else
@@ -199,7 +199,7 @@ var column2D = function (chartId, chartdata) {
             div.html(chartdata.data[i].tooltext + ': ' + chartdata.data[i].value)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
-           return xattr;
+           return (xattr.replace('px', '') / 1 - this.getAttribute('width') / 2) + 'px';
        })
                 .style("top", yattr);
         }
@@ -208,7 +208,7 @@ var column2D = function (chartId, chartdata) {
             div.html(chartdata.data[i].label + ': ' + chartdata.data[i].value)
              .style("left", function (d, i) {
                  var asdfg = div[0][0];
-                 return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth / 2 + div[0][0].textContent.length) + 'px';
+                 return (xattr.replace('px','')/1 - this.getAttribute('width')/2) + 'px'
              })
                 .style("top", yattr);
         }
@@ -293,7 +293,7 @@ var column2D = function (chartId, chartdata) {
     .enter().append('g');
             credits.append('text')
     .attr("class", 'credits' + chartId.replace("#", ''))
-    .attr("x", d3.select(chartId + ' .grid .tick line')[0][0].getAttribute('x2') / 1)   
+    .attr("x", d3.select(chartId + ' .grid .tick line')[0][0].getAttribute('x2') / 1)
         .attr("y", height + margin.bottom - 15)
         .attr("text-anchor", "end")
         .style("font-size", "12px")
