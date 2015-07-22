@@ -7,76 +7,81 @@
  */
 var currentchartdata;
 var line2D = function (chartType, chartId, chartdata) {
-    function tickspace(datacur) {
+    if (chartdata.data != undefined) {
+        if (chartdata.data.length != 0) {
+            function tickspace(datacur) {
 
-        if (chartdata.chart.tickinterval != undefined && chartdata.chart.tickinterval > 1) {
-            d3.select(chartId).selectAll(".xtick .tick text").style("display", function (d, i) {
-                chartlength = datacur.length - 1;
-                ticklength = chartdata.chart.tickinterval - 1;
-                if (i == 0)
-                    return "block"
-                if (i == chartlength)
-                    return "block"
-                else {
-                    if (i % ticklength == 0 && (i < (chartlength - ticklength)))
-                        return "block"
-                    else
-                        return "none"
+                if (chartdata.chart.tickinterval != undefined && chartdata.chart.tickinterval > 1) {
+                    d3.select(chartId).selectAll(".xtick .tick text").style("display", function (d, i) {
+                        chartlength = datacur.length - 1;
+                        ticklength = chartdata.chart.tickinterval - 1;
+                        if (i == 0)
+                            return "block"
+                        if (i == chartlength)
+                            return "block"
+                        else {
+                            if (i % ticklength == 0 && (i < (chartlength - ticklength)))
+                                return "block"
+                            else
+                                return "none"
+                        }
+                    });
                 }
-            });
-        }
-    }
-    if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
-        function change() {
-            var selectedIndex = select.property('selectedIndex'),
-        data = options[0][selectedIndex].__data__;
-            if (data != '-Select-') {
-                var multitrue = chartType.search("Multi") != -1 ? true : false;
-                exportfile(chartId, chartdata, chartType, '.' + data, multitrue);
             }
+            if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
+                function change() {
+                    var selectedIndex = select.property('selectedIndex'),
+        data = options[0][selectedIndex].__data__;
+                    if (selectedIndex != 0) {
+                        var multitrue = chartType.search("Multi") != -1 ? true : false;
+                        if(chartdata.export.filename == undefined || chartdata.export.filename == '')
+                        exportfile(chartId, chartdata, chartType, '.' + data, multitrue);
+                        else
+                        exportfile(chartId, chartdata, chartdata.export.filename, '.' + data, multitrue);
+                    }
 
-        }
-        if (chartdata.export.showexport == true) {
-            var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:25px ;border: 0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;'),
+                }
+                if (chartdata.export.showexport == true) {
+                    var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:35px ;height:20px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
     options = select.selectAll('option').data(chartdata.export.format); // Data join
 
-            // Enter selection
-            options.enter().append("option").text(function (d) {
-                return d;
-            });
+                    // Enter selection
+                    options.enter().append("option").text(function (d) {
+                        return d;
+                    });
 
 
-        }
-    }
+                }
+            }
 
-    if (d3.select(chartId).select('svg')[0][0] != null)
-        d3.select(chartId).select('svg').remove();
-    var bottommargin = chartdata.chart.slant ? 50 : 25;
-    var colorfunc = d3.scale.category20c();
-    var margin = { top: 20, right: 20, bottom: bottommargin, left: 50 };
-    var chartcontent = d3.select(chartId);
-    var width = chartcontent[0][0].offsetWidth - margin.left - margin.right;
-    var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
-    var showlegendwidth = chartdata.chart.showlegend == true ? 30 : 0;
-    var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
-    var div = d3.select("body").append("div")
+            if (d3.select(chartId).select('svg')[0][0] != null)
+                d3.select(chartId).select('svg').remove();
+            var bottommargin = chartdata.chart.slant ? 50 : 40;
+            var colorfunc = d3.scale.category20c();
+            var margin = { top: 30, right: 20, bottom: bottommargin, left: 50 };
+            var chartcontent = d3.select(chartId);
+            var width = chartcontent[0][0].offsetWidth - margin.left - margin.right;
+            var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
+            var showlegendwidth = chartdata.chart.showlegend == true ? 30 : 0;
+            var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
+            var div = d3.select("body").append("div")
     .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
-    var x = d3.scale.ordinal()
+            var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
-    var y = d3.scale.linear()
-    .range([height, 0]);
-    var xaxis = d3.svg.axis()
+            var y = d3.scale.linear()
+    .range([height, 15]);
+            var xaxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
     .ticks(5);
-    function xAxis() {
-        return d3.svg.axis()
+            function xAxis() {
+                return d3.svg.axis()
         .scale(x)
         .orient("bottom")
         .ticks(5)
-    }
-    function yaxis() {
-        return d3.svg.axis()
+            }
+            function yaxis() {
+                return d3.svg.axis()
         .scale(y)
         .orient("left")
         .ticks(5)
@@ -84,46 +89,46 @@ var line2D = function (chartType, chartId, chartdata) {
               var prefix = d3.formatPrefix(d);
               return prefix.scale(d) + prefix.symbol;
           })
-    }
-    var svg = d3.select(chartId).append("svg")
+            }
+            var svg = d3.select(chartId).append("svg")
     .attr("width", "100%")
     .attr("height", "100%")
     .attr('viewBox', '0 0 ' + (width + margin.left + margin.right + 40 + showlegendwidth) + ' ' + (height + margin.top + margin.bottom + 10))
         .attr('preserveAspectRatio', 'xMinYMin')
         .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    d3.select(chartId + ' svg').insert('rect',':first-child').attr('width', '100%').attr('height', '100%').attr('x', '0').attr('y', '0').style('fill', 'white');
-    svg.append("text")
+    .attr("transform", "translate(" + margin.left + "," + (margin.top-5) + ")");
+            d3.select(chartId + ' svg').insert('rect', ':first-child').attr('width', '100%').attr('height', '100%').attr('x', '0').attr('y', '0').style('fill', 'white');
+            svg.append("text")
         .attr("x", 0)
-        .attr("y", 5 - (margin.top / 2))
+        .attr("y", 5)
         .attr("text-anchor", "start")
-        .style("font-size", "18px")
+        .style("font-size", "15px")
         .style("text-decoration", "none")
          .style("text-transform", "uppercase")
          .style("font-weight", "normal")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption);
-    x.domain(chartdata.data.map(function (d) { return d.label; }));
-    var domainmin = d3.min(chartdata.data, function (d) { if (d.value != 0) return d.value - 0.25 * d.value; });
-    var domainmax = d3.max(chartdata.data, function (d) { return d.value + 0.3 * d.value; });
-    y.domain([domainmin, domainmax]);
+            x.domain(chartdata.data.map(function (d) { return d.label; }));
+            var domainmin = d3.min(chartdata.data, function (d) { if (d.value != 0) return d.value - 0.25 * d.value; });
+            var domainmax = d3.max(chartdata.data, function (d) { return d.value + 0.3 * d.value; });
+            y.domain([domainmin, domainmax]);
 
 
-    if (chartType == 'MultiLine2D' || chartType == 'MultiArea2D' || chartType == 'MultiScatter2D' || chartType == 'MultiStepLine2D' || chartType == 'MultiStepArea2D' || chartType == 'MultiCurve2D' || chartType == 'MultiCurveArea2D') {
+            if (chartType == 'MultiLine2D' || chartType == 'MultiArea2D' || chartType == 'MultiScatter2D' || chartType == 'MultiStepLine2D' || chartType == 'MultiStepArea2D' || chartType == 'MultiCurve2D' || chartType == 'MultiCurveArea2D') {
 
-        var dataGroup = d3.nest()
+                var dataGroup = d3.nest()
     .key(function (d) {
         return d.category;
     })
     .entries(chartdata.data);
-    };
+            };
 
-    if (chartdata.chart.slant) {
-        if (chartdata.chart.slantdegree != undefined)
-            rotatevalue = "rotate(-" + chartdata.chart.slantdegree + ")";
-        else
-            rotatevalue = "rotate(-" + 65 + ")";
-        svg.append("g")
+            if (chartdata.chart.slant) {
+                if (chartdata.chart.slantdegree != undefined)
+                    rotatevalue = "rotate(-" + chartdata.chart.slantdegree + ")";
+                else
+                    rotatevalue = "rotate(-" + 65 + ")";
+                svg.append("g")
       .attr("style", styleborder)
       .attr("transform", "translate(0," + height + ")")
 
@@ -141,9 +146,9 @@ var line2D = function (chartType, chartId, chartdata) {
                 return rotatevalue
             });
 
-    }
-    else {
-        svg.append("g")
+            }
+            else {
+                svg.append("g")
       .attr("style", styleborder)
       .attr("transform", "translate(0," + height + ")")
        .attr("class", "grid xgrid xtick")
@@ -153,8 +158,8 @@ var line2D = function (chartType, chartId, chartdata) {
     .tickPadding(10)
             );
 
-    }
-    svg.append("g")
+            }
+            svg.append("g")
   .attr("class", "gridy")
       .call(yaxis()
        .tickSize(-width, 0, 0)
@@ -167,17 +172,17 @@ var line2D = function (chartType, chartId, chartdata) {
       .attr("text-anchor", "end")
       .text(chartdata.chart.yaxisname);
 
-    d3.selectAll(chartId + " .grid .tick line").style("stroke-width", function (d, i) {
-        if (i == 0)
-            return 2;
-        else
-            return 1.2;
-    }
+            d3.selectAll(chartId + " .grid .tick line").style("stroke-width", function (d, i) {
+                if (i == 0)
+                    return 2;
+                else
+                    return 1.2;
+            }
     );
-    var dottedlinearr = [];
+            var dottedlinearr = [];
 
-    if (chartType == 'Line2D' || chartType == 'MultiLine2D' || chartType == 'StepLine2D' || chartType == 'MultiStepLine2D') {
-        var valueline = d3.svg.line()
+            if (chartType == 'Line2D' || chartType == 'MultiLine2D' || chartType == 'StepLine2D' || chartType == 'MultiStepLine2D') {
+                var valueline = d3.svg.line()
     .defined(function (d, i) {
 
         if (d.value == 0) {
@@ -289,19 +294,19 @@ var line2D = function (chartType, chartId, chartdata) {
     .y(function (d) {
         return y(d.value);
     });
-    }
-    else {
-        if (chartType == "Curve2D" || chartType == "MultiCurve2D") {
-            var valueline = d3.svg.line()
+            }
+            else {
+                if (chartType == "Curve2D" || chartType == "MultiCurve2D") {
+                    var valueline = d3.svg.line()
     .x(function (d) {
         return x(d.label) + x.rangeBand() / 2;
     })
     .y(function (d) {
         return y(d.value);
     });
-        }
-        else {
-            var valueline = d3.svg.line()
+                }
+                else {
+                    var valueline = d3.svg.line()
     .defined(function (d) {
         return d.value != 0;
     })
@@ -311,79 +316,79 @@ var line2D = function (chartType, chartId, chartdata) {
     .y(function (d) {
         return y(d.value);
     });
-        }
+                }
 
 
 
-    }
+            }
 
-    if (chartType == 'StepLine2D' || chartType == 'MultiStepLine2D') {
-        valueline.interpolate('step-after');
-    }
-    if (chartType == 'Curve2D' || chartType == 'MultiCurve2D') {
-        valueline.interpolate('cardinal');
-    }
+            if (chartType == 'StepLine2D' || chartType == 'MultiStepLine2D') {
+                valueline.interpolate('step-after');
+            }
+            if (chartType == 'Curve2D' || chartType == 'MultiCurve2D') {
+                valueline.interpolate('cardinal');
+            }
 
-    if (chartType == 'Line2D' || chartType == 'StepLine2D' || chartType == 'Curve2D') {
-        currentchartdata = chartdata.data;
-        dottedlinearr = [];
-        var color = chartdata.chart.pallattecolor[0];
-        var path = svg.append("path")
+            if (chartType == 'Line2D' || chartType == 'StepLine2D' || chartType == 'Curve2D') {
+                currentchartdata = chartdata.data;
+                dottedlinearr = [];
+                var color = chartdata.chart.pallattecolor[0];
+                var path = svg.append("path")
         .attr("class", "line")
         .attr("d", valueline(chartdata.data))
         .attr("style", 'stroke:' + color + ';fill:none;');
-        for (i = 0; i < dottedlinearr.length; i++) {
-            svg.append("path")
+                for (i = 0; i < dottedlinearr.length; i++) {
+                    svg.append("path")
         .attr("class", "line")
         .attr("d", dottedlinearr[i])
         .attr("style", 'stroke:' + color + ';fill:none;')
         .style("stroke-dasharray", ("3, 3"));
-        }
-        drawCircle(chartType, chartdata.data, color, chartType);
-        var totalLength = path.node().getTotalLength();
+                }
+                drawCircle(chartType, chartdata.data, color, chartType);
+                var totalLength = path.node().getTotalLength();
 
-        path
+                path
       .attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
       .transition()
         .duration(2000)
         .ease("linear")
         .attr("stroke-dashoffset", 0);
-        tickspace(chartdata.data);
-    }
+                tickspace(chartdata.data);
+            }
 
-    else if (chartType == 'Scatter2D') {
-        var color = chartdata.chart.pallattecolor[0];
-        drawCircle('Scatter2D', chartdata.data, color, chartType);
-        tickspace(chartdata.data);
-    }
+            else if (chartType == 'Scatter2D') {
+                var color = chartdata.chart.pallattecolor[0];
+                drawCircle('Scatter2D', chartdata.data, color, chartType);
+                tickspace(chartdata.data);
+            }
 
-    else if (chartType == 'MultiScatter2D') {
-        dataGroup.forEach(function (d, i) {
-            var j = i;
-            var color = chartdata.chart.pallattecolor[i];
-            var keyid = d.key;
-            var colorstyle = 'stroke:' + color + ';display:none';
+            else if (chartType == 'MultiScatter2D') {
+                dataGroup.forEach(function (d, i) {
+                    var j = i;
+                    var color = chartdata.chart.pallattecolor[i];
+                    var keyid = d.key;
+                    var colorstyle = 'stroke:' + color + ';display:none';
 
-            var path = svg.append('path')
+                    var path = svg.append('path')
         .attr('d', valueline(d.values))
          .attr("class", chartType + keyid.replace(/\s+/g, '') + ' line')
           .attr("data-visibilitypath", "true")
            .attr("data-categorycolumn", d.key)
         .attr('style', colorstyle);
-            if (j == 0)
-                drawlinepath(chartType, d.values, d.key);
-            drawCircle('MultiScatter2D', d.values, color, d.key);
+                    if (j == 0)
+                        drawlinepath(chartType, d.values, d.key);
+                    drawCircle('MultiScatter2D', d.values, color, d.key);
 
-        });
-        tickspace(dataGroup[0].values);
-        if (chartdata.chart.showlegend) {
-            var legend = svg.selectAll('.legend')
+                });
+                tickspace(dataGroup[0].values);
+                if (chartdata.chart.showlegend) {
+                    var legend = svg.selectAll('.legend')
         .data(dataGroup)
         .enter()
       .append('g')
         .attr('class', 'legend');
-            legend.append('rect')
+                    legend.append('rect')
         .attr('x', width)
         .attr('y', function (d, i) { return (i + 1) * 20; })
         .attr('width', 10)
@@ -393,10 +398,15 @@ var line2D = function (chartType, chartId, chartdata) {
             return chartdata.chart.pallattecolor[i];
         });
 
-            legend.append('text')
+                    legend.append('text')
         .attr('x', width + 12)
         .attr('y', function (d, i) { return ((i + 1) * 20) + 9; })
-        .text(function (d) { return d.key.toUpperCase(); })
+        .text(function (d) {
+            if (d.key.length > 10)
+                return d.key.substr(0, 10).toUpperCase() + '...';
+            else
+                return d.key.toUpperCase();
+        })
         .style('text-transform', 'uppercase')
         .style('font-size', '12px')
         .style('fill', function (d, i) {
@@ -421,12 +431,12 @@ var line2D = function (chartType, chartId, chartdata) {
              this.style.cursor = 'pointer';
          });
 
-        }
-    }
+                }
+            }
 
-    else if (chartType == 'Area2D' || chartType == 'StepArea2D' || chartType == 'CurveArea2D') {
-        var color = chartdata.chart.pallattecolor[0];
-        var area = d3.svg.area()
+            else if (chartType == 'Area2D' || chartType == 'StepArea2D' || chartType == 'CurveArea2D') {
+                var color = chartdata.chart.pallattecolor[0];
+                var area = d3.svg.area()
     .x(function (d) {
         return x(d.label) + x.rangeBand() / 2;
     })
@@ -437,31 +447,31 @@ var line2D = function (chartType, chartId, chartdata) {
         else
             return y(domainmin);
     });
-        if (chartType == "StepArea2D") {
-            area.interpolate('step-after');
-        }
-        if (chartType == "CurveArea2D") {
-            area.interpolate('cardinal');
-        }
-        svg.append("path")
+                if (chartType == "StepArea2D") {
+                    area.interpolate('step-after');
+                }
+                if (chartType == "CurveArea2D") {
+                    area.interpolate('cardinal');
+                }
+                svg.append("path")
     .datum(chartdata.data)
         .attr("style", "stroke:transparent ;fill:" + color + ";opacity:.8")
         .attr("d", area);
-        svg.selectAll('.xgrid').selectAll('line')
+                svg.selectAll('.xgrid').selectAll('line')
           .style("stroke-dasharray", ("3, 3"))
                .style("opacity", 0)
                 .style("stroke-width", 8);
-        tickspace(chartdata.data);
-    }
-    else if (chartType == 'MultiLine2D' || chartType == 'MultiStepLine2D' || chartType == 'MultiCurve2D') {
-        dataGroup.forEach(function (d, i) {
-            var j = i;
-            dottedlinearr = [];
-            var color = chartdata.chart.pallattecolor[i];
-            var keyid = d.key;
-            var colorstyle = 'stroke:' + color + ';fill:none';
-            currentchartdata = d.values;
-            var path = svg.append('path')
+                tickspace(chartdata.data);
+            }
+            else if (chartType == 'MultiLine2D' || chartType == 'MultiStepLine2D' || chartType == 'MultiCurve2D') {
+                dataGroup.forEach(function (d, i) {
+                    var j = i;
+                    dottedlinearr = [];
+                    var color = chartdata.chart.pallattecolor[i];
+                    var keyid = d.key;
+                    var colorstyle = 'stroke:' + color + ';fill:none';
+                    currentchartdata = d.values;
+                    var path = svg.append('path')
         .attr('d', valueline(d.values))
          .attr("class", chartType + keyid.replace(/\s+/g, '') + ' line')
           .attr("data-visibilitypath", "true")
@@ -469,9 +479,9 @@ var line2D = function (chartType, chartId, chartdata) {
         .attr('style', colorstyle);
 
 
-            var totalLength = path.node().getTotalLength();
+                    var totalLength = path.node().getTotalLength();
 
-            path
+                    path
       .attr("stroke-dasharray", totalLength + " " + totalLength)
       .attr("stroke-dashoffset", totalLength)
       .transition()
@@ -480,8 +490,8 @@ var line2D = function (chartType, chartId, chartdata) {
         .attr("stroke-dashoffset", 0);
 
 
-            for (i = 0; i < dottedlinearr.length; i++) {
-                svg.append("path")
+                    for (i = 0; i < dottedlinearr.length; i++) {
+                        svg.append("path")
         .attr("class", "line")
         .attr("d", dottedlinearr[i])
           .attr("class", chartType + keyid.replace(/\s+/g, '') + ' line')
@@ -489,20 +499,20 @@ var line2D = function (chartType, chartId, chartdata) {
            .attr("data-categorycolumn", d.key)
         .attr("style", colorstyle)
         .style("stroke-dasharray", ("3, 3"));
-            }
-            if (j == 0)
-                drawlinepath(chartType, d.values, d.key);
-            drawCircle(chartType, d.values, color, d.key);
+                    }
+                    if (j == 0)
+                        drawlinepath(chartType, d.values, d.key);
+                    drawCircle(chartType, d.values, color, d.key);
 
-        });
-        tickspace(dataGroup[0].values);
-        if (chartdata.chart.showlegend) {
-            var legend = svg.selectAll('.legend')
+                });
+                tickspace(dataGroup[0].values);
+                if (chartdata.chart.showlegend) {
+                    var legend = svg.selectAll('.legend')
         .data(dataGroup)
         .enter()
       .append('g')
         .attr('class', 'legend');
-            legend.append('rect')
+                    legend.append('rect')
         .attr('x', width)
         .attr('y', function (d, i) { return (i + 1) * 20; })
         .attr('width', 10)
@@ -512,12 +522,17 @@ var line2D = function (chartType, chartId, chartdata) {
             return chartdata.chart.pallattecolor[i];
         });
 
-            legend.append('text')
+                    legend.append('text')
         .attr('x', width + 12)
         .attr('y', function (d, i) { return ((i + 1) * 20) + 9; })
          .style('text-transform', 'uppercase')
         .style('font-size', '12px')
-        .text(function (d) { return d.key.toUpperCase(); })
+        .text(function (d) {
+            if (d.key.length > 10)
+                return d.key.substr(0, 10).toUpperCase() + '...';
+            else
+                return d.key.toUpperCase();
+        })
 
         .style('fill', function (d, i) {
             return chartdata.chart.pallattecolor[i]
@@ -541,11 +556,11 @@ var line2D = function (chartType, chartId, chartdata) {
          .on("mouseover", function (d, i) {
              this.style.cursor = 'pointer';
          });
-        }
-    }
+                }
+            }
 
-    else {
-        var area = d3.svg.area()
+            else {
+                var area = d3.svg.area()
     .x(function (d) {
         return x(d.label) + x.rangeBand() / 2;
     })
@@ -556,35 +571,35 @@ var line2D = function (chartType, chartId, chartdata) {
         else
             return y(domainmin);
     });
-        if (chartType == "MultiStepArea2D")
-            area.interpolate('step-after');
-        if (chartType == "MultiCurveArea2D")
-            area.interpolate('cardinal');
-        dataGroup.forEach(function (d, i) {
-            var color = chartdata.chart.pallattecolor[i];
-            var colorstyle = 'stroke:' + color;
-            var keyid = d.key;
-            svg.append("path")
+                if (chartType == "MultiStepArea2D")
+                    area.interpolate('step-after');
+                if (chartType == "MultiCurveArea2D")
+                    area.interpolate('cardinal');
+                dataGroup.forEach(function (d, i) {
+                    var color = chartdata.chart.pallattecolor[i];
+                    var colorstyle = 'stroke:' + color;
+                    var keyid = d.key;
+                    svg.append("path")
     .datum(d.values)
         .attr("style", "stroke:transparent;fill:" + color + ";opacity:0.5")
         .attr("d", area)
         .attr("data-visibilitypath", "true")
          .attr("data-categorycolumn", d.key)
         .attr("class", chartType + keyid.replace(/\s+/g, ''));
-            svg.selectAll('.xgrid').selectAll('line')
+                    svg.selectAll('.xgrid').selectAll('line')
           .style("stroke-dasharray", ("3, 3"))
           .style("opacity", 0)
            .style("stroke-width", 8);
 
-        });
-        tickspace(dataGroup[0].values);
-        if (chartdata.chart.showlegend) {
-            var legend = svg.selectAll('.legend')
+                });
+                tickspace(dataGroup[0].values);
+                if (chartdata.chart.showlegend) {
+                    var legend = svg.selectAll('.legend')
         .data(dataGroup)
         .enter()
       .append('g')
         .attr('class', 'legend');
-            legend.append('rect')
+                    legend.append('rect')
         .attr('x', width)
         .attr('y', function (d, i) { return (i + 1) * 20; })
         .attr('width', 10)
@@ -594,7 +609,7 @@ var line2D = function (chartType, chartId, chartdata) {
             return chartdata.chart.pallattecolor[i];
         });
 
-            legend.append('text')
+                    legend.append('text')
         .attr('x', width + 12)
         .attr('y', function (d, i) { return ((i + 1) * 20) + 9; })
         .text(function (d) { return d.key; })
@@ -621,30 +636,30 @@ var line2D = function (chartType, chartId, chartdata) {
          .on("mouseover", function (d, i) {
              this.style.cursor = 'pointer';
          });
-        }
-    }
+                }
+            }
 
-    function drawlinepath(cType, cData, id) {
-        var linerect = svg.selectAll('linerect')
+            function drawlinepath(cType, cData, id) {
+                var linerect = svg.selectAll('linerect')
      .data(cData)
     .enter().append('g')
     .attr('class', 'linerect');
-        linerect.append('rect')
+                linerect.append('rect')
     .attr("class", function (d) { return cType + d.label })
     .style("fill", "grey")
     .attr("width", 0)
      .attr("height", height)
      .attr("x", function (d)
      { return x(d.label) + x.rangeBand() / 2; })
-     .attr("y", 0)
-    }
-    function drawCircle(cType, cData, color, id) {
+     .attr("y", 20)
+            }
+            function drawCircle(cType, cData, color, id) {
 
-        var circletext = svg.selectAll('circletext')
+                var circletext = svg.selectAll('circletext')
      .data(cData)
     .enter().append('g')
     .attr('class', 'circletext ' + cType + id.replace(/\s+/g, ''));
-        circletext.append('circle')
+                circletext.append('circle')
     .attr("class", function (d) { return cType + d.label })
     .style("fill", function (d, i) { return d.value == 0 ? "none" : color; })
     .style("opacity", '0.3')
@@ -694,7 +709,7 @@ var line2D = function (chartType, chartId, chartdata) {
      .attr("r", 5);
 
 
-        circletext.append('text')
+                circletext.append('text')
     .attr("dx", function (d)
     { return x(d.label) + x.rangeBand() / 2 + 10; })
      .attr("dy", function (d) { return y(d.value) - 5; })
@@ -719,7 +734,7 @@ var line2D = function (chartType, chartId, chartdata) {
             return 'display:none;z-index:9999999;fill:' + colorval + ';font-size:15px'
         });
 
-        svg.selectAll(chartId + ' .xgrid').selectAll('line')
+                svg.selectAll(chartId + ' .xgrid').selectAll('line')
           .style("stroke-width", 20)
           .style("cursor", "pointer")
          .style("opacity", "0")
@@ -801,35 +816,35 @@ var line2D = function (chartType, chartId, chartdata) {
           });
 
 
-    };
+            };
 
-    d3.selectAll(chartId + ' path.domain').style('opacity', function (d, i) {
-        if (i != 0)
-            this.setAttribute('d', '')
-    });
+            d3.selectAll(chartId + ' path.domain').style('opacity', function (d, i) {
+                if (i != 0)
+                    this.setAttribute('d', '')
+            });
 
-    if (chartdata.chart.credits != undefined) {
-        if (chartdata.chart.credits.text != undefined && chartdata.chart.credits.text != '') {
-            var credits = svg.selectAll('.credits')
+            if (chartdata.chart.credits != undefined) {
+                if (chartdata.chart.credits.text != undefined && chartdata.chart.credits.text != '') {
+                    var credits = svg.selectAll('.credits')
             .data([1])
             .enter().append('g');
-            var positionwidth;
-            var imagewidth;
-            if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '' && showlegendwidth == 0) {
-                positionwidth = 30;
-                imagewidth = 40;
-            }
-            else if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '' && showlegendwidth != 0) {
-                positionwidth = 0;
-                imagewidth = 10;
-            }
-            else
-                positionwidth = 10;
-            credits.append('text')
+                    var positionwidth;
+                    var imagewidth;
+                    if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '' && showlegendwidth == 0) {
+                        positionwidth = 30;
+                        imagewidth = 40;
+                    }
+                    else if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '' && showlegendwidth != 0) {
+                        positionwidth = 0;
+                        imagewidth = 10;
+                    }
+                    else
+                        positionwidth = 10;
+                    credits.append('text')
             .attr("class", 'credits' + chartId.replace("#", ''))
-            // .attr("x", d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1)
+                    // .attr("x", d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1)
            .attr("x", document.getElementById(chartId.replace('#', '')).offsetWidth - positionwidth)
-            .attr("y", height + margin.bottom + 7)
+            .attr("y", height + margin.bottom-6)
             .attr("text-anchor", "end")
             .style("font-size", "12px")
             .style("text-decoration", "none")
@@ -839,47 +854,74 @@ var line2D = function (chartType, chartId, chartdata) {
             .text(chartdata.chart.credits.text.toUpperCase());
 
 
-            if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '') {
-                function getBase64FromImageUrl(url) {
-                    var img = new Image();
+                    if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '') {
+                        function getBase64FromImageUrl(url) {
+                            var img = new Image();
 
-                    img.onload = function () {
-                        var canvas2 = document.createElement("canvas");
-                        canvas2.width = this.width;
-                        canvas2.height = this.height;
+                            img.onload = function () {
+                                var canvas2 = document.createElement("canvas");
+                                canvas2.width = this.width;
+                                canvas2.height = this.height;
 
-                        var ctx2 = canvas2.getContext("2d");
-                        ctx2.drawImage(this, 0, 0);
+                                var ctx2 = canvas2.getContext("2d");
+                                ctx2.drawImage(this, 0, 0);
 
-                        var dataURL = canvas2.toDataURL("image/png");
+                                var dataURL = canvas2.toDataURL("image/png");
 
 
-                        credits.append('image')
-                        //.attr('x', d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1 - 10)
+                                credits.append('image')
+                                //.attr('x', d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1 - 10)
             .attr('x', document.getElementById(chartId.replace('#', '')).offsetWidth - imagewidth)
-            .attr("y", height + margin.bottom - 13)
+            .attr("y", height + margin.bottom-25)
             .attr("width", 40)
             .attr("height", 30)
             .attr("xlink:href", dataURL);
 
 
 
-                    };
+                            };
 
-                    img.src = url;
+                            img.src = url;
+                        }
+                        getBase64FromImageUrl(chartdata.chart.credits.imageurl);
+                    }
+
+
+                    /*var credits= d3.select(chartId).append('div').attr('style','font-size: 11px;float: right;margin-right: 10px;margin-top: -25px;');
+                    credits.append('span').style('dispaly','inline-block')
+                    .append('p').style('top','-15px').style('position','relative').style('display','inline-block').text('POWERED BY');
+                    credits.append('span')
+                    .style('display','inline-block')
+                    .append('img')
+                    .attr('style','width: 30px;height: 30px;top: -5px;position: relative;')
+                    .attr('src','http://stage.priceweave.com/stylesheets/images/small-badge-grey-padding.png');*/
                 }
-                getBase64FromImageUrl(chartdata.chart.credits.imageurl);
             }
+        }
+        else {
+               var bottommargin = chartdata.chart.slant ? 50 : 25;
+            var margin = { top: 20, right: 20, bottom: bottommargin, left: 50 };
+            var chartcontent = d3.select(chartId);
+            var width = chartcontent[0][0].offsetWidth - margin.left - margin.right;
+            var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
+            if (d3.select(chartId).select('svg')[0][0] != null)
+                d3.select(chartId).select('svg').remove();
+            var svg = d3.select(chartId).append("svg")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right + 40 + showlegendwidth) + ' ' + (height + margin.top + margin.bottom + 10))
+        .attr('preserveAspectRatio', 'xMinYMin')
+        .append("g")
+    .attr("transform", "translate(" + width/2 + "," + height/2 + ")");
+
+            svg.append('text')
+        .attr('x', 0)
+        .attr('y', 0)
+        .text("NO DATA TO DISPLAY")
+        .style('font-size', '12px')
+        .style('fill','black');
 
 
-            /*var credits= d3.select(chartId).append('div').attr('style','font-size: 11px;float: right;margin-right: 10px;margin-top: -25px;');
-            credits.append('span').style('dispaly','inline-block')
-            .append('p').style('top','-15px').style('position','relative').style('display','inline-block').text('POWERED BY');
-            credits.append('span')
-            .style('display','inline-block')
-            .append('img')
-            .attr('style','width: 30px;height: 30px;top: -5px;position: relative;')
-            .attr('src','http://stage.priceweave.com/stylesheets/images/small-badge-grey-padding.png');*/
         }
     }
 }

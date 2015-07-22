@@ -39,6 +39,7 @@ var linedata = {
     },
     "export":{
         "showexport": true,
+        "filename":"Sandisk",
          "format": ["-Select-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
     },
     "data":  [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
@@ -218,6 +219,7 @@ var linedata = {
     },
     "export":{
         "showexport": true,
+           "filename":"Sandisk",
          "format": ["-Select-","jpeg","png"]
     },
     "data":  [ // Data Format example for Multi chart Type
@@ -761,6 +763,7 @@ var columndata = {
     },
     "export":{
         "showexport": true,
+           "filename":"Sandisk",
          "format": ["-Select-","jpeg","png"]
     },
     "data": [

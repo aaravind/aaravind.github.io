@@ -122,7 +122,7 @@ var gauge2D = function (chartId, chartdata) {
           .append('path')
           .attr('d', arc)
           .attr('style', function (d, i) {
-              return "fill:" + chartdata.chart.pallattecolor[i] + ";stroke:black;stroke-width: 1px;";
+              return "fill:" + chartdata.chart.pallattecolor[i] + ";stroke:black;stroke-width: 1px;opacity:0.7";
           }).on("mouseover", function (d, i) {
 
               div.transition()
@@ -146,7 +146,7 @@ var gauge2D = function (chartId, chartdata) {
               d3.select(this).transition()
                     .duration(300)
                     .attr("d", arcOver)
-                    .style("opacity", '0.8');
+                    .style("opacity", '1');
           })
         .on("mouseout", function (d, i) {
             div.transition()
@@ -155,10 +155,7 @@ var gauge2D = function (chartId, chartdata) {
             d3.select(this).transition()
                     .duration(300)
                     .attr("d", arc)
-                     .style("opacity", '1');
-        })
-        .on('resize', function () {
-            console.log("hi");
+                     .style("opacity", '0.7');
         });
 
 
