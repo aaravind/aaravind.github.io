@@ -704,14 +704,17 @@ var line2D = function (chartType, chartId, chartdata) {
 
 
             var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 10) + 'px';
-            //    var yattr = (elemRect.top - bodyRect.top - margin.top +5) + 'px';
-            var currentdivattr = document.getElementById(chartId.replace("#", "")).offsetTop + height / 2;
+            if(d.value>domainmax/2)
+               var yattr = (elemRect.top - bodyRect.top - margin.top +25) + 'px';
+               else
+                var yattr = (elemRect.top - bodyRect.top - margin.top -20) + 'px';
+            /*var currentdivattr = document.getElementById(chartId.replace("#", "")).offsetTop + height / 2;
             var currentcirclepos = document.getElementById(chartId.replace("#", "")).offsetTop + (this.getAttribute('cy') / 1);
             if (currentcirclepos > currentdivattr)
                 var yattr = (currentcirclepos - 45) + 'px';
             else
                 var yattr = (currentcirclepos + 7) + 'px';
-            // var yattr = document.getElementById(chartId.replace("#", "")).offsetTop + (this.getAttribute('cy') / 1 + 7) + 'px';
+            // var yattr = document.getElementById(chartId.replace("#", "")).offsetTop + (this.getAttribute('cy') / 1 + 7) + 'px';*/
 
             div.html(this.nextSibling.textContent)
             .style('color', this.nextSibling.style.fill)

@@ -809,36 +809,36 @@ var columndata = {
         ,
         {
             "label": "04-08-15",
-            "value": 44,
+            "value": -44,
             "tooltext":"Snapdeal"
         }
         ,
         {
             "label": "05-08-15",
-            "value": -55,
+            "value": 55,
             "tooltext":"Snapdeal"
         }
         ,
         {
             "label": "06-08-15",
-            "value": 66,
+            "value": -66,
             "tooltext":"Snapdeal"
         }
         ,
         {
             "label": "07-08-15",
-            "value": 77,
+            "value": -77,
             "tooltext":"Snapdeal"
         }
         ,
         {
             "label": "08-08-15",
-            "value": -88,
+            "value": 88,
             "tooltext":"Snapdeal"
         },
         {
             "label": "09-08-15",
-            "value": 99,
+            "value": -99,
             "tooltext":"Snapdeal"
         }
         ,
@@ -861,7 +861,7 @@ var columndata = {
         } ,
         {
             "label": "13-08-15",
-            "value": -99,
+            "value": 99,
             "tooltext":"Flipkart"
         } ,
         {
@@ -876,12 +876,12 @@ var columndata = {
         },
         {
             "label": "16-08-15",
-            "value": 65,
+            "value": -65,
             "tooltext":"Flipkart"
         },
         {   
 		    "label": "17-08-15",
-            "value": 54,
+            "value": -54,
             "tooltext":"Flipkart"
         },
         {
@@ -917,12 +917,12 @@ var columndata = {
         ,
         {
             "label": "23-08-15",
-            "value": -77,
+            "value": 77,
             "tooltext":"Amazon"
         },
         {
             "label": "24-08-15",
-            "value": 33,
+            "value": -33,
             "tooltext":"Amazon"
         }
         ,
@@ -940,7 +940,7 @@ var columndata = {
         ,
         {
             "label": "27-08-15",
-            "value": -88,
+            "value": 88,
             "tooltext":"Snapdeal"
         } ,
         {

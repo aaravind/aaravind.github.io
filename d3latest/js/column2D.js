@@ -452,7 +452,20 @@ var column2D = function (chartId, chartdata) {
             });
             d3.selectAll(chartId + ' .xtick .tick line').style('display', 'none');
             d3.selectAll(chartId + ' .exportgrid .tick text').attr('dx', '3').attr('dy', '12').style('text-anchor', 'start');
-            d3.select(chartId + ' .exportgrid .tick text').style('display', 'none');
+            if (checknegcount + checkzerocount != chartdata.data.length) {
+                d3.select(chartId + ' .exportgrid .tick text').style('display', 'none');
+                d3.select(chartId + ' .exportgrid .tick line').style('display', 'none');
+            }
+            else
+            {
+                d3.selection.prototype.last = function() {
+  var last = this.size() - 1;
+  return d3.select(this[0][last]);
+};
+ d3.selectAll(chartId + ' .exportgrid .tick text').last().style('display', 'none');
+  d3.selectAll(chartId + ' .exportgrid .tick line').last().style('display', 'none');
+ }
+
             d3.selectAll(chartId + ' .exportgrid .tick line').attr('x2', function () {
                 return this.getAttribute('x2') / 1 + 70;
             });
