@@ -226,7 +226,7 @@ var column2D = function (chartId, chartdata) {
         else
             return 'Column' + d.label.replace(' ', '');
     })
-    .attr('data-visibility',true)
+    .attr('data-visibility', true)
     .on("mouseover", function (d, i) {
         this.style.opacity = 1;
         div.transition()
@@ -243,16 +243,16 @@ var column2D = function (chartId, chartdata) {
         if (checkposcount + checkzerocount == chartdata.data.length) {
             var yattrval = (elemRect.top - bodyRect.top);
             if (d.value < domainmaxcol / 2)
-                var yattr = yattrval - 43 + 'px';
+                var yattr = yattrval - 70 + 'px';
             else
-                var yattr = yattrval + 20 + 'px';
+                var yattr = yattrval + 25 + 'px';
         }
         else if (checknegcount + checkzerocount == chartdata.data.length) {
             var yattrval = (elemRect.bottom - bodyRect.top);
             if (Math.abs(d.value) > domainmaxcol / 2)
-                var yattr = yattrval - 43 + 'px';
+                var yattr = yattrval - 70 + 'px';
             else
-                var yattr = yattrval + 20 + 'px';
+                var yattr = yattrval + 25 + 'px';
         }
 
         else {
@@ -260,12 +260,12 @@ var column2D = function (chartId, chartdata) {
 
             if (Y(d.value) > Y0()) {
                 var yattrval = (elemRect.bottom - bodyRect.top);
-                var yattr = yattrval - 40 + 'px';
+                var yattr = yattrval - 70 + 'px';
 
             }
             else {
                 var yattrval = (elemRect.top - bodyRect.top);
-                var yattr = yattrval + 20 + 'px';
+                var yattr = yattrval + 25 + 'px';
             }
 
 
@@ -273,7 +273,10 @@ var column2D = function (chartId, chartdata) {
 
         // var yattr = (bodyRect.top-document.getElementById('barchart12').getBoundingClientRect().top + (this.getAttribute('x') / 1))+ 'px';
         if (chartdata.data[i].tooltext != undefined && chartdata.data[i].tooltext != '') {
-            div.html(chartdata.data[i].tooltext + ': ' + chartdata.data[i].value)
+            var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + d.label + '</span><hr>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + chartdata.data[i].tooltext + ': ' + chartdata.data[i].value + '</div>';
+
+            div.html(htmlcontent)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
            return (xattr.replace('px', '') / 1 - this.getAttribute('width') / 2) + 'px';
@@ -453,10 +456,18 @@ var column2D = function (chartId, chartdata) {
             d3.selectAll(chartId + ' .exportgrid .tick line').attr('x2', function () {
                 return this.getAttribute('x2') / 1 + 70;
             });
-            d3.selectAll(chartId + ' .domain').attr('d', function (d) {
-                var asdfg = d3.selectAll(chartId + ' .domain')[0][0].getAttribute('d');
-                return asdfg.substring(0, asdfg.lastIndexOf('V'));
+            /*  d3.selectAll(chartId + ' .domain').attr('d', function (d) {
+            var asdfg = d3.selectAll(chartId + ' .domain')[0][0].getAttribute('d');
+            return asdfg.substring(0, asdfg.lastIndexOf('V'));
 
+            });*/
+            d3.selectAll(chartId + ' .domain').attr('d', function () {
+                var dval = this.getAttribute('d');
+                var first = dval.substring(0, dval.lastIndexOf('H') + 1);
+                var last = dval.substring(dval.lastIndexOf('V'), dval.length);
+                var middle = dval.substring(dval.lastIndexOf('H') + 1, dval.lastIndexOf('V')) / 1 + 70;
+                var finalfull = first + middle + last;
+                return finalfull.substring(0, finalfull.lastIndexOf('V'));
             });
             if (chartdata.chart.showlegend) {
                 var legend = svg.selectAll('.legend')
@@ -487,20 +498,20 @@ var column2D = function (chartId, chartdata) {
             return d.value;
         })
         .on("click", function (d, i) {
-             var graphselect = 'Column' + d.name;
-             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
-             if (d3.selectAll('.' + graphselect).style('display') == 'inline') {
-                 d3.selectAll('.' + graphselect).attr("data-visibility", "false");
-                 d3.selectAll('.' + graphselect).style('display', 'none');
-             }
+            var graphselect = 'Column' + d.name;
+            this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
+            if (d3.selectAll('.' + graphselect).style('display') == 'inline') {
+                d3.selectAll('.' + graphselect).attr("data-visibility", "false");
+                d3.selectAll('.' + graphselect).style('display', 'none');
+            }
 
-             else {
-                 this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
-                 d3.selectAll('.' + graphselect).attr("data-visibility", "true");
-                 d3.selectAll('.' + graphselect).style('display', 'inline');
-             }
+            else {
+                this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
+                d3.selectAll('.' + graphselect).attr("data-visibility", "true");
+                d3.selectAll('.' + graphselect).style('display', 'inline');
+            }
 
-         })
+        })
          .on("mouseover", function (d, i) {
              this.style.cursor = 'pointer';
              this.style.opacity = 1;
