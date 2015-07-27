@@ -1,0 +1,66 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700,400italic,700italic);
+
+
+body {
+overflow-x: hidden;
+overflow-y: visible;
+font-family: 'Source Sans Pro', ’Trebuchet MS’, 'Helvetica Neue', Helvetica, 'Lucida Grande', Arial, Verdana, sans-serif;
+}
+svg {
+
+}  
+svg text,div,span {
+ font-family: 'Source Sans Pro', ’Trebuchet MS’, 'Helvetica Neue', Helvetica, 'Lucida Grande', Arial, Verdana, sans-serif;
+    }
+@media screen and (max-width: 450px) {
+    svg text {
+        font-size: 8px;
+    }
+}
+
+ path { 
+    stroke: #999;
+    stroke-width: 0.9;
+    fill: none;
+}
+.slice path {
+    stroke: #fff;
+    stroke-width: 1px;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+.grid .tick {
+    stroke-width: 2;
+    stroke: lightgrey;
+    opacity: 0.7;
+    fill: none;  shape-rendering: crispEdges;font:12px serif;
+}
+
+.gridy .tick {
+    stroke-width: 0.5;
+    stroke: lightgrey;
+    opacity: 0.7;
+    fill: none;  shape-rendering: crispEdges;font:12px serif;
+}
+.grid text,.gridy text,.tick text {
+stroke: #b1c2c6 ;
+stroke-width: 0.7;
+  font-weight: 200;
+}
+.tick line {
+	stroke-width: 1;
+}
+
+
+
+.polyline{
+	opacity: .3;
+	stroke: black;
+	stroke-width: 2px;
+	fill: none;
+}
