@@ -222,10 +222,11 @@ var column2D = function (chartId, chartdata) {
     .enter().append("rect")
     .attr('class', function (d) {
         if (d.tooltext != undefined || d.tooltext != '')
-            return chartId.replace('#', '') + 'Column' + d.tooltext.replace(' ', '');
+            return 'Column' + d.tooltext.replace(' ', '');
         else
-            return chartId.replace('#', '') + 'Column' + d.label.replace(' ', '');
+            return 'Column' + d.label.replace(' ', '');
     })
+    .attr('data-visibility',true)
     .on("mouseover", function (d, i) {
         this.style.opacity = 1;
         div.transition()
@@ -485,6 +486,21 @@ var column2D = function (chartId, chartdata) {
         .style('fill', function (d, i) {
             return d.value;
         })
+        .on("click", function (d, i) {
+             var graphselect = 'Column' + d.name;
+             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
+             if (d3.selectAll('.' + graphselect).style('display') == 'inline') {
+                 d3.selectAll('.' + graphselect).attr("data-visibility", "false");
+                 d3.selectAll('.' + graphselect).style('display', 'none');
+             }
+
+             else {
+                 this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
+                 d3.selectAll('.' + graphselect).attr("data-visibility", "true");
+                 d3.selectAll('.' + graphselect).style('display', 'inline');
+             }
+
+         })
          .on("mouseover", function (d, i) {
              this.style.cursor = 'pointer';
              this.style.opacity = 1;

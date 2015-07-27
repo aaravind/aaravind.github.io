@@ -1,17 +1,34 @@
 function redrawchart(chart,id,data) {
-     
-        var savelegends = d3.selectAll(id+' path[data-visibilitypath = \'false\']')[0];
-    if (savelegends.length == 0)
-        d3charts(chart, id, data);
-    else {
-        var saveleg = [];
-        for (i = 0; i < savelegends.length; i++) {
-            saveleg.push(savelegends[i].getAttribute('class').split(' ')[0]);
-        };  
+    if (chart.search('Column') != 0) {
+        var savelegends = d3.selectAll(id + ' path[data-visibilitypath = \'false\']')[0];
+        if (savelegends.length == 0)
             d3charts(chart, id, data);
-        for (i = 0; i < saveleg.length; i++) {
-            d3.selectAll(id+' .' + saveleg[i]).style('display', 'none').attr('data-visibilitypath', 'false');
-        };        
+        else {
+            var saveleg = [];
+            for (i = 0; i < savelegends.length; i++) {
+                saveleg.push(savelegends[i].getAttribute('class').split(' ')[0]);
+            };
+            d3charts(chart, id, data);
+            for (i = 0; i < saveleg.length; i++) {
+                d3.selectAll(id + ' .' + saveleg[i]).style('display', 'none').attr('data-visibilitypath', 'false');
+            };
+        }
+    }
+    else
+    {   
+      var savelegends = d3.selectAll(id + ' rect[data-visibility = \'false\']')[0];
+        if (savelegends.length == 0)
+            d3charts(chart, id, data);
+        else {
+            var saveleg = [];
+            for (i = 0; i < savelegends.length; i++) {
+                saveleg.push(savelegends[i].getAttribute('class').split(' ')[0]);
+            };
+            d3charts(chart, id, data);
+            for (i = 0; i < saveleg.length; i++) {
+                d3.selectAll(id + ' .' + saveleg[i]).style('display', 'none').attr('data-visibility', 'false');
+            };
+        }
     }
 }
 
@@ -19,7 +36,7 @@ window.onresize = function (event) {
 
     d3charts("Line2D", "#linechart", linedata);
     redrawchart("MultiLine2D","#Multiline", Multilinedata); // For Multiline call Redraw Function to Save the legends interactions
-    d3charts("Column2D", "#column", columndata);
+    redrawchart("Column2D", "#column", columndata);
 };
 
 var linedata = {

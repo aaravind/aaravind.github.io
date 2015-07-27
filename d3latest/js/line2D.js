@@ -69,7 +69,7 @@ var line2D = function (chartType, chartId, chartdata) {
             var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
             var showlegendwidth = chartdata.chart.showlegend == true ? 30 : 0;
             var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
-            var viewboxval = chartType.search("Multi") != -1 ? 70 : 40;
+                            var viewboxval = chartType.search("Multi") != -1 ? 70 : 40;
             var div = d3.select("body").append("div")
     .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif; background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
             var x = d3.scale.ordinal()
@@ -99,7 +99,7 @@ var line2D = function (chartType, chartId, chartdata) {
             var svg = d3.select(chartId).append("svg")
     .attr("width", "100%")
     .attr("height", "100%")
-    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right + viewboxval) + ' ' + (height + margin.top + margin.bottom + 10)) // + 40 + showlegendwidth
+    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right+viewboxval) + ' ' + (height + margin.top + margin.bottom + 10)) // + 40 + showlegendwidth
         .attr('preserveAspectRatio', 'xMinYMin')
         .append("g")
     .attr("transform", "translate(" + margin.left + "," + 0 + ")");
@@ -935,11 +935,11 @@ var line2D = function (chartType, chartId, chartdata) {
             var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
             if (d3.select(chartId).select('svg')[0][0] != null)
                 d3.select(chartId).select('svg').remove();
-            var viewboxval = chartType.search("Multi") != -1 ? 70 : 40;
+                var viewboxval = chartType.search("Multi") != -1 ? 70 : 40;
             var svg = d3.select(chartId).append("svg")
     .attr("width", "100%")
     .attr("height", "100%")
-    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right + viewboxval) + ' ' + (height + margin.top + margin.bottom + 10)) // + 40 + showlegendwidth
+    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right+viewboxval) + ' ' + (height + margin.top + margin.bottom + 10)) // + 40 + showlegendwidth
         .attr('preserveAspectRatio', 'xMinYMin')
         .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
@@ -954,7 +954,7 @@ var line2D = function (chartType, chartId, chartdata) {
 
         }
     }
-    d3.selectAll(chartId + ' .gridy .tick text').attr('dx', '3').attr('dy', '12').style('text-anchor','start');
+    d3.selectAll(chartId + ' .gridy .tick text').attr('dx', '3').attr('dy', '12').style("text-anchor", "start");
 
     if (chartType.search('Multi') != -1) {
         d3.selectAll(chartId + ' .gridy .tick line').attr('x2', function () {
@@ -962,7 +962,7 @@ var line2D = function (chartType, chartId, chartdata) {
         });
         d3.selectAll(chartId + ' .grid.xtick .domain').attr('d', function () {
             var dval = this.getAttribute('d');
-            var first = dval.substring(0, dval.lastIndexOf('H') + 1);
+            var first = dval.substring(0, dval.lastIndexOf('H')+1);
             var last = dval.substring(dval.lastIndexOf('V'), dval.length);
             var middle = dval.substring(dval.lastIndexOf('H') + 1, dval.lastIndexOf('V')) / 1 + 70;
             return first + middle + last;
@@ -972,9 +972,9 @@ var line2D = function (chartType, chartId, chartdata) {
         d3.selectAll(chartId + ' .gridy .tick line').attr('x2', function () {
             return this.getAttribute('x2') / 1 + 40;
         });
-        d3.selectAll(chartId + ' .grid.xtick .domain').attr('d', function () {
+          d3.selectAll(chartId + ' .grid.xtick .domain').attr('d', function () {
             var dval = this.getAttribute('d');
-            var first = dval.substring(0, dval.lastIndexOf('H') + 1);
+            var first = dval.substring(0, dval.lastIndexOf('H')+1);
             var last = dval.substring(dval.lastIndexOf('V'), dval.length);
             var middle = dval.substring(dval.lastIndexOf('H') + 1, dval.lastIndexOf('V')) / 1 + 40;
             return first + middle + last;
