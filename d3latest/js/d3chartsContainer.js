@@ -7,8 +7,8 @@
  */
 var d3charts = function (chartType, chartId, chartdata, chartwidth, chartheight) {
    
-    if (chartType == 'Column2D') {
-        column2D(chartId, chartdata, chartwidth, chartheight);
+    if (chartType == 'Column2D' || chartType == 'DoubleColumn2D') {
+        column2D(chartId, chartdata,chartType,chartwidth,chartheight);
     }
 
     if (chartType == 'Line2D' || chartType == 'MultiLine2D' || chartType == 'Area2D' || chartType == 'MultiArea2D' || chartType == 'Scatter2D' || chartType == 'MultiScatter2D' || chartType == 'StepLine2D' || chartType == 'MultiStepLine2D' || chartType == 'MultiStepArea2D' || chartType == 'StepArea2D'

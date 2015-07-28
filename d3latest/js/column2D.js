@@ -5,7 +5,7 @@
  * Licensed under the MIT License.
  * http://opensource.org/licenses/mit-license
  */
-var column2D = function (chartId, chartdata) {
+var column2D = function (chartId, chartdata, chartType) {
     if (chartdata.data != undefined) {
         if (chartdata.data.length != 0) {
 
@@ -61,24 +61,30 @@ var column2D = function (chartId, chartdata) {
     .ticks(5);
                 x1.domain(chartdata.data.map(function (d) { return d.label; }));
             }
-            var checkposcount = 0;
-            var checknegcount = 0;
-            var checkzerocount = 0;
-            for (i = 0; i < chartdata.data.length; i++) {
-                if (chartdata.data[i].value > 0)
-                    checkposcount++;
-                else if (chartdata.data[i].value < 0)
-                    checknegcount++;
-                else
-                    checkzerocount++;
-            };
-            if (checkposcount + checkzerocount == chartdata.data.length) {
-                var y = d3.scale.linear()
+            if (chartType == 'Column2D') {
+                var checkposcount = 0;
+                var checknegcount = 0;
+                var checkzerocount = 0;
+                for (i = 0; i < chartdata.data.length; i++) {
+                    if (chartdata.data[i].value > 0)
+                        checkposcount++;
+                    else if (chartdata.data[i].value < 0)
+                        checknegcount++;
+                    else
+                        checkzerocount++;
+                };
+                if (checkposcount + checkzerocount == chartdata.data.length) {
+                    var y = d3.scale.linear()
     .range([height, 15]);
-            }
-            else if (checknegcount + checkzerocount == chartdata.data.length) {
-                var y = d3.scale.linear()
+                }
+                else if (checknegcount + checkzerocount == chartdata.data.length) {
+                    var y = d3.scale.linear()
     .range([15, height]);
+                }
+                else {
+                    var y = d3.scale.linear()
+    .range([height, 15]);
+                }
             }
             else {
                 var y = d3.scale.linear()
@@ -128,22 +134,28 @@ var column2D = function (chartId, chartdata) {
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption);
             x.domain(chartdata.data.map(function (d) { return d.label; }));
-
-            var domainmaxcol = d3.max(chartdata.data, function (d) { return Math.abs(d.value) + (0.25 * Math.abs(d.value)); });
-            if (checkposcount + checkzerocount != chartdata.data.length && checknegcount + checkzerocount != chartdata.data.length) {
-                y
+            if (chartType == 'Column2D') {
+                var domainmaxcol = d3.max(chartdata.data, function (d) { return Math.abs(d.value) + (0.25 * Math.abs(d.value)); });
+                if (checkposcount + checkzerocount != chartdata.data.length && checknegcount + checkzerocount != chartdata.data.length) {
+                    y
           .domain(d3.extent(chartdata.data.map(function (d) { return d.value; })))
           .nice();
-                var domainminval = d3.min(chartdata.data, function (d) { return d.value + (0.25 * d.value); });
-                function Y0() {
-                    return y(0);
+                    var domainminval = d3.min(chartdata.data, function (d) { return d.value + (0.25 * d.value); });
+                    function Y0() {
+                        return y(0);
+                    }
+                    function Y(d) {
+                        return y(d);
+                    }
                 }
-                function Y(d) {
-                    return y(d);
+                else {
+                    domainminval = 0;
+                    y.domain([domainminval, domainmaxcol]);
                 }
             }
             else {
-                domainminval = 0;
+                var domainmaxcol = d3.max(chartdata.data, function (d) { return Math.abs(d.highvalue) + (0.25 * Math.abs(d.highvalue)); });
+                var domainminval = d3.min(chartdata.data, function (d) { return d.lowvalue + 0.25 * d.lowvalue; });
                 y.domain([domainminval, domainmaxcol]);
             }
 
@@ -217,14 +229,22 @@ var column2D = function (chartId, chartdata) {
       .attr("dy", ".71em")
       .attr("text-anchor", "end")
       .text(chartdata.chart.yaxisname);
-            svg.selectAll(".column")
-      .data(chartdata.data)
+
+            function drawrect(cType, cData, valuetype) {
+
+                svg.selectAll(".column")
+      .data(cData)
     .enter().append("rect")
     .attr('class', function (d) {
-        if (d.tooltext != undefined || d.tooltext != '')
+        if (cType == 'Column2D')
+        { 
+             if (d.tooltext != undefined || d.tooltext != '')
             return 'Column' + d.tooltext.replace(' ', '');
         else
-            return 'Column' + d.label.replace(' ', '');
+            return 'Column' + d.label.replace(' ', '');}
+            else
+             return 'Column' + valuetype;
+   
     })
     .attr('data-visibility', true)
     .on("mouseover", function (d, i) {
@@ -232,41 +252,60 @@ var column2D = function (chartId, chartdata) {
         div.transition()
                 .duration(0)
                 .style("opacity", .9);
-        d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "")).style("display", "block");
-
+        if (cType == 'Column2D')
+            d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "")).style("display", "block");
+        else
+            d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "") + valuetype).style("display", "block");
         //var xattr = ((this.getAttribute('x') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
 
         var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 10) + 'px';
 
-        if (checkposcount + checkzerocount == chartdata.data.length) {
+        if (checkposcount + checkzerocount == chartdata.data.length && cType == 'Column2D') {
             var yattrval = (elemRect.top - bodyRect.top);
             if (d.value < domainmaxcol / 2)
-                var yattr = yattrval - 70 + 'px';
+                var yattr = yattrval - 75 + 'px';
             else
-                var yattr = yattrval + 25 + 'px';
+                var yattr = yattrval + 18 + 'px';
         }
-        else if (checknegcount + checkzerocount == chartdata.data.length) {
+        else if (checknegcount + checkzerocount == chartdata.data.length && cType == 'Column2D') {
             var yattrval = (elemRect.bottom - bodyRect.top);
             if (Math.abs(d.value) > domainmaxcol / 2)
-                var yattr = yattrval - 70 + 'px';
+                var yattr = yattrval - 75 + 'px';
             else
-                var yattr = yattrval + 25 + 'px';
+                var yattr = yattrval + 18 + 'px';
         }
 
         else {
 
+            if (cType == 'Column2D') {
+                if (Y(d.value) > Y0()) {
+                    var yattrval = (elemRect.bottom - bodyRect.top);
+                    var yattr = yattrval - 75 + 'px';
 
-            if (Y(d.value) > Y0()) {
-                var yattrval = (elemRect.bottom - bodyRect.top);
-                var yattr = yattrval - 70 + 'px';
-
+                }
+                else {
+                    var yattrval = (elemRect.top - bodyRect.top);
+                    var yattr = yattrval + 18 + 'px';
+                }
             }
             else {
-                var yattrval = (elemRect.top - bodyRect.top);
-                var yattr = yattrval + 25 + 'px';
+                if (valuetype == 'low')
+                    value = d.lowvalue;
+                else
+                    value = d.highvalue;
+                if (Y(value) > Y0()) {
+                    var yattrval = (elemRect.bottom - bodyRect.top);
+                    var yattr = yattrval - 73 + 'px';
+                }
+                else {
+                    var yattrval = (elemRect.top - bodyRect.top);
+                    var yattr = yattrval + 18 + 'px';
+                }
+
             }
+
 
 
         }
@@ -274,8 +313,15 @@ var column2D = function (chartId, chartdata) {
         // var yattr = (bodyRect.top-document.getElementById('barchart12').getBoundingClientRect().top + (this.getAttribute('x') / 1))+ 'px';
         if (chartdata.data[i].tooltext != undefined && chartdata.data[i].tooltext != '') {
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + d.label + '</span><hr>';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + chartdata.data[i].tooltext + ': ' + chartdata.data[i].value + '</div>';
-
+            if (cType == 'Column2D')
+                htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + chartdata.data[i].tooltext + ': ' + chartdata.data[i].value + '</div>';
+            else {
+                if (valuetype == 'low')
+                    valuecurrent = chartdata.data[i].lowvalue;
+                else
+                    valuecurrent = chartdata.data[i].highvalue;
+                htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + chartdata.data[i].tooltext + ': ' + valuecurrent + '</div>';
+            }
             div.html(htmlcontent)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
@@ -296,13 +342,16 @@ var column2D = function (chartId, chartdata) {
     })
         .on("mouseout", function (d, i) {
             this.style.opacity = 0.5;
-            d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "")).style("display", "none");
+            if (cType == 'Column2D')
+                d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "")).style("display", "none");
+            else
+                d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "") + valuetype).style("display", "none");
             div.transition()
                 .duration(0)
                 .style("opacity", 0);
         })
       .attr("fill", function (d, i) {
-          if (chartdata.colormap != undefined) {
+          if (chartdata.colormap != undefined && cType == 'Column2D') {
               for (i = 0; i < chartdata.colormap.length; i++) {
                   if (chartdata.colormap[i].name == d.tooltext) {
                       return chartdata.colormap[i].value;
@@ -312,10 +361,19 @@ var column2D = function (chartId, chartdata) {
               }
           }
           else {
-              if (chartdata.chart.pallattecolorsingle == false || chartdata.chart.pallattecolorsingle == undefined || chartdata.chart.pallattecolorsingle == '')
-                  return chartdata.chart.pallattecolor[i];
-              else
-                  return chartdata.chart.pallattecolor[0];
+              if (cType == 'Column2D') {
+                  if (chartdata.chart.pallattecolorsingle == false || chartdata.chart.pallattecolorsingle == undefined || chartdata.chart.pallattecolorsingle == '')
+                      return chartdata.chart.pallattecolor[i];
+                  else
+                      return chartdata.chart.pallattecolor[0];
+              }
+              else {
+                  if (valuetype == 'high')
+                      return chartdata.chart.pallattecolor[0];
+                  else
+                      return chartdata.chart.pallattecolor[1];
+              }
+
           }
 
       })
@@ -323,10 +381,14 @@ var column2D = function (chartId, chartdata) {
       .attr("x", function (d) { return x(d.label); })
       .attr("width", x.rangeBand())
       .attr("y", function (d) {
-          if (checkposcount + checkzerocount == chartdata.data.length)
-              return height;
-          else if (checknegcount + checkzerocount == chartdata.data.length)
-              return 15;
+          if (cType == 'Column2D') {
+              if (checkposcount + checkzerocount == chartdata.data.length)
+                  return height;
+              else if (checknegcount + checkzerocount == chartdata.data.length)
+                  return 15;
+              else
+                  return height + domainminval;
+          }
           else
               return height + domainminval;
 
@@ -336,98 +398,164 @@ var column2D = function (chartId, chartdata) {
       .delay(function (d, i) { return i * 100; })
       .duration(400)
       .attr('y', function (d) {
-          if (checkposcount + checkzerocount == chartdata.data.length)
-              return y(d.value);
-          else if (checknegcount + checkzerocount == chartdata.data.length)
-              return 15;
-          else
-              return d.value < 0 ? Y0() : Y(d.value);
+          if (cType == 'Column2D') {
+              if (checkposcount + checkzerocount == chartdata.data.length)
+                  return y(d.value);
+              else if (checknegcount + checkzerocount == chartdata.data.length)
+                  return 15;
+              else
+                  return d.value < 0 ? Y0() : Y(d.value);
+          }
+          else {
+              if (valuetype == 'low')
+                  return d.lowvalue < 0 ? Y0() : Y(d.lowvalue);
+              else
+                  return d.highvalue < 0 ? Y0() : Y(d.highvalue);
+          }
 
       })
       .attr('height', function (d) {
-          if (checkposcount + checkzerocount == chartdata.data.length)
-              return height - y(d.value);
-          else if (checknegcount + checkzerocount == chartdata.data.length) {
-              if (d.value != 0)
-                  return y(Math.abs(d.value)) - 15;
+          if (cType == 'Column2D') {
+              if (checkposcount + checkzerocount == chartdata.data.length)
+                  return height - y(d.value);
+              else if (checknegcount + checkzerocount == chartdata.data.length) {
+                  if (d.value != 0)
+                      return y(Math.abs(d.value)) - 15;
+                  else
+                      return 0;
+              }
               else
-                  return 0;
+                  return Math.abs(Y(d.value) - Y0());
           }
-          else
-              return Math.abs(Y(d.value) - Y0());
-
+          else {
+              if (valuetype == 'low')
+                  return Math.abs(Y(d.lowvalue) - Y0());
+              else
+                  return Math.abs(Y(d.highvalue) - Y0());
+          }
 
       });
 
-            var columncirlce = svg.selectAll('.columncirlce')
-     .data(chartdata.data)
+            };
+            if (chartType == 'Column2D') {
+                drawrect('Column2D', chartdata.data, 'none');
+                drawcirclepath('Column2D', chartdata.data, 'none');
+            }
+            else {
+                drawrect('DoubleColumn2D', chartdata.data, 'high');
+                drawcirclepath('DoubleColumn2D', chartdata.data, 'high');
+                drawrect('DoubleColumn2D', chartdata.data, 'low');
+                drawcirclepath('DoubleColumn2D', chartdata.data, 'low');
+            }
+            function drawcirclepath(cType, cData, valuetype) {
+                var columncirlce = svg.selectAll('.columncirlce')
+     .data(cData)
     .enter().append('circle')
     .attr("class", function (d) {
-        return chartId.replace('#', '') + d.label.replace(" ", "")
+        if (cType == 'Column2D')
+            return chartId.replace('#', '') + d.label.replace(" ", "")
+        else
+            return chartId.replace('#', '') + d.label.replace(" ", "") + valuetype;
     })
     .attr("fill", "rgb(128, 128, 128)")
         .attr("cx", function (d)
         { return x(d.label) + x.rangeBand() / 2; })
      .attr("cy", function (d) {
-         if (checkposcount + checkzerocount == chartdata.data.length)
-             return y(d.value);
-         else if (checknegcount + checkzerocount == chartdata.data.length)
-             return y(Math.abs(d.value));
-         else
-             return Y(d.value);
+         if (cType == 'Column2D') {
+             if (checkposcount + checkzerocount == chartdata.data.length)
+                 return y(d.value);
+             else if (checknegcount + checkzerocount == chartdata.data.length)
+                 return y(Math.abs(d.value));
+             else
+                 return Y(d.value);
+         }
+         else {
+             if (valuetype == 'low')
+                 valuecur = d.lowvalue;
+             else
+                 valuecur = d.highvalue;
+             return Y(valuecur);
+         }
+
      })
      .attr("r", 5)
      .attr("style", "display:none");
 
-            var columnpath = svg.selectAll('.columnpath')
-     .data(chartdata.data)
+                var columnpath = svg.selectAll('.columnpath')
+     .data(cData)
     .enter().append('path')
-    .attr("class", function (d) { return chartId.replace('#', '') + d.label.replace(" ", "") })
+    .attr("class", function (d) {
+        if (cType == 'Column2D')
+            return chartId.replace('#', '') + d.label.replace(" ", "")
+        else
+            return chartId.replace('#', '') + d.label.replace(" ", "") + valuetype;
+    })
     .attr("d", function (d) {
         var xatt = x(d.label) + x.rangeBand() / 2;
         var yatt = 0;
-
-        if (checkposcount + checkzerocount == chartdata.data.length) {
-            yatt = y(d.value);
-            if (d.value < domainmaxcol / 2)
-                var yattnext = yatt - 20;
-            if (d.value > domainmaxcol / 2)
-                var yattnext = yatt + 20;
-            return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
-        }
-        else if (checknegcount + checkzerocount == chartdata.data.length) {
-            if (d.value != 0)
-                yatt = y(Math.abs(d.value));
-            else
-                yatt = 15;
-            if (Math.abs(d.value) > domainmaxcol / 2) {
-                var yattnext = yatt - 20;
+        if (cType == 'Column2D') {
+            if (checkposcount + checkzerocount == chartdata.data.length) {
+                yatt = y(d.value);
+                if (d.value < domainmaxcol / 2)
+                    var yattnext = yatt - 20;
+                if (d.value > domainmaxcol / 2)
+                    var yattnext = yatt + 20;
                 return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
             }
+            else if (checknegcount + checkzerocount == chartdata.data.length) {
+                if (d.value != 0)
+                    yatt = y(Math.abs(d.value));
+                else
+                    yatt = 15;
+                if (Math.abs(d.value) > domainmaxcol / 2) {
+                    var yattnext = yatt - 20;
+                    return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
+                }
 
-            if (d.value < domainmaxcol / 2) {
-                var yattnext = yatt + 20;
-                return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
+                if (d.value < domainmaxcol / 2) {
+                    var yattnext = yatt + 20;
+                    return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
+                }
+
             }
+            else {
+                if (Y(d.value) > Y0()) {
+                    var yatt = Y(d.value);
+                    var yattnext = Y(d.value) - 20;
+                    return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
+                }
 
+                else {
+                    var yatt = Y(d.value);
+                    var yattnext = Y(d.value) + 20;
+                    return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
+                }
+
+            }
         }
         else {
-            if (Y(d.value) > Y0()) {
-                var yatt = Y(d.value);
-                var yattnext = Y(d.value) - 20;
+            if (valuetype == 'low')
+                valuecur = d.lowvalue;
+            else
+                valuecur = d.highvalue;
+            if (Y(valuecur) > Y0()) {
+                var yatt = Y(valuecur);
+                var yattnext = Y(valuecur) - 20;
                 return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
             }
 
             else {
-                var yatt = Y(d.value);
-                var yattnext = Y(d.value) + 20;
+                var yatt = Y(valuecur);
+                var yattnext = Y(valuecur) + 20;
                 return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
             }
-
         }
+
 
     })
     .attr("style", "stroke:rgb(128, 128, 128);fill:none;stroke-width:2;display:none");
+            };
+
 
 
             if (chartdata.chart.tickinterval != undefined && chartdata.chart.tickinterval > 0) {
@@ -456,15 +584,14 @@ var column2D = function (chartId, chartdata) {
                 d3.select(chartId + ' .exportgrid .tick text').style('display', 'none');
                 d3.select(chartId + ' .exportgrid .tick line').style('display', 'none');
             }
-            else
-            {
-                d3.selection.prototype.last = function() {
-  var last = this.size() - 1;
-  return d3.select(this[0][last]);
-};
- d3.selectAll(chartId + ' .exportgrid .tick text').last().style('display', 'none');
-  d3.selectAll(chartId + ' .exportgrid .tick line').last().style('display', 'none');
- }
+            else {
+                d3.selection.prototype.last = function () {
+                    var last = this.size() - 1;
+                    return d3.select(this[0][last]);
+                };
+                d3.selectAll(chartId + ' .exportgrid .tick text').last().style('display', 'none');
+                d3.selectAll(chartId + ' .exportgrid .tick line').last().style('display', 'none');
+            }
 
             d3.selectAll(chartId + ' .exportgrid .tick line').attr('x2', function () {
                 return this.getAttribute('x2') / 1 + 70;
