@@ -970,12 +970,12 @@ d3charts("Column2D","#column", columndata);
 
 var doublecolumndata = {
     "chart": {
-        "caption": "Double Chart",
+        "caption": "Price Range Chart",
         "captionColor":"black",
         "yaxisname": "",
         "color":"white",
         "fontsize":15,
-        "showlegend":true,
+        "showlegend":false,
         "slant":false,
         "twoxaxis":false,
         "tickinterval":5,
@@ -986,7 +986,7 @@ var doublecolumndata = {
             "imageurl":"../images/logo.png"
         },
         "pallattecolorsingle":true, // if set to True: Only First Value is Considered ; if set to False all values in the Pallate is considered
-         "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
+         "pallattecolor":["#008ee4","#008ee4","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
     },
     "export":{
         "showexport": true,
