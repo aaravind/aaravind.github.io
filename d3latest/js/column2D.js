@@ -49,7 +49,11 @@ var column2D = function (chartId, chartdata, chartType) {
             var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
             var div = d3.select("body").append("div")
     .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
+    if(chartdata.chart.showlegend != true && chartdata.chart.showlegend !=undefined)
             var x = d3.scale.ordinal()
+    .rangeRoundBands([15, width +50], .1);
+    else
+    var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 
             if (chartdata.chart.twoxaxis == true) {
@@ -263,7 +267,7 @@ var column2D = function (chartId, chartdata, chartType) {
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
 
-        var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 10) + 'px';
+        var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 14) + 'px';
 
         if (checkposcount + checkzerocount == chartdata.data.length && cType == 'Column2D') {
             var yattrval = (elemRect.top - bodyRect.top);
