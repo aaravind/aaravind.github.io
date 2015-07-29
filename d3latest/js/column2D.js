@@ -267,7 +267,7 @@ var column2D = function (chartId, chartdata, chartType) {
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
 
-        var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 14) + 'px';
+        var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 18) + 'px';
 
         if (checkposcount + checkzerocount == chartdata.data.length && cType == 'Column2D') {
             var yattrval = (elemRect.top - bodyRect.top);
