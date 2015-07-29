@@ -318,17 +318,19 @@ var column2D = function (chartId, chartdata, chartType) {
         }
 
         // var yattr = (bodyRect.top-document.getElementById('barchart12').getBoundingClientRect().top + (this.getAttribute('x') / 1))+ 'px';
-        if (chartdata.data[i].tooltext != undefined && chartdata.data[i].tooltext != '') {
+        if (d.tooltext != undefined && d.tooltext != '') {
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + d.label + '</span><hr>';
             if (cType == 'Column2D') {
-                if (chartdata.data[i].tooltip == undefined && chartdata.data[i].tooltip == '')
-                    htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + chartdata.data[i].tooltext + ': ' + chartdata.data[i].value + '</div>';
-                else
-                { 
-                for(i=0;i<chartdata.data[i].tooltip.length;i++)
-                 htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + chartdata.data[i].tooltip[i][0] + ': ' + chartdata.data[i].tooltip[i][1] + '</div>';
+                if (d.tooltip == undefined && d.tooltip == '')
+                    htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + d.tooltext + ': ' + d.value + '</div>';
+                else {
+                    var newcontent = '';
+                    for (i = 0; i < d.tooltip.length; i++) {
+                        newcontent = newcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + d.tooltip[i][0] + ': ' + d.tooltip[i][1] + '</div>';
+                    }
+                    htmlcontent = htmlcontent + newcontent;
                 }
-               
+
             }
 
             else {
