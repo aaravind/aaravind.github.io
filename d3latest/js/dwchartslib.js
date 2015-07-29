@@ -793,171 +793,201 @@ var columndata = {
     "data": [
         {
             "label": "01-08-15",
-            "value": -11,
-            "tooltext":"Snapdeal"
+            "value": 11,
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "02-08-15",
             "value": -22,
-            "tooltext":"Flipkart"
+            "tooltext":"Flipkart",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "03-08-15",
             "value": -33,
-            "tooltext":"Amazon"
+            "tooltext":"Amazon",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
 
         }
         ,
         {
             "label": "04-08-15",
             "value": -44,
-            "tooltext":"Snapdeal"
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "05-08-15",
-            "value": -55,
-            "tooltext":"Snapdeal"
+            "value": 55,
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "06-08-15",
-            "value": -66,
-            "tooltext":"Snapdeal"
+            "value": 0,
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "07-08-15",
             "value": -77,
-            "tooltext":"Snapdeal"
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "08-08-15",
-            "value": -88,
-            "tooltext":"Snapdeal"
+            "value": 88,
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "09-08-15",
-            "value": -99,
-            "tooltext":"Snapdeal"
+            "value": 99,
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "10-08-15",
-            "value": -50,
-            "tooltext":"Snapdeal"
+            "value": 50,
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "11-08-15",
-            "value": -10,
-            "tooltext":"Snapdeal"
+            "value": 10,
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "12-08-15",
             "value": 0,
-            "tooltext":"Flipkart"
+            "tooltext":"Flipkart",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         } ,
         {
             "label": "13-08-15",
             "value": -99,
-            "tooltext":"Flipkart"
+            "tooltext":"Flipkart",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         } ,
         {
             "label": "14-08-15",
-            "value": -87,
-            "tooltext":"Flipkart"
+            "value": 87,
+            "tooltext":"Flipkart",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "15-08-15",
-            "value": -76,
-            "tooltext":"Flipkart"
+            "value": 76,
+            "tooltext":"Flipkart",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "16-08-15",
-            "value": -65,
-            "tooltext":"Flipkart"
+            "value": 65,
+            "tooltext":"Flipkart",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         },
         {   
 		    "label": "17-08-15",
-            "value": -54,
-            "tooltext":"Flipkart"
+            "value": 54,
+            "tooltext":"Flipkart",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "18-08-15",
             "value": -100,
-            "tooltext":"Amazon"
+            "tooltext":"Amazon",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
 
         }
         ,
         {
             "label": "19-08-15",
-            "value": -43,
-            "tooltext":"Amazon"
+            "value": 43,
+            "tooltext":"Amazon",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "20-08-15",
-            "value": -32,
-            "tooltext":"Amazon"
+            "value": 32,
+            "tooltext":"Amazon",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "21-08-15",
-            "value": -21,
-            "tooltext":"Amazon"
+            "value": 21,
+            "tooltext":"Amazon",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "22-08-15",
-            "value": -55,
-            "tooltext":"Amazon"
+            "value": 55,
+            "tooltext":"Amazon",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "23-08-15",
             "value": -77,
-            "tooltext":"Amazon"
+            "tooltext":"Amazon",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "24-08-15",
-            "value": -33,
-            "tooltext":"Amazon"
+            "value": 33,
+            "tooltext":"Amazon",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "25-08-15",
             "value": 0,
-            "tooltext":"Amazon"
+            "tooltext":"Amazon",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "26-08-15",
             "value": 0,
-            "tooltext":"Snapdeal"
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "27-08-15",
-            "value": -88,
-            "tooltext":"Snapdeal"
+            "value": 88,
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         } ,
         {
             "label": "28-08-15",
-            "value": -66,
-            "tooltext":"Snapdeal"
+            "value": 66,
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         } ,
         {
             "label": "29-08-15",
-            "value": -50,
-            "tooltext":"Snapdeal"
+            "value": 50,
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "30-08-15",
             "value": -93,
-            "tooltext":"Snapdeal"
+            "tooltext":"Snapdeal",
+            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
 
 
@@ -1007,7 +1037,7 @@ var doublecolumndata = {
         },
         {
             "label": "02-08-15",
-            "lowvalue": 0,
+            "lowvalue": -10,
             "highvalue":0,
             "tooltext":"Flipkart"
         },

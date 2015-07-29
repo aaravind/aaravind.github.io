@@ -49,11 +49,11 @@ var column2D = function (chartId, chartdata, chartType) {
             var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
             var div = d3.select("body").append("div")
     .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
-    if(chartdata.chart.showlegend != true && chartdata.chart.showlegend !=undefined)
-            var x = d3.scale.ordinal()
-    .rangeRoundBands([15, width +50], .1);
-    else
-    var x = d3.scale.ordinal()
+            if (chartdata.chart.showlegend != true && chartdata.chart.showlegend != undefined)
+                var x = d3.scale.ordinal()
+    .rangeRoundBands([15, width + 50], .1);
+            else
+                var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 
             if (chartdata.chart.twoxaxis == true) {
@@ -138,12 +138,12 @@ var column2D = function (chartId, chartdata, chartType) {
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption);
             x.domain(chartdata.data.map(function (d) { return d.label; }));
-              function Y0() {
-                        return y(0);
-                    }
-                    function Y(d) {
-                        return y(d);
-                    }
+            function Y0() {
+                return y(0);
+            }
+            function Y(d) {
+                return y(d);
+            }
             if (chartType == 'Column2D') {
                 var domainmaxcol = d3.max(chartdata.data, function (d) { return Math.abs(d.value) + (0.25 * Math.abs(d.value)); });
                 if (checkposcount + checkzerocount != chartdata.data.length && checknegcount + checkzerocount != chartdata.data.length) {
@@ -252,10 +252,10 @@ var column2D = function (chartId, chartdata, chartType) {
     })
     .attr('data-visibility', true)
     .on("mouseover", function (d, i) {
-        if(cType == 'Column2D')
-        this.style.opacity = 1;
+        if (cType == 'Column2D')
+            this.style.opacity = 1;
         else
-        d3.selectAll(chartId + ' .Column' + i).style('opacity', 1);
+            d3.selectAll(chartId + ' .Column' + i).style('opacity', 1);
         div.transition()
                 .duration(0)
                 .style("opacity", .9);
@@ -272,14 +272,14 @@ var column2D = function (chartId, chartdata, chartType) {
         if (checkposcount + checkzerocount == chartdata.data.length && cType == 'Column2D') {
             var yattrval = (elemRect.top - bodyRect.top);
             if (d.value < domainmaxcol / 2)
-                var yattr = yattrval - 75 + 'px';
+                var yattr = yattrval - 95 + 'px';
             else
                 var yattr = yattrval + 18 + 'px';
         }
         else if (checknegcount + checkzerocount == chartdata.data.length && cType == 'Column2D') {
             var yattrval = (elemRect.bottom - bodyRect.top);
             if (Math.abs(d.value) > domainmaxcol / 2)
-                var yattr = yattrval - 75 + 'px';
+                var yattr = yattrval - 95 + 'px';
             else
                 var yattr = yattrval + 18 + 'px';
         }
@@ -289,7 +289,7 @@ var column2D = function (chartId, chartdata, chartType) {
             if (cType == 'Column2D') {
                 if (Y(d.value) > Y0()) {
                     var yattrval = (elemRect.bottom - bodyRect.top);
-                    var yattr = yattrval - 75 + 'px';
+                    var yattr = yattrval - 95 + 'px';
 
                 }
                 else {
@@ -320,8 +320,17 @@ var column2D = function (chartId, chartdata, chartType) {
         // var yattr = (bodyRect.top-document.getElementById('barchart12').getBoundingClientRect().top + (this.getAttribute('x') / 1))+ 'px';
         if (chartdata.data[i].tooltext != undefined && chartdata.data[i].tooltext != '') {
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + d.label + '</span><hr>';
-            if (cType == 'Column2D')
-                htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + chartdata.data[i].tooltext + ': ' + chartdata.data[i].value + '</div>';
+            if (cType == 'Column2D') {
+                if (chartdata.data[i].tooltip == undefined && chartdata.data[i].tooltip == '')
+                    htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + chartdata.data[i].tooltext + ': ' + chartdata.data[i].value + '</div>';
+                else
+                { 
+                for(i=0;i<chartdata.data[i].tooltip.length;i++)
+                 htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + chartdata.data[i].tooltip[i][0] + ': ' + chartdata.data[i].tooltip[i][1] + '</div>';
+                }
+               
+            }
+
             else {
                 htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + chartdata.data[i].highvalue + '</div>';
                 htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + chartdata.data[i].lowvalue + '</div>';
@@ -346,10 +355,10 @@ var column2D = function (chartId, chartdata, chartType) {
 
     })
         .on("mouseout", function (d, i) {
-               if(cType == 'Column2D')
-        this.style.opacity = 0.5;
-        else
-        d3.selectAll(chartId + ' .Column' + i).style('opacity', 0.5);
+            if (cType == 'Column2D')
+                this.style.opacity = 0.5;
+            else
+                d3.selectAll(chartId + ' .Column' + i).style('opacity', 0.5);
             if (cType == 'Column2D')
                 d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "")).style("display", "none");
             else
@@ -566,7 +575,7 @@ var column2D = function (chartId, chartdata, chartType) {
                 drawrect('DoubleColumn2D', chartdata.data, 'low');
                 drawcirclepath('DoubleColumn2D', chartdata.data, 'low');
             }
-            
+
 
 
 
