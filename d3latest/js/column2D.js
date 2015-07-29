@@ -452,7 +452,7 @@ var column2D = function (chartId, chartdata, chartType) {
         else
             return chartId.replace('#', '') + d.label.replace(" ", "") + valuetype;
     })
-    .attr("fill", "rgb(128, 128, 128)")
+    .attr("fill", "none")
         .attr("cx", function (d)
         { return x(d.label) + x.rangeBand() / 2; })
      .attr("cy", function (d) {
