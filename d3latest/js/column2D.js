@@ -241,8 +241,8 @@ var column2D = function (chartId, chartdata, chartType) {
     .enter().append("rect")
     .attr('class', function (d, i) {
         if (cType == 'Column2D') {
-            if (d.tooltext != undefined || d.tooltext != '')
-                return 'Column' + d.tooltext.replace(' ', '');
+            if (d.category != undefined && d.category != '')
+                return 'Column' + d.category.replace(' ', '');
             else
                 return 'Column' + d.label.replace(' ', '');
         }
@@ -282,12 +282,11 @@ var column2D = function (chartId, chartdata, chartType) {
         }
         else if (checknegcount + checkzerocount == chartdata.data.length && cType == 'Column2D') {
             var yattrval = (elemRect.bottom - bodyRect.top);
-            if (Math.abs(d.value) > domainmaxcol / 2)
-            {
-                 var yattr = yattrval + 'px';
-                 topval = true;
+            if (Math.abs(d.value) > domainmaxcol / 2) {
+                var yattr = yattrval + 'px';
+                topval = true;
             }
-               
+
             else
                 var yattr = yattrval + 15 + 'px';
         }
@@ -306,13 +305,13 @@ var column2D = function (chartId, chartdata, chartType) {
                 }
             }
             else {
-                  topval = false;
+                topval = false;
                 if (valuetype == 'low')
                     value = d.lowvalue;
                 else
                     value = d.highvalue;
                 if (Y(value) > Y0()) {
-                      topval = true;
+                    topval = true;
                     var yattrval = (elemRect.bottom - bodyRect.top);
                     var yattr = yattrval + 'px';
                 }
@@ -328,26 +327,36 @@ var column2D = function (chartId, chartdata, chartType) {
         }
 
         // var yattr = (bodyRect.top-document.getElementById('barchart12').getBoundingClientRect().top + (this.getAttribute('x') / 1))+ 'px';
-        if (d.tooltext != undefined && d.tooltext != '') {
+        if (cType == 'DoubleColumn2D')
+        { 
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + d.label + '</span><hr>';
-            if (cType == 'Column2D') {
-                if (d.tooltip == undefined && d.tooltip == '')
-                    htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + d.tooltext + ': ' + d.value + '</div>';
-                else {
-                    var newcontent = '';
-                    for (i = 0; i < d.tooltip.length; i++) {
-                        newcontent = newcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + d.tooltip[i][0] + ': ' + d.tooltip[i][1] + '</div>';
-                    }
-                    htmlcontent = htmlcontent + newcontent;
-                }
-
-            }
-
-            else {
                 htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + chartdata.data[i].highvalue + '</div>';
                 htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + chartdata.data[i].lowvalue + '</div>';
+                  div.html(htmlcontent)
+       .style("left", function (d, i) {
+           var asdfg = div[0][0];
+           return (xattr.replace('px', '') / 1 - this.getAttribute('width') / 2) + 'px';
+       })
+                .style("top", function (d, i) {
+                    if (topval == true)
+                        return yattr.replace('px', '') / 1 - this.offsetHeight + 'px';
+                    else
+                        return yattr;
+                    topval = false;
+                });
 
+        }
+        else if (d.tooltip != undefined && d.tooltip != '') {
+            var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + d.label + '</span><hr>';
+            var newcontent = '';
+            for (i = 0; i < d.tooltip.length; i++) {
+                newcontent = newcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + d.tooltip[i][0] + ': ' + d.tooltip[i][1] + '</div>';
             }
+            htmlcontent = htmlcontent + newcontent;
+
+
+
+
             div.html(htmlcontent)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
@@ -362,13 +371,39 @@ var column2D = function (chartId, chartdata, chartType) {
                 });
         }
         else {
+            if (d.category != undefined && d.category != '') {
+                var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + d.label + '</span><hr>';
+                htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + d.category + ': ' + d.value + '</div>';
+                div.html(htmlcontent)
+       .style("left", function (d, i) {
+           var asdfg = div[0][0];
+           return (xattr.replace('px', '') / 1 - this.getAttribute('width') / 2) + 'px';
+       })
+                .style("top", function (d, i) {
+                    if (topval == true)
+                        return yattr.replace('px', '') / 1 - this.offsetHeight + 'px';
+                    else
+                        return yattr;
+                    topval = false;
+                });
+            }
 
-            div.html(chartdata.data[i].label + ': ' + chartdata.data[i].value)
-             .style("left", function (d, i) {
-                 var asdfg = div[0][0];
-                 return (xattr.replace('px', '') / 1 - this.getAttribute('width') / 2) + 'px'
-             })
-                .style("top", yattr);
+            else {
+                div.html(chartdata.data[i].label + ': ' + chartdata.data[i].value)
+       .style("left", function (d, i) {
+           var asdfg = div[0][0];
+           return (xattr.replace('px', '') / 1 - this.getAttribute('width') / 2) + 'px';
+       })
+                .style("top", function (d, i) {
+                    if (topval == true)
+                        return yattr.replace('px', '') / 1 - this.offsetHeight + 'px';
+                    else
+                        return yattr;
+                    topval = false;
+                });
+
+            }
+
         }
 
     })
@@ -388,7 +423,7 @@ var column2D = function (chartId, chartdata, chartType) {
       .attr("fill", function (d, i) {
           if (chartdata.colormap != undefined && cType == 'Column2D') {
               for (i = 0; i < chartdata.colormap.length; i++) {
-                  if (chartdata.colormap[i].name == d.tooltext) {
+                  if (chartdata.colormap[i].name == d.category) {
                       return chartdata.colormap[i].value;
                       break;
                   }
