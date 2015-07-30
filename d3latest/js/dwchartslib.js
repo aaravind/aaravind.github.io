@@ -38,6 +38,7 @@ window.onresize = function (event) {
     redrawchart("MultiLine2D","#Multiline", Multilinedata); // For Multiline call Redraw Function to Save the legends interactions
     redrawchart("Column2D", "#column", columndata);
      redrawchart("DoubleColumn2D","#doublecolumn", doublecolumndata);
+      d3charts("ColumnRange2D","#columnrange", columnrange);
 };
 
 var linedata = {
