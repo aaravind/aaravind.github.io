@@ -157,12 +157,14 @@ var column2D = function (chartId, chartdata, chartType) {
                     y.domain([domainminval, domainmaxcol]);
                 }
             }
-            else {
+            else if (chartType == 'DoubleColumn2D') {
                 var domainmaxcol = d3.max(chartdata.data, function (d) { return Math.abs(d.highvalue) + (0.25 * Math.abs(d.highvalue)); });
                 var domainminval = d3.min(chartdata.data, function (d) { return d.lowvalue + 0.25 * d.lowvalue; });
                 y.domain([domainminval, domainmaxcol]);
             }
-
+            else {
+                y.domain([chartdata.range.lowrange, chartdata.range.highrange]);
+            }
 
 
             if (chartdata.chart.slant) {
@@ -234,6 +236,85 @@ var column2D = function (chartId, chartdata, chartType) {
       .attr("text-anchor", "end")
       .text(chartdata.chart.yaxisname);
 
+
+            function drawrangerect(cType, cData, cLabel) {
+                colorrange = d3.scale.linear()
+    .domain([0, cData.length])
+    .range(["#008ee4", "#E94C3D", ]);
+                svg.selectAll(".columnrange")
+      .data(cData)
+    .enter().append("rect")
+    .attr('class', function (d, i) {
+        return 'Columnrange';
+
+    })
+    .attr("fill", function (d, i) {
+        return colorrange(i);
+    })
+    .style('stroke', 'white')
+    .style('stroke-width', '0.5')
+    .on("mouseover", function (d, i) {
+        this.style.opacity = 1;
+        div.transition()
+                .duration(0)
+                .style("opacity", .9);
+        var bodyRect = document.body.getBoundingClientRect();
+        var elemRect = this.getBoundingClientRect();
+
+        var xattr = (elemRect.right - bodyRect.left) + 'px';
+        var topval = false;
+        topval = false;
+        if (Y(d[1]) > Y0()) {
+            topval = true;
+            var yattrval = (elemRect.bottom - bodyRect.top);
+            var yattr = yattrval + 'px';
+        }
+        else {
+            var yattrval = (elemRect.top - bodyRect.top);
+            var yattr = yattrval + 15 + 'px';
+        }
+        var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + cLabel + '</span><hr>';
+        htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + d[0] + '</div>';
+        htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + d[1] + '</div>';
+        div.html(htmlcontent)
+       .style("left", function (d, i) {
+           var asdfg = div[0][0];
+           return xattr;
+       })
+                .style("top", function (d, i) {
+                    if (topval == true)
+                        return yattr.replace('px', '') / 1 - this.offsetHeight + 'px';
+                    else
+                        return yattr;
+                    topval = false;
+                });
+    })
+      .on("mouseout", function (d, i) {
+          this.style.opacity = 0.5;
+          div.transition()
+                .duration(0)
+                .style("opacity", 0);
+      })
+      .style("opacity", function (d, i) {
+          return 0.5;
+      })
+      .attr("x", function (d) { return x(cLabel); })
+      .attr("width", x.rangeBand())
+      .attr("y", function (d) {
+          return Y0();
+
+      })
+      .attr("height", 0)
+        .transition()
+      .delay(function (d, i) { return i * 100; })
+      .duration(400)
+      .attr('y', function (d, i) {
+          return Y(d[0]);
+      })
+      .attr('height', function (d, i) {
+          return Math.abs(Y(d[1]) - Y(d[0]));
+      });
+            };
             function drawrect(cType, cData, valuetype) {
 
                 svg.selectAll(".column")
@@ -327,15 +408,14 @@ var column2D = function (chartId, chartdata, chartType) {
         }
 
         // var yattr = (bodyRect.top-document.getElementById('barchart12').getBoundingClientRect().top + (this.getAttribute('x') / 1))+ 'px';
-        if (cType == 'DoubleColumn2D')
-        { 
+        if (cType == 'DoubleColumn2D') {
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + d.label + '</span><hr>';
-                htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + chartdata.data[i].highvalue + '</div>';
-                htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + chartdata.data[i].lowvalue + '</div>';
-                  div.html(htmlcontent)
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + chartdata.data[i].highvalue + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + chartdata.data[i].lowvalue + '</div>';
+            div.html(htmlcontent)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
-           return (xattr.replace('px', '') / 1 - this.getAttribute('width') / 2) + 'px';
+           return (xattr.replace('px', '') / 1 + this.getAttribute('width') / 2) + 'px';
        })
                 .style("top", function (d, i) {
                     if (topval == true)
@@ -360,7 +440,7 @@ var column2D = function (chartId, chartdata, chartType) {
             div.html(htmlcontent)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
-           return (xattr.replace('px', '') / 1 - this.getAttribute('width') / 2) + 'px';
+           return (xattr.replace('px', '') / 1 + this.getAttribute('width') / 2) + 'px';
        })
                 .style("top", function (d, i) {
                     if (topval == true)
@@ -377,7 +457,7 @@ var column2D = function (chartId, chartdata, chartType) {
                 div.html(htmlcontent)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
-           return (xattr.replace('px', '') / 1 - this.getAttribute('width') / 2) + 'px';
+           return (xattr.replace('px', '') / 1 + this.getAttribute('width') / 2) + 'px';
        })
                 .style("top", function (d, i) {
                     if (topval == true)
@@ -392,7 +472,7 @@ var column2D = function (chartId, chartdata, chartType) {
                 div.html(chartdata.data[i].label + ': ' + chartdata.data[i].value)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
-           return (xattr.replace('px', '') / 1 - this.getAttribute('width') / 2) + 'px';
+           return (xattr.replace('px', '') / 1 + this.getAttribute('width') / 2) + 'px';
        })
                 .style("top", function (d, i) {
                     if (topval == true)
@@ -622,11 +702,15 @@ var column2D = function (chartId, chartdata, chartType) {
                 drawrect('Column2D', chartdata.data, 'none');
                 drawcirclepath('Column2D', chartdata.data, 'none');
             }
-            else {
+            else if (chartType == 'DoubleColumn2D') {
                 drawrect('DoubleColumn2D', chartdata.data, 'high');
                 drawcirclepath('DoubleColumn2D', chartdata.data, 'high');
                 drawrect('DoubleColumn2D', chartdata.data, 'low');
                 drawcirclepath('DoubleColumn2D', chartdata.data, 'low');
+            }
+            else {
+                for (i = 0; i < chartdata.data.length; i++)
+                    drawrangerect('ColumnRange2D', chartdata.data[i].values, chartdata.data[i].label);
             }
 
 
