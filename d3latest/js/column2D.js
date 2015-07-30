@@ -268,47 +268,57 @@ var column2D = function (chartId, chartdata, chartType) {
         var elemRect = this.getBoundingClientRect();
 
         var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 18) + 'px';
-
+        var topval = false;
         if (checkposcount + checkzerocount == chartdata.data.length && cType == 'Column2D') {
+
             var yattrval = (elemRect.top - bodyRect.top);
-            if (d.value < domainmaxcol / 2)
-                var yattr = yattrval - 95 + 'px';
+            if (d.value < domainmaxcol / 2) {
+                var yattr = yattrval + 'px';
+                topval = true;
+            }
+
             else
-                var yattr = yattrval + 18 + 'px';
+                var yattr = yattrval + 15 + 'px';
         }
         else if (checknegcount + checkzerocount == chartdata.data.length && cType == 'Column2D') {
             var yattrval = (elemRect.bottom - bodyRect.top);
             if (Math.abs(d.value) > domainmaxcol / 2)
-                var yattr = yattrval - 95 + 'px';
+            {
+                 var yattr = yattrval + 'px';
+                 topval = true;
+            }
+               
             else
-                var yattr = yattrval + 18 + 'px';
+                var yattr = yattrval + 15 + 'px';
         }
 
         else {
-
+            topval = false;
             if (cType == 'Column2D') {
                 if (Y(d.value) > Y0()) {
                     var yattrval = (elemRect.bottom - bodyRect.top);
-                    var yattr = yattrval - 95 + 'px';
-
+                    var yattr = yattrval + 'px';
+                    topval = true;
                 }
                 else {
                     var yattrval = (elemRect.top - bodyRect.top);
-                    var yattr = yattrval + 18 + 'px';
+                    var yattr = yattrval + 15 + 'px';
                 }
             }
             else {
+                  topval = false;
                 if (valuetype == 'low')
                     value = d.lowvalue;
                 else
                     value = d.highvalue;
                 if (Y(value) > Y0()) {
+                      topval = true;
                     var yattrval = (elemRect.bottom - bodyRect.top);
-                    var yattr = yattrval - 80 + 'px';
+                    var yattr = yattrval + 'px';
                 }
                 else {
                     var yattrval = (elemRect.top - bodyRect.top);
-                    var yattr = yattrval + 18 + 'px';
+                    var yattr = yattrval + 15 + 'px';
                 }
 
             }
@@ -343,7 +353,13 @@ var column2D = function (chartId, chartdata, chartType) {
            var asdfg = div[0][0];
            return (xattr.replace('px', '') / 1 - this.getAttribute('width') / 2) + 'px';
        })
-                .style("top", yattr);
+                .style("top", function (d, i) {
+                    if (topval == true)
+                        return yattr.replace('px', '') / 1 - this.offsetHeight + 'px';
+                    else
+                        return yattr;
+                    topval = false;
+                });
         }
         else {
 
