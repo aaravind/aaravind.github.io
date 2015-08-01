@@ -136,7 +136,7 @@ var column2D = function (chartId, chartdata, chartType) {
          .style("text-transform", "uppercase")
          .style("font-weight", "bold")
         .style("fill", chartdata.chart.captionColor)
-        .text(chartdata.chart.caption);
+        .text(chartdata.chart.caption.toUpperCase());
             x.domain(chartdata.data.map(function (d) { return d.label; }));
             function Y0() {
                 return y(0);
@@ -788,7 +788,7 @@ var column2D = function (chartId, chartdata, chartType) {
                 legend.append('text')
         .attr('x', width + 12)
         .attr('y', function (d, i) { return ((i + 1) * 15) + 9; })
-        .text(function (d) { return d.name; })
+        .text(function (d) { return d.name.toUpperCase(); })
          .style('text-transform', 'uppercase')
          .style('opacity', 0.4)
         .style('font-size', '12px')

@@ -1,5 +1,5 @@
 function redrawchart(chart,id,data) {
-    if (chart.search('Column') == -1) {
+    if (chart.search('Column') == -1 && chart.search('Bar') == -1) {
         var savelegends = d3.selectAll(id + ' path[data-visibilitypath = \'false\']')[0];
         if (savelegends.length == 0)
             d3charts(chart, id, data);
@@ -39,6 +39,7 @@ window.onresize = function (event) {
     redrawchart("Column2D", "#column", columndata);
      redrawchart("DoubleColumn2D","#doublecolumn", doublecolumndata);
       d3charts("ColumnRange2D","#columnrange", columnrange);
+      redrawchart("StackedBar2D","#stackedbar", stackedbar);
 };
 
 var linedata = {
@@ -1380,3 +1381,142 @@ var columnrange = {
     ]
 }
 d3charts("ColumnRange2D","#columnrange", columnrange);
+
+
+var stackedbar = {
+    "chart": {
+        "caption": "Stacked Bar Chart",
+        "captionColor":"black",
+        "yaxisname": "",
+        "color":"white",
+        "fontsize":15,
+        "showlegend":true,
+        "slant":false,
+        "twoxaxis":false,
+        "slantdegree":"65",
+        "credits":{
+               "text":"Powered By",
+            "color":"#666",
+            "imageurl":"../images/logo.png"
+        },
+        "pallattecolorsingle":true, // if set to True: Only First Value is Considered ; if set to False all values in the Pallate is considered
+         "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
+    },
+    "export":{
+        "showexport": true,
+         "format": ["-Select-","jpeg","png"]
+    },
+    "colormap":[
+    {"name":"Highest",
+    "value":"#008ee4"},
+       {"name":"Equal",
+    "value":"#26AD5E"},
+     {"name":"Lowest",
+    "value":"#E77E22"}
+    ],
+    "data": [
+        {
+            "label": "Electronic",
+            "value": 11,
+            "category":"Highest"
+        },
+        {
+            "label": "Electronic",
+            "value": 22,
+             "category":"Equal"
+        },
+        {
+            "label": "Electronic",
+            "value": 33,
+            "category":"Lowest"
+
+        }
+        ,
+        {
+            "label": "Watch",
+            "value": 44,
+            "category":"Highest"
+        }
+        ,
+        {
+            "label": "Watch",
+            "value": 55,
+             "category":"Equal"
+        }
+        ,
+        {
+            "label": "Watch",
+            "value": 12,
+            "category":"Lowest"
+        }
+        ,
+        {
+            "label": "Shoe",
+            "value": 77,
+             "category":"Highest"
+        }
+        ,
+        {
+            "label": "Shoe",
+            "value": 88,
+             "category":"Equal"
+        },
+        {
+            "label": "Shoe",
+            "value": 99,
+            "category":"Lowest"
+        }
+        ,
+        {
+            "label": "bag",
+            "value": 100,
+             "category":"Highest"
+        }
+        ,
+        {
+            "label": "bag",
+            "value": 200,
+             "category":"Equal"
+        },
+        {
+            "label": "bag",
+            "value": 50,
+            "category":"Lowest"
+        }
+         ,
+        {
+            "label": "fitness equipments",
+            "value": 100,
+            "category":"Highest"
+        }
+        ,
+        {
+            "label": "fitness equipments",
+            "value": 200,
+             "category":"Equal"
+        },
+        {
+            "label": "fitness equipments",
+            "value": 50,
+            "category":"Lowest"
+        }
+        ,
+        {
+            "label": "T shirt",
+            "value": 100,
+            "category":"Highest"
+        }
+        ,
+        {
+            "label": "T shirt",
+            "value": 200,
+            "category":"Equal"
+        },
+        {
+            "label": "T shirt",
+            "value": 50,
+            "category":"Lowest"
+        }
+    ]
+}
+d3charts("StackedBar2D","#stackedbar", stackedbar);
