@@ -40,6 +40,7 @@ window.onresize = function (event) {
      redrawchart("DoubleColumn2D","#doublecolumn", doublecolumndata);
       d3charts("ColumnRange2D","#columnrange", columnrange);
       redrawchart("StackedBar2D","#stackedbar", stackedbar);
+      redrawchart("StackedColumn2D","#stackedcolumn", stackedcolumn);
 };
 
 var linedata = {
@@ -1570,3 +1571,159 @@ var stackedbar = {
     ]
 }
 d3charts("StackedBar2D","#stackedbar", stackedbar);
+
+var stackedcolumn = {
+    "chart": {
+        "caption": "Stacked Column Chart",
+        "captionColor":"black",
+        "yaxisname": "",
+        "color":"white",
+        "fontsize":15,
+        "showlegend":true,
+        "slant":false,
+        "twoxaxis":false,
+        "slantdegree":"65",
+        "dynamicheight":true,
+        "credits":{
+               "text":"Powered By",
+            "color":"#666",
+            "imageurl":"../images/logo.png"
+        },
+        "pallattecolorsingle":true, // if set to True: Only First Value is Considered ; if set to False all values in the Pallate is considered
+         "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
+    },
+    "export":{
+        "showexport": true,
+         "format": ["-Select-","jpeg","png"]
+    },
+    "colormap":[
+    {"name":">50",
+    "value":"#008ee4"},
+       {"name":">40-50",
+    "value":"#26AD5E"},
+     {"name":">30-40",
+    "value":"#E77E22"}
+    ],
+    "data": [
+        {
+            "label": "Nikon",
+            "value": 11,
+            "category":">50"
+        },
+        {
+            "label": "Nikon",
+            "value": 22,
+             "category":">40-50"
+        },
+        {
+            "label": "Nikon",
+            "value": 33,
+            "category":">30-40"
+
+        }
+        ,
+        {
+            "label": "Livon",
+            "value": 44,
+            "category":">50"
+        }
+        ,
+        {
+            "label": "Livon",
+            "value": 55,
+            "category":">40-50"
+        }
+        ,
+        {
+            "label": "Livon",
+            "value": 12,
+           "category":">30-40"
+        }
+        ,
+        {
+            "label": "WD",
+            "value": 50,
+             "category":">50"
+        }
+        ,
+        {
+            "label": "WD",
+            "value": 50,
+             "category":">40-50"
+        },
+        {
+            "label": "WD",
+            "value": 100,
+             "category":">30-40"
+        }
+        ,
+        {
+            "label": "Spy",
+            "value": 100,
+             "category":">50"
+        }
+        ,
+        {
+            "label": "Spy",
+            "value": 200,
+            "category":">40-50"
+        },
+        {
+            "label": "Spy",
+            "value": 50,
+            "category":">30-40"
+        }
+         ,
+        {
+            "label": "Lego",
+            "value": 100,
+             "category":">50"
+        }
+        ,
+        {
+            "label": "Lego",
+            "value": 200,
+             "category":">40-50"
+        },
+        {
+             "label": "Lego",
+            "value": 50,
+            "category":">30-40"
+        }
+        ,
+        {
+            "label": "Orion",
+            "value": 100,
+             "category":">50"
+        }
+        ,
+        {
+            "label": "Orion",
+            "value": 200,
+             "category":">40-50"
+        },
+        {
+            "label": "Orion",
+            "value": 50,
+             "category":">30-40"
+        } ,
+        {
+            "label": "Metz",
+            "value": 34,
+           "category":">50"
+        }
+        ,
+        {
+             "label": "Metz",
+            "value": 56,
+             "category":">40-50"
+        },
+        {
+             "label": "Metz",
+            "value": 78,
+            "category":">30-40"
+        }
+         
+    ]
+}
+d3charts("StackedColumn2D","#stackedcolumn", stackedcolumn);

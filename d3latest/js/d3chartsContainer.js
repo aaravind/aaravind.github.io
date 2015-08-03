@@ -7,7 +7,7 @@
  */
 var d3charts = function (chartType, chartId, chartdata, chartwidth, chartheight) {
    
-    if (chartType == 'Column2D' || chartType == 'DoubleColumn2D' || chartType == 'ColumnRange2D') {
+    if (chartType == 'Column2D' || chartType == 'DoubleColumn2D' || chartType == 'ColumnRange2D' || chartType == 'StackedColumn2D') {
         column2D(chartId, chartdata,chartType,chartwidth,chartheight);
     }
      if (chartType == 'StackedBar2D') {

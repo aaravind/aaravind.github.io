@@ -207,7 +207,7 @@ var bar2D = function (chartId, chartdata, chartType) {
                         div.transition()
                 .duration(100)
                 .style("opacity", 0);
-                    }); ;
+                    }); 
         if (chartdata.chart.slant) {
             if (chartdata.chart.slantdegree != undefined)
                 rotatevalue = "rotate(-" + chartdata.chart.slantdegree + ")";

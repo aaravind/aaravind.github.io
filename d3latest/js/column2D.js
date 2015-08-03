@@ -49,12 +49,14 @@ var column2D = function (chartId, chartdata, chartType) {
             var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
             var div = d3.select("body").append("div")
     .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
-            if (chartdata.chart.showlegend != true && chartdata.chart.showlegend != undefined)
-                var x = d3.scale.ordinal()
+            if (chartType != 'StackedColumn2D') {
+                if (chartdata.chart.showlegend != true && chartdata.chart.showlegend != undefined)
+                    var x = d3.scale.ordinal()
     .rangeRoundBands([15, width + 50], .1);
-            else
-                var x = d3.scale.ordinal()
+                else
+                    var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
+            }
 
             if (chartdata.chart.twoxaxis == true) {
                 var x1 = d3.scale.ordinal()
@@ -90,22 +92,97 @@ var column2D = function (chartId, chartdata, chartType) {
     .range([height, 15]);
                 }
             }
+
             else {
-                var y = d3.scale.linear()
+                if (chartType != 'StackedColumn2D') {
+                    var y = d3.scale.linear()
     .range([height, 15]);
+                }
             }
-            var xaxis = d3.svg.axis()
+            if (chartType == 'StackedColumn2D') {
+                var dataGroup = d3.nest()
+    .key(function (d) {
+        return d.category;
+    })
+    .entries(chartdata.data);
+                var categorylength = dataGroup.length;
+                var labellength = dataGroup[0].values.length;
+                var series = dataGroup.map(function (d) {
+                    return d.key;
+                });
+                var dataGroup = dataGroup.map(function (d) {
+                    return d.values.map(function (o, i) {
+                        // Structure it so that your numeric
+                        // axis (the stacked amount) is y
+                        for (j = 0; j < i; j++) {
+                            yprevvalue = d.values[j].value;
+                        }
+                        return {
+                            y: o.value,
+                            x: o.label,
+                            z: o.category,
+                            yprev: i == 0 ? 0 : yprevvalue
+                        };
+                    });
+                });
+                var stack = d3.layout.stack();
+                stack(dataGroup);
+                var dataGroup = dataGroup.map(function (group) {
+                    return group.map(function (d) {
+                        // Invert the x and y values, and y0 becomes x0
+                        return {
+                            x: d.y,
+                            y: d.x,
+                            x0: d.y0,
+                            z: d.z,
+                            yprev: d.yprev
+                        };
+                    });
+                });
+                domainmax = d3.max(dataGroup, function (group) {
+                    return d3.max(group, function (d) {
+                        return d.x + d.x0;
+                    });
+                })
+                var labels = dataGroup[0].map(function (d) {
+                    return d.y;
+                });
+                xScale1 = d3.scale.ordinal()
+        .domain(labels)
+        .rangeRoundBands([0, width])
+
+                yScale1 = d3.scale.linear()
+        .domain([0, domainmax])
+        .range([height, 15], 0.1);
+                function xAxis5() {
+                    return d3.svg.axis()
+        .scale(xScale1)
+        .orient("bottom")
+                }
+                function yAxis1() {
+                    return d3.svg.axis()
+        .scale(yScale1)
+        .orient("left")
+        .ticks(5);
+                }
+                var color = d3.scale.linear()
+    .domain([0, categorylength])
+    .range([chartdata.chart.pallattecolor[0], chartdata.chart.pallattecolor[1]]);
+
+            }
+            else {
+                var xaxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
     .ticks(5);
 
 
-            var yAxis = d3.svg.axis()
+                var yAxis = d3.svg.axis()
       .scale(y)
       .orient("left");
 
-            function yaxis() {
-                return d3.svg.axis()
+                function yaxis() {
+                    return d3.svg.axis()
         .scale(y)
         .orient("left")
         .ticks(5)
@@ -113,7 +190,9 @@ var column2D = function (chartId, chartdata, chartType) {
               var prefix = d3.formatPrefix(d);
               return prefix.scale(d) + prefix.symbol;
           })
+                }
             }
+
 
             var svg = d3.select(chartId).append("svg")
     .attr("width", "100%")
@@ -137,7 +216,8 @@ var column2D = function (chartId, chartdata, chartType) {
          .style("font-weight", "bold")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
-            x.domain(chartdata.data.map(function (d) { return d.label; }));
+            if (chartType != 'StackedColumn2D')
+                x.domain(chartdata.data.map(function (d) { return d.label; }));
             function Y0() {
                 return y(0);
             }
@@ -163,7 +243,8 @@ var column2D = function (chartId, chartdata, chartType) {
                 y.domain([domainminval, domainmaxcol]);
             }
             else {
-                y.domain([chartdata.range.lowrange, chartdata.range.highrange]);
+                if (chartType != 'StackedColumn2D')
+                    y.domain([chartdata.range.lowrange, chartdata.range.highrange]);
             }
 
 
@@ -172,7 +253,8 @@ var column2D = function (chartId, chartdata, chartType) {
                     rotatevalue = "rotate(-" + chartdata.chart.slantdegree + ")";
                 else
                     rotatevalue = "rotate(-" + 65 + ")";
-                svg.append("g")
+                if (chartType != 'StackedColumn2D') {
+                    svg.append("g")
       .attr("style", styleborder)
       .attr("transform", "translate(0," + height + ")")
       .call(xaxis)
@@ -183,6 +265,23 @@ var column2D = function (chartId, chartdata, chartType) {
             .attr("transform", function (d) {
                 return rotatevalue
             });
+                }
+                else {
+                    svg.append("g")
+      .attr("style", styleborder)
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis5().innerTickSize(-height + 15)
+    .outerTickSize(0)
+    .tickPadding(10))
+      .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", function (d) {
+                return rotatevalue
+            });
+                }
+
 
                 if (chartdata.chart.twoxaxis == true) {
                     svg.append("g")
@@ -205,11 +304,22 @@ var column2D = function (chartId, chartdata, chartType) {
                 }
             }
             else {
-                svg.append("g")
+                if (chartType != 'StackedColumn2D') {
+                    svg.append("g")
       .attr("style", styleborder)
       .attr("class", "xtick")
       .attr("transform", "translate(0," + (height) + ")")
       .call(xaxis);
+                }
+                else {
+                    svg.append("g")
+      .attr("style", styleborder)
+      .attr("class", "xtick")
+      .attr("transform", "translate(0," + (height) + ")")
+      .call(xAxis5().innerTickSize(-height + 15)
+    .outerTickSize(0)
+    .tickPadding(10));
+                }
 
                 if (chartdata.chart.twoxaxis == true) {
                     svg.append("g")
@@ -224,7 +334,8 @@ var column2D = function (chartId, chartdata, chartType) {
                 }
 
             }
-            svg.append("g")
+            if (chartType != 'StackedColumn2D') {
+                svg.append("g")
   .attr("class", "grid exportgrid")
       .call(yaxis()
        .tickSize(-width, 0, 0)
@@ -235,8 +346,89 @@ var column2D = function (chartId, chartdata, chartType) {
       .attr("dy", ".71em")
       .attr("text-anchor", "end")
       .text(chartdata.chart.yaxisname);
+            }
+            else {
+                svg.append("g")
+  .attr("class", "grid exportgrid")
+      .call(yAxis1().innerTickSize(-width)
+    .outerTickSize(0)
+    .tickPadding(10))
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", -40)
+      .attr("dy", ".71em")
+      .attr("text-anchor", "end")
+      .text(chartdata.chart.yaxisname);
+            }
 
 
+            function drawstackbar(cType, cData) {
+
+                var groups = svg.selectAll('.stackcol')
+        .data(cData)
+        .enter()
+        .append('g')
+        .style('fill', function (d, i) {
+            if (chartdata.colormap != undefined && chartdata.colormap != '') {
+                for (i = 0; i < chartdata.colormap.length; i++) {
+                    if (d[0].z == chartdata.colormap[i].name)
+                        return chartdata.colormap[i].value;
+                }
+            }
+            else
+                return color(i);
+        });
+                var rects = groups.selectAll('rect')
+        .data(function (d) {
+            return d;
+        })
+        .enter()
+        .append('rect')
+        .attr('x', function (d) {
+            return xScale1(d.y) + xScale1.rangeBand() / 4;
+        })
+        .attr('y', function (d, i) {
+            return yScale1(d.x + d.x0);
+        })
+        .attr('height', function (d) {
+            var summa = yScale1(d.x0) - yScale1(d.x + d.x0);
+            return summa;
+        })
+        .attr('width', function (d) {
+            return xScale1.rangeBand() / 2;
+        })
+        .attr('class', function (d) {
+            return 'Column' + d.z.replace(' ', '').replace('>','');
+        })
+        .attr('data-visibility', true)
+        .style('opacity', 0.5)
+         .on("mouseover", function (d, i) {
+               this.style.cursor = 'pointer';
+               this.style.opacity = 1;
+               div.transition()
+                .duration(100)
+                .style("opacity", .9);
+
+               var xattr = bodyRect = elemRect = yattr = 0;
+               var bodyRect = document.body.getBoundingClientRect();
+               var elemRect = this.getBoundingClientRect();
+
+               var yattr = (elemRect.top - bodyRect.top) + 'px';
+               //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
+               var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.x + '</span>';
+                   var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
+               div.html(htmlcontent)
+       .style("left", xattr)
+                .style("top", yattr);
+           })
+            .on("mouseout", function (d, i) {
+                        this.style.cursor = 'pointer';
+                        this.style.opacity = 0.5;
+                        div.transition()
+                .duration(100)
+                .style("opacity", 0);
+                    });
+            }
             function drawrangerect(cType, cData, cLabel) {
                 colorrange = d3.scale.linear()
     .domain([0, cData.length])
@@ -708,6 +900,9 @@ var column2D = function (chartId, chartdata, chartType) {
                 drawrect('DoubleColumn2D', chartdata.data, 'low');
                 drawcirclepath('DoubleColumn2D', chartdata.data, 'low');
             }
+            else if (chartType == 'StackedColumn2D') {
+                drawstackbar('StackedColumn2D', dataGroup)
+            }
             else {
                 for (i = 0; i < chartdata.data.length; i++)
                     drawrangerect('ColumnRange2D', chartdata.data[i].values, chartdata.data[i].label);
@@ -737,7 +932,10 @@ var column2D = function (chartId, chartdata, chartType) {
                     this.setAttribute('d', '')
             });
             d3.selectAll(chartId + ' .xtick .tick line').style('display', 'none');
-            d3.selectAll(chartId + ' .exportgrid .tick text').attr('dx', '3').attr('dy', '12').style('text-anchor', 'start');
+            if (chartType != 'StackedColumn2D')
+                d3.selectAll(chartId + ' .exportgrid .tick text').attr('dx', '3').attr('dy', '12').style('text-anchor', 'start');
+            else
+                d3.selectAll(chartId + ' .exportgrid .tick text').attr('dx', '0').attr('x', '0').attr('dy', '12').style('text-anchor', 'start');
             if (checknegcount + checkzerocount != chartdata.data.length) {
                 d3.select(chartId + ' .exportgrid .tick text').style('display', 'none');
                 d3.select(chartId + ' .exportgrid .tick line').style('display', 'none');
@@ -796,17 +994,17 @@ var column2D = function (chartId, chartdata, chartType) {
             return d.value;
         })
         .on("click", function (d, i) {
-            var graphselect = 'Column' + d.name;
+            var graphselect = 'Column' + d.name.replace('>','');
             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
-            if (d3.selectAll('.' + graphselect).style('display') == 'inline') {
-                d3.selectAll('.' + graphselect).attr("data-visibility", "false");
-                d3.selectAll('.' + graphselect).style('display', 'none');
+            if (d3.selectAll(chartId +' .' + graphselect).style('display') == 'inline') {
+                d3.selectAll(chartId +' .' + graphselect).attr("data-visibility", "false");
+                d3.selectAll(chartId +' .' + graphselect).style('display', 'none');
             }
 
             else {
                 this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
-                d3.selectAll('.' + graphselect).attr("data-visibility", "true");
-                d3.selectAll('.' + graphselect).style('display', 'inline');
+                d3.selectAll(chartId +' .' + graphselect).attr("data-visibility", "true");
+                d3.selectAll(chartId +' .' + graphselect).style('display', 'inline');
             }
 
         })
