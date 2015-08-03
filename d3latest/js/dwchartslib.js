@@ -1394,6 +1394,7 @@ var stackedbar = {
         "slant":false,
         "twoxaxis":false,
         "slantdegree":"65",
+        "dynamicheight":true,
         "credits":{
                "text":"Powered By",
             "color":"#666",
@@ -1515,6 +1516,55 @@ var stackedbar = {
         {
             "label": "T shirt",
             "value": 50,
+            "category":"Lowest"
+        } ,
+        {
+            "label": "Jean",
+            "value": 34,
+            "category":"Highest"
+        }
+        ,
+        {
+            "label": "Jean",
+            "value": 56,
+            "category":"Equal"
+        },
+        {
+            "label": "Jean",
+            "value": 78,
+            "category":"Lowest"
+        }
+         ,
+        {
+            "label": "Watch for Men",
+            "value": 32,
+            "category":"Highest"
+        }
+        ,
+        {
+            "label": "Watch for Men",
+            "value": 134,
+            "category":"Equal"
+        },
+        {
+            "label": "Watch for Men",
+            "value": 12,
+            "category":"Lowest"
+        } ,
+        {
+            "label": "Watch for Women",
+            "value": 12,
+            "category":"Highest"
+        }
+        ,
+        {
+            "label": "Watch for Women",
+            "value": 34,
+            "category":"Equal"
+        },
+        {
+            "label": "Watch for Women",
+            "value": 56,
             "category":"Lowest"
         }
     ]

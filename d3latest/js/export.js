@@ -22,12 +22,14 @@ function exportfile(chartid,chartdata,filename,format,charttype)
 
     document.getElementById(chartid.replace('#','')).setAttribute('xmlns', 'http://www.w3.org/2000/svg');
     
-    var width = "1800px";
-    var height = "500px";
+   /* var width = "1800px";
+    var height = "500px";*/
    
      asd = chart.getElementsByTagName('svg')[0];
      var prevwidth = asd.getAttribute('width');
      var prevheight = asd.getAttribute('height')
+     var width = asd.getAttribute('viewBox').split(' ')[2]+'px';
+     var height = asd.getAttribute('viewBox').split(' ')[3] + 'px';
     asd.setAttribute('width', width);
     asd.setAttribute('height', height);
 

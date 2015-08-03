@@ -9,48 +9,55 @@ var bar2D = function (chartId, chartdata, chartType) {
     if (chartdata.data != undefined) {
         if (chartdata.data.length != 0) {
 
-            if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
-                function change() {
-                    var selectedIndex = select.property('selectedIndex'),
-        data = options[0][selectedIndex].__data__;
-                    if (selectedIndex != 0) {
-                        if (chartdata.export.filename == undefined || chartdata.export.filename == '')
-                            exportfile(chartId, chartdata, 'Column2D', '.' + data, false);
-                        else
-                            exportfile(chartId, chartdata, chartdata.export.filename, '.' + data, false);
-                    }
-                }
-                if (chartdata.export.showexport == true) {
-                    var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:35px ;height:20px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
-    options = select.selectAll('option').data(chartdata.export.format); // Data join
-
-                    // Enter selection
-                    options.enter().append("option").text(function (d) {
-                        return d;
-                    });
-
-
-                }
-            }
-            if (d3.select(chartId).select('svg')[0][0] != null)
-                d3.select(chartId).select('svg').remove();
-            var bottommargin = chartdata.chart.slant ? 100 : 50;
-            var topval = 30;
-            var color = d3.scale.category20c();
-            var margin = { top: topval, right: 12, bottom: bottommargin, left: 12 };
-            var chartcontent = d3.select(chartId);
-            var width = chartcontent[0][0].offsetWidth - margin.left - margin.right;
-            var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
-            var styleborder = "fill: none; stroke: lightgrey;  shape-rendering: crispEdges;font:12px sans-serif";
-            var div = d3.select("body").append("div")
-    .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
-
             var dataGroup = d3.nest()
     .key(function (d) {
         return d.category;
     })
     .entries(chartdata.data);
         };
+        if (chartdata.chart.dynamicheight != undefined && chartdata.chart.dynamicheight == true)
+        { 
+           if (dataGroup[0].values.length < 6)
+            d3.select(chartId).style('height', '300px');
+        else
+            d3.select(chartId).style('height', 50 * dataGroup[0].values.length + 'px');
+        }
+     
+        if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
+            function change() {
+                var selectedIndex = select.property('selectedIndex'),
+        data = options[0][selectedIndex].__data__;
+                if (selectedIndex != 0) {
+                    if (chartdata.export.filename == undefined || chartdata.export.filename == '')
+                        exportfile(chartId, chartdata, 'Column2D', '.' + data, false);
+                    else
+                        exportfile(chartId, chartdata, chartdata.export.filename, '.' + data, false);
+                }
+            }
+            if (chartdata.export.showexport == true) {
+                var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:35px ;height:20px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
+    options = select.selectAll('option').data(chartdata.export.format); // Data join
+
+                // Enter selection
+                options.enter().append("option").text(function (d) {
+                    return d;
+                });
+
+
+            }
+        }
+        if (d3.select(chartId).select('svg')[0][0] != null)
+            d3.select(chartId).select('svg').remove();
+        var bottommargin = chartdata.chart.slant ? 100 : 50;
+        var topval = 30;
+        var color = d3.scale.category20c();
+        var margin = { top: topval, right: 12, bottom: bottommargin, left: 12 };
+        var chartcontent = d3.select(chartId);
+        var width = chartcontent[0][0].offsetWidth - margin.left - margin.right;
+        var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
+        var styleborder = "fill: none; stroke: lightgrey;  shape-rendering: crispEdges;font:12px sans-serif";
+        var div = d3.select("body").append("div")
+    .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
         var categorylength = dataGroup.length;
         var labellength = dataGroup[0].values.length;
         var series = dataGroup.map(function (d) {
@@ -266,7 +273,7 @@ var bar2D = function (chartId, chartdata, chartType) {
 
         });*/
         d3.select(chartId + ' .domain').attr('d', function () {
-           /* var dval = this.getAttribute('d');
+            /* var dval = this.getAttribute('d');
             var first = dval.substring(0, dval.lastIndexOf('H') + 1);
             var last = dval.substring(dval.lastIndexOf('V'), dval.length);
             var middle = dval.substring(dval.lastIndexOf('H') + 1, dval.lastIndexOf('V')) / 1 + 70;*/
@@ -293,11 +300,12 @@ var bar2D = function (chartId, chartdata, chartType) {
             legend.append('text')
         .attr('x', width + 12)
         .attr('y', function (d, i) { return ((i + 1) * 15) + 9; })
-        .text(function (d) { 
-          if (d.name.length > 10)
+        .text(function (d) {
+            if (d.name.length > 10)
                 return d.name.substr(0, 10).toUpperCase() + '...';
             else
-                return d.name.toUpperCase(); })
+                return d.name.toUpperCase();
+        })
          .style('text-transform', 'uppercase')
          .style('opacity', 0.4)
         .style('font-size', '12px')
