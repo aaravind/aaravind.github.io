@@ -96,7 +96,7 @@ var bubble2D = function (chartId, chartdata, chartType) {
                 if (chartdata.chart.fillinside != 'none')
                     return color(i);
                 else
-                    return 'none';
+                    return 'rgb(255,255,255)';
             })
             .attr("stroke", function (d, i) {
                 if (chartdata.chart.fillinside == 'none')
