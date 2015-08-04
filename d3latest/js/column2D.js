@@ -390,10 +390,6 @@ var column2D = function (chartId, chartdata, chartType) {
         .attr('y', function (d, i) {
             return yScale1(d.x + d.x0);
         })
-        .attr('height', function (d) {
-            var summa = yScale1(d.x0) - yScale1(d.x + d.x0);
-            return summa;
-        })
         .attr('width', function (d) {
             return xScale1.rangeBand() / 2;
         })
@@ -427,7 +423,15 @@ var column2D = function (chartId, chartdata, chartType) {
                         div.transition()
                 .duration(100)
                 .style("opacity", 0);
-                    });
+                    })
+                    .attr('height', 0)
+               .transition()
+      .delay(function (d, i) { return i * 100; })
+      .duration(400)
+                     .attr('height', function (d) {
+            var summa = yScale1(d.x0) - yScale1(d.x + d.x0);
+            return summa;
+        });
             }
             function drawrangerect(cType, cData, cLabel) {
                 colorrange = d3.scale.linear()

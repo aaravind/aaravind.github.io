@@ -15,14 +15,13 @@ var bar2D = function (chartId, chartdata, chartType) {
     })
     .entries(chartdata.data);
         };
-        if (chartdata.chart.dynamicheight != undefined && chartdata.chart.dynamicheight == true)
-        { 
-           if (dataGroup[0].values.length < 6)
-            d3.select(chartId).style('height', '300px');
-        else
-            d3.select(chartId).style('height', 50 * dataGroup[0].values.length + 'px');
+        if (chartdata.chart.dynamicheight != undefined && chartdata.chart.dynamicheight == true) {
+            if (dataGroup[0].values.length < 6)
+                d3.select(chartId).style('height', '300px');
+            else
+                d3.select(chartId).style('height', 50 * dataGroup[0].values.length + 'px');
         }
-     
+
         if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
             function change() {
                 var selectedIndex = select.property('selectedIndex'),
@@ -172,9 +171,6 @@ var bar2D = function (chartId, chartdata, chartType) {
         .attr('height', function (d) {
             return yScale1.rangeBand() / 2;
         })
-        .attr('width', function (d) {
-            return xScale1(d.x);
-        })
         .attr('class', function (d) {
             return 'barstack' + d.z.replace(' ', '');
         })
@@ -207,7 +203,14 @@ var bar2D = function (chartId, chartdata, chartType) {
                         div.transition()
                 .duration(100)
                 .style("opacity", 0);
-                    }); 
+                    })
+                      .attr('width', 0)
+               .transition()
+      .delay(function (d, i) { return i * 100; })
+      .duration(400)
+        .attr('width', function (d) {
+            return xScale1(d.x);
+        });
         if (chartdata.chart.slant) {
             if (chartdata.chart.slantdegree != undefined)
                 rotatevalue = "rotate(-" + chartdata.chart.slantdegree + ")";

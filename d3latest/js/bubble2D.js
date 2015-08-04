@@ -67,9 +67,9 @@ var bubble2D = function (chartId, chartdata, chartType) {
 				.value(function (d) {
 				    return d.size;
 				})
-            // .sort(function(a, b) {
-            // 	return -(a.value - b.value)
-            // }) 
+            .sort(function (a, b) {
+                return -(a.size - b.size)
+            })
 				.padding(3);
 
             // generate data with calculated layout values
@@ -77,10 +77,12 @@ var bubble2D = function (chartId, chartdata, chartType) {
 						.filter(function (d) { return !d.children; }); // filter out the outer bubble
 
             var vis = svg.selectAll('.bubble')
-					.data(nodes);
+					.data(nodes)
+                    .enter()
+      .append('g');
 
 
-            vis.enter().append('circle')
+            vis.append('circle')
 			.attr('transform', function (d) {
 			    return 'translate(' + d.x + ',' + d.y + ')';
 			})
@@ -91,11 +93,22 @@ var bubble2D = function (chartId, chartdata, chartType) {
 			    return d.className;
 			})
             .attr('fill', function (d, i) {
-                return color(i);
+                if (chartdata.chart.fillinside != 'none')
+                    return color(i);
+                else
+                    return 'none';
+            })
+            .attr("stroke", function (d, i) {
+                if (chartdata.chart.fillinside == 'none')
+                    return color(i);
+            })
+            .attr('stroke-width', function (d) {
+                if (chartdata.chart.fillinside == 'none')
+                    return 3;
             })
             .on("mouseover", function (d, i) {
                 this.style.cursor = 'pointer';
-                this.style.opacity = 1;
+                d3.selectAll(chartId + ' .' + d.className).style('opacity', 1);
                 div.transition()
                 .duration(100)
                 .style("opacity", .9);
@@ -110,10 +123,12 @@ var bubble2D = function (chartId, chartdata, chartType) {
                 div.html(htmlcontent)
        .style("left", xattr)
                 .style("top", yattr);
+
+
             })
                     .on("mouseout", function (d, i) {
                         this.style.cursor = 'pointer';
-                        this.style.opacity = 0.5;
+                         d3.selectAll(chartId + ' .'+d.className).style('opacity',0.5)
                         div.transition()
                 .duration(100)
                 .style("opacity", 0);
@@ -122,7 +137,77 @@ var bubble2D = function (chartId, chartdata, chartType) {
               .transition()
       .delay(function (d, i) { return i * 100; })
       .duration(400)
-      .style('opacity',0.5);
+      .style('opacity', 0.5);
+
+            if (chartdata.chart.fillinside == 'none') {
+
+                vis.append('text')
+        .attr('x', function (d, i) { return d.x; })
+        .attr('y', function (d, i) { return d.y; })
+         .attr('class', function (d) {
+             return d.className;
+         })
+        .text(function (d) {
+            if (d.value != 0)
+                return d.value;
+        })
+        .style('text-transform', 'uppercase')
+        .style('text-anchor', 'middle')
+        .style('font-size', function (d) { return d.r / 2 + 'px' })
+        .style('fill', function (d, i) {
+            return color(i);
+        })
+            .on("mouseover", function (d, i) {
+                this.style.cursor = 'pointer';
+                d3.selectAll(chartId + ' .' + d.className).style('opacity', 1)
+            })
+          .on("mouseout", function (d, i) {
+              this.style.cursor = 'pointer';
+              d3.selectAll(chartId + ' .' + d.className).style('opacity', 0.4)
+          })
+          .style('opacity', '0')
+                .transition()
+      .delay(function (d, i) { return i * 100; })
+      .duration(400)
+      .style('opacity', 0.4);
+                vis.append('text')
+        .attr('x', function (d, i) { return d.x; })
+        .attr('y', function (d, i) { return d.y; })
+        .attr('dy', function (d) { return d.r / 4; })
+        .attr('class', function (d) {
+            return d.className;
+        })
+        .text(function (d) {
+            if (d.value != 0) {
+                if (d.name.length < d.r / 4)
+                    return d.name.toUpperCase();
+                else
+                    return d.name.substring(0, d.r / 4).toUpperCase() + '...';
+            }
+
+        })
+        .style('text-transform', 'uppercase')
+        .style('text-anchor', 'middle')
+        .style('font-size', function (d) { return d.r / 4 + 'px' })
+        .style('fill', function (d, i) {
+            return color(i);
+        })
+            .on("mouseover", function (d, i) {
+                this.style.cursor = 'pointer';
+                d3.selectAll(chartId + ' .' + d.className).style('opacity', 1);
+            })
+          .on("mouseout", function (d, i) {
+              this.style.cursor = 'pointer';
+              d3.selectAll(chartId + ' .' + d.className).style('opacity', 0.4);
+          })
+                  .style('opacity', '0')
+                .transition()
+      .delay(function (d, i) { return i * 100; })
+      .duration(400)
+      .style('opacity', 0.4);
+
+            }
+
 
             if (chartdata.chart.credits != undefined) {
                 if (chartdata.chart.credits.text != undefined && chartdata.chart.credits.text != '') {

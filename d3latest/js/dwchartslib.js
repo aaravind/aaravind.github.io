@@ -1742,7 +1742,7 @@ var bubbledata = {
             "color":"#666",
             "imageurl":"../images/logo.png"
         },
-          "tickinterval":5, // Number of label visible in the X axis
+        "fillinside":"none", // fill or none
          "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"] // Pallette colors for 30 values
     },
     "export":{
@@ -1752,146 +1752,75 @@ var bubbledata = {
     "data":  [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
         {
 
-            "label": "01-08-15",
+            "label": "Palladiumasdasdasdasdasd",
             "value": 56
         },
         {
-            "label": "02-08-15",
+            "label": "Lead",
             "value": 23
         },
         {
-            "label": "03-08-15",
+            "label": "Platinum",
             "value": 87
 
         }
         ,
         {
-            "label": "04-08-15",
+            "label": "Silver",
             "value": 10
         }
         ,
         {
-            "label": "05-08-15",
+            "label": "Copper",
             "value": 67
         }
         ,
         {
-            "label": "06-08-15",
+            "label": "Zinc",
             "value": 50
         }
         ,
         {
-            "label": "07-08-15",
+            "label": "Nikel",
             "value": 66
         }
         ,
         {
-            "label": "08-08-15",
+            "label": "Alluminum",
             "value": 0
         },
         {
-            "label": "09-08-15",
+            "label": "Cobalt",
             "value": 98
         }
         ,
         {
-            "label": "10-08-15",
+            "label": "Gold",
             "value": 55
         }
         ,
         {
-            "label": "11-08-15",
+            "label": "Pin",
             "value": 88
         }
         ,
         {
-            "label": "12-08-15",
+            "label": "Tin",
             "value": 44
         } ,
         {
-            "label": "13-08-15",
+            "label": "Plastic",
             "value": 55
         } ,
         {
-            "label": "14-08-15",
+            "label": "Glass",
             "value": 89
         },
         {
-            "label": "15-08-15",
+            "label": "Steel",
             "value": 23
         },
-        {
-            "label": "16-08-15",
-            "value": 33
-        },
-        {
-            "label": "17-08-15",
-            "value": 0
-        },
-        {
-            "label": "18-08-15",
-            "value": 0
-
-        }
-        ,
-        {
-            "label": "19-08-15",
-            "value": 11
-        }
-        ,
-        {
-            "label": "20-08-15",
-            "value": 45
-        }
-        ,
-        {
-            "label": "21-08-15",
-            "value": 76
-        }
-        ,
-        {
-            "label": "22-08-15",
-            "value": 77
-        }
-        ,
-        {
-            "label": "23-08-15",
-            "value": 5
-        },
-        {
-            "label": "24-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "label": "25-08-15",
-            "value": 80
-        }
-        ,
-        {
-            "label": "26-08-15",
-            "value": 3
-        }
-        ,
-        {
-            "label": "27-08-15",
-            "value": 12
-        } ,
-        {
-            "label": "28-08-15",
-            "value": 6
-        } ,
-        {
-            "label": "29-08-15",
-            "value": 89
-
-        },
-        {
-            "label": "30-08-15",
-            "value": 23
-
-        }
-
+      
 
         
 
