@@ -29,4 +29,6 @@ var d3charts = function (chartType, chartId, chartdata, chartwidth, chartheight)
     }
     if (chartType == 'Bubble2D')
         bubble2D(chartId, chartdata,chartType);
+    if (chartType == 'BarLine2D')
+        barline2D(chartId, chartdata,chartType);
 };
