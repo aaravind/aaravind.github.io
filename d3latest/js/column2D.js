@@ -474,7 +474,10 @@ var column2D = function (chartId, chartdata, chartType) {
             var yattrval = (elemRect.top - bodyRect.top - div[0][0].offsetHeight);
             var yattr = yattrval + 15 + 'px';
         }
-        var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + cLabel + '</span><hr>';
+        if(chartdata.chart.tooltipheader == undefined || chartdata.chart.tooltipheader == '')
+        var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Node' + ': ' + cLabel + '</span><hr>';
+        else
+          var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' +chartdata.chart.tooltipheader+ ': ' + cLabel + '</span><hr>';
         if (d[1] != chartdata.range.highrange) {
             htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + d[0] + '</div>';
             htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + d[1] + '</div>';

@@ -1217,6 +1217,7 @@ var columnrange = {
         "captionColor":"black",
         "yaxisname": "",
         "color":"white",
+        "tooltipheader":"Retailer",
         "fontsize":15,
         "showlegend":false,
         "slant":false,
