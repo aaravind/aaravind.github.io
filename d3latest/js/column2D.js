@@ -434,11 +434,36 @@ var column2D = function (chartId, chartdata, chartType) {
                      });
             }
             var datarangeval;
-            function drawrangerect(cType, cData, cLabel) {
-                datarangeval = cData;
-                colorrange = d3.scale.linear()
-    .domain([0, cData.length])
-    .range(["#008ee4", "#E94C3D", ]);
+
+            function drawrangerect(cType, cData, cLabel,heightzero) {
+
+                function sortFunction(a, b) {
+                    if (a[2] === b[2]) {
+                        return 0;
+                    }
+                    else {
+                        return (a[2] < b[2]) ? -1 : 1;
+                    }
+                }
+                var sorteddata = cData.sort(sortFunction);
+                var rangediff = 0;
+                var domaincolorarray = [];
+                var domainarray = [];
+                rangediff = Math.round(cData.length / 5);
+                for (j = 0; j < cData.length; j++) {
+
+                    if (j < rangediff)
+                        domaincolorarray.push('#c7001e');
+                    else if (j < 2 * rangediff)
+                        domaincolorarray.push('#f6a580');
+                    else if (j < 3 * rangediff)
+                        domaincolorarray.push('#cccccc');
+                    else if (j < 4 * rangediff)
+                        domaincolorarray.push('#92c6db');
+                    else
+                        domaincolorarray.push('#086fad');
+                }
+
                 svg.selectAll(".columnrange")
       .data(cData)
     .enter().append("rect")
@@ -447,7 +472,7 @@ var column2D = function (chartId, chartdata, chartType) {
 
     })
     .attr("fill", function (d, i) {
-        return colorrange(i);
+        return domaincolorarray[i];
     })
     .style('stroke', 'white')
     .style('stroke-width', '0.5')
@@ -458,11 +483,11 @@ var column2D = function (chartId, chartdata, chartType) {
                 .style("opacity", .9);
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
-        if (this.getBoundingClientRect().right > window.innerWidth / 2) { 
-        var xattr = (elemRect.left - bodyRect.left - div[0][0].offsetWidth) + 'px';
+        if (this.getBoundingClientRect().right > window.innerWidth / 2) {
+            var xattr = (elemRect.left - bodyRect.left - div[0][0].offsetWidth) + 'px';
         }
         else
-        var xattr = (elemRect.right - bodyRect.left) + 'px';
+            var xattr = (elemRect.right - bodyRect.left) + 'px';
         var topval = false;
         topval = false;
         if (d[1] > chartdata.range.highrange / 2) {
@@ -474,19 +499,17 @@ var column2D = function (chartId, chartdata, chartType) {
             var yattrval = (elemRect.top - bodyRect.top - div[0][0].offsetHeight);
             var yattr = yattrval + 15 + 'px';
         }
-        if(chartdata.chart.tooltipheader == undefined || chartdata.chart.tooltipheader == '')
-        var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Node' + ': ' + cLabel + '</span><hr>';
+        if (chartdata.chart.tooltipheader == undefined || chartdata.chart.tooltipheader == '')
+            var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Node' + ': ' + cLabel + '</span><hr>';
         else
-          var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' +chartdata.chart.tooltipheader+ ': ' + cLabel + '</span><hr>';
+            var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + chartdata.chart.tooltipheader + ': ' + cLabel + '</span><hr>';
         if (d[1] != chartdata.range.highrange) {
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + d[0] + '</div>';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + d[1] + '</div>';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Products Count' + ': ' + d[2] + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Price Range' + ': ' + d[0] + '-'+ d[1] +'</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2] + '</div>';
         }
         else {
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + d[0] + '</div>';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + 'INFINITY' + '</div>';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Products Count' + ': ' + d[2] + '</div>';
+           htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Price Range' + ': ' + d[0] + '-'+ 'INFINITY' +'</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2] + '</div>';
         }
         div.html(htmlcontent)
        .style("left", function (d, i) {
@@ -510,8 +533,8 @@ var column2D = function (chartId, chartdata, chartType) {
       .style("opacity", function (d, i) {
           return 0.5;
       })
-      .attr("x", function (d) { return x(cLabel); })
-      .attr("width", x.rangeBand())
+      .attr("x", function (d) { return x(cLabel) + x.rangeBand() / 4; })
+      .attr("width", x.rangeBand() / 2)
       .attr("y", function (d) {
           return Y0();
 
@@ -522,13 +545,13 @@ var column2D = function (chartId, chartdata, chartType) {
       .duration(400)
       .attr('y', function (d, i) {
           if (d[0] == 0 && d[1] == 0)
-              return Y(datarangeval[1][0]);
+              return Y(heightzero);
           else
               return Y(d[1]);
       })
       .attr('height', function (d, i) {
           if (d[0] == 0 && d[1] == 0)
-              return Math.abs(Y(datarangeval[1][0]) - Y(d[0]));
+              return Math.abs(Y(heightzero) - Y(d[0]));
           else
               return Math.abs(Y(d[1]) - Y(d[0]));
       });
@@ -931,7 +954,10 @@ var column2D = function (chartId, chartdata, chartType) {
             }
             else {
                 for (i = 0; i < chartdata.data.length; i++)
-                    drawrangerect('ColumnRange2D', chartdata.data[i].values, chartdata.data[i].label);
+                { 
+                drawrangerect('ColumnRange2D', chartdata.data[i].values, chartdata.data[i].label,chartdata.data[i].values[1,0]);
+                }
+                
             }
 
 

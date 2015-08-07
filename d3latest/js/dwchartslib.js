@@ -1695,6 +1695,7 @@ var bubbledata = {
         "slant":false, // X axis label slant
         "slantdegree":"90", // Slant based on the degree specified
          "showlegend":true,
+         "tooltipheader":'Date',
         "tickinterval":5,
           "credits":{            // Credits
             "text":"Powered By", // Credit Name
