@@ -575,7 +575,18 @@ var line2D = function (chartType, chartId, chartdata) {
                 });
                 tickspace(dataGroup[0].values);
                 if (chartdata.chart.showlegend) {
-                    var legend = svg.selectAll('.legend')
+                      var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
+            .append('g')
+            .attr('class', 'legendgroup');
+            legendgroup.append('g')
+            .append('rect')
+            .style('width','85px')
+            .style('height',dataGroup.length*15)
+            .style('fill','rgb(255, 255, 255)')
+            .attr('x',width-5)
+            .attr('y',42.5)
+            .style('stroke','lightgrey');
+                    var legend = legendgroup.selectAll('.legend')
         .data(dataGroup)
         .enter()
       .append('g')
@@ -703,7 +714,18 @@ var line2D = function (chartType, chartId, chartdata) {
                 });
                 tickspace(dataGroup[0].values);
                 if (chartdata.chart.showlegend) {
-                    var legend = svg.selectAll('.legend')
+                      var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
+            .append('g')
+            .attr('class', 'legendgroup');
+            legendgroup.append('g')
+            .append('rect')
+            .style('width','85px')
+            .style('height',dataGroup.length*15)
+            .style('fill','rgb(255, 255, 255)')
+            .attr('x',width-5)
+            .attr('y',42.5)
+            .style('stroke','lightgrey');
+                    var legend = legendgroup.selectAll('.legend')
         .data(dataGroup)
         .enter()
       .append('g')
@@ -798,7 +820,18 @@ var line2D = function (chartType, chartId, chartdata) {
                 });
                 tickspace(dataGroup[0].values);
                 if (chartdata.chart.showlegend) {
-                    var legend = svg.selectAll('.legend')
+                    var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
+            .append('g')
+            .attr('class', 'legendgroup');
+            legendgroup.append('g')
+            .append('rect')
+            .style('width','85px')
+            .style('height',dataGroup.length*15)
+            .style('fill','rgb(255, 255, 255)')
+            .attr('x',width-5)
+            .attr('y',42.5)
+            .style('stroke','lightgrey');
+                    var legend = legendgroup.selectAll('.legend')
         .data(dataGroup)
         .enter()
       .append('g')

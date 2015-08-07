@@ -50,7 +50,7 @@ var column2D = function (chartId, chartdata, chartType) {
             var div = d3.select("body").append("div")
     .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
             if (chartType != 'StackedColumn2D') {
-                if (chartdata.chart.showlegend != true && chartdata.chart.showlegend != undefined)
+                if (chartdata.chart.showlegend != true && chartdata.chart.showlegend != undefined && chartType != 'ColumnRange2D')
                     var x = d3.scale.ordinal()
     .rangeRoundBands([15, width + 50], .1);
                 else
@@ -394,46 +394,48 @@ var column2D = function (chartId, chartdata, chartType) {
             return xScale1.rangeBand() / 2;
         })
         .attr('class', function (d) {
-            return 'Column' + d.z.replace(' ', '').replace('>','');
+            return 'Column' + d.z.replace(' ', '').replace('>', '');
         })
         .attr('data-visibility', true)
         .style('opacity', 0.5)
          .on("mouseover", function (d, i) {
-               this.style.cursor = 'pointer';
-               this.style.opacity = 1;
-               div.transition()
+             this.style.cursor = 'pointer';
+             this.style.opacity = 1;
+             div.transition()
                 .duration(100)
                 .style("opacity", .9);
 
-               var xattr = bodyRect = elemRect = yattr = 0;
-               var bodyRect = document.body.getBoundingClientRect();
-               var elemRect = this.getBoundingClientRect();
+             var xattr = bodyRect = elemRect = yattr = 0;
+             var bodyRect = document.body.getBoundingClientRect();
+             var elemRect = this.getBoundingClientRect();
 
-               var yattr = (elemRect.top - bodyRect.top) + 'px';
-               //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
-               var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.x + '</span>';
-                   var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
-               div.html(htmlcontent)
+             var yattr = (elemRect.top - bodyRect.top) + 'px';
+             //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
+             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.x + '</span>';
+             var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
+             div.html(htmlcontent)
        .style("left", xattr)
                 .style("top", yattr);
-           })
+         })
             .on("mouseout", function (d, i) {
-                        this.style.cursor = 'pointer';
-                        this.style.opacity = 0.5;
-                        div.transition()
+                this.style.cursor = 'pointer';
+                this.style.opacity = 0.5;
+                div.transition()
                 .duration(100)
                 .style("opacity", 0);
-                    })
+            })
                     .attr('height', 0)
                .transition()
       .delay(function (d, i) { return i * 100; })
       .duration(400)
                      .attr('height', function (d) {
-            var summa = yScale1(d.x0) - yScale1(d.x + d.x0);
-            return summa;
-        });
+                         var summa = yScale1(d.x0) - yScale1(d.x + d.x0);
+                         return summa;
+                     });
             }
+            var datarangeval;
             function drawrangerect(cType, cData, cLabel) {
+                datarangeval = cData;
                 colorrange = d3.scale.linear()
     .domain([0, cData.length])
     .range(["#008ee4", "#E94C3D", ]);
@@ -456,22 +458,33 @@ var column2D = function (chartId, chartdata, chartType) {
                 .style("opacity", .9);
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
-
+        if (this.getBoundingClientRect().right > window.innerWidth / 2) { 
+        var xattr = (elemRect.left - bodyRect.left - div[0][0].offsetWidth) + 'px';
+        }
+        else
         var xattr = (elemRect.right - bodyRect.left) + 'px';
         var topval = false;
         topval = false;
-        if (Y(d[1]) > Y0()) {
+        if (d[1] > chartdata.range.highrange / 2) {
             topval = true;
-            var yattrval = (elemRect.bottom - bodyRect.top);
+            var yattrval = (elemRect.bottom - bodyRect.top + div[0][0].offsetHeight);
             var yattr = yattrval + 'px';
         }
         else {
-            var yattrval = (elemRect.top - bodyRect.top);
+            var yattrval = (elemRect.top - bodyRect.top - div[0][0].offsetHeight);
             var yattr = yattrval + 15 + 'px';
         }
         var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + cLabel + '</span><hr>';
-        htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + d[0] + '</div>';
-        htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + d[1] + '</div>';
+        if (d[1] != chartdata.range.highrange) {
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + d[0] + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + d[1] + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Products Count' + ': ' + d[2] + '</div>';
+        }
+        else {
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + d[0] + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + 'INFINITY' + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Products Count' + ': ' + d[2] + '</div>';
+        }
         div.html(htmlcontent)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
@@ -505,10 +518,16 @@ var column2D = function (chartId, chartdata, chartType) {
       .delay(function (d, i) { return i * 100; })
       .duration(400)
       .attr('y', function (d, i) {
-          return Y(d[0]);
+          if (d[0] == 0 && d[1] == 0)
+              return Y(datarangeval[1][0]);
+          else
+              return Y(d[1]);
       })
       .attr('height', function (d, i) {
-          return Math.abs(Y(d[1]) - Y(d[0]));
+          if (d[0] == 0 && d[1] == 0)
+              return Math.abs(Y(datarangeval[1][0]) - Y(d[0]));
+          else
+              return Math.abs(Y(d[1]) - Y(d[0]));
       });
             };
             function drawrect(cType, cData, valuetype) {
@@ -970,7 +989,18 @@ var column2D = function (chartId, chartdata, chartType) {
                 return finalfull.substring(0, finalfull.lastIndexOf('V'));
             });
             if (chartdata.chart.showlegend) {
-                var legend = svg.selectAll('.legend')
+                var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
+            .append('g')
+            .attr('class', 'legendgroup');
+                legendgroup.append('g')
+            .append('rect')
+            .style('width', '85px')
+            .style('height', chartdata.colormap.length * 15)
+            .style('fill', 'rgb(255, 255, 255)')
+            .attr('x', width - 5)
+            .attr('y', 12.5)
+            .style('stroke', 'lightgrey');
+                var legend = legendgroup.selectAll('.legend')
         .data(chartdata.colormap)
         .enter()
       .append('g')
@@ -998,17 +1028,17 @@ var column2D = function (chartId, chartdata, chartType) {
             return d.value;
         })
         .on("click", function (d, i) {
-            var graphselect = 'Column' + d.name.replace('>','');
+            var graphselect = 'Column' + d.name.replace('>', '');
             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
-            if (d3.selectAll(chartId +' .' + graphselect).style('display') == 'inline') {
-                d3.selectAll(chartId +' .' + graphselect).attr("data-visibility", "false");
-                d3.selectAll(chartId +' .' + graphselect).style('display', 'none');
+            if (d3.selectAll(chartId + ' .' + graphselect).style('display') == 'inline') {
+                d3.selectAll(chartId + ' .' + graphselect).attr("data-visibility", "false");
+                d3.selectAll(chartId + ' .' + graphselect).style('display', 'none');
             }
 
             else {
                 this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
-                d3.selectAll(chartId +' .' + graphselect).attr("data-visibility", "true");
-                d3.selectAll(chartId +' .' + graphselect).style('display', 'inline');
+                d3.selectAll(chartId + ' .' + graphselect).attr("data-visibility", "true");
+                d3.selectAll(chartId + ' .' + graphselect).style('display', 'inline');
             }
 
         })
