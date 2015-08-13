@@ -294,7 +294,7 @@ var barline2D = function (chartId, chartdata, chartType) {
                 var circletext = svg.selectAll('barlinecircle')
      .data(cData)
     .enter().append('g')
-    .attr('class', 'barlinecircle ' + cType + id.replace(/\s+/g, ''));
+    .attr('class', 'barlinecircle ' + cType + id.replace(/[^a-zA-Z0-9]/g, ""));
                 circletext.append('circle')
     .attr("class", function (d) { return cType + d.label })
     .style("fill", function (d, i) { return d.value == 0 ? "none" : color; })
@@ -309,7 +309,7 @@ var barline2D = function (chartId, chartdata, chartType) {
     .attr("dx", function (d)
     { return xline(d.label) + xline.rangeBand() / 2 + 10; })
      .attr("dy", function (d) { return y(d.value) - 5; })
-      .attr("class", function (d) { return cType + d.label.replace(" ", "") })
+      .attr("class", function (d) { return cType + d.label.replace(/[^a-zA-Z0-9]/g, "") })
 	    .text(function (d) {
 
 	        if (d.value != 0)
@@ -363,7 +363,7 @@ var barline2D = function (chartId, chartdata, chartType) {
                 currentchartdata = d.values;
                 var path = svg.append('path')
         .attr('d', valueline(d.values))
-         .attr("class", chartType + keyid.replace(/\s+/g, '') + ' line')
+         .attr("class", chartType + keyid.replace(/[^a-zA-Z0-9]/g, "") + ' line')
           .attr("data-visibility", "true")
            .attr("data-categorycolumn", d.key)
         .attr('style', colorstyle);
@@ -384,7 +384,7 @@ var barline2D = function (chartId, chartdata, chartType) {
                     svg.append("path")
         .attr("class", "line")
         .attr("d", dottedlinearr[i])
-          .attr("class", chartType + keyid.replace(/\s+/g, '') + ' line')
+          .attr("class", chartType + keyid.replace(/[^a-zA-Z0-9]/g, "") + ' line')
           .attr("data-visibility", "true")
            .attr("data-categorycolumn", d.key)
         .attr("style", colorstyle)
@@ -413,17 +413,17 @@ var barline2D = function (chartId, chartdata, chartType) {
                  .attr('stroke', '#666')
                  .style("stroke-width", 1.2)
                  .style("opacity", "1");*/
-                 d3.selectAll(chartId + ' .barlinerect .' + chartType + d.replace(" ", ""))
+                 d3.selectAll(chartId + ' .barlinerect .' + chartType + d.replace(/[^a-zA-Z0-9]/g, ""))
         .attr("width", 1)
          .style('opacity', 1);
 
-                 d3.selectAll('.' + chartType + d.replace(" ", ""))
+                 d3.selectAll('.' + chartType + d.replace(/[^a-zA-Z0-9]/g, ""))
                  //.attr("r", 8)
         .transition()
          .duration(0)
          .style('opacity', 1);
 
-                 var alltext = d3.selectAll('text' + '.' + chartType + d.replace(" ", ""));
+                 var alltext = d3.selectAll('text' + '.' + chartType + d.replace(/[^a-zA-Z0-9]/g, ""));
                  if (chartdata.chart.tooltipheader == undefined || chartdata.chart.tooltipheader == '')
                      var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Node: ' + d + '</span><hr>';
                  else
@@ -466,10 +466,10 @@ var barline2D = function (chartId, chartdata, chartType) {
                   .attr('stroke', '')
                   .style("stroke-width", 20)
                   .style("opacity", "0");*/
-                  d3.selectAll(chartId + ' .barlinerect .' + chartType + d.replace(" ", ""))
+                  d3.selectAll(chartId + ' .barlinerect .' + chartType + d.replace(/[^a-zA-Z0-9]/g, ""))
         .attr("width", 0)
          .style('opacity', 1);
-                  d3.selectAll('.' + chartType + d.replace(" ", ""))
+                  d3.selectAll('.' + chartType + d.replace(/[^a-zA-Z0-9]/g, ""))
               .style('opacity', 0.3)
                   //.attr("r", 5)
           .transition()
@@ -506,12 +506,12 @@ var barline2D = function (chartId, chartdata, chartType) {
             .attr('class', 'legendgroup');
             legendgroup.append('g')
             .append('rect')
-            .style('width','85px')
-            .style('height',chartdata.colormap.length*15)
-            .style('fill','rgb(255, 255, 255)')
+            .attr('width','85')
+            .attr('height',chartdata.colormap.length*15)
+            .attr('fill','rgb(255, 255, 255)')
             .attr('x',width-5)
             .attr('y',22.5)
-            .style('stroke','lightgrey');
+            .attr('stroke','lightgrey');
 
                 var legend = legendgroup.selectAll('.legend')
         .data(chartdata.colormap)
@@ -546,7 +546,7 @@ var barline2D = function (chartId, chartdata, chartType) {
             return d.value;
         })
         .on("click", function (d, i) {
-            var barselect = chartType + d.name.replace(' ', '');
+            var barselect = chartType + d.name.replace(/[^a-zA-Z0-9]/g, "");
             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
             if (d3.selectAll('.' + barselect).style('display') == 'inline') {
                 d3.selectAll('.' + barselect).attr("data-visibility", "false");

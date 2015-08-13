@@ -172,7 +172,7 @@ var bar2D = function (chartId, chartdata, chartType) {
             return yScale1.rangeBand() / 2;
         })
         .attr('class', function (d) {
-            return 'barstack' + d.z.replace(' ', '');
+            return 'barstack' + d.z.replace(/[^a-zA-Z0-9]/g, "");
         })
         .attr('data-visibility', true)
         .style('opacity', 0.5)
@@ -288,12 +288,12 @@ var bar2D = function (chartId, chartdata, chartType) {
             .attr('class', 'legendgroup');
             legendgroup.append('g')
             .append('rect')
-            .style('width','85px')
-            .style('height',chartdata.colormap.length*15)
-            .style('fill','rgb(255, 255, 255)')
+            .attr('width','85')
+            .attr('height',chartdata.colormap.length*15)
+            .attr('fill','rgb(255, 255, 255)')
             .attr('x',width-5)
             .attr('y',12.5)
-            .style('stroke','lightgrey');
+            .attr('stroke','lightgrey');
 
             var legend = legendgroup.selectAll('.legend')
         .data(chartdata.colormap)
@@ -328,7 +328,7 @@ var bar2D = function (chartId, chartdata, chartType) {
             return d.value;
         })
         .on("click", function (d, i) {
-            var graphselect = 'barstack' + d.name.replace(' ', '');
+            var graphselect = 'barstack' + d.name.replace(/[^a-zA-Z0-9]/g, "");
             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
             if (d3.selectAll('.' + graphselect).style('display') == 'inline') {
                 d3.selectAll('.' + graphselect).attr("data-visibility", "false");

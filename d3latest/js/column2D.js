@@ -394,7 +394,7 @@ var column2D = function (chartId, chartdata, chartType) {
             return xScale1.rangeBand() / 2;
         })
         .attr('class', function (d) {
-            return 'Column' + d.z.replace(' ', '').replace('>', '');
+            return 'Column' + d.z.replace(/[^a-zA-Z0-9]/g, "");
         })
         .attr('data-visibility', true)
         .style('opacity', 0.5)
@@ -564,9 +564,9 @@ var column2D = function (chartId, chartdata, chartType) {
     .attr('class', function (d, i) {
         if (cType == 'Column2D') {
             if (d.category != undefined && d.category != '')
-                return 'Column' + d.category.replace(' ', '');
+                return 'Column' + d.category.replace(/[^a-zA-Z0-9]/g, "");
             else
-                return 'Column' + d.label.replace(' ', '');
+                return 'Column' + d.label.replace(/[^a-zA-Z0-9]/g, "");
         }
         else
             return 'Column' + valuetype + ' Column' + i;
@@ -582,9 +582,9 @@ var column2D = function (chartId, chartdata, chartType) {
                 .duration(0)
                 .style("opacity", .9);
         if (cType == 'Column2D')
-            d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "")).style("display", "block");
+            d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(/[^a-zA-Z0-9]/g, "")).style("display", "block");
         else
-            d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "") + valuetype).style("display", "block");
+            d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(/[^a-zA-Z0-9]/g, "") + valuetype).style("display", "block");
         //var xattr = ((this.getAttribute('x') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
@@ -734,9 +734,9 @@ var column2D = function (chartId, chartdata, chartType) {
             else
                 d3.selectAll(chartId + ' .Column' + i).style('opacity', 0.5);
             if (cType == 'Column2D')
-                d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "")).style("display", "none");
+                d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(/[^a-zA-Z0-9]/g, "")).style("display", "none");
             else
-                d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(" ", "") + valuetype).style("display", "none");
+                d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(/[^a-zA-Z0-9]/g, "") + valuetype).style("display", "none");
             div.transition()
                 .duration(0)
                 .style("opacity", 0);
@@ -835,9 +835,9 @@ var column2D = function (chartId, chartdata, chartType) {
     .enter().append('circle')
     .attr("class", function (d) {
         if (cType == 'Column2D')
-            return chartId.replace('#', '') + d.label.replace(" ", "")
+            return chartId.replace('#', '') + d.label.replace(/[^a-zA-Z0-9]/g, "")
         else
-            return chartId.replace('#', '') + d.label.replace(" ", "") + valuetype;
+            return chartId.replace('#', '') + d.label.replace(/[^a-zA-Z0-9]/g, "") + valuetype;
     })
     .attr("fill", "none")
         .attr("cx", function (d)
@@ -868,9 +868,9 @@ var column2D = function (chartId, chartdata, chartType) {
     .enter().append('path')
     .attr("class", function (d) {
         if (cType == 'Column2D')
-            return chartId.replace('#', '') + d.label.replace(" ", "")
+            return chartId.replace('#', '') + d.label.replace(/[^a-zA-Z0-9]/g, "")
         else
-            return chartId.replace('#', '') + d.label.replace(" ", "") + valuetype;
+            return chartId.replace('#', '') + d.label.replace(/[^a-zA-Z0-9]/g, "") + valuetype;
     })
     .attr("d", function (d) {
         var xatt = x(d.label) + x.rangeBand() / 2;
@@ -1023,12 +1023,12 @@ var column2D = function (chartId, chartdata, chartType) {
             .attr('class', 'legendgroup');
                 legendgroup.append('g')
             .append('rect')
-            .style('width', '85px')
-            .style('height', chartdata.colormap.length * 15)
-            .style('fill', 'rgb(255, 255, 255)')
+            .attr('width', '85')
+            .attr('height', chartdata.colormap.length * 15)
+            .attr('fill', 'rgb(255, 255, 255)')
             .attr('x', width - 5)
             .attr('y', 12.5)
-            .style('stroke', 'lightgrey');
+            .attr('stroke', 'lightgrey');
                 var legend = legendgroup.selectAll('.legend')
         .data(chartdata.colormap)
         .enter()
@@ -1057,7 +1057,7 @@ var column2D = function (chartId, chartdata, chartType) {
             return d.value;
         })
         .on("click", function (d, i) {
-            var graphselect = 'Column' + d.name.replace('>', '');
+            var graphselect = 'Column' + d.name.replace(/[^a-zA-Z0-9]/g, "");
             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
             if (d3.selectAll(chartId + ' .' + graphselect).style('display') == 'inline') {
                 d3.selectAll(chartId + ' .' + graphselect).attr("data-visibility", "false");

@@ -1457,7 +1457,7 @@ var stackedcolumn = {
          "format": ["-Select-","jpeg","png"]
     },
     "colormap":[
-    {"name":">50",
+    {"name":" > 50",
     "value":"#008ee4"},
        {"name":">40-50",
     "value":"#26AD5E"},
@@ -1468,7 +1468,7 @@ var stackedcolumn = {
         {
             "label": "Nikon",
             "value": 11,
-            "category":">50"
+            "category":" > 50"
         },
         {
             "label": "Nikon",
@@ -1485,7 +1485,7 @@ var stackedcolumn = {
         {
             "label": "Livon",
             "value": 44,
-            "category":">50"
+            "category":" > 50"
         }
         ,
         {
@@ -1503,7 +1503,7 @@ var stackedcolumn = {
         {
             "label": "WD",
             "value": 50,
-             "category":">50"
+             "category":" > 50"
         }
         ,
         {
@@ -1520,7 +1520,7 @@ var stackedcolumn = {
         {
             "label": "Spy",
             "value": 100,
-             "category":">50"
+             "category":" > 50"
         }
         ,
         {
@@ -1537,7 +1537,7 @@ var stackedcolumn = {
         {
             "label": "Lego",
             "value": 100,
-             "category":">50"
+             "category":" > 50"
         }
         ,
         {
@@ -1554,7 +1554,7 @@ var stackedcolumn = {
         {
             "label": "Orion",
             "value": 100,
-             "category":">50"
+             "category":" > 50"
         }
         ,
         {
@@ -1570,7 +1570,7 @@ var stackedcolumn = {
         {
             "label": "Metz",
             "value": 34,
-           "category":">50"
+           "category":" > 50"
         }
         ,
         {

@@ -33,7 +33,7 @@ var line2D = function (chartType, chartId, chartdata) {
                 var circletext = svg.selectAll('circletext')
      .data(cData)
     .enter().append('g')
-    .attr('class', 'circletext ' + cType + id.replace(/\s+/g, ''));
+    .attr('class', 'circletext ' + cType + id.replace(/[^a-zA-Z0-9]/g, ""));
                 circletext.append('circle')
     .attr("class", function (d) { return cType + d.label })
     .style("fill", function (d, i) { return d.value == 0 ? "none" : color; })
@@ -91,7 +91,7 @@ var line2D = function (chartType, chartId, chartdata) {
     .attr("dx", function (d)
     { return x(d.label) + x.rangeBand() / 2 + 10; })
      .attr("dy", function (d) { return y(d.value) - 5; })
-      .attr("class", function (d) { return cType + d.label.replace(" ", "") })
+      .attr("class", function (d) { return cType + d.label.replace(/[^a-zA-Z0-9]/g, "") })
 	    .text(function (d) {
 	        if (chartType == 'Line2D' || chartType == 'Scatter2D' || chartType == 'StepLine2D' || chartType == 'Curve2D') {
 	            if (d.value != 0)
@@ -122,17 +122,17 @@ var line2D = function (chartType, chartId, chartdata) {
                  .attr('stroke', '#666')
                  .style("stroke-width", 1.2)
                  .style("opacity", "1");*/
-                 d3.selectAll(chartId + ' .linerect .' + cType + d.replace(" ", ""))
+                 d3.selectAll(chartId + ' .linerect .' + cType + d.replace(/[^a-zA-Z0-9]/g, ""))
         .attr("width", 1)
          .style('opacity', 1);
 
-                 d3.selectAll('.' + cType + d.replace(" ", ""))
+                 d3.selectAll('.' + cType + d.replace(/[^a-zA-Z0-9]/g, ""))
                  //.attr("r", 8)
         .transition()
          .duration(0)
          .style('opacity', 1);
 
-                 var alltext = d3.selectAll('text' + '.' + cType + d.replace(" ", ""));
+                 var alltext = d3.selectAll('text' + '.' + cType + d.replace(/[^a-zA-Z0-9]/g, ""));
                  if (chartType.search('Multi') == -1)
                      var htmlcontent = '';
                  else {
@@ -179,10 +179,10 @@ var line2D = function (chartType, chartId, chartdata) {
                   .attr('stroke', '')
                   .style("stroke-width", 20)
                   .style("opacity", "0");*/
-                  d3.selectAll(chartId + ' .linerect .' + cType + d.replace(" ", ""))
+                  d3.selectAll(chartId + ' .linerect .' + cType + d.replace(/[^a-zA-Z0-9]/g, ""))
         .attr("width", 0)
          .style('opacity', 1);
-                  d3.selectAll('.' + cType + d.replace(" ", ""))
+                  d3.selectAll('.' + cType + d.replace(/[^a-zA-Z0-9]/g, ""))
               .style('opacity', 0.3)
                   //.attr("r", 5)
           .transition()
@@ -201,7 +201,7 @@ var line2D = function (chartType, chartId, chartdata) {
     .enter().append('g')
     .attr('class', 'linerect');
                 linerect.append('rect')
-    .attr("class", function (d) { return cType + d.label })
+    .attr("class", function (d) { return cType + d.label.replace(/[^a-zA-Z0-9]/g, "") })
     .style("fill", "grey")
     .attr("width", 0)
      .attr("height", height)
@@ -564,7 +564,7 @@ var line2D = function (chartType, chartId, chartdata) {
 
                     var path = svg.append('path')
         .attr('d', valueline(d.values))
-         .attr("class", chartType + keyid.replace(/\s+/g, '') + ' line')
+         .attr("class", chartType + keyid.replace(/[^a-zA-Z0-9]/g, "") + ' line')
           .attr("data-visibilitypath", "true")
            .attr("data-categorycolumn", d.key)
         .attr('style', colorstyle);
@@ -580,12 +580,12 @@ var line2D = function (chartType, chartId, chartdata) {
             .attr('class', 'legendgroup');
             legendgroup.append('g')
             .append('rect')
-            .style('width','85px')
-            .style('height',dataGroup.length*15)
-            .style('fill','rgb(255, 255, 255)')
+            .attr('width','85')
+            .attr('height',dataGroup.length*15)
+            .attr('fill','rgb(255, 255, 255)')
             .attr('x',width-5)
             .attr('y',42.5)
-            .style('stroke','lightgrey');
+            .attr('stroke','lightgrey');
                     var legend = legendgroup.selectAll('.legend')
         .data(dataGroup)
         .enter()
@@ -619,7 +619,7 @@ var line2D = function (chartType, chartId, chartdata) {
             return chartdata.chart.pallattecolor[i]
         })
          .on("click", function (d, i) {
-             var graphselect = chartType + d.key.replace(/\s+/g, '');
+             var graphselect = chartType + d.key.replace(/[^a-zA-Z0-9]/g, "");
              this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
              if (d3.selectAll('.circletext.' + graphselect).style('display') == 'inline') {
                  d3.selectAll('.' + graphselect).attr("data-visibilitypath", "false");
@@ -680,7 +680,7 @@ var line2D = function (chartType, chartId, chartdata) {
                     currentchartdata = d.values;
                     var path = svg.append('path')
         .attr('d', valueline(d.values))
-         .attr("class", chartType + keyid.replace(/\s+/g, '') + ' line')
+         .attr("class", chartType + keyid.replace(/[^a-zA-Z0-9]/g, "") + ' line')
           .attr("data-visibilitypath", "true")
            .attr("data-categorycolumn", d.key)
         .attr('style', colorstyle);
@@ -701,7 +701,7 @@ var line2D = function (chartType, chartId, chartdata) {
                         svg.append("path")
         .attr("class", "line")
         .attr("d", dottedlinearr[i])
-          .attr("class", chartType + keyid.replace(/\s+/g, '') + ' line')
+          .attr("class", chartType + keyid.replace(/[^a-zA-Z0-9]/g, "") + ' line')
           .attr("data-visibilitypath", "true")
            .attr("data-categorycolumn", d.key)
         .attr("style", colorstyle)
@@ -719,12 +719,12 @@ var line2D = function (chartType, chartId, chartdata) {
             .attr('class', 'legendgroup');
             legendgroup.append('g')
             .append('rect')
-            .style('width','85px')
-            .style('height',dataGroup.length*15)
-            .style('fill','rgb(255, 255, 255)')
+            .attr('width','85')
+            .attr('height',dataGroup.length*15)
+            .attr('fill','rgb(255, 255, 255)')
             .attr('x',width-5)
             .attr('y',42.5)
-            .style('stroke','lightgrey');
+            .attr('stroke','lightgrey');
                     var legend = legendgroup.selectAll('.legend')
         .data(dataGroup)
         .enter()
@@ -759,7 +759,7 @@ var line2D = function (chartType, chartId, chartdata) {
             return chartdata.chart.pallattecolor[i]
         })
         .on("click", function (d, i) {
-            var graphselect = chartType + d.key.replace(/\s+/g, '');
+            var graphselect = chartType + d.key.replace(/[^a-zA-Z0-9]/g, "");
             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
             if (d3.selectAll('.' + graphselect).style('display') == 'inline') {
                 d3.selectAll('.' + graphselect).style('display', 'none');
@@ -811,7 +811,7 @@ var line2D = function (chartType, chartId, chartdata) {
         .attr("d", area)
         .attr("data-visibilitypath", "true")
          .attr("data-categorycolumn", d.key)
-        .attr("class", chartType + keyid.replace(/\s+/g, ''));
+        .attr("class", chartType + keyid.replace(/[^a-zA-Z0-9]/g, ""));
                     svg.selectAll('.xgrid').selectAll('line')
           .style("stroke-dasharray", ("3, 3"))
           .style("opacity", 0)
@@ -825,12 +825,12 @@ var line2D = function (chartType, chartId, chartdata) {
             .attr('class', 'legendgroup');
             legendgroup.append('g')
             .append('rect')
-            .style('width','85px')
-            .style('height',dataGroup.length*15)
-            .style('fill','rgb(255, 255, 255)')
+            .attr('width','85')
+            .attr('height',dataGroup.length*15)
+            .attr('fill','rgb(255, 255, 255)')
             .attr('x',width-5)
             .attr('y',42.5)
-            .style('stroke','lightgrey');
+            .attr('stroke','lightgrey');
                     var legend = legendgroup.selectAll('.legend')
         .data(dataGroup)
         .enter()
@@ -859,7 +859,7 @@ var line2D = function (chartType, chartId, chartdata) {
             return chartdata.chart.pallattecolor[i]
         })
          .on("click", function (d, i) {
-             var graphselect = chartType + d.key.replace(/\s+/g, '');
+             var graphselect = chartType + d.key.replace(/[^a-zA-Z0-9]/g, "");
              this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
              if (d3.selectAll('.' + graphselect).style('display') == 'inline') {
                  d3.selectAll('.' + graphselect).style('display', 'none');
