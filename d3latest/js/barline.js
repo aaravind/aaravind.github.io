@@ -335,7 +335,7 @@ var barline2D = function (chartId, chartdata, chartType) {
     .enter().append('g')
     .attr('class', 'barlinerect');
                 linerect.append('rect')
-    .attr("class", function (d) { return cType + d.label })
+    .attr("class", function (d) { return cType + d.label.replace(/[^a-zA-Z0-9]/g, "") })
     .style("fill", "grey")
     .attr("width", 0)
      .attr("height", height - margin.bottom)
