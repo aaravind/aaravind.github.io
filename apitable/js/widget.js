@@ -43,8 +43,15 @@
 
                     }
 
-
-
+                    var copyright = document.createElement('div');
+                    copyright.style.width = document.getElementById(chartid).style.width;
+                    var copyrightptag = document.createElement('a');
+                    copyrightptag.innerHTML = 'POWERED BY DW';
+                    copyrightptag.target = '_blank';
+                    copyrightptag.href = 'http://www.dataweave.co/'
+                    copyrightptag.style.cssText = 'float: right;margin-top: 0px;font-size: 10px;color: lightgrey;text-decoration:none';
+                    copyright.appendChild(copyrightptag);
+                    maindiv.parentNode.insertBefore(copyright, maindiv.nextSibling);
 
                 }
             }
