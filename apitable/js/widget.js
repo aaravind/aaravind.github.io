@@ -17,7 +17,8 @@
                     apidata = urldata[datanode];
                     var maindiv = document.getElementById(chartid);
                     maindiv.style.overflowY = 'auto';
-                    for (i = 0; i < 10; i++) {
+                    var widgetlength = apidata.length > 10 ? 10 : apidata.length;
+                    for (i = 0; i < widgetlength; i++) {
 
                         var tempdiv = document.createElement('div');
                         tempdiv.style.cssText = 'clear:both;border-bottom: 1px solid lightgrey;margin-left:10px;margin-right:10px';
