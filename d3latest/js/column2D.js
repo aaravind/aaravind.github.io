@@ -435,7 +435,7 @@ var column2D = function (chartId, chartdata, chartType) {
             }
             var datarangeval;
 
-            function drawrangerect(cType, cData, cLabel,heightzero) {
+            function drawrangerect(cType, cData, cLabel, heightzero) {
 
                 function sortFunction(a, b) {
                     if (a[2] === b[2]) {
@@ -504,11 +504,11 @@ var column2D = function (chartId, chartdata, chartType) {
         else
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + chartdata.chart.tooltipheader + ': ' + cLabel + '</span><hr>';
         if (d[1] != chartdata.range.highrange) {
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Price Range' + ': ' + d[0] + '-'+ d[1] +'</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Price Range' + ': ' + d[0] + '-' + d[1] + '</div>';
             htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2] + '</div>';
         }
         else {
-           htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Price Range' + ': ' + d[0] + '-'+ 'INFINITY' +'</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Price Range' + ': ' + d[0] + '-' + 'INFINITY' + '</div>';
             htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2] + '</div>';
         }
         div.html(htmlcontent)
@@ -545,13 +545,13 @@ var column2D = function (chartId, chartdata, chartType) {
       .duration(400)
       .attr('y', function (d, i) {
           if (d[0] == 0 && d[1] == 0)
-              return Y(heightzero);
+              return Y0();
           else
               return Y(d[1]);
       })
       .attr('height', function (d, i) {
           if (d[0] == 0 && d[1] == 0)
-              return Math.abs(Y(heightzero) - Y(d[0]));
+              return Math.abs(Y0() - Y(d[0]));
           else
               return Math.abs(Y(d[1]) - Y(d[0]));
       });
@@ -953,11 +953,10 @@ var column2D = function (chartId, chartdata, chartType) {
                 drawstackbar('StackedColumn2D', dataGroup)
             }
             else {
-                for (i = 0; i < chartdata.data.length; i++)
-                { 
-                drawrangerect('ColumnRange2D', chartdata.data[i].values, chartdata.data[i].label,chartdata.data[i].values[1,0]);
+                for (i = 0; i < chartdata.data.length; i++) {
+                    drawrangerect('ColumnRange2D', chartdata.data[i].values, chartdata.data[i].label, chartdata.data[i].values[1, 0]);
                 }
-                
+
             }
 
 
