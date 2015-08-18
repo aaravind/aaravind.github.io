@@ -204,10 +204,10 @@ var line2D = function (chartType, chartId, chartdata) {
     .attr("class", function (d) { return cType + d.label.replace(/[^a-zA-Z0-9]/g, "") })
     .style("fill", "grey")
     .attr("width", 0)
-     .attr("height", height)
+     .attr("height", height -25)
      .attr("x", function (d)
      { return x(d.label) + x.rangeBand() / 2; })
-     .attr("y", 20)
+     .attr("y", 45)
             }
             if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
                 function change() {
