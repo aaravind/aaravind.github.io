@@ -14,7 +14,7 @@ var bar2D = function (chartId, chartdata, chartType) {
         return d.category;
     })
     .entries(chartdata.data);
-        };
+       
         if (chartdata.chart.dynamicheight != undefined && chartdata.chart.dynamicheight == true) {
             if (dataGroup[0].values.length < 6)
                 d3.select(chartId).style('height', '300px');
@@ -438,5 +438,7 @@ var bar2D = function (chartId, chartdata, chartType) {
         .style('font-size', '12px')
         .style('fill', 'black');
     }
+    }
+    
 }
 
