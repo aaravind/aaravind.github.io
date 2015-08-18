@@ -65,7 +65,7 @@ var linedata = {
     },
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
+         "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
     },
     "data":  [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
         {
@@ -246,7 +246,7 @@ var linedata = {
     },
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png"]
+         "format": ["-Download-","jpeg","png"]
     },
     "data":  [ // Data Format example for Multi chart Type
         {
@@ -792,7 +792,7 @@ var columndata = {
     },
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png"]
+         "format": ["-Download-","jpeg","png"]
     },
     "colormap":[
     {"name":"Snapdeal",
@@ -1033,7 +1033,7 @@ var doublecolumndata = {
     },
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png"]
+         "format": ["-Download-","jpeg","png"]
     },
       "colormap":[
     {"name":"high",
@@ -1242,13 +1242,13 @@ var columnrange = {
     },
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png"]
+         "format": ["-Download-","jpeg","png"]
     },
     "range":{
         "lowrange":0,
         "highrange":5050
     },
-    "data":  [{"values": [[0, 0, 25], [30, 40, 3], [40, 50, 5], [50, 100, 73], [100, 150, 121], [150, 200, 242], [200, 250, 192], [250, 300, 148], [300, 350, 107], [350, 400, 100], [400, 450, 54], [450, 500, 64], [500, 1000, 245], [1000, 1500, 450], [1500, 2000, 652], [2000, 2500, 577], [2500, 3000, 421], [3000, 3500, 289], [3500, 4000, 224], [4000, 4500, 183], [4500, 5000, 122], [5000, 5050, 647]], "label": "Amazon"}, {"values": [[20, 30, 1], [30, 40, 3], [40, 50, 8], [50, 100, 38], [100, 150, 26], [150, 200, 26], [200, 250, 9], [250, 300, 6], [300, 350, 2], [350, 400, 7], [400, 450, 1], [450, 500, 4], [500, 1000, 15], [1000, 1500, 2]], "label": "BigBasket"}, {"values": [[0, 0, 203], [10, 20, 2], [20, 30, 2], [30, 40, 7], [40, 50, 9], [50, 100, 160], [100, 150, 300], [150, 200, 408], [200, 250, 253], [250, 300, 223], [300, 350, 196], [350, 400, 155], [400, 450, 86], [450, 500, 95], [500, 1000, 647], [1000, 1500, 254], [1500, 2000, 152], [2000, 2500, 69], [2500, 3000, 49], [3000, 3500, 24], [3500, 4000, 22], [4000, 4500, 11], [4500, 5000, 8], [5000, 5050, 31]], "label": "Flipkart"}, {"values": [[10, 20, 1], [20, 30, 4], [30, 40, 10], [40, 50, 12], [50, 100, 44], [100, 150, 27], [150, 200, 27], [200, 250, 17], [250, 300, 7], [300, 350, 34], [350, 400, 4], [400, 450, 27], [450, 500, 4], [500, 1000, 3]], "label": "LocalBanya"}, {"values": [[0, 0, 16], [50, 100, 57], [100, 150, 101], [150, 200, 273], [200, 250, 216], [250, 300, 204], [300, 350, 147], [350, 400, 192], [400, 450, 87], [450, 500, 90], [500, 1000, 429], [1000, 1500, 192], [1500, 2000, 220], [2000, 2500, 142], [2500, 3000, 142], [3000, 3500, 77], [3500, 4000, 57], [4000, 4500, 53], [4500, 5000, 28], [5000, 5050, 121]], "label": "SnapDeal"}, {"values": [[10, 20, 4], [20, 30, 4], [30, 40, 6], [40, 50, 9], [50, 100, 54], [100, 150, 48], [150, 200, 47], [200, 250, 21], [250, 300, 11], [300, 350, 10], [350, 400, 25], [400, 450, 2], [450, 500, 7], [500, 1000, 20], [1500, 2000, 1], [2000, 2500, 1]], "label": "Zopnow"}]
+    "data":  [{"values": [[0, 0, 25], [30, 40, 3], [40, 50, 5], [50, 100, 73], [100, 150, 121], [150, 200, 242], [200, 250, 192], [250, 300, 148], [300, 350, 107], [350, 400, 100], [400, 450, 54], [450, 500, 64], [500, 1000, 245], [1000, 1500, 450], [1500, 2000, 652], [2000, 2500, 577], [2500, 3000, 421], [3000, 3500, 289], [3500, 4000, 224], [4000, 4500, 183], [4500, 5000, 122], [5000, 5050, 647]], "label": "Amazon"}, {"values": [[20, 30, 1], [30, 40, 3], [40, 50, 8], [50, 100, 38], [100, 150, 26], [150, 200, 26], [200, 250, 9], [250, 300, 6], [300, 350, 2], [350, 400, 7], [400, 450, 1], [450, 500, 4], [500, 1000, 15], [1000, 1500, 2]], "label": "BigBasket"}, {"values": [[0, 0, 203], [10, 20, 2], [20, 30, 2], [30, 40, 7], [40, 50, 9], [50, 100, 160], [100, 150, 300], [150, 200, 408], [200, 250, 253], [250, 300, 223], [300, 350, 196], [350, 400, 155], [400, 450, 86], [450, 500, 95], [500, 1000, 647], [1000, 1500, 254], [1500, 2000, 152], [2000, 2500, 69], [2500, 3000, 49], [3000, 3500, 24], [3500, 4000, 22], [4000, 4500, 11], [4500, 5000, 8], [5000, 5050, 31]], "label": "Flipkart"}, {"values": [[10, 20, 1], [20, 30, 4], [30, 40, 10], [40, 50, 12], [50, 100, 44], [100, 150, 27], [150, 200, 27], [200, 250, 17], [250, 300, 7], [300, 350, 34], [350, 400, 4], [400, 450, 27], [450, 500, 4], [500, 1000, 3]], "label": "LocalBanya"}, {"values": [[0, 0, 16], [50, 100, 57], [100, 150, 101], [150, 200, 273], [200, 250, 216], [250, 300, 204], [300, 350, 147], [350, 400, 192], [400, 450, 87], [450, 500, 90], [500, 1000, 429], [1000, 1500, 192], [1500, 2000, 220], [2000, 2500, 142], [2500, 3000, 142], [3000, 3500, 77], [3500, 4000, 57], [4000, 4500, 53], [4500, 5000, 28], [5000, 5050, 121]], "label": "SnapDeal"}, {"values": [], "label": "Zopnow"}]
 }
 d3charts("ColumnRange2D","#columnrange", columnrange);
 
@@ -1277,7 +1277,7 @@ var stackedbar = {
     },
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png"]
+         "format": ["-Download-","jpeg","png"]
     },
     "colormap":[
     {"name":"Highest",
@@ -1468,7 +1468,7 @@ var stackedcolumn = {
     },
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png"]
+         "format": ["-Download-","jpeg","png"]
     },
     "colormap":[
     {"name":" > 50",
@@ -1621,7 +1621,7 @@ var bubbledata = {
     },
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
+         "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
     },
     "data":  [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
         {
@@ -1731,7 +1731,7 @@ var bubbledata = {
     ],
     "export":{
         "showexport": true,
-         "format": ["-Select-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
+         "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
     },
     "bardata":  [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
         {

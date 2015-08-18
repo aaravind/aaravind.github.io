@@ -93,7 +93,7 @@ var bar2D = function (chartId, chartdata, chartType) {
         })
         xScale1 = d3.scale.linear()
         .domain([0, domainmax])
-        .range([0, width])
+        .range([0, width -25])
         var labels = dataGroup[0].map(function (d) {
             return d.y;
         });
@@ -307,10 +307,10 @@ var bar2D = function (chartId, chartdata, chartType) {
             .attr('class', 'legendgroup');
             legendgroup.append('g')
             .append('rect')
-            .attr('width','85')
+            .attr('width','110')
             .attr('height',chartdata.colormap.length*15)
             .attr('fill','rgb(255, 255, 255)')
-            .attr('x',width-5)
+            .attr('x',width -30)
             .attr('y',12.5)
             .attr('stroke','lightgrey');
 
@@ -320,7 +320,7 @@ var bar2D = function (chartId, chartdata, chartType) {
       .append('g')
         .attr('class', 'legend');
             legend.append('rect')
-        .attr('x', width)
+        .attr('x', width -25)
         .attr('y', function (d, i) { return (i + 1) * 15; })
          .attr('rx', 20)
         .attr('ry', 20)
@@ -332,11 +332,11 @@ var bar2D = function (chartId, chartdata, chartType) {
         });
 
             legend.append('text')
-        .attr('x', width + 12)
+        .attr('x', width -25 + 12)
         .attr('y', function (d, i) { return ((i + 1) * 15) + 9; })
         .text(function (d) {
-            if (d.name.length > 10)
-                return d.name.substr(0, 10).toUpperCase() + '...';
+            if (d.name.length > 20)
+                return d.name.substr(0, 20).toUpperCase() + '...';
             else
                 return d.name.toUpperCase();
         })

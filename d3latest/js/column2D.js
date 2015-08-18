@@ -527,7 +527,7 @@ var column2D = function (chartId, chartdata, chartType) {
             htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2] + '</div>';
         }
         else {
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Price Range' + ': ' + d[0] + '-' + 'INFINITY' + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Price Range' + ': >' + d[0] + '</div>';
             htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2] + '</div>';
         }
         div.html(htmlcontent)
