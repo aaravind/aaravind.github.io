@@ -516,7 +516,7 @@ var column2D = function (chartId, chartdata, chartType) {
         }
         else {
             var yattrval = (elemRect.top - bodyRect.top - div[0][0].offsetHeight);
-            var yattr = yattrval + 15 + 'px';
+            var yattr = yattrval + 25 + 'px';
         }
         if (chartdata.chart.tooltipheader == undefined || chartdata.chart.tooltipheader == '')
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Node' + ': ' + cLabel + '</span><hr>';
@@ -619,7 +619,7 @@ var column2D = function (chartId, chartdata, chartType) {
             }
 
             else
-                var yattr = yattrval + 15 + 'px';
+                var yattr = yattrval + 25 + 'px';
         }
         else if (checknegcount + checkzerocount == chartdata.data.length && cType == 'Column2D') {
             var yattrval = (elemRect.bottom - bodyRect.top);
@@ -629,7 +629,7 @@ var column2D = function (chartId, chartdata, chartType) {
             }
 
             else
-                var yattr = yattrval + 15 + 'px';
+                var yattr = yattrval + 25 + 'px';
         }
 
         else {
@@ -642,7 +642,7 @@ var column2D = function (chartId, chartdata, chartType) {
                 }
                 else {
                     var yattrval = (elemRect.top - bodyRect.top);
-                    var yattr = yattrval + 15 + 'px';
+                    var yattr = yattrval + 25 + 'px';
                 }
             }
             else {
@@ -658,7 +658,7 @@ var column2D = function (chartId, chartdata, chartType) {
                 }
                 else {
                     var yattrval = (elemRect.top - bodyRect.top);
-                    var yattr = yattrval + 15 + 'px';
+                    var yattr = yattrval + 25 + 'px';
                 }
 
             }
@@ -795,7 +795,7 @@ var column2D = function (chartId, chartdata, chartType) {
               if (checkposcount + checkzerocount == chartdata.data.length)
                   return height;
               else if (checknegcount + checkzerocount == chartdata.data.length)
-                  return 15;
+                  return 25;
               else
                   return height + domainminval;
           }
@@ -812,7 +812,7 @@ var column2D = function (chartId, chartdata, chartType) {
               if (checkposcount + checkzerocount == chartdata.data.length)
                   return y(d.value);
               else if (checknegcount + checkzerocount == chartdata.data.length)
-                  return 15;
+                  return 25;
               else
                   return d.value < 0 ? Y0() : Y(d.value);
           }
@@ -830,7 +830,7 @@ var column2D = function (chartId, chartdata, chartType) {
                   return height - y(d.value);
               else if (checknegcount + checkzerocount == chartdata.data.length) {
                   if (d.value != 0)
-                      return y(Math.abs(d.value)) - 15;
+                      return y(Math.abs(d.value)) - 25;
                   else
                       return 0;
               }
@@ -907,7 +907,7 @@ var column2D = function (chartId, chartdata, chartType) {
                 if (d.value != 0)
                     yatt = y(Math.abs(d.value));
                 else
-                    yatt = 15;
+                    yatt = 25;
                 if (Math.abs(d.value) > domainmaxcol / 2) {
                     var yattnext = yatt - 20;
                     return 'M' + xatt + ' ' + yatt + 'L' + xatt + ' ' + yattnext;
