@@ -56,12 +56,31 @@ var bubble2D = function (chartId, chartdata, chartType) {
         .attr("x", 12)
         .attr("y", 20)
         .attr("text-anchor", "start")
+        .attr('class','captiontext')
         .style("font-size", "18px")
         .style("text-decoration", "none")
          .style("text-transform", "uppercase")
          .style("font-weight", "bold")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
+        
+         if (chartdata.chart.subcaption != undefined) {
+                svg.append("text")
+        .attr("x", function (d) {
+            return d3.selectAll(chartId + ' .captiontext')[0][0].offsetWidth + 10;
+        })
+        .attr("y", 17.5)
+        .attr("text-anchor", "start")
+         .attr('class', 'subcaptiontext')
+        .style("font-size", "12px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "bold")
+        .style("fill", function (d) {
+            return chartdata.chart.subcaptionColor != undefined ? chartdata.chart.subcaptionColor : chartdata.chart.captionColor;
+        })
+        .text('(' + chartdata.chart.subcaption.toUpperCase() + ')');
+            }
             var bubble = d3.layout.pack()
 				.size([width, diameter])
 				.value(function (d) {

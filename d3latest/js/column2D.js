@@ -81,22 +81,22 @@ var column2D = function (chartId, chartdata, chartType) {
                 };
                 if (checkposcount + checkzerocount == chartdata.data.length) {
                     var y = d3.scale.linear()
-    .range([height, 15]);
+    .range([height, 25]);
                 }
                 else if (checknegcount + checkzerocount == chartdata.data.length) {
                     var y = d3.scale.linear()
-    .range([15, height]);
+    .range([25, height]);
                 }
                 else {
                     var y = d3.scale.linear()
-    .range([height, 15]);
+    .range([height, 25]);
                 }
             }
 
             else {
                 if (chartType != 'StackedColumn2D') {
                     var y = d3.scale.linear()
-    .range([height, 15]);
+    .range([height, 25]);
                 }
             }
             if (chartType == 'StackedColumn2D') {
@@ -153,7 +153,7 @@ var column2D = function (chartId, chartdata, chartType) {
 
                 yScale1 = d3.scale.linear()
         .domain([0, domainmax])
-        .range([height, 15], 0.1);
+        .range([height, 25], 0.1);
                 function xAxis5() {
                     return d3.svg.axis()
         .scale(xScale1)
@@ -210,12 +210,31 @@ var column2D = function (chartId, chartdata, chartType) {
         .attr("x", 0)
         .attr("y", 10)
         .attr("text-anchor", "start")
+        .attr('class', 'captiontext')
         .style("font-size", "18px")
         .style("text-decoration", "none")
          .style("text-transform", "uppercase")
          .style("font-weight", "bold")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
+            if (chartdata.chart.subcaption != undefined) {
+                svg.append("text")
+        .attr("x", function (d) {
+            return d3.selectAll(chartId + ' .captiontext')[0][0].offsetWidth + 5;
+        })
+        .attr("y", 7.5)
+        .attr("text-anchor", "start")
+         .attr('class', 'subcaptiontext')
+        .style("font-size", "12px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "bold")
+        .style("fill", function (d) {
+            return chartdata.chart.subcaptionColor != undefined ? chartdata.chart.subcaptionColor : chartdata.chart.captionColor;
+        })
+        .text('(' + chartdata.chart.subcaption.toUpperCase() + ')');
+            }
+
             if (chartType != 'StackedColumn2D')
                 x.domain(chartdata.data.map(function (d) { return d.label; }));
             function Y0() {
@@ -270,7 +289,7 @@ var column2D = function (chartId, chartdata, chartType) {
                     svg.append("g")
       .attr("style", styleborder)
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis5().innerTickSize(-height + 15)
+      .call(xAxis5().innerTickSize(-height + 25)
     .outerTickSize(0)
     .tickPadding(10))
       .selectAll("text")
@@ -316,7 +335,7 @@ var column2D = function (chartId, chartdata, chartType) {
       .attr("style", styleborder)
       .attr("class", "xtick")
       .attr("transform", "translate(0," + (height) + ")")
-      .call(xAxis5().innerTickSize(-height + 15)
+      .call(xAxis5().innerTickSize(-height + 25)
     .outerTickSize(0)
     .tickPadding(10));
                 }

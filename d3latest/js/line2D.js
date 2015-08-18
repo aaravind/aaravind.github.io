@@ -256,7 +256,7 @@ var line2D = function (chartType, chartId, chartdata) {
             var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
             var y = d3.scale.linear()
-    .range([height, 15]);
+    .range([height, 25]);
             var xaxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
@@ -298,9 +298,32 @@ var line2D = function (chartType, chartId, chartdata) {
         .style("text-decoration", "none")
          .style("text-transform", "uppercase")
          .style("font-weight", "bold")
-         .attr('class', 'caption')
+         .attr('class', 'caption captiontext')
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
+
+          if (chartdata.chart.subcaption != undefined) {
+                svg.append("text")
+        .attr("x", function (d) {
+            return d3.selectAll(chartId + ' .captiontext')[0][0].offsetWidth + 5;
+        })
+        .attr("y",function () {
+            if (chartType.search('Multi') != -1)
+                return 33;
+            else
+                return 20.5;
+        })
+        .attr("text-anchor", "start")
+         .attr('class', 'subcaptiontext')
+        .style("font-size", "12px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "bold")
+        .style("fill", function (d) {
+            return chartdata.chart.subcaptionColor != undefined ? chartdata.chart.subcaptionColor : chartdata.chart.captionColor;
+        })
+        .text('(' + chartdata.chart.subcaption.toUpperCase() + ')');
+            }
             x.domain(chartdata.data.map(function (d) { return d.label; }));
             var domainmin = d3.min(chartdata.data, function (d) { if (d.value != 0) return d.value - 0.25 * d.value; });
             var domainmax = d3.max(chartdata.data, function (d) { return d.value + 0.3 * d.value; });

@@ -99,7 +99,7 @@ var bar2D = function (chartId, chartdata, chartType) {
         });
         yScale1 = d3.scale.ordinal()
         .domain(labels)
-        .rangeRoundBands([15, height], 0.1);
+        .rangeRoundBands([25, height], 0.1);
         function xAxis5() {
             return d3.svg.axis()
         .scale(xScale1)
@@ -129,12 +129,31 @@ var bar2D = function (chartId, chartdata, chartType) {
         .attr("x", 0)
         .attr("y", 10)
         .attr("text-anchor", "start")
+        .attr('class','captiontext')
         .style("font-size", "18px")
         .style("text-decoration", "none")
          .style("text-transform", "uppercase")
          .style("font-weight", "bold")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
+
+          if (chartdata.chart.subcaption != undefined) {
+                svg.append("text")
+        .attr("x", function (d) {
+            return d3.selectAll(chartId + ' .captiontext')[0][0].offsetWidth + 5;
+        })
+        .attr("y", 7.5)
+        .attr("text-anchor", "start")
+         .attr('class', 'subcaptiontext')
+        .style("font-size", "12px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "bold")
+        .style("fill", function (d) {
+            return chartdata.chart.subcaptionColor != undefined ? chartdata.chart.subcaptionColor : chartdata.chart.captionColor;
+        })
+        .text('(' + chartdata.chart.subcaption.toUpperCase() + ')');
+            }
         function Y0() {
             return y(0);
         }
@@ -219,7 +238,7 @@ var bar2D = function (chartId, chartdata, chartType) {
             svg.append("g")
       .attr("style", styleborder)
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis5().innerTickSize(-height + 15)
+      .call(xAxis5().innerTickSize(-height + 25)
     .outerTickSize(0)
     .tickPadding(10))
       .selectAll("text")
@@ -235,7 +254,7 @@ var bar2D = function (chartId, chartdata, chartType) {
       .attr("style", styleborder)
       .attr("class", "xtick")
       .attr("transform", "translate(0," + (height) + ")")
-      .call(xAxis5().innerTickSize(-height + 15)
+      .call(xAxis5().innerTickSize(-height + 25)
     .outerTickSize(0)
     .tickPadding(10));
         }

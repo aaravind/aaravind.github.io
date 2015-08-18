@@ -38,7 +38,7 @@ var barline2D = function (chartId, chartdata, chartType) {
     .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
             //X AND Y axis for Bar
             var y = d3.scale.linear()
-    .range([height, 15]);
+    .range([height, 25]);
             function Y0() {
                 return y(0);
             }
@@ -207,6 +207,7 @@ var barline2D = function (chartId, chartdata, chartType) {
             svg.append("text")
         .attr("x", 0)
         .attr("y", 10)
+        .attr('class','captiontext')
         .attr("text-anchor", "start")
         .style("font-size", "18px")
         .style("text-decoration", "none")
@@ -214,6 +215,25 @@ var barline2D = function (chartId, chartdata, chartType) {
          .style("font-weight", "bold")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
+
+         if (chartdata.chart.subcaption != undefined) {
+                svg.append("text")
+        .attr("x", function (d) {
+            return d3.selectAll(chartId + ' .captiontext')[0][0].offsetWidth + 5;
+        })
+        .attr("y", 7.5)
+        .attr("text-anchor", "start")
+         .attr('class', 'subcaptiontext')
+        .style("font-size", "12px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "bold")
+        .style("fill", function (d) {
+            return chartdata.chart.subcaptionColor != undefined ? chartdata.chart.subcaptionColor : chartdata.chart.captionColor;
+        })
+        .text('(' + chartdata.chart.subcaption.toUpperCase() + ')');
+            }
+
             var barmax = d3.max(chartdata.bardata, function (d) { return d.value });
             var linemax = d3.max(chartdata.linedata, function (d) { return d.value });
             var domainmaxcol = barmax > linemax ? barmax + 0.2 * barmax : linemax + 0.2 * linemax;
@@ -574,5 +594,28 @@ var barline2D = function (chartId, chartdata, chartType) {
                 return this.getAttribute('x2') / 1 + 70;
             })
         }
+        else {
+        var bottommargin = chartdata.chart.slant ? 100 : 50;
+        var margin = { top: 50, right: 20, bottom: bottommargin, left: 50 };
+        var chartcontent = d3.select(chartId);
+        var width = chartcontent[0][0].offsetWidth - margin.left - margin.right;
+        var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
+        if (d3.select(chartId).select('svg')[0][0] != null)
+            d3.select(chartId).select('svg').remove();
+        var svg = d3.select(chartId).append("svg")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right + 70) + ' ' + (height + margin.top + margin.bottom + 10))
+        .attr('preserveAspectRatio', 'xMinYMin')
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+        svg.append('text')
+        .attr('x', 0)
+        .attr('y', 0)
+        .text("NO DATA TO DISPLAY")
+        .style('font-size', '12px')
+        .style('fill', 'black');
+    }
     }
 }

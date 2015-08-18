@@ -50,6 +50,8 @@ var linedata = {
     "chart": {
         "caption": "Line Chart", //Name of the chart Header
         "captionColor":"black", // Color of the Chart Header
+         "subcaption": "More Info",
+        "subcaptionColor":"black",
         "yaxisname": "", // Name which gets displayed in the Yaxis
         "slant":false, // X axis label slant
         "slantdegree":"90", // Slant based on the degree specified
@@ -226,6 +228,8 @@ var linedata = {
     "chart": {
         "caption": "Multi Line Chart",
         "captionColor":"#333",
+         "subcaption": "More Info",
+        "subcaptionColor":"black",
         "yaxisname": "",
         "showlegend":true,
         "tickinterval":5,
@@ -768,6 +772,8 @@ var columndata = {
     "chart": {
         "caption": "Column Chart",
         "captionColor":"black",
+         "subcaption": "More Info",
+        "subcaptionColor":"black",
         "yaxisname": "",
         "color":"white",
         "fontsize":15,
@@ -1008,6 +1014,7 @@ var doublecolumndata = {
     "chart": {
         "caption": "Price Range Chart",
         "captionColor":"black",
+ 
         "yaxisname": "",
         "color":"white",
         "fontsize":15,
@@ -1215,6 +1222,8 @@ var columnrange = {
     "chart": {
         "caption": "Heat Map",
         "captionColor":"black",
+         "subcaption": "More Info",
+        "subcaptionColor":"black",
         "yaxisname": "",
         "color":"white",
         "tooltipheader":"Retailer",
@@ -1248,6 +1257,8 @@ var stackedbar = {
     "chart": {
         "caption": "Stacked Bar Chart",
         "captionColor":"black",
+         "subcaption": "More Info",
+        "subcaptionColor":"black",
         "yaxisname": "",
         "color":"white",
         "fontsize":15,
@@ -1436,6 +1447,9 @@ var stackedcolumn = {
     "chart": {
         "caption": "Stacked Column Chart",
         "captionColor":"black",
+
+         "subcaption": "More Info",
+        "subcaptionColor":"black",
         "yaxisname": "",
         "color":"white",
         "fontsize":15,
@@ -1593,6 +1607,7 @@ var bubbledata = {
     "chart": {
         "caption": "Bubble Chart", //Name of the chart Header
         "captionColor":"black", // Color of the Chart Header
+
         "yaxisname": "", // Name which gets displayed in the Yaxis
         "slant":false, // X axis label slant
         "slantdegree":"90", // Slant based on the degree specified
@@ -1691,6 +1706,8 @@ var bubbledata = {
     "chart": {
         "caption": "Bar Line Chart", //Name of the chart Header
         "captionColor":"black", // Color of the Chart Header
+         "subcaption": "More Info",
+        "subcaptionColor":"blue",
         "yaxisname": "", // Name which gets displayed in the Yaxis
         "slant":false, // X axis label slant
         "slantdegree":"90", // Slant based on the degree specified
