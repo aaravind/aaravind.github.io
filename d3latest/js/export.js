@@ -10,6 +10,9 @@ var asd, data;
 function exportfile(chartid,chartdata,filename,format,charttype)
 {
     chartdataval = chartdata.data;
+    d3.selectAll(chartid + " .subcaptiontext").attr("x", function (d) {
+        return this.getAttribute('x') / 1 + 30;
+    });
     d3.selectAll(chartid +" path.domain").attr("style", "stroke: lightgrey;stroke-width: 1.2;fill: none");
     d3.selectAll(chartid+' .tick text').style('stroke-width', 0.7).style('font-weight', 200).style('font-family','Source Sans Pro,Trebuchet MS,Helvetica Neue, Helvetica,Lucida Grande,Arial,Verdana,sans-serif');
         d3.selectAll(chartid+' .legend text').style('font-family','Source Sans Pro,Trebuchet MS,Helvetica Neue, Helvetica,Lucida Grande,Arial,Verdana,sans-serif');
@@ -50,6 +53,9 @@ var img = canvas.toDataURL("image/png");
 }});
      asd.setAttribute('width', prevwidth);
     asd.setAttribute('height', prevheight);
+        d3.selectAll(chartid + " .subcaptiontext").attr("x", function (d) {
+        return this.getAttribute('x') / 1 - 30;
+    });
 
 }
 
