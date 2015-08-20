@@ -9,6 +9,7 @@ var column2D = function (chartId, chartdata, chartType) {
     if (chartdata.data != undefined) {
         if (chartdata.data.length != 0) {
 
+
             if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
                 function change() {
                     var selectedIndex = select.property('selectedIndex'),
@@ -47,8 +48,24 @@ var column2D = function (chartId, chartdata, chartType) {
             var width = chartcontent[0][0].offsetWidth - margin.left - margin.right;
             var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
             var styleborder = "fill: none; stroke: #000;  shape-rendering: crispEdges;font:12px sans-serif";
+            var domarr = [];
             var div = d3.select("body").append("div")
     .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
+            if (chartdata.chart.singlecolorgradient != undefined) {
+                if (chartdata.chart.singlecolorgradient.length != 0) {
+                    function sortNumber1(a, b) {
+                        return b - a;
+                    }
+                    domarr = [];
+                    for (i = 0; i < chartdata.data.length; i++)
+                        domarr.push(chartdata.data[i].value);
+                    domarr.sort(sortNumber1);
+                    var colorsinglepallete = d3.scale.linear()
+    .domain([0, chartdata.data.length])
+    .range([chartdata.chart.pallattecolor[0], chartdata.chart.pallattecolor[1]]);
+                }
+            }
+
             if (chartType != 'StackedColumn2D') {
                 if (chartdata.chart.showlegend != true && chartdata.chart.showlegend != undefined && chartType != 'ColumnRange2D')
                     var x = d3.scale.ordinal()
@@ -706,7 +723,7 @@ var column2D = function (chartId, chartdata, chartType) {
        })
                 .style("top", function (d, i) {
                     if (topval == true)
-                        return yattr.replace('px', '') / 1 - this.offsetHeight + 'px';
+                        return yattr.replace('px', '') / 1 - this.offsetHeight - 5 + 'px';
                     else
                         return yattr;
                     topval = false;
@@ -723,7 +740,7 @@ var column2D = function (chartId, chartdata, chartType) {
        })
                 .style("top", function (d, i) {
                     if (topval == true)
-                        return yattr.replace('px', '') / 1 - this.offsetHeight + 'px';
+                        return yattr.replace('px', '') / 1 - this.offsetHeight -5 + 'px';
                     else
                         return yattr;
                     topval = false;
@@ -738,7 +755,7 @@ var column2D = function (chartId, chartdata, chartType) {
        })
                 .style("top", function (d, i) {
                     if (topval == true)
-                        return yattr.replace('px', '') / 1 - this.offsetHeight + 'px';
+                        return yattr.replace('px', '') / 1 - this.offsetHeight - 5 + 'px';
                     else
                         return yattr;
                     topval = false;
@@ -774,10 +791,23 @@ var column2D = function (chartId, chartdata, chartType) {
           }
           else {
               if (cType == 'Column2D') {
-                  if (chartdata.chart.pallattecolorsingle == false || chartdata.chart.pallattecolorsingle == undefined || chartdata.chart.pallattecolorsingle == '')
-                      return chartdata.chart.pallattecolor[i];
-                  else
+                  if (chartdata.chart.pallattecolorsingle == false || chartdata.chart.pallattecolorsingle == undefined || chartdata.chart.pallattecolorsingle == '') {
+                      if (chartdata.chart.singlecolorgradient == false || chartdata.chart.singlecolorgradient == undefined || chartdata.chart.singlecolorgradient == '')
+                          return chartdata.chart.pallattecolor[i];
+                      else
+                      { 
+                      var index = domarr.indexOf(d.value)
+                      return colorsinglepallete(index);
+                      }
+                      
+                  }
+
+                  else {
                       return chartdata.chart.pallattecolor[0];
+
+                  }
+
+
               }
               else {
                   if (valuetype == 'high')
@@ -790,7 +820,9 @@ var column2D = function (chartId, chartdata, chartType) {
 
       })
       .style("opacity", 0.5)
-      .attr("x", function (d) { return x(d.label); })
+      .attr("x", function (d) {
+          return x(d.label);
+      })
       .attr("width", x.rangeBand())
       .attr("y", function (d) {
           if (cType == 'Column2D') {

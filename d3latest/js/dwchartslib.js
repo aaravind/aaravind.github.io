@@ -777,7 +777,7 @@ var columndata = {
         "yaxisname": "",
         "color":"white",
         "fontsize":15,
-        "showlegend":true,
+        "showlegend":false,
         "slant":false,
         "twoxaxis":false,
         "tickinterval":5,
@@ -787,38 +787,31 @@ var columndata = {
             "color":"#666",
             "imageurl":"../images/logo.png"
         },
-        "pallattecolorsingle":true, // if set to True: Only First Value is Considered ; if set to False all values in the Pallate is considered
-         "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
+        "pallattecolorsingle":false, // if set to True: Only First Value is Considered ; if set to False all values in the Pallate is considered
+        "singlecolorgradient":true,
+         "pallattecolor":["#92c6db","#008ee4","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
     },
     "export":{
         "showexport": true,
          "format": ["-Download-","jpeg","png"]
     },
-    "colormap":[
-    {"name":"Snapdeal",
-    "value":"#008ee4"},
-       {"name":"Flipkart",
-    "value":"#26AD5E"},
-     {"name":"Amazon",
-    "value":"#E77E22"}
-    ],
     "data": [
         {
             "label": "01-08-15",
-            "value": 11,
-            "category":"Snapdeal",
+            "value": -11,
+
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "02-08-15",
-            "value": 22,
-            "category":"Flipkart",
+            "value": -22,
+
             "tooltip":[['Flipkart','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "03-08-15",
             "value": -33,
-            "category":"Amazon",
+
             "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
 
         }
@@ -826,98 +819,98 @@ var columndata = {
         {
             "label": "04-08-15",
             "value": -44,
-            "category":"Snapdeal",
+
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "05-08-15",
-            "value": 55,
-            "category":"Snapdeal",
+            "value": -55,
+
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "06-08-15",
             "value": 0,
-            "category":"Snapdeal",
+
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "07-08-15",
             "value": -77,
-            "category":"Snapdeal",
+
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "08-08-15",
-            "value": 88,
-            "category":"Snapdeal",
+            "value": -88,
+
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "09-08-15",
             "value": -99,
-            "category":"Snapdeal",
+
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "10-08-15",
             "value": -50,
-            "category":"Snapdeal",
+
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "11-08-15",
-            "value": 10,
-            "category":"Snapdeal",
+            "value": -10,
+
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "12-08-15",
             "value": 0,
-            "category":"Flipkart",
+
             "tooltip":[['Flipkart','100'],['Your Price','100'],['% Diff','11']]
         } ,
         {
             "label": "13-08-15",
-            "value": 99,
-            "category":"Flipkart",
+            "value": -99,
+
             "tooltip":[['Flipkart','100'],['Your Price','100']]
         } ,
         {
             "label": "14-08-15",
             "value": -7,
-            "category":"Flipkart",
+
             "tooltip":[['Flipkart','100'],['Your Price','100'],['% Diff','11'],['% Diffag','11']]
         },
         {
             "label": "15-08-15",
-            "value":76,
-            "category":"Flipkart",
+            "value":-76,
+
             "tooltip":[['Flipkart','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "16-08-15",
             "value": -65,
-            "category":"Flipkart",
+
             "tooltip":[['Flipkart','100'],['Your Price','100'],['% Diff','11']]
         },
         {   
 		    "label": "17-08-15",
-            "value": 54,
-            "category":"Flipkart",
+            "value": -54,
+
             "tooltip":[['Flipkart','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "18-08-15",
-            "value": 100,
-            "category":"Amazon",
+            "value": -100,
+
             "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
 
         }
@@ -925,80 +918,69 @@ var columndata = {
         {
             "label": "19-08-15",
             "value": -43,
-            "category":"Amazon",
+
             "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "20-08-15",
-            "value": 32,
-            "category":"Amazon",
+            "value": -32,
             "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "21-08-15",
-            "value": 21,
-            "category":"Amazon",
+            "value": -21,
             "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "22-08-15",
             "value": -55,
-            "category":"Amazon",
             "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "23-08-15",
-            "value": 77,
-            "category":"Amazon",
+            "value": -77,
             "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "24-08-15",
-            "value": 100,
-            "category":"Amazon",
+            "value": -100,
             "tooltip":[['Amazon','200'],['Your Price','100'],['% Diff','11'],['asdasd','11']]
         }
         ,
         {
             "label": "25-08-15",
             "value": 0,
-            "category":"Amazon",
             "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "26-08-15",
             "value": 0,
-            "category":"Snapdeal",
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "27-08-15",
             "value": -88,
-            "category":"Snapdeal",
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         } ,
         {
             "label": "28-08-15",
-            "value": 66,
-            "category":"Snapdeal",
+            "value": -66,
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         } ,
         {
             "label": "29-08-15",
             "value": -50,
-            "category":"Snapdeal",
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "30-08-15",
-            "value": 93,
-            "category":"Snapdeal",
+            "value": -93,
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
 
@@ -1706,7 +1688,7 @@ var bubbledata = {
     "chart": {
         "caption": "Bar Line Chart", //Name of the chart Header
         "captionColor":"black", // Color of the Chart Header
-         "subcaption": "More Info",
+         "subcaption": "",
         "subcaptionColor":"blue",
         "yaxisname": "", // Name which gets displayed in the Yaxis
         "slant":false, // X axis label slant
