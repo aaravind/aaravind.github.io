@@ -244,7 +244,7 @@ var barline2D = function (chartId, chartdata, chartType) {
             y.domain([0, domainmaxcol]);
             x.domain(chartdata.bardata.map(function (d) { return d.label; }));
             svg.append("g")
-  .attr("class", "grid exportgrid")
+  .attr("class", "grid exportgrid yrange")
       .call(yaxis()
        .tickSize(-width, 0, 0)
             )
@@ -596,6 +596,13 @@ var barline2D = function (chartId, chartdata, chartType) {
             };
             d3.selectAll(chartId + ' .exportgrid .tick line').attr('x2', function (d) {
                 return this.getAttribute('x2') / 1 + 70;
+            })
+               d3.selectAll(chartId + ' .bartick .tick text').text(function (d, i) {
+                    return '';               
+            })
+                d3.selectAll(chartId + ' .yrange .tick text').text(function (d) {
+                          var prefix1 = d3.formatPrefix(d);
+              return prefix1.scale(d) + prefix1.symbol;              
             })
         }
         else {
