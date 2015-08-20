@@ -69,7 +69,7 @@ var column2D = function (chartId, chartdata, chartType) {
             if (chartType != 'StackedColumn2D') {
                 if (chartdata.chart.showlegend != true && chartdata.chart.showlegend != undefined && chartType != 'ColumnRange2D')
                     var x = d3.scale.ordinal()
-    .rangeRoundBands([15, width + 50], .1);
+    .rangeRoundBands([20, width + 50], .1);
                 else
                     var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
@@ -740,7 +740,7 @@ var column2D = function (chartId, chartdata, chartType) {
        })
                 .style("top", function (d, i) {
                     if (topval == true)
-                        return yattr.replace('px', '') / 1 - this.offsetHeight -5 + 'px';
+                        return yattr.replace('px', '') / 1 - this.offsetHeight - 5 + 'px';
                     else
                         return yattr;
                     topval = false;
@@ -794,12 +794,11 @@ var column2D = function (chartId, chartdata, chartType) {
                   if (chartdata.chart.pallattecolorsingle == false || chartdata.chart.pallattecolorsingle == undefined || chartdata.chart.pallattecolorsingle == '') {
                       if (chartdata.chart.singlecolorgradient == false || chartdata.chart.singlecolorgradient == undefined || chartdata.chart.singlecolorgradient == '')
                           return chartdata.chart.pallattecolor[i];
-                      else
-                      { 
-                      var index = domarr.indexOf(d.value)
-                      return colorsinglepallete(index);
+                      else {
+                          var index = domarr.indexOf(d.value)
+                          return colorsinglepallete(index);
                       }
-                      
+
                   }
 
                   else {
@@ -1062,12 +1061,25 @@ var column2D = function (chartId, chartdata, chartType) {
 
             });*/
             d3.selectAll(chartId + ' .domain').attr('d', function () {
-                var dval = this.getAttribute('d');
+                if (chartType != 'StackedColumn2D' && chartType != 'ColumnRange2D') {
+                    var dval = this.getAttribute('d');
+                    // var first = dval.substring(0, dval.lastIndexOf('H') + 1);
+                    var first = 'M0,';
+                    var first2 = dval.substring(dval.lastIndexOf(',') + 1, dval.lastIndexOf('H') + 1);
+                    var last = dval.substring(dval.lastIndexOf('V'), dval.length);
+                    var middle = dval.substring(dval.lastIndexOf('H') + 1, dval.lastIndexOf('V')) / 1 + 20;
+                    var finalfull = first + first2 + middle + last;
+                    return finalfull.substring(0, finalfull.lastIndexOf('V'));
+                }
+                else
+                { 
+                 var dval = this.getAttribute('d');
                 var first = dval.substring(0, dval.lastIndexOf('H') + 1);
                 var last = dval.substring(dval.lastIndexOf('V'), dval.length);
                 var middle = dval.substring(dval.lastIndexOf('H') + 1, dval.lastIndexOf('V')) / 1 + 70;
                 var finalfull = first + middle + last;
                 return finalfull.substring(0, finalfull.lastIndexOf('V'));
+                }
             });
             if (chartdata.chart.showlegend) {
                 var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
