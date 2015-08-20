@@ -138,6 +138,8 @@ var bar2D = function (chartId, chartdata, chartType) {
         .text(chartdata.chart.caption.toUpperCase());
 
           if (chartdata.chart.subcaption != undefined) {
+                if (chartdata.chart.subcaption.length != 0)
+                { 
                 svg.append("text")
         .attr("x", function (d) {
             return d3.selectAll(chartId + ' .captiontext')[0][0].offsetWidth + 5;
@@ -153,6 +155,7 @@ var bar2D = function (chartId, chartdata, chartType) {
             return chartdata.chart.subcaptionColor != undefined ? chartdata.chart.subcaptionColor : chartdata.chart.captionColor;
         })
         .text('(' + chartdata.chart.subcaption.toUpperCase() + ')');
+        }
             }
         function Y0() {
             return y(0);

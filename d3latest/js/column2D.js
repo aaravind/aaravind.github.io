@@ -218,7 +218,8 @@ var column2D = function (chartId, chartdata, chartType) {
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
             if (chartdata.chart.subcaption != undefined) {
-                svg.append("text")
+                if (chartdata.chart.subcaption.length != 0) {
+                    svg.append("text")
         .attr("x", function (d) {
             return d3.selectAll(chartId + ' .captiontext')[0][0].offsetWidth + 5;
         })
@@ -233,6 +234,7 @@ var column2D = function (chartId, chartdata, chartType) {
             return chartdata.chart.subcaptionColor != undefined ? chartdata.chart.subcaptionColor : chartdata.chart.captionColor;
         })
         .text('(' + chartdata.chart.subcaption.toUpperCase() + ')');
+                }
             }
 
             if (chartType != 'StackedColumn2D')

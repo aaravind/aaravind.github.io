@@ -207,7 +207,7 @@ var barline2D = function (chartId, chartdata, chartType) {
             svg.append("text")
         .attr("x", 0)
         .attr("y", 10)
-        .attr('class','captiontext')
+        .attr('class', 'captiontext')
         .attr("text-anchor", "start")
         .style("font-size", "18px")
         .style("text-decoration", "none")
@@ -216,8 +216,10 @@ var barline2D = function (chartId, chartdata, chartType) {
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
 
-         if (chartdata.chart.subcaption != undefined) {
-                svg.append("text")
+            if (chartdata.chart.subcaption != undefined) {
+                if (chartdata.chart.subcaption.length != 0)
+                { 
+                    svg.append("text")
         .attr("x", function (d) {
             return d3.selectAll(chartId + ' .captiontext')[0][0].offsetWidth + 5;
         })
@@ -232,6 +234,8 @@ var barline2D = function (chartId, chartdata, chartType) {
             return chartdata.chart.subcaptionColor != undefined ? chartdata.chart.subcaptionColor : chartdata.chart.captionColor;
         })
         .text('(' + chartdata.chart.subcaption.toUpperCase() + ')');
+                }
+            
             }
 
             var barmax = d3.max(chartdata.bardata, function (d) { return d.value });
@@ -521,17 +525,17 @@ var barline2D = function (chartId, chartdata, chartType) {
             tickspace(dataGroup[0].values);
             if (chartdata.chart.showlegend) {
 
-                  var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
+                var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
             .append('g')
             .attr('class', 'legendgroup');
-            legendgroup.append('g')
+                legendgroup.append('g')
             .append('rect')
-            .attr('width','85')
-            .attr('height',chartdata.colormap.length*15)
-            .attr('fill','rgb(255, 255, 255)')
-            .attr('x',width-5)
-            .attr('y',22.5)
-            .attr('stroke','lightgrey');
+            .attr('width', '85')
+            .attr('height', chartdata.colormap.length * 15)
+            .attr('fill', 'rgb(255, 255, 255)')
+            .attr('x', width - 5)
+            .attr('y', 22.5)
+            .attr('stroke', 'lightgrey');
 
                 var legend = legendgroup.selectAll('.legend')
         .data(chartdata.colormap)
@@ -595,14 +599,14 @@ var barline2D = function (chartId, chartdata, chartType) {
             })
         }
         else {
-        var bottommargin = chartdata.chart.slant ? 100 : 50;
-        var margin = { top: 50, right: 20, bottom: bottommargin, left: 50 };
-        var chartcontent = d3.select(chartId);
-        var width = chartcontent[0][0].offsetWidth - margin.left - margin.right;
-        var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
-        if (d3.select(chartId).select('svg')[0][0] != null)
-            d3.select(chartId).select('svg').remove();
-        var svg = d3.select(chartId).append("svg")
+            var bottommargin = chartdata.chart.slant ? 100 : 50;
+            var margin = { top: 50, right: 20, bottom: bottommargin, left: 50 };
+            var chartcontent = d3.select(chartId);
+            var width = chartcontent[0][0].offsetWidth - margin.left - margin.right;
+            var height = chartcontent[0][0].offsetHeight - margin.bottom - margin.top;
+            if (d3.select(chartId).select('svg')[0][0] != null)
+                d3.select(chartId).select('svg').remove();
+            var svg = d3.select(chartId).append("svg")
     .attr("width", "100%")
     .attr("height", "100%")
     .attr('viewBox', '0 0 ' + (width + margin.left + margin.right + 70) + ' ' + (height + margin.top + margin.bottom + 10))
@@ -610,12 +614,12 @@ var barline2D = function (chartId, chartdata, chartType) {
   .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-        svg.append('text')
+            svg.append('text')
         .attr('x', 0)
         .attr('y', 0)
         .text("NO DATA TO DISPLAY")
         .style('font-size', '12px')
         .style('fill', 'black');
-    }
+        }
     }
 }

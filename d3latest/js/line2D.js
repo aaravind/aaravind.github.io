@@ -204,7 +204,7 @@ var line2D = function (chartType, chartId, chartdata) {
     .attr("class", function (d) { return cType + d.label.replace(/[^a-zA-Z0-9]/g, "") })
     .style("fill", "grey")
     .attr("width", 0)
-     .attr("height", height -25)
+     .attr("height", height - 25)
      .attr("x", function (d)
      { return x(d.label) + x.rangeBand() / 2; })
      .attr("y", 45)
@@ -302,12 +302,13 @@ var line2D = function (chartType, chartId, chartdata) {
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
 
-          if (chartdata.chart.subcaption != undefined) {
-                svg.append("text")
+            if (chartdata.chart.subcaption != undefined) {
+                if (chartdata.chart.subcaption.length != 0) {
+                    svg.append("text")
         .attr("x", function (d) {
             return d3.selectAll(chartId + ' .captiontext')[0][0].offsetWidth + 5;
         })
-        .attr("y",function () {
+        .attr("y", function () {
             if (chartType.search('Multi') != -1)
                 return 33;
             else
@@ -323,6 +324,7 @@ var line2D = function (chartType, chartId, chartdata) {
             return chartdata.chart.subcaptionColor != undefined ? chartdata.chart.subcaptionColor : chartdata.chart.captionColor;
         })
         .text('(' + chartdata.chart.subcaption.toUpperCase() + ')');
+                }
             }
             x.domain(chartdata.data.map(function (d) { return d.label; }));
             var domainmin = d3.min(chartdata.data, function (d) { if (d.value != 0) return d.value - 0.25 * d.value; });
@@ -598,17 +600,17 @@ var line2D = function (chartType, chartId, chartdata) {
                 });
                 tickspace(dataGroup[0].values);
                 if (chartdata.chart.showlegend) {
-                      var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
+                    var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
             .append('g')
             .attr('class', 'legendgroup');
-            legendgroup.append('g')
+                    legendgroup.append('g')
             .append('rect')
-            .attr('width','85')
-            .attr('height',dataGroup.length*15)
-            .attr('fill','rgb(255, 255, 255)')
-            .attr('x',width-5)
-            .attr('y',42.5)
-            .attr('stroke','lightgrey');
+            .attr('width', '85')
+            .attr('height', dataGroup.length * 15)
+            .attr('fill', 'rgb(255, 255, 255)')
+            .attr('x', width - 5)
+            .attr('y', 42.5)
+            .attr('stroke', 'lightgrey');
                     var legend = legendgroup.selectAll('.legend')
         .data(dataGroup)
         .enter()
@@ -737,17 +739,17 @@ var line2D = function (chartType, chartId, chartdata) {
                 });
                 tickspace(dataGroup[0].values);
                 if (chartdata.chart.showlegend) {
-                      var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
+                    var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
             .append('g')
             .attr('class', 'legendgroup');
-            legendgroup.append('g')
+                    legendgroup.append('g')
             .append('rect')
-            .attr('width','85')
-            .attr('height',dataGroup.length*15)
-            .attr('fill','rgb(255, 255, 255)')
-            .attr('x',width-5)
-            .attr('y',42.5)
-            .attr('stroke','lightgrey');
+            .attr('width', '85')
+            .attr('height', dataGroup.length * 15)
+            .attr('fill', 'rgb(255, 255, 255)')
+            .attr('x', width - 5)
+            .attr('y', 42.5)
+            .attr('stroke', 'lightgrey');
                     var legend = legendgroup.selectAll('.legend')
         .data(dataGroup)
         .enter()
@@ -846,14 +848,14 @@ var line2D = function (chartType, chartId, chartdata) {
                     var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
             .append('g')
             .attr('class', 'legendgroup');
-            legendgroup.append('g')
+                    legendgroup.append('g')
             .append('rect')
-            .attr('width','85')
-            .attr('height',dataGroup.length*15)
-            .attr('fill','rgb(255, 255, 255)')
-            .attr('x',width-5)
-            .attr('y',42.5)
-            .attr('stroke','lightgrey');
+            .attr('width', '85')
+            .attr('height', dataGroup.length * 15)
+            .attr('fill', 'rgb(255, 255, 255)')
+            .attr('x', width - 5)
+            .attr('y', 42.5)
+            .attr('stroke', 'lightgrey');
                     var legend = legendgroup.selectAll('.legend')
         .data(dataGroup)
         .enter()
@@ -1026,7 +1028,7 @@ var line2D = function (chartType, chartId, chartdata) {
     var lineyval = liney.substring(liney.lastIndexOf(',') + 1, liney.lastIndexOf(')')) / 1;
     if (lineyval < captiony) {
         //d3.selectAll(chartId + ' .caption text').attr('y',captiony-10)
-       d3.selectAll(chartId + ' .gridy .tick').last().attr("transform", "translate(" + 0 + "," + (captiony + 5) + ")");
+        d3.selectAll(chartId + ' .gridy .tick').last().attr("transform", "translate(" + 0 + "," + (captiony + 5) + ")");
         //d3.selectAll(chartId + ' .gridy .tick line').last().style('display', 'none');
     };
     if (chartType.search('Multi') != -1) {
