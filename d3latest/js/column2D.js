@@ -235,9 +235,8 @@ var column2D = function (chartId, chartdata, chartType) {
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
 
-         if (chartdata.chart.hiddencaption != undefined) {
-                if (chartdata.chart.hiddencaption.length != 0)
-                { 
+            if (chartdata.chart.hiddencaption != undefined) {
+                if (chartdata.chart.hiddencaption.length != 0) {
                     svg.append("text")
             .attr("x", 0)
         .attr("y", 10)
@@ -251,9 +250,9 @@ var column2D = function (chartId, chartdata, chartType) {
         .style("fill", function (d) {
             return chartdata.chart.captionColor;
         })
-        .text( chartdata.chart.hiddencaption.toUpperCase());
+        .text(chartdata.chart.hiddencaption.toUpperCase());
                 }
-            
+
             }
 
             if (chartdata.chart.subcaption != undefined) {
@@ -474,7 +473,12 @@ var column2D = function (chartId, chartdata, chartType) {
              var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.x + '</span>';
              var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
              div.html(htmlcontent)
-       .style("left", xattr)
+       .style("left", function (d) { 
+             if (xattr.replace('px', '') / 1 < window.innerWidth / 2)
+               return (xattr.replace('px', '') / 1 + this.getAttribute('width') / 2) + 'px';
+           else
+               return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth - (elemRect.right-elemRect.left + 5)) + 'px';
+       })
                 .style("top", yattr);
          })
             .on("mouseout", function (d, i) {
@@ -742,9 +746,9 @@ var column2D = function (chartId, chartdata, chartType) {
        .style("left", function (d, i) {
            var asdfg = div[0][0];
            if (xattr.replace('px', '') / 1 < window.innerWidth / 2)
-               return (xattr.replace('px', '') / 1 + elemRectWidth/2 -10) + 'px';
+               return (xattr.replace('px', '') / 1 + elemRectWidth / 2 - 10) + 'px';
            else
-               return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth + elemRectWidth/2 + 5) + 'px';
+               return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth + elemRectWidth / 2 + 5) + 'px';
        })
                 .style("top", function (d, i) {
                     if (topval == true)
