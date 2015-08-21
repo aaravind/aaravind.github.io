@@ -234,11 +234,33 @@ var column2D = function (chartId, chartdata, chartType) {
          .style("font-weight", "bold")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
+
+         if (chartdata.chart.hiddencaption != undefined) {
+                if (chartdata.chart.hiddencaption.length != 0)
+                { 
+                    svg.append("text")
+            .attr("x", 0)
+        .attr("y", 10)
+        .attr("text-anchor", "start")
+         .attr('class', 'hiddencaptiontext')
+        .style("font-size", "18px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "bold")
+         .style("display", "none")
+        .style("fill", function (d) {
+            return chartdata.chart.captionColor;
+        })
+        .text( chartdata.chart.hiddencaption.toUpperCase());
+                }
+            
+            }
+
             if (chartdata.chart.subcaption != undefined) {
                 if (chartdata.chart.subcaption.length != 0) {
                     svg.append("text")
         .attr("x", function (d) {
-            return d3.selectAll(chartId + ' .captiontext')[0][0].offsetWidth + 5;
+            return d3.select(chartId + ' .captiontext').node().getBoundingClientRect().width + 5;
         })
         .attr("y", 7.5)
         .attr("text-anchor", "start")
@@ -626,7 +648,7 @@ var column2D = function (chartId, chartdata, chartType) {
         //var xattr = ((this.getAttribute('x') / 1) + (this.getAttribute('width') / 1) + margin.left / 2) + 'px';
         var bodyRect = document.body.getBoundingClientRect();
         var elemRect = this.getBoundingClientRect();
-
+        var elemRectWidth = elemRect.right - elemRect.left;
         var xattr = (elemRect.left - bodyRect.left - margin.left / 2 + 18) + 'px';
         var topval = false;
         if (checkposcount + checkzerocount == chartdata.data.length && cType == 'Column2D') {
@@ -719,7 +741,10 @@ var column2D = function (chartId, chartdata, chartType) {
             div.html(htmlcontent)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
-           return (xattr.replace('px', '') / 1 + this.getAttribute('width') / 2) + 'px';
+           if (xattr.replace('px', '') / 1 < window.innerWidth / 2)
+               return (xattr.replace('px', '') / 1 + elemRectWidth/2 -10) + 'px';
+           else
+               return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth + elemRectWidth/2 + 5) + 'px';
        })
                 .style("top", function (d, i) {
                     if (topval == true)
@@ -1071,14 +1096,13 @@ var column2D = function (chartId, chartdata, chartType) {
                     var finalfull = first + first2 + middle + last;
                     return finalfull.substring(0, finalfull.lastIndexOf('V'));
                 }
-                else
-                { 
-                 var dval = this.getAttribute('d');
-                var first = dval.substring(0, dval.lastIndexOf('H') + 1);
-                var last = dval.substring(dval.lastIndexOf('V'), dval.length);
-                var middle = dval.substring(dval.lastIndexOf('H') + 1, dval.lastIndexOf('V')) / 1 + 70;
-                var finalfull = first + middle + last;
-                return finalfull.substring(0, finalfull.lastIndexOf('V'));
+                else {
+                    var dval = this.getAttribute('d');
+                    var first = dval.substring(0, dval.lastIndexOf('H') + 1);
+                    var last = dval.substring(dval.lastIndexOf('V'), dval.length);
+                    var middle = dval.substring(dval.lastIndexOf('H') + 1, dval.lastIndexOf('V')) / 1 + 70;
+                    var finalfull = first + middle + last;
+                    return finalfull.substring(0, finalfull.lastIndexOf('V'));
                 }
             });
             if (chartdata.chart.showlegend) {

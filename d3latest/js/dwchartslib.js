@@ -1686,7 +1686,8 @@ var bubbledata = {
 
     var barlinedata = {
     "chart": {
-        "caption": "Bar Line Chart", //Name of the chart Header
+        "caption": "", //Name of the chart Header
+        "hiddencaption": "Bar Line Chart",
         "captionColor":"black", // Color of the Chart Header
          "subcaption": "",
         "subcaptionColor":"blue",

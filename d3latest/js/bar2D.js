@@ -137,12 +137,33 @@ var bar2D = function (chartId, chartdata, chartType) {
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
 
+         if (chartdata.chart.hiddencaption != undefined) {
+                if (chartdata.chart.hiddencaption.length != 0)
+                { 
+                    svg.append("text")
+          .attr("x", 0)
+        .attr("y", 10)
+        .attr("text-anchor", "start")
+         .attr('class', 'hiddencaptiontext')
+        .style("font-size", "18px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "bold")
+         .style("display", "none")
+        .style("fill", function (d) {
+            return chartdata.chart.captionColor;
+        })
+        .text( chartdata.chart.hiddencaption.toUpperCase());
+                }
+            
+            }
+
           if (chartdata.chart.subcaption != undefined) {
                 if (chartdata.chart.subcaption.length != 0)
                 { 
                 svg.append("text")
         .attr("x", function (d) {
-            return d3.selectAll(chartId + ' .captiontext')[0][0].offsetWidth + 5;
+            return d3.select(chartId + ' .captiontext').node().getBoundingClientRect().width + 5;
         })
         .attr("y", 7.5)
         .attr("text-anchor", "start")
