@@ -158,12 +158,34 @@ var bar2D = function (chartId, chartdata, chartType) {
             
             }
 
+              if (chartdata.chart.subhiddencaption != undefined) {
+                if (chartdata.chart.subhiddencaption.length != 0) {
+                    svg.append("text")
+           .attr("x", function (d) {
+            return d3.select(chartId + ' .hiddencaptiontext').node().getBoundingClientRect().width + 10;
+        })
+        .attr("y", 7.5)
+        .attr("text-anchor", "start")
+         .attr('class', 'subhiddencaptiontext')
+        .style("font-size", "12px")
+        .style("text-decoration", "none")
+         .style("text-transform", "uppercase")
+         .style("font-weight", "bold")
+         .style("display", "none")
+        .style("fill", function (d) {
+            return chartdata.chart.captionColor;
+        })
+     .text('(' + chartdata.chart.subhiddencaption.toUpperCase() + ')');
+                }
+
+            }
+
           if (chartdata.chart.subcaption != undefined) {
                 if (chartdata.chart.subcaption.length != 0)
                 { 
                 svg.append("text")
         .attr("x", function (d) {
-            return d3.select(chartId + ' .captiontext').node().getBoundingClientRect().width + 5;
+            return d3.select(chartId + ' .captiontext').node().getBoundingClientRect().width + 10;
         })
         .attr("y", 7.5)
         .attr("text-anchor", "start")
