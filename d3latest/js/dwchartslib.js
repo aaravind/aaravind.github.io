@@ -1463,120 +1463,141 @@ var stackedcolumn = {
     "data": [
         {
             "label": "Nikon",
-            "value": 11,
+            "value": 33,
+            "tooltip":45,
             "category":" > 50"
         },
         {
             "label": "Nikon",
             "value": 22,
+             "tooltip":12,
              "category":">40-50"
         },
         {
             "label": "Nikon",
-            "value": 33,
+            "value": 45,
+             "tooltip":23,
             "category":">30-40"
 
         }
         ,
         {
             "label": "Livon",
-            "value": 44,
+            "value": 50,
+             "tooltip":43,
             "category":" > 50"
         }
         ,
         {
             "label": "Livon",
-            "value": 55,
+            "value": 20,
+             "tooltip":78,
             "category":">40-50"
         }
         ,
         {
             "label": "Livon",
-            "value": 12,
+            "value": 30,
+             "tooltip":56,
            "category":">30-40"
         }
         ,
         {
             "label": "WD",
-            "value": 50,
+            "value": 10,
+             "tooltip":12,
              "category":" > 50"
         }
         ,
         {
             "label": "WD",
-            "value": 50,
+            "value": 20,
+             "tooltip":34,
              "category":">40-50"
         },
         {
             "label": "WD",
-            "value": 100,
+            "value": 70,
+             "tooltip":65,
              "category":">30-40"
         }
         ,
         {
             "label": "Spy",
-            "value": 100,
+            "value": 80,
+             "tooltip":78,
              "category":" > 50"
         }
         ,
         {
             "label": "Spy",
-            "value": 200,
+            "value": 10,
+             "tooltip":23,
             "category":">40-50"
         },
         {
             "label": "Spy",
-            "value": 50,
+            "value": 10,
+             "tooltip":56,
             "category":">30-40"
         }
          ,
         {
             "label": "Lego",
-            "value": 100,
+            "value": 15,
+             "tooltip":321,
              "category":" > 50"
         }
         ,
         {
             "label": "Lego",
-            "value": 200,
+            "value": 25,
+             "tooltip":234,
              "category":">40-50"
         },
         {
              "label": "Lego",
-            "value": 50,
+            "value": 60,
+             "tooltip":90,
             "category":">30-40"
         }
         ,
         {
             "label": "Orion",
-            "value": 100,
+            "value": 50,
+             "tooltip":89,
              "category":" > 50"
         }
         ,
         {
             "label": "Orion",
-            "value": 200,
+            "value": 25,
+             "tooltip":87,
              "category":">40-50"
         },
         {
             "label": "Orion",
-            "value": 50,
+            "value": 25,
+             "tooltip":76,
              "category":">30-40"
         } ,
         {
             "label": "Metz",
-            "value": 34,
+            "value": 60,
+             "tooltip":54,
            "category":" > 50"
         }
         ,
         {
              "label": "Metz",
-            "value": 56,
+            "value": 20,
+             "tooltip":34,
              "category":">40-50"
         },
         {
              "label": "Metz",
-            "value": 78,
+            "value": 20,
+             "tooltip":12,
             "category":">30-40"
         }
          

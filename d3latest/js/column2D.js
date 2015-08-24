@@ -138,7 +138,8 @@ var column2D = function (chartId, chartdata, chartType) {
                             y: o.value,
                             x: o.label,
                             z: o.category,
-                            yprev: i == 0 ? 0 : yprevvalue
+                            yprev: i == 0 ? 0 : yprevvalue,
+                            tool: o.tooltip != undefined ? o.tooltip : ''
                         };
                     });
                 });
@@ -152,7 +153,8 @@ var column2D = function (chartId, chartdata, chartType) {
                             y: d.x,
                             x0: d.y0,
                             z: d.z,
-                            yprev: d.yprev
+                            yprev: d.yprev,
+                            tool : d.tool
                         };
                     });
                 });
@@ -492,7 +494,10 @@ var column2D = function (chartId, chartdata, chartType) {
 
              var yattr = (elemRect.top - bodyRect.top) + 'px';
              //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
+             if(d.tool == '')
              var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.x + '</span>';
+             else
+              var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.tool + '</span>';
              var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
              div.html(htmlcontent)
        .style("left", function (d) { 
