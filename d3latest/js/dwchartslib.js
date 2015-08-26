@@ -1263,9 +1263,9 @@ var stackedbar = {
     },
     "colormap":[
     {"name":"Highest",
-    "value":"#35b3ce"},
+    "value":"#de8e43"},
        {"name":"Equal",
-    "value":"#77cf77"},
+    "value":"#dfc133"},
      {"name":"Lowest",
     "value":"#e0594b"}
     ],

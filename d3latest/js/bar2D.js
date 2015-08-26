@@ -267,7 +267,7 @@ var bar2D = function (chartId, chartdata, chartType) {
             return 'barstack' + d.z.replace(/[^a-zA-Z0-9]/g, "");
         })
         .attr('data-visibility', true)
-        .style('opacity', 0.5)
+        .style('opacity', 0.9)
            .on("mouseover", function (d, i) {
                this.style.cursor = 'pointer';
                this.style.opacity = 1;
@@ -291,7 +291,7 @@ var bar2D = function (chartId, chartdata, chartType) {
            })
                     .on("mouseout", function (d, i) {
                         this.style.cursor = 'pointer';
-                        this.style.opacity = 0.5;
+                        this.style.opacity = 0.9;
                         div.transition()
                 .duration(100)
                 .style("opacity", 0);
@@ -387,14 +387,14 @@ var bar2D = function (chartId, chartdata, chartType) {
                 return d.name.toUpperCase();
         })
          .style('text-transform', 'uppercase')
-         .style('opacity', 0.4)
+         .style('opacity', 0.8)
         .style('font-size', '12px')
         .style('fill', function (d, i) {
             return d.value;
         })
         .on("click", function (d, i) {
             var graphselect = 'barstack' + d.name.replace(/[^a-zA-Z0-9]/g, "");
-            this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
+            this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.8;
             if (d3.selectAll('.' + graphselect).style('display') == 'inline') {
                 d3.selectAll('.' + graphselect).attr("data-visibility", "false");
                 d3.selectAll('.' + graphselect).style('display', 'none');
@@ -413,7 +413,7 @@ var bar2D = function (chartId, chartdata, chartType) {
          })
           .on("mouseout", function (d, i) {
               this.style.cursor = 'pointer';
-              this.style.opacity = 0.4;
+              this.style.opacity = 0.8;
           });
 
         };
