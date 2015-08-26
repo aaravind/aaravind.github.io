@@ -1255,7 +1255,7 @@ var stackedbar = {
             "imageurl":"../images/logo.png"
         },
         "pallattecolorsingle":true, // if set to True: Only First Value is Considered ; if set to False all values in the Pallate is considered
-         "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
+         "pallattecolor":["#de8e43","#dfc133","#e0594b","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
     },
     "export":{
         "showexport": true,
@@ -1263,11 +1263,11 @@ var stackedbar = {
     },
     "colormap":[
     {"name":"Highest",
-    "value":"#008ee4"},
+    "value":"#35b3ce"},
        {"name":"Equal",
-    "value":"#26AD5E"},
+    "value":"#77cf77"},
      {"name":"Lowest",
-    "value":"#E77E22"}
+    "value":"#e0594b"}
     ],
     "data": [
         {

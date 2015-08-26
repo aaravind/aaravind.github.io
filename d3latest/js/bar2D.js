@@ -206,8 +206,35 @@ var bar2D = function (chartId, chartdata, chartType) {
         function Y(d) {
             return y(d);
         };
-
-        var groups = svg.selectAll('g')
+         if (chartdata.chart.slant) {
+            if (chartdata.chart.slantdegree != undefined)
+                rotatevalue = "rotate(-" + chartdata.chart.slantdegree + ")";
+            else
+                rotatevalue = "rotate(-" + 65 + ")";
+            svg.append("g")
+      .attr("style", styleborder)
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis5().innerTickSize(-height + 25)
+    .outerTickSize(0)
+    .tickPadding(10))
+      .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", function (d) {
+                return rotatevalue
+            });
+        }
+        else {
+            svg.append("g")
+      .attr("style", styleborder)
+      .attr("class", "xtick")
+      .attr("transform", "translate(0," + (height) + ")")
+      .call(xAxis5().innerTickSize(-height + 25)
+    .outerTickSize(0)
+    .tickPadding(10));
+        }
+        var groups = svg.selectAll('.bargroups')
         .data(dataGroup)
         .enter()
         .append('g')
@@ -276,34 +303,7 @@ var bar2D = function (chartId, chartdata, chartType) {
         .attr('width', function (d) {
             return xScale1(d.x);
         });
-        if (chartdata.chart.slant) {
-            if (chartdata.chart.slantdegree != undefined)
-                rotatevalue = "rotate(-" + chartdata.chart.slantdegree + ")";
-            else
-                rotatevalue = "rotate(-" + 65 + ")";
-            svg.append("g")
-      .attr("style", styleborder)
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis5().innerTickSize(-height + 25)
-    .outerTickSize(0)
-    .tickPadding(10))
-      .selectAll("text")
-            .style("text-anchor", "end")
-            .attr("dx", "-.8em")
-            .attr("dy", ".15em")
-            .attr("transform", function (d) {
-                return rotatevalue
-            });
-        }
-        else {
-            svg.append("g")
-      .attr("style", styleborder)
-      .attr("class", "xtick")
-      .attr("transform", "translate(0," + (height) + ")")
-      .call(xAxis5().innerTickSize(-height + 25)
-    .outerTickSize(0)
-    .tickPadding(10));
-        }
+       
         svg.append("g")
   .attr("class", "grid exportgrid")
       .call(yAxis1())
