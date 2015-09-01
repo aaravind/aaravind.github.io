@@ -547,22 +547,42 @@ var column2D = function (chartId, chartdata, chartType) {
                 for (j = 0; j < cData.length; j++) {
 
                     if (j < rangediff)
-                        domaincolorarray.push({"color":'#c7001e',"class":chartdata.colormap != undefined ? chartdata.colormap[0].name : 'Very Low'});
-                    else if (j < 2 * rangediff)
-                        domaincolorarray.push({"color":'#f6a580',"class":chartdata.colormap != undefined ? chartdata.colormap[1].name : 'Low'});
-                    else if (j < 3 * rangediff)
-                        domaincolorarray.push({"color":'#cccccc',"class":chartdata.colormap != undefined ? chartdata.colormap[2].name : 'Average'});
-                    else if (j < 4 * rangediff)
-                        domaincolorarray.push({"color":'#92c6db',"class":chartdata.colormap != undefined ? chartdata.colormap[3].name : 'High'});
-                    else
-                        domaincolorarray.push({"color":'#086fad',"class":chartdata.colormap != undefined ? chartdata.colormap[4].name : 'Very High'});
+                        domaincolorarray.push({ "color": '#c7001e', "class": chartdata.colormap != undefined ? chartdata.colormap[0].name : 'Very Low' });
+                    else if (j < 2 * rangediff) {
+                        if (cData[j][2] == cData[j - 1][2])
+                            domaincolorarray.push({ "color": domaincolorarray[j - 1].color, "class": domaincolorarray[j - 1].class });
+                        else
+                            domaincolorarray.push({ "color": '#f6a580', "class": chartdata.colormap != undefined ? chartdata.colormap[1].name : 'Low' });
+                    }
+
+                    else if (j < 3 * rangediff) {
+                        if (cData[j][2] == cData[j - 1][2])
+                            domaincolorarray.push({ "color": domaincolorarray[j - 1].color, "class": domaincolorarray[j - 1].class });
+                        else
+                            domaincolorarray.push({ "color": '#cccccc', "class": chartdata.colormap != undefined ? chartdata.colormap[2].name : 'Average' });
+                    }
+
+                    else if (j < 4 * rangediff) {
+                        if (cData[j][2] == cData[j - 1][2])
+                            domaincolorarray.push({ "color": domaincolorarray[j - 1].color, "class": domaincolorarray[j - 1].class });
+                        else
+                            domaincolorarray.push({ "color": '#92c6db', "class": chartdata.colormap != undefined ? chartdata.colormap[3].name : 'High' });
+                    }
+
+                    else {
+                        if (cData[j][2] == cData[j - 1][2])
+                            domaincolorarray.push({ "color": domaincolorarray[j - 1].color, "class": domaincolorarray[j - 1].class });
+                        else
+                            domaincolorarray.push({ "color": '#086fad', "class": chartdata.colormap != undefined ? chartdata.colormap[4].name : 'Very High' });
+                    }
+
                 }
 
                 svg.selectAll(".columnrange")
       .data(cData)
     .enter().append("rect")
     .attr('class', function (d, i) {
-        return 'Column'+domaincolorarray[i].class.replace(/[^a-zA-Z0-9]/g, "");
+        return 'Column' + domaincolorarray[i].class.replace(/[^a-zA-Z0-9]/g, "");
 
     })
     .attr("fill", function (d, i) {
@@ -599,12 +619,12 @@ var column2D = function (chartId, chartdata, chartType) {
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + chartdata.chart.tooltipheader + ': ' + cLabel + '</span><hr>';
         if (d[1] != chartdata.range.highrange) {
             var nameval = chartdata.rangetype != undefined ? chartdata.rangetype : 'Range';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>'+ nameval + ': ' + d[0] + '-' + d[1] + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + nameval + ': ' + d[0] + '-' + d[1] + '</div>';
             htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2] + '</div>';
         }
         else {
-              var nameval = chartdata.rangetype != undefined ? chartdata.rangetype : 'Range';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>'+ nameval + ': >' + d[0] + '</div>';
+            var nameval = chartdata.rangetype != undefined ? chartdata.rangetype : 'Range';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + nameval + ': >' + d[0] + '</div>';
             htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2] + '</div>';
         }
         div.html(htmlcontent)
@@ -1144,7 +1164,12 @@ var column2D = function (chartId, chartdata, chartType) {
             if (chartdata.chart.showlegend) {
                 var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
             .append('g')
-            .attr('class', 'legendgroup');
+            .attr('class', 'legendgroup')
+            .attr('transform', function (d) {
+                if (chartType == 'ColumnRange2D') {
+                    return "translate(0,15)";
+                }
+            });
                 legendgroup.append('g')
             .append('rect')
             .attr('width', '85')
