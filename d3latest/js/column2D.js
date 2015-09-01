@@ -1167,7 +1167,7 @@ var column2D = function (chartId, chartdata, chartType) {
             .attr('class', 'legendgroup')
             .attr('transform', function (d) {
                 if (chartType == 'ColumnRange2D') {
-                    return "translate(0,15)";
+                    return "translate(0,20)";
                 }
             });
                 legendgroup.append('g')
