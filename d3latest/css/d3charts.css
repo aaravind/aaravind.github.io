@@ -48,7 +48,7 @@ svg text,div,span,select {
     fill: none;  shape-rendering: crispEdges;font:12px serif;
 }
 .grid text,.gridy text,.tick text {
-stroke: #b1c2c6 ;
+stroke: #2E3031 ;
 stroke-width: 0.7;
   font-weight: 200;
 }

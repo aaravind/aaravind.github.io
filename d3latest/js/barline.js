@@ -296,11 +296,7 @@ var barline2D = function (chartId, chartdata, chartType) {
       .attr("class", "bartick xtick")
       .attr("transform", "translate(0," + (height) + ")")
       .call(xaxis);
-            svg.append("g")
-      .attr("style", styleborder)
-      .attr("class", "grid xgrid xtick")
-      .attr("transform", "translate(0," + (height) + ")")
-      .call(xlineaxis);
+           
             svg.selectAll(".column")
       .data(chartdata.bardata)
     .enter().append("rect")
@@ -470,6 +466,11 @@ var barline2D = function (chartId, chartdata, chartType) {
             });
 
             d3.selectAll(chartId + ' .bartick .tick text').text(function (d) { return d.toUpperCase(); });
+             svg.append("g")
+      .attr("style", styleborder)
+      .attr("class", "grid xgrid xtick")
+      .attr("transform", "translate(0," + (height) + ")")
+      .call(xlineaxis);
             svg.selectAll(chartId + ' .xgrid').selectAll('line')
           .style("stroke-width", 20)
           .style("cursor", "pointer")

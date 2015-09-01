@@ -112,6 +112,46 @@ var line2D = function (chartType, chartId, chartdata) {
             return 'display:none;z-index:9999999;fill:' + colorval + ';font-size:15px'
         });
 
+                if (chartType == 'MultiLine2D' || chartType == 'MultiArea2D' || chartType == 'MultiScatter2D' || chartType == 'MultiStepLine2D' || chartType == 'MultiStepArea2D' || chartType == 'MultiCurve2D' || chartType == 'MultiCurveArea2D') {
+
+                    if (chartdata.chart.slant) {
+                        if (chartdata.chart.slantdegree != undefined)
+                            rotatevalue = "rotate(-" + chartdata.chart.slantdegree + ")";
+                        else
+                            rotatevalue = "rotate(-" + 65 + ")";
+                        svg.append("g")
+      .attr("style", styleborder)
+      .attr("transform", "translate(0," + (height + 20) + ")")
+      .attr("class", "grid xgrid xtick")
+      .call(xAxis()
+             .innerTickSize(-height)
+    .outerTickSize(0)
+    .tickPadding(10)
+            )
+      .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", function (d) {
+                return rotatevalue
+            });
+
+                    }
+                    else {
+                        svg.append("g")
+      .attr("style", styleborder)
+      .attr("transform", "translate(0," + (height + 20) + ")")
+       .attr("class", "grid xgrid xtick")
+      .call(xAxis()
+        .innerTickSize(-height)
+    .outerTickSize(0)
+    .tickPadding(10)
+            );
+
+                    }
+                   d3.select(chartId + ' path.domain').attr('d', '');
+                }
+                 
                 svg.selectAll(chartId + ' .xgrid').selectAll('line')
           .style("stroke-width", 20)
           .style("cursor", "pointer")
@@ -302,9 +342,8 @@ var line2D = function (chartType, chartId, chartdata) {
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
 
-         if (chartdata.chart.hiddencaption != undefined) {
-                if (chartdata.chart.hiddencaption.length != 0)
-                { 
+            if (chartdata.chart.hiddencaption != undefined) {
+                if (chartdata.chart.hiddencaption.length != 0) {
                     svg.append("text")
            .attr("x", 0)
         .attr("y", 10)
@@ -318,17 +357,17 @@ var line2D = function (chartType, chartId, chartdata) {
         .style("fill", function (d) {
             return chartdata.chart.captionColor;
         })
-        .text( chartdata.chart.hiddencaption.toUpperCase());
+        .text(chartdata.chart.hiddencaption.toUpperCase());
                 }
-            
+
             }
 
-              if (chartdata.chart.subhiddencaption != undefined) {
+            if (chartdata.chart.subhiddencaption != undefined) {
                 if (chartdata.chart.subhiddencaption.length != 0) {
                     svg.append("text")
            .attr("x", function (d) {
-            return d3.select(chartId + ' .hiddencaptiontext').node().getBoundingClientRect().width + 10;
-        })
+               return d3.select(chartId + ' .hiddencaptiontext').node().getBoundingClientRect().width + 10;
+           })
         .attr("y", 7.5)
         .attr("text-anchor", "start")
          .attr('class', 'subhiddencaptiontext')
@@ -383,13 +422,14 @@ var line2D = function (chartType, chartId, chartdata) {
     })
     .entries(chartdata.data);
             };
+            if (chartType != 'MultiLine2D' && chartType != 'MultiArea2D' && chartType != 'MultiScatter2D' && chartType != 'MultiStepLine2D' && chartType != 'MultiStepArea2D' && chartType != 'MultiCurve2D' && chartType != 'MultiCurveArea2D') {
 
-            if (chartdata.chart.slant) {
-                if (chartdata.chart.slantdegree != undefined)
-                    rotatevalue = "rotate(-" + chartdata.chart.slantdegree + ")";
-                else
-                    rotatevalue = "rotate(-" + 65 + ")";
-                svg.append("g")
+                if (chartdata.chart.slant) {
+                    if (chartdata.chart.slantdegree != undefined)
+                        rotatevalue = "rotate(-" + chartdata.chart.slantdegree + ")";
+                    else
+                        rotatevalue = "rotate(-" + 65 + ")";
+                    svg.append("g")
       .attr("style", styleborder)
       .attr("transform", "translate(0," + (height + 20) + ")")
       .attr("class", "grid xgrid xtick")
@@ -406,9 +446,9 @@ var line2D = function (chartType, chartId, chartdata) {
                 return rotatevalue
             });
 
-            }
-            else {
-                svg.append("g")
+                }
+                else {
+                    svg.append("g")
       .attr("style", styleborder)
       .attr("transform", "translate(0," + (height + 20) + ")")
        .attr("class", "grid xgrid xtick")
@@ -418,7 +458,9 @@ var line2D = function (chartType, chartId, chartdata) {
     .tickPadding(10)
             );
 
+                }
             }
+
             svg.append("g")
   .attr("class", "gridy")
       .call(yaxis()
@@ -639,6 +681,7 @@ var line2D = function (chartType, chartId, chartdata) {
                     if (j == 0)
                         drawlinepath(chartType, d.values, d.key);
                     drawCircle('MultiScatter2D', d.values, color, d.key);
+
 
                 });
                 tickspace(dataGroup[0].values);
@@ -951,11 +994,12 @@ var line2D = function (chartType, chartId, chartdata) {
 
 
 
-
-            d3.selectAll(chartId + ' path.domain').style('opacity', function (d, i) {
-                if (i != 0)
-                    this.setAttribute('d', '')
-            });
+            if (chartType != 'MultiLine2D' && chartType != 'MultiArea2D' && chartType != 'MultiScatter2D' && chartType != 'MultiStepLine2D' && chartType != 'MultiStepArea2D' && chartType != 'MultiCurve2D' && chartType != 'MultiCurveArea2D') {
+                d3.selectAll(chartId + ' path.domain').style('opacity', function (d, i) {
+                    if (i != 0)
+                        this.setAttribute('d', '')
+                });
+            }
 
             if (chartdata.chart.credits != undefined) {
                 if (chartdata.chart.credits.text != undefined && chartdata.chart.credits.text != '') {

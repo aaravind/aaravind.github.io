@@ -154,7 +154,7 @@ var column2D = function (chartId, chartdata, chartType) {
                             x0: d.y0,
                             z: d.z,
                             yprev: d.yprev,
-                            tool : d.tool
+                            tool: d.tool
                         };
                     });
                 });
@@ -257,12 +257,12 @@ var column2D = function (chartId, chartdata, chartType) {
 
             }
 
-             if (chartdata.chart.subhiddencaption != undefined) {
+            if (chartdata.chart.subhiddencaption != undefined) {
                 if (chartdata.chart.subhiddencaption.length != 0) {
                     svg.append("text")
            .attr("x", function (d) {
-            return d3.select(chartId + ' .hiddencaptiontext').node().getBoundingClientRect().width + 10;
-        })
+               return d3.select(chartId + ' .hiddencaptiontext').node().getBoundingClientRect().width + 10;
+           })
         .attr("y", 7.5)
         .attr("text-anchor", "start")
          .attr('class', 'subhiddencaptiontext')
@@ -470,9 +470,6 @@ var column2D = function (chartId, chartdata, chartType) {
         .attr('x', function (d) {
             return xScale1(d.y) + xScale1.rangeBand() / 4;
         })
-        .attr('y', function (d, i) {
-            return yScale1(d.x + d.x0);
-        })
         .attr('width', function (d) {
             return xScale1.rangeBand() / 2;
         })
@@ -494,17 +491,17 @@ var column2D = function (chartId, chartdata, chartType) {
 
              var yattr = (elemRect.top - bodyRect.top) + 'px';
              //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
-             if(d.tool == '')
-             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.x + '</span>';
+             if (d.tool == '')
+                 var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.x + '</span>';
              else
-              var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.tool + '</span>';
+                 var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.tool + '</span>';
              var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
              div.html(htmlcontent)
-       .style("left", function (d) { 
-             if (xattr.replace('px', '') / 1 < window.innerWidth / 2)
+       .style("left", function (d) {
+           if (xattr.replace('px', '') / 1 < window.innerWidth / 2)
                return (xattr.replace('px', '') / 1 + this.getAttribute('width') / 2) + 'px';
            else
-               return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth - (elemRect.right-elemRect.left + 5)) + 'px';
+               return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth - (elemRect.right - elemRect.left + 5)) + 'px';
        })
                 .style("top", yattr);
          })
@@ -516,9 +513,15 @@ var column2D = function (chartId, chartdata, chartType) {
                 .style("opacity", 0);
             })
                     .attr('height', 0)
+                               .attr('y', function (d, i) {
+                                   return yScale1(d.x0);
+                               })
                .transition()
       .delay(function (d, i) { return i * 100; })
       .duration(400)
+                      .attr('y', function (d, i) {
+                          return yScale1(d.x + d.x0);
+                      })
                      .attr('height', function (d) {
                          var summa = yScale1(d.x0) - yScale1(d.x + d.x0);
                          return summa;
@@ -544,26 +547,26 @@ var column2D = function (chartId, chartdata, chartType) {
                 for (j = 0; j < cData.length; j++) {
 
                     if (j < rangediff)
-                        domaincolorarray.push('#c7001e');
+                        domaincolorarray.push({"color":'#c7001e',"class":chartdata.colormap != undefined ? chartdata.colormap[0].name : 'Very Low'});
                     else if (j < 2 * rangediff)
-                        domaincolorarray.push('#f6a580');
+                        domaincolorarray.push({"color":'#f6a580',"class":chartdata.colormap != undefined ? chartdata.colormap[1].name : 'Low'});
                     else if (j < 3 * rangediff)
-                        domaincolorarray.push('#cccccc');
+                        domaincolorarray.push({"color":'#cccccc',"class":chartdata.colormap != undefined ? chartdata.colormap[2].name : 'Average'});
                     else if (j < 4 * rangediff)
-                        domaincolorarray.push('#92c6db');
+                        domaincolorarray.push({"color":'#92c6db',"class":chartdata.colormap != undefined ? chartdata.colormap[3].name : 'High'});
                     else
-                        domaincolorarray.push('#086fad');
+                        domaincolorarray.push({"color":'#086fad',"class":chartdata.colormap != undefined ? chartdata.colormap[4].name : 'Very High'});
                 }
 
                 svg.selectAll(".columnrange")
       .data(cData)
     .enter().append("rect")
     .attr('class', function (d, i) {
-        return 'Columnrange';
+        return 'Column'+domaincolorarray[i].class.replace(/[^a-zA-Z0-9]/g, "");
 
     })
     .attr("fill", function (d, i) {
-        return domaincolorarray[i];
+        return domaincolorarray[i].color;
     })
     .style('stroke', 'white')
     .style('stroke-width', '0.5')
@@ -595,11 +598,13 @@ var column2D = function (chartId, chartdata, chartType) {
         else
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + chartdata.chart.tooltipheader + ': ' + cLabel + '</span><hr>';
         if (d[1] != chartdata.range.highrange) {
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Price Range' + ': ' + d[0] + '-' + d[1] + '</div>';
+            var nameval = chartdata.rangetype != undefined ? chartdata.rangetype : 'Range';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>'+ nameval + ': ' + d[0] + '-' + d[1] + '</div>';
             htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2] + '</div>';
         }
         else {
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Price Range' + ': >' + d[0] + '</div>';
+              var nameval = chartdata.rangetype != undefined ? chartdata.rangetype : 'Range';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>'+ nameval + ': >' + d[0] + '</div>';
             htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2] + '</div>';
         }
         div.html(htmlcontent)
@@ -773,7 +778,7 @@ var column2D = function (chartId, chartdata, chartType) {
        .style("left", function (d, i) {
            var asdfg = div[0][0];
            if (xattr.replace('px', '') / 1 < window.innerWidth / 2)
-               return (xattr.replace('px', '') / 1 + elemRectWidth/2 - 15) + 'px';
+               return (xattr.replace('px', '') / 1 + elemRectWidth / 2 - 15) + 'px';
            else
                return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth + elemRectWidth / 2 + 5) + 'px';
        })
