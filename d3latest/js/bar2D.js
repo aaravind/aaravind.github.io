@@ -267,13 +267,13 @@ var bar2D = function (chartId, chartdata, chartType) {
             return 'barstack' + d.z.replace(/[^a-zA-Z0-9]/g, "");
         })
         .attr('data-visibility', true)
-        .style('opacity', 0.9)
+        .style('opacity', 0.5)
            .on("mouseover", function (d, i) {
                this.style.cursor = 'pointer';
                this.style.opacity = 1;
                div.transition()
                 .duration(100)
-                .style("opacity", .9);
+                .style("opacity", 1);
 
                var xattr = bodyRect = elemRect = yattr = 0;
                var bodyRect = document.body.getBoundingClientRect();
@@ -291,7 +291,7 @@ var bar2D = function (chartId, chartdata, chartType) {
            })
                     .on("mouseout", function (d, i) {
                         this.style.cursor = 'pointer';
-                        this.style.opacity = 0.9;
+                        this.style.opacity = 0.5;
                         div.transition()
                 .duration(100)
                 .style("opacity", 0);
