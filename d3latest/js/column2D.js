@@ -1259,14 +1259,14 @@ var column2D = function (chartId, chartdata, chartType) {
                     nextwidth = nextelement.getAttribute('data-currentpos') / 1;
                     currentwidth = this.getAttribute('data-widthpos') / 1;
                     if (currentwidth > nextwidth && d.length > 10) {
-                        return d.substring(0, d.length / 4) + '...';
+                        return d.substring(0, 15) + '...';
                     }
                     else
                         return d;
                 }
                 else {
                     if (d.length > 15)
-                        return d.substring(0, 15);
+                        return d.substring(0, 15) + '...';
                     else
                         return d;
                 }

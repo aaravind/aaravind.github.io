@@ -1147,7 +1147,7 @@ var line2D = function (chartType, chartId, chartdata) {
                     nextwidth = nextelement.getAttribute('data-currentpos') / 1;
                     currentwidth = this.getAttribute('data-widthpos') / 1;
                     if (currentwidth > nextwidth && d.length > 10) {
-                        return d.substring(0, d.length / 4) + '...';
+                        return d.substring(0, 15) + '...';
                     }
                     else
                         return d;
