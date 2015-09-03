@@ -491,10 +491,18 @@ var column2D = function (chartId, chartdata, chartType) {
 
              var yattr = (elemRect.top - bodyRect.top) + 'px';
              //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
-             if (d.tool == '')
-                 var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.x + '</span>';
+             var headertool = chartdata.chart.tooltipheader == undefined ? 'Node' : chartdata.chart.tooltipheader;
+             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' +headertool + ': ' + d.y + '</span><hr>';
+             if (d.tool == ''){
+                var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">RANGE: ' + d.z + '</span><br>'; 
+                   var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">COUNT: ' + d.x + '</span>'; 
+             }
+                 
              else
-                 var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.tool + '</span>';
+             {
+                var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">RANGE: ' + d.z + '</span><br>'; 
+                   var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">COUNT: ' + d.tool + '</span>'; 
+             }
              var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
              div.html(htmlcontent)
        .style("left", function (d) {
@@ -526,7 +534,7 @@ var column2D = function (chartId, chartdata, chartType) {
                          var summa = yScale1(d.x0) - yScale1(d.x + d.x0);
                          return summa;
                      });
-                                     d3.selectAll(chartId + ' .exportgrid .tick text').text('');
+                d3.selectAll(chartId + ' .exportgrid .tick text').text('');
             }
             var datarangeval;
 

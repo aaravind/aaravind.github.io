@@ -1244,8 +1244,8 @@ var columnrange = {
         "highrange":5050
     },
     "rangetype":"Price Range",
-    "data":  [{"values": [[0, 0, 25], [30, 40, 3], [40, 50, 5], [50, 100, 73], [100, 150, 121], [150, 200, 242], [200, 250, 192], [250, 300, 148], [300, 350, 107], [350, 400, 100], [400, 450, 54], [450, 500, 64], [500, 1000, 245], [1000, 1500, 450], [1500, 2000, 652], [2000, 2500, 577], [2500, 3000, 421], [3000, 3500, 289], [3500, 4000, 224], [4000, 4500, 183], [4500, 5000, 122], [5000, 5050, 647]], "label": "Amazon"}, {"values": [[20, 30, 1], [30, 40, 3], [40, 50, 8], [50, 100, 38], [100, 150, 26], [150, 200, 26], [200, 250, 9], [250, 300, 6], [300, 350, 2], [350, 400, 7], [400, 450, 1], [450, 500, 4], [500, 1000, 15], [1000, 1500, 2]], "label": "BigBasketassdasdasdsadsadasdsadsadasdsadsadsadsadsadasdasd"}, {"values": [[0, 0, 203], [10, 20, 2], [20, 30, 2], [30, 40, 7], [40, 50, 9], [50, 100, 160], [100, 150, 300], [150, 200, 408], [200, 250, 253], [250, 300, 223], [300, 350, 196], [350, 400, 155], [400, 450, 86], [450, 500, 95], [500, 1000, 647], [1000, 1500, 254], [1500, 2000, 152], [2000, 2500, 69], [2500, 3000, 49], [3000, 3500, 24], [3500, 4000, 22], [4000, 4500, 11], [4500, 5000, 8], [5000, 5050, 31]], "label": "Flipkartasdasdsadasdsadasdasdsadsadasdasdasdas"}, {"values": [[10, 20, 1], [20, 30, 4], [30, 40, 10], [40, 50, 12], [50, 100, 44], [100, 150, 27], [150, 200, 27], [200, 250, 17], [250, 300, 7], [300, 350, 34], [350, 400, 4], [400, 450, 27], [450, 500, 4], [500, 1000, 3]], "label": "LocalBanya"}, {"values": [[0, 0, 16], [50, 100, 57], [100, 150, 101], [150, 200, 273], [200, 250, 216], [250, 300, 204], [300, 350, 147], [350, 400, 192], [400, 450, 87], [450, 500, 90], [500, 1000, 429], [1000, 1500, 192], [1500, 2000, 220], [2000, 2500, 142], [2500, 3000, 142], [3000, 3500, 77], [3500, 4000, 57], [4000, 4500, 53], [4500, 5000, 28], [5000, 5050, 121]], "label": "SnapDealaasdsadasdasdasdasdasdasdadasdasdasdasdasd"}, {"values": [], "label": "Zopnow"}]
-}
+    "data":  [{"values":[[0,44.1,3],[44.1,88.2,8],[88.2,132.3,5],[132.3,176.4,3],[176.4,220.5,3],[264.6,308.7,1]],"label":"Amazon-US"},{"values":[[44.1,88.2,9],[88.2,132.3,7],[132.3,176.4,6],[176.4,220.5,4],[220.5,264.6,2],[308.7,352.8,1]],"label":"Amazon-US-Ace Micros"},{"values":[[0,44.1,4],[88.2,132.3,11],[132.3,176.4,9],[176.4,220.5,5],[220.5,264.6,3]],"label":"Amazon-US-DataVision Computer Video"},{"values":[[0,44.1,6],[44.1,88.2,11],[88.2,132.3,16],[132.3,176.4,10],[176.4,220.5,7],[264.6,308.7,2]],"label":"Amazon-US-http://ecx.images-amazon.com/images/I/01dXM-J1oeL.gif"},{"values":[[44.1,88.2,15],[88.2,132.3,19],[132.3,176.4,13],[176.4,220.5,9],[264.6,308.7,3]],"label":"Amazon-US-IPC-Store"},{"values":[[0,44.1,8],[44.1,88.2,19],[88.2,132.3,23],[132.3,176.4,15],[176.4,220.5,10],[220.5,264.6,4],[264.6,308.7,4]],"label":"NetGear-US"}]
+    }
 d3charts("ColumnRange2D","#columnrange", columnrange);
 
 
@@ -1443,7 +1443,7 @@ var stackedcolumn = {
     "chart": {
         "caption": "Stacked Column Chart",
         "captionColor":"black",
-
+         "tooltipheader":"Seller",
          "subcaption": "More Info",
         "subcaptionColor":"black",
         "yaxisname": "",
@@ -1496,21 +1496,21 @@ var stackedcolumn = {
         }
         ,
         {
-            "label": "Livonassssffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "label": "Livon",
             "value": 50,
              "tooltip":43,
             "category":" > 50"
         }
         ,
         {
-            "label": "Livonassssffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "label": "Livon",
             "value": 20,
              "tooltip":78,
             "category":">40-50"
         }
         ,
         {
-            "label": "Livonassssffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+            "label": "Livon",
             "value": 30,
              "tooltip":56,
            "category":">30-40"
@@ -1537,20 +1537,20 @@ var stackedcolumn = {
         }
         ,
         {
-            "label": "Spyqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+            "label": "Spy",
             "value": 80,
              "tooltip":78,
              "category":" > 50"
         }
         ,
         {
-            "label": "Spyqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+            "label": "Spy",
             "value": 10,
              "tooltip":23,
             "category":">40-50"
         },
         {
-            "label": "Spyqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq",
+            "label": "Spy",
             "value": 10,
              "tooltip":56,
             "category":">30-40"
