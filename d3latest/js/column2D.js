@@ -526,6 +526,7 @@ var column2D = function (chartId, chartdata, chartType) {
                          var summa = yScale1(d.x0) - yScale1(d.x + d.x0);
                          return summa;
                      });
+                                     d3.selectAll(chartId + ' .exportgrid .tick text').text('');
             }
             var datarangeval;
 
