@@ -149,9 +149,9 @@ var line2D = function (chartType, chartId, chartdata) {
             );
 
                     }
-                   d3.select(chartId + ' path.domain').attr('d', '');
+                    d3.select(chartId + ' path.domain').attr('d', '');
                 }
-                 
+
                 svg.selectAll(chartId + ' .xgrid').selectAll('line')
           .style("stroke-width", 20)
           .style("cursor", "pointer")
@@ -773,7 +773,7 @@ var line2D = function (chartType, chartId, chartdata) {
                 }
                 svg.append("path")
     .datum(chartdata.data)
-        .attr("style", "stroke:transparent ;fill:" + color + ";opacity:.8")
+        .attr("style", "stroke:transparent ;fill:" + color + ";opacity:.5")
         .attr("d", area);
                 svg.selectAll('.xgrid').selectAll('line')
           .style("stroke-dasharray", ("3, 3"))
@@ -1119,18 +1119,18 @@ var line2D = function (chartType, chartId, chartdata) {
         //d3.selectAll(chartId + ' .gridy .tick line').last().style('display', 'none');
     };
 
-       d3.selectAll(chartId + ' .xtick .tick text').attr('data-widthpos', function (d, i) {
-                var summatest;
-                if (this.style.display != 'none') {
-                    var bodyRect = document.body.getBoundingClientRect();
-                    var elemRect = this.getBoundingClientRect();
-                    var thispos = elemRect.left - bodyRect.left;
-                    var elemwidth = this.offsetWidth;
-                    localstorewidth = thispos + elemwidth;
-                    return localstorewidth;
-                }
+    d3.selectAll(chartId + ' .xtick .tick text').attr('data-widthpos', function (d, i) {
+        var summatest;
+        if (this.style.display != 'none') {
+            var bodyRect = document.body.getBoundingClientRect();
+            var elemRect = this.getBoundingClientRect();
+            var thispos = elemRect.left - bodyRect.left;
+            var elemwidth = this.offsetWidth;
+            localstorewidth = thispos + elemwidth;
+            return localstorewidth;
+        }
 
-            })
+    })
             .attr('data-currentpos', function (d, i) {
                 if (this.style.display != 'none') {
                     var bodyRect = document.body.getBoundingClientRect();
@@ -1141,25 +1141,30 @@ var line2D = function (chartType, chartId, chartdata) {
 
             });
 
-            d3.selectAll(chartId + ' .xtick .tick text[data-widthpos]').text(function (d, i) {
-                var nextelement = d3.selectAll(chartId + ' .xtick .tick text[data-widthpos]')[0][i + 1];
-                if (nextelement != undefined) {
-                    nextwidth = nextelement.getAttribute('data-currentpos') / 1;
-                    currentwidth = this.getAttribute('data-widthpos') / 1;
-                    if (currentwidth > nextwidth && d.length > 10) {
-                        return d.substring(0, 15) + '...';
-                    }
+    d3.selectAll(chartId + ' .xtick .tick text[data-widthpos]').text(function (d, i) {
+        var nextelement = d3.selectAll(chartId + ' .xtick .tick text[data-widthpos]')[0][i + 1];
+        if (nextelement != undefined) {
+            nextwidth = nextelement.getAttribute('data-currentpos') / 1;
+            currentwidth = this.getAttribute('data-widthpos') / 1;
+            if (currentwidth > nextwidth && d.length > 10) {
+                return d.substring(0, 15) + '...';
+            }
+            else
+            { 
+               if (d.length > 20)
+                        return d.substring(0, 20) + '...';
                     else
                         return d;
-                }
-                else {
-          if (d.length > 15)
-                        return d.substring(0, 15)+'...';
-                    else
-                        return d;
-                }
-                var againsummatest;
-            });
+            }
+        }
+        else {
+            if (d.length > 15)
+                return d.substring(0, 15) + '...';
+            else
+                return d;
+        }
+        var againsummatest;
+    });
 
     if (chartType.search('Multi') != -1) {
         d3.selectAll(chartId + ' .gridy .tick line').attr('x2', function () {

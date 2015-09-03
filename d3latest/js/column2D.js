@@ -492,16 +492,15 @@ var column2D = function (chartId, chartdata, chartType) {
              var yattr = (elemRect.top - bodyRect.top) + 'px';
              //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
              var headertool = chartdata.chart.tooltipheader == undefined ? 'Node' : chartdata.chart.tooltipheader;
-             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' +headertool + ': ' + d.y + '</span><hr>';
-             if (d.tool == ''){
-                var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">RANGE: ' + d.z + '</span><br>'; 
-                   var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">COUNT: ' + d.x + '</span>'; 
+             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + headertool + ': ' + d.y + '</span><hr>';
+             if (d.tool == '') {
+                 var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">RANGE: ' + d.z + '</span><br>';
+                 var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">COUNT: ' + d.x + '</span>';
              }
-                 
-             else
-             {
-                var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">RANGE: ' + d.z + '</span><br>'; 
-                   var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">COUNT: ' + d.tool + '</span>'; 
+
+             else {
+                 var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">RANGE: ' + d.z + '</span><br>';
+                 var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">COUNT: ' + d.tool + '</span>';
              }
              var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
              div.html(htmlcontent)
@@ -1270,8 +1269,12 @@ var column2D = function (chartId, chartdata, chartType) {
                     if (currentwidth > nextwidth && d.length > 10) {
                         return d.substring(0, 15) + '...';
                     }
+                    else { 
+                     if (d.length > 20)
+                        return d.substring(0, 20) + '...';
                     else
                         return d;
+                    }
                 }
                 else {
                     if (d.length > 15)
