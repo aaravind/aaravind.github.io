@@ -233,7 +233,10 @@ var calender2D = function (chartId, chartdata, chartType) {
           var xattr = bodyRect = elemRect = yattr = 0;
           var bodyRect = document.body.getBoundingClientRect();
           var elemRect = this.getBoundingClientRect();
-          var xattr = (elemRect.right - bodyRect.left) + 'px';
+           if (elemRect.right > window.innerWidth / 2)
+                   var xattr = (elemRect.right - bodyRect.left - div[0][0].offsetWidth) + 'px';
+               else
+                   var xattr = (elemRect.right - bodyRect.left + 20) + 'px';
           var yattr = (elemRect.top - bodyRect.top) + 'px';
           //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
           var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + this.innerHTML + '</span>';
