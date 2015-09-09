@@ -41,22 +41,23 @@ var calender2D = function (chartId, chartdata, chartType) {
                     height = 500;
                 }
             }
-            else if (chartcontent[0][0].offsetWidth < 1200) {
+            else if (chartcontent[0][0].offsetWidth < 1000) {
 
                 cellSize = 20; // cell size
                 no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
                 if (no_months_in_a_row == 4) {
-                    d3.select(chartId).style('height', '750px');
-                    height = 750;
-                }
-                if (no_months_in_a_row == 5) {
-                    d3.select(chartId).style('height', '750px');
-                    height = 750;
-                }
-                else {
                     d3.select(chartId).style('height', '500px');
                     height = 500;
                 }
+                if (no_months_in_a_row == 5) {
+                    d3.select(chartId).style('height', '500px');
+                    height = 500;
+                }
+                if (no_months_in_a_row == 6) {
+                    d3.select(chartId).style('height', '450px');
+                    height = 450;
+                }
+
             }
             else {
                 cellSize = 25; // cell size
@@ -65,9 +66,13 @@ var calender2D = function (chartId, chartdata, chartType) {
                     d3.select(chartId).style('height', '250px');
                     height = 250;
                 }
-                else {
-                    d3.select(chartId).style('height', '400px');
-                    height = 400;
+                if (no_months_in_a_row == 5) {
+                    d3.select(chartId).style('height', '600px');
+                    height = 600;
+                }
+                else { 
+                 d3.select(chartId).style('height', '450px');
+                    height = 450;
                 }
             }
 
@@ -233,10 +238,10 @@ var calender2D = function (chartId, chartdata, chartType) {
           var xattr = bodyRect = elemRect = yattr = 0;
           var bodyRect = document.body.getBoundingClientRect();
           var elemRect = this.getBoundingClientRect();
-           if (elemRect.right > window.innerWidth / 2)
-                   var xattr = (elemRect.right - bodyRect.left - div[0][0].offsetWidth) + 'px';
-               else
-                   var xattr = (elemRect.right - bodyRect.left + 20) + 'px';
+          if (elemRect.right > window.innerWidth / 2)
+              var xattr = (elemRect.right - bodyRect.left - div[0][0].offsetWidth) + 'px';
+          else
+              var xattr = (elemRect.right - bodyRect.left + 20) + 'px';
           var yattr = (elemRect.top - bodyRect.top) + 'px';
           //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
           var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + this.innerHTML + '</span>';
