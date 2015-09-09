@@ -551,7 +551,7 @@ var column2D = function (chartId, chartdata, chartType) {
                 var rangediff = 0;
                 var domaincolorarray = [];
                 var domainarray = [];
-                rangediff = Math.round(cData.length / 5);
+                rangediff = Math.ceil(cData.length / 5);
                 for (j = 0; j < cData.length; j++) {
 
                     if (j < rangediff)

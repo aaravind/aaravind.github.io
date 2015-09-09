@@ -216,9 +216,8 @@ var barline2D = function (chartId, chartdata, chartType) {
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
 
-        if (chartdata.chart.hiddencaption != undefined) {
-                if (chartdata.chart.hiddencaption.length != 0)
-                { 
+            if (chartdata.chart.hiddencaption != undefined) {
+                if (chartdata.chart.hiddencaption.length != 0) {
                     svg.append("text")
           .attr("x", 0)
         .attr("y", 10)
@@ -232,17 +231,17 @@ var barline2D = function (chartId, chartdata, chartType) {
         .style("fill", function (d) {
             return chartdata.chart.captionColor;
         })
-        .text( chartdata.chart.hiddencaption.toUpperCase());
+        .text(chartdata.chart.hiddencaption.toUpperCase());
                 }
-            
+
             }
 
-              if (chartdata.chart.subhiddencaption != undefined) {
+            if (chartdata.chart.subhiddencaption != undefined) {
                 if (chartdata.chart.subhiddencaption.length != 0) {
                     svg.append("text")
            .attr("x", function (d) {
-            return d3.select(chartId + ' .hiddencaptiontext').node().getBoundingClientRect().width + 10;
-        })
+               return d3.select(chartId + ' .hiddencaptiontext').node().getBoundingClientRect().width + 10;
+           })
         .attr("y", 7.5)
         .attr("text-anchor", "start")
          .attr('class', 'subhiddencaptiontext')
@@ -260,8 +259,7 @@ var barline2D = function (chartId, chartdata, chartType) {
             }
 
             if (chartdata.chart.subcaption != undefined) {
-                if (chartdata.chart.subcaption.length != 0)
-                { 
+                if (chartdata.chart.subcaption.length != 0) {
                     svg.append("text")
         .attr("x", function (d) {
             return d3.select(chartId + ' .captiontext').node().getBoundingClientRect().width + 10;
@@ -278,7 +276,7 @@ var barline2D = function (chartId, chartdata, chartType) {
         })
         .text('(' + chartdata.chart.subcaption.toUpperCase() + ')');
                 }
-            
+
             }
 
             var barmax = d3.max(chartdata.bardata, function (d) { return d.value });
@@ -296,7 +294,7 @@ var barline2D = function (chartId, chartdata, chartType) {
       .attr("class", "bartick xtick")
       .attr("transform", "translate(0," + (height) + ")")
       .call(xaxis);
-           
+
             svg.selectAll(".column")
       .data(chartdata.bardata)
     .enter().append("rect")
@@ -466,7 +464,7 @@ var barline2D = function (chartId, chartdata, chartType) {
             });
 
             d3.selectAll(chartId + ' .bartick .tick text').text(function (d) { return d.toUpperCase(); });
-             svg.append("g")
+            svg.append("g")
       .attr("style", styleborder)
       .attr("class", "grid xgrid xtick")
       .attr("transform", "translate(0," + (height) + ")")
@@ -640,14 +638,17 @@ var barline2D = function (chartId, chartdata, chartType) {
             };
             d3.selectAll(chartId + ' .exportgrid .tick line').attr('x2', function (d) {
                 return this.getAttribute('x2') / 1 + 70;
-            })
-               d3.selectAll(chartId + ' .bartick .tick text').text(function (d, i) {
-                    return '';               
-            })
-                d3.selectAll(chartId + ' .yrange .tick text').text(function (d) {
-                          var prefix1 = d3.formatPrefix(d);
-              return prefix1.scale(d) + prefix1.symbol;              
-            })
+            });
+            d3.selectAll(chartId + ' .bartick .tick text').text(function (d, i) {
+                return '';
+            });
+            d3.selectAll(chartId + ' .yrange .tick text').text(function (d) {
+                var prefix1 = d3.formatPrefix(d);
+                return prefix1.scale(d) + prefix1.symbol;
+            });
+
+
+
         }
         else {
             var bottommargin = chartdata.chart.slant ? 100 : 50;

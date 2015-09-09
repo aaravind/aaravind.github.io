@@ -1,5 +1,5 @@
 function redrawchart(chart,id,data) {
-    if (chart.search('Column') == -1 && chart.search('Bar') == -1) {
+    if (chart.search('Column') == -1 && chart.search('Bar') == -1 && chart.search('Calender') == -1) {
         var savelegends = d3.selectAll(id + ' path[data-visibilitypath = \'false\']')[0];
         if (savelegends.length == 0)
             d3charts(chart, id, data);
@@ -25,7 +25,10 @@ function redrawchart(chart,id,data) {
             };
             d3charts(chart, id, data);
             for (i = 0; i < saveleg.length; i++) {
+                if(chart != 'Calender2D')
                 d3.selectAll(id + ' .' + saveleg[i]).style('display', 'none').attr('data-visibility', 'false');
+                else
+                 d3.selectAll(id + ' .' + saveleg[i]).style('fill', 'none').attr('data-visibility', 'false');
             };
         }
         
@@ -44,6 +47,7 @@ window.onresize = function (event) {
       redrawchart("StackedColumn2D","#stackedcolumn", stackedcolumn);
           d3charts("Bubble2D", "#bubble", bubbledata);
               redrawchart("BarLine2D", "#barline", barlinedata);
+                redrawchart("Calender2D", "#calender", calenderdata);
 };
 
 var linedata = {
@@ -1476,19 +1480,19 @@ var stackedcolumn = {
     ],
     "data": [
         {
-            "label": "Nikon",
+            "label": "Nikonasdsadsadsadsadsadsa",
             "value": 33,
             "tooltip":45,
             "category":" > 50"
         },
         {
-            "label": "Nikon",
+            "label": "Nikonasdsadsadsadsadsadsa",
             "value": 22,
              "tooltip":12,
              "category":">40-50"
         },
         {
-            "label": "Nikon",
+            "label": "Nikonasdsadsadsadsadsadsa",
             "value": 45,
              "tooltip":23,
             "category":">30-40"
@@ -2286,3 +2290,78 @@ var bubbledata = {
     ]
 }
     d3charts("BarLine2D", "#barline", barlinedata);
+
+    var calenderdata = {
+        "chart": {
+            "caption": "Calender Chart", //Name of the chart Header
+            "captionColor": "black", // Color of the Chart Header
+            "showlegend":true,
+            "yaxisname": "", // Name which gets displayed in the Yaxis
+            "slant": false, // X axis label slant
+            "slantdegree": "90", // Slant based on the degree specified
+            "credits": {            // Credits
+                "text": "Powered By", // Credit Name
+                "color": "#666",
+                "imageurl": "../images/logo.png"
+            },
+            "fillinside": "none", // fill or none
+            "pallattecolor": ["#008ee4", "#E94C3D", "#26AD5E", "#E77E22", "#2B80B9", "#F39C11", "#F2C40F", "#179F87", "#2D3E50", "#9045AE", "#5CADE2", "#2ECD71", "#BE3A2B", "#C85600", "#7E8C8D", "#9A59B5", "#34495E", "#BEC3C7", "#EC0000", "#BE3243", "#FF3243", "#BE0043", "#BE32FF", "#CC3243", "#BECC43", "#BE324C", "#f8bd19", "#e44a00", "#008FF4", "#33bdda", "#6baa01", "#583e78"] // Pallette colors for 30 values
+        },
+        "export": {
+            "showexport": true,
+            "format": ["-Download-", "jpeg", "png"] //Specify Format to export.Currently support jpeg,png
+        },
+         "colormap":[
+    {"name":"Very Low",
+    "value":"#c7001e"},
+       {"name":"Low",
+    "value":"#f6a580"},
+     {"name":"Average",
+    "value":"#cccccc"},
+      {"name":"High",
+    "value":"#92c6db"},
+      {"name":"Very High",
+    "value":"#086fad"}
+
+    ],
+    "calenderyear":[2015,2016],
+        "data": [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
+        {"month":'Jan',
+          "max":90,
+          "values":[10,10,20,30,40,50,60,70,0,90,10,10,20,30,40,50,60,70,80,90,0,10,20,30,40,50,60,70,80,90,50]},
+          {"month":'Feb',
+          "max":90,
+          "values":[13,45,20,30,40,50,60,23,80,90,10,10,20,30,33,0,60,70,80,90,55,10,0,30,40,88,60,70,88,99,50]},
+          {"month":'Mar',
+          "max":90,
+          "values":[10,10,20,0,40,50,60,11,80,90,22,10,20,33,40,50,60,70,55,90,10,10,0,99,40,50,0,70,80,90,50]},
+          {"month":'Apr',
+          "max":90,
+          "values":[10,10,20,0,40,50,60,0,80,90,10,0,20,30,40,50,60,0,80,90,10,10,0,30,40,50,60,70,80,90,50]},
+          {"month":'May',
+          "max":90,
+          "values":[10,10,0,30,40,50,60,70,0,90,10,10,20,30,40,0,0,0,0,90,10,10,0,30,40,50,60,70,80,90,50]},
+          {"month":'Jun',
+          "max":90,
+          "values":[10,45,20,30,0,50,60,0,80,90,0,10,78,30,40,0,60,70,80,90,0,23,20,30,40,50,60,70,80,90,50]},
+          {"month":'Jul',
+          "max":90,
+          "values":[10,10,20,0,0,0,0,70,66,90,10,10,20,30,40,50,60,70,0,90,54,0,0,0,40,50,60,70,80,90,50]},
+          {"month":'Aug',
+          "max":90,
+          "values":[10,10,23,30,0,0,0,70,80,90,0,10,67,30,0,50,60,0,80,90,10,0,54,30,40,0,60,70,80,90,50]},
+          {"month":'Sep',
+          "max":90,
+          "values":[10,10,0,66,0,0,0,70,0,90,10,55,20,30,40,50,60,33,80,0,0,0,0,30,40,50,60,70,80,90,50]},
+          {"month":'Oct',
+          "max":90,
+          "values":[10,10,20,0,77,50,60,70,0,90,10,10,20,30,40,50,0,70,21,90,10,10,0,30,40,55,60,70,0,90,50]},
+          {"month":'Nov',
+          "max":90,
+          "values":[10,10,55,0,40,50,0,70,80,90,10,10,20,0,40,50,55,70,0,90,10,10,0,55,40,50,60,0,80,90,50]},
+          {"month":'Dec',
+          "max":90,
+          "values":[10,10,20,0,40,50,60,70,80,90,10,0,20,4,40,50,0,70,80,90,0,10,20,30,40,0,2,70,80,3,50]}
+    ]
+    }
+    d3charts("Calender2D", "#calender", calenderdata);

@@ -8,8 +8,18 @@ font-family: 'Source Sans Pro', ’Trebuchet MS’, 'Helvetica Neue', Helvetica,
 }
 svg {
 
-}  
-svg text,div,span,select {
+} 
+ .day {
+        fill: #fff;
+        stroke: #ccc;
+      }
+
+      .month {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 4px;
+      }
+svg text,div,span,select,.month,.month-title {
  font-family: 'Source Sans Pro', ’Trebuchet MS’, 'Helvetica Neue', Helvetica, 'Lucida Grande', Arial, Verdana, sans-serif;
     }
 @media screen and (max-width: 450px) {
