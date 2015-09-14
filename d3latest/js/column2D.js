@@ -205,10 +205,17 @@ var column2D = function (chartId, chartdata, chartType) {
         .scale(y)
         .orient("left")
         .ticks(5)
-          .tickFormat(function (d) {
-              var prefix = d3.formatPrefix(d);
-              return prefix.scale(d) + prefix.symbol;
-          })
+         .tickFormat(function (d) {
+             if (d > 1) {
+                 var prefix = d3.formatPrefix(d);
+                 return prefix.scale(d) + prefix.symbol;
+             }
+             else
+                 return d;
+
+
+
+         })
                 }
             }
 
@@ -1269,11 +1276,11 @@ var column2D = function (chartId, chartdata, chartType) {
                     if (currentwidth > nextwidth && d.length > 10) {
                         return d.substring(0, 15) + '...';
                     }
-                    else { 
-                     if (d.length > 20)
-                        return d.substring(0, 20) + '...';
-                    else
-                        return d;
+                    else {
+                        if (d.length > 20)
+                            return d.substring(0, 20) + '...';
+                        else
+                            return d;
                     }
                 }
                 else {
