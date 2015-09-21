@@ -137,17 +137,20 @@
     .data(function (row) {
         var currentrow = [];
         for (i = 0; i < Object.size(row); i++) {
-            currentrow.push(row[columnarray[i]])
+            var tempcol ={};
+            tempcol.label = columnarray[i];
+            tempcol.value = row[columnarray[i]];
+            currentrow.push(tempcol)
         }
         return currentrow;
     })
     .enter()
     .append("td")
     .text(function (d) {
-        return d;
+        return d.value;
     })
     .attr('title', function (d) {
-        return d;
+        return d.label+':'+d.value;
     })
             //.style('width',100/columnarray.length + '%')
       .attr("class", function (d, i) { return columnarray[i].replace(/[^a-zA-Z1-9]/g, ""); });
