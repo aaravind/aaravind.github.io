@@ -46,7 +46,7 @@
    .text(function (d) {
        return d.toUpperCase();
    });
-            tablecontent.append('tbody').append('tr').append('td').attr('colspan', optionarray.length).text('Loading Records...').style('text-align','center');
+            tablecontent.append('tbody').append('tr').append('td').attr('colspan', optionarray.length).text('Loading Records...').style('text-align', 'center');
             if (deskhiddendata != undefined && deskhiddendata.length != 0) {
                 if (document.getElementById(chartid.replace('#', '')).offsetWidth > 800) {
 
@@ -54,7 +54,7 @@
                         d3.selectAll('.' + deskhiddendata[l]).style('display', 'none');
 
                 }
-            } 
+            }
         }, 200);
 
         window.onresize = function () {
@@ -120,8 +120,8 @@
        return d.replace(/[^a-zA-Z1-9]/g, "");
    })
     .attr('data-title', function (d) {
-       return d;
-   })
+        return d;
+    })
             //.style('width',100/columnarray.length + '%')
    .text(function (d) {
        return d.toUpperCase();
@@ -144,6 +144,9 @@
     .enter()
     .append("td")
     .text(function (d) {
+        return d;
+    })
+    .attr('title', function (d) {
         return d;
     })
             //.style('width',100/columnarray.length + '%')
