@@ -112,6 +112,7 @@ tablecontent.append('thead').append('tr')
                 if (columnarray[i] == currentcolumn[j]) {
                     var tempobj = {};
                     tempobj.label = row[currentcolumn[j]];
+                     tempobj.titlelabel = currentcolumn[j];
                     if (urlcolumndata.indexOf(currentcolumn[j]) == -1 && imagecolumndata.indexOf(currentcolumn[j]) == -1)
                         tempobj.type = 'text';
                        if (urlcolumndata.indexOf(currentcolumn[j]) != -1 && imagecolumndata.indexOf(currentcolumn[j]) == -1)
@@ -137,6 +138,9 @@ tablecontent.append('thead').append('tr')
     cells.filter(function (d) { return d.type == 'text'; })
     .text(function (d) {
         return d.label;
+    })
+    .attr('title', function (d) {
+        return d.titlelabel + ':' + d.label;
     });
 
 
@@ -147,7 +151,10 @@ tablecontent.append('thead').append('tr')
     .attr('target','_blank')
        .text(function (d) {
            return d.label;
-       });
+       })
+        .attr('title', function (d) {
+        return d.titlelabel + ':' + d.label;
+    });
       //.style('width',100/columnarray.length + '%')
 
        cells
@@ -155,7 +162,10 @@ tablecontent.append('thead').append('tr')
     .append("img")
     .attr('src', function (d) { return d.label })
     .attr('width', 25)
-    .attr('height', 25);
+    .attr('height', 25)
+     .attr('title', function (d) {
+        return d.titlelabel + ':' + d.label;
+    });
       //.style('width',100/columnarray.length + '%')
      
 
