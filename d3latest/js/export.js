@@ -170,7 +170,10 @@ function download_in_ie(canvas, filename,format) {
 function download_with_link(canvas, filename,format) {
     var a = document.createElement('a')
     a.download = filename + format;
+    if(format == '.png')
     a.href = canvas.toDataURL("image/png")
+    else
+    a.href = canvas.toDataURL("image/jpeg")
     document.body.appendChild(a);
     a.click();
     a.remove();
