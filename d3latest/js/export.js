@@ -52,13 +52,19 @@ function exportfile(chartid,chartdata,filename,format,charttype)
  data = new XMLSerializer().serializeToString(asd);
  // canvg(canvas, data);
 
-  canvg(canvas, data, { renderCallback: function () {
-var img = canvas.toDataURL("image/png");
- d3.selectAll(chartid +" .hiddencaptiontext").style("display", "none");
-      d3.selectAll(chartid +" .subhiddencaptiontext").style("display", "none");
-    download(canvas,chartdataval,filename,format,charttype,chartid);
+ canvg(canvas, data, { renderCallback: function () {
+     if (format == '.png') {
+         var img = canvas.toDataURL("image/png");
+     }
+     else { 
+      var img = canvas.toDataURL("image/jpeg");
+     }
+     d3.selectAll(chartid + " .hiddencaptiontext").style("display", "none");
+     d3.selectAll(chartid + " .subhiddencaptiontext").style("display", "none");
+     download(canvas, chartdataval, filename, format, charttype, chartid);
 
-}});
+ }
+ });
      asd.setAttribute('width', prevwidth);
     asd.setAttribute('height', prevheight);
         d3.selectAll(chartid + " .subcaptiontext").attr("x", function (d) {
