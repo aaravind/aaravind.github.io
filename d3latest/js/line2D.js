@@ -38,6 +38,11 @@ var line2D = function (chartType, chartId, chartdata) {
     .attr("class", function (d) { return cType + d.label })
     .style("fill", function (d, i) { return d.value == 0 ? "none" : color; })
     .style("opacity", '0.3')
+       .on("mousedown", function (d, i) {
+           if (chartdata.click != undefined && chartdata.click != '')
+               chartdata.click(d);
+       })
+
     .on("mouseover", function (d, i) {
         if (chartType.search('Multi') == -1) {
             this.style.opacity = 1;
@@ -95,14 +100,14 @@ var line2D = function (chartType, chartId, chartdata) {
 	    .text(function (d) {
 	        if (chartType == 'Line2D' || chartType == 'Scatter2D' || chartType == 'StepLine2D' || chartType == 'Curve2D') {
 	            if (d.value != 0)
-	                return d.label + ' : ' + d.value;
+	                return d.label + ' : ' + d.value.toFixed(2) / 1;
 	            else
 	                return d.label + ' : ' + 'N/A';
 	        }
 
 	        else {
 	            if (d.value != 0)
-	                return d.category + ' : ' + d.value;
+	                return d.category + ' : ' + d.value.toFixed(2) / 1;
 	            else
 	                return d.category + ' : ' + 'N/A';
 	        }
@@ -1149,12 +1154,11 @@ var line2D = function (chartType, chartId, chartdata) {
             if (currentwidth > nextwidth && d.length > 10) {
                 return d.substring(0, 15) + '...';
             }
-            else
-            { 
-               if (d.length > 20)
-                        return d.substring(0, 20) + '...';
-                    else
-                        return d;
+            else {
+                if (d.length > 20)
+                    return d.substring(0, 20) + '...';
+                else
+                    return d;
             }
         }
         else {

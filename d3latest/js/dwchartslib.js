@@ -47,7 +47,7 @@ window.onresize = function (event) {
       redrawchart("StackedColumn2D","#stackedcolumn", stackedcolumn);
           d3charts("Bubble2D", "#bubble", bubbledata);
               redrawchart("BarLine2D", "#barline", barlinedata);
-                redrawchart("Calender2D", "#calender", calenderdata);
+                redrawchart("CalenderMultiView2D", "#calendermultiview", calenderMultidata);
 };
 
 var linedata = {
@@ -71,11 +71,13 @@ var linedata = {
         "showexport": true,
          "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
     },
+     "click":function(data){
+    alert(data.label + ' : '+data.value);},
     "data":  [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
         {
 
             "label": "01-08-15assss",
-            "value": 56
+            "value": 56.123123
         },
         {
             "label": "02-08-15",
@@ -210,7 +212,7 @@ var linedata = {
         },
         {
             "label": "30-08-15asdddddddddddddddddddddddddddddddddddddddddddddddddd",
-            "value": 23
+            "value": 23.345
 
         }
 
@@ -256,7 +258,7 @@ var linedata = {
         {
             "category": "Snapdeal",
             "label": "01-08-15",
-            "value": 256
+            "value": 256.122
         },
         { 
             "category": "Snapdeal",
@@ -431,7 +433,7 @@ var linedata = {
         { 
             "category": "Paytm",
             "label": "02-08-15",
-            "value": 227
+            "value": 227.343543
         },
         {
             "category": "Paytm",
@@ -605,7 +607,7 @@ var linedata = {
         {
             "category": "Flipkart",
             "label": "03-08-15",
-            "value": 264
+            "value": 264.453
 
         }
         ,
@@ -799,22 +801,24 @@ var columndata = {
         "showexport": true,
          "format": ["-Download-","jpeg","png"]
     },
+      "click":function(data){
+    alert(data.label + ' : '+data.value);},
     "data": [
         {
             "label": "01-08-15asdasdsadasdasdsadasdasdsadasdasdsadasdasdasdasdasdasdasdasadas",
-            "value": -11,
+            "value": -0.0567,
 
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "02-08-15",
-            "value": -22,
+            "value": -0.0567,
 
             "tooltip":[['Flipkart','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "03-08-15",
-            "value": -33,
+            "value": -0.0567,
 
             "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
 
@@ -822,14 +826,14 @@ var columndata = {
         ,
         {
             "label": "04-08-15",
-            "value": -44,
+            "value": -0.0567,
 
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "05-08-15",
-            "value": -55,
+            "value": -0.0567,
 
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
@@ -843,150 +847,31 @@ var columndata = {
         ,
         {
             "label": "07-08-15",
-            "value": -77,
+            "value": -0.07767,
 
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "08-08-15",
-            "value": -88,
+            "value": -0.0567,
 
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         },
         {
             "label": "09-08-15",
-            "value": -99,
+            "value": -0.5,
 
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
         ,
         {
             "label": "10-08-15",
-            "value": -50,
+            "value": -2.05671,
 
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
-        ,
-        {
-            "label": "11-08-15",
-            "value": -10,
-
-            "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
-        }
-        ,
-        {
-            "label": "12-08-15",
-            "value": 0,
-
-            "tooltip":[['Flipkart','100'],['Your Price','100'],['% Diff','11']]
-        } ,
-        {
-            "label": "13-08-15",
-            "value": -99,
-
-            "tooltip":[['Flipkart','100'],['Your Price','100']]
-        } ,
-        {
-            "label": "14-08-15",
-            "value": -7,
-
-            "tooltip":[['Flipkart','100'],['Your Price','100'],['% Diff','11'],['% Diffag','11']]
-        },
-        {
-            "label": "15-08-15",
-            "value":-76,
-
-            "tooltip":[['Flipkart','100'],['Your Price','100'],['% Diff','11']]
-        },
-        {
-            "label": "16-08-15",
-            "value": -65,
-
-            "tooltip":[['Flipkart','100'],['Your Price','100'],['% Diff','11']]
-        },
-        {   
-		    "label": "17-08-15",
-            "value": -54,
-
-            "tooltip":[['Flipkart','100'],['Your Price','100'],['% Diff','11']]
-        },
-        {
-            "label": "18-08-15",
-            "value": -100,
-
-            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
-
-        }
-        ,
-        {
-            "label": "19-08-15",
-            "value": -43,
-
-            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
-        }
-        ,
-        {
-            "label": "20-08-15",
-            "value": -32,
-            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
-        }
-        ,
-        {
-            "label": "21-08-15",
-            "value": -21,
-            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
-        }
-        ,
-        {
-            "label": "22-08-15",
-            "value": -55,
-            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
-        }
-        ,
-        {
-            "label": "23-08-15",
-            "value": -77,
-            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
-        },
-        {
-            "label": "24-08-15",
-            "value": -100,
-            "tooltip":[['Amazon','200'],['Your Price','100'],['% Diff','11'],['asdasd','11']]
-        }
-        ,
-        {
-            "label": "25-08-15",
-            "value": 0,
-            "tooltip":[['Amazon','100'],['Your Price','100'],['% Diff','11']]
-        }
-        ,
-        {
-            "label": "26-08-15",
-            "value": 0,
-            "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
-        }
-        ,
-        {
-            "label": "27-08-15",
-            "value": -88,
-            "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
-        } ,
-        {
-            "label": "28-08-15",
-            "value": -66,
-            "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
-        } ,
-        {
-            "label": "29-08-15",
-            "value": -50,
-            "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
-        },
-        {
-            "label": "30-08-15",
-            "value": -93,
-            "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
-        }
+       
 
 
         
@@ -1030,8 +915,8 @@ var doublecolumndata = {
     "data": [
         {
             "label": "01-08-15",
-            "lowvalue": -4,
-            "highvalue":67
+            "lowvalue": -4.345,
+            "highvalue":67.123
         },
         {
             "label": "02-08-15",
@@ -1245,10 +1130,12 @@ var columnrange = {
     ],
     "range":{
         "lowrange":0,
-        "highrange":5050
+        "highrange":500
     },
     "rangetype":"Price Range",
-    "data":  [{"values":[[0,44.1,3],[44.1,88.2,8],[88.2,132.3,5],[132.3,176.4,3],[176.4,220.5,3],[264.6,308.7,1]],"label":"Amazon-US"},{"values":[[44.1,88.2,9],[88.2,132.3,7],[132.3,176.4,6],[176.4,220.5,4],[220.5,264.6,2],[308.7,352.8,1]],"label":"Amazon-US-Ace Micros"},{"values":[[0,44.1,4],[88.2,132.3,11],[132.3,176.4,9],[176.4,220.5,5],[220.5,264.6,3]],"label":"Amazon-US-DataVision Computer Video"},{"values":[[0,44.1,6],[44.1,88.2,11],[88.2,132.3,16],[132.3,176.4,10],[176.4,220.5,7],[264.6,308.7,2]],"label":"Amazon-US-http://ecx.images-amazon.com/images/I/01dXM-J1oeL.gif"},{"values":[[44.1,88.2,15],[88.2,132.3,19],[132.3,176.4,13],[176.4,220.5,9],[264.6,308.7,3]],"label":"Amazon-US-IPC-Store"},{"values":[[0,44.1,8],[44.1,88.2,19],[88.2,132.3,23],[132.3,176.4,15],[176.4,220.5,10],[220.5,264.6,4],[264.6,308.7,4]],"label":"NetGear-US"}]
+      "click":function(data){
+    alert(data[0].label);},
+    "data":  [{"values":[[0.123,44.1123,3],[44.1,88.212,8],[88.2,132.3,5],[132.3,176.4,3],[176.4,220.5,3],[264.6,308.7,1]],"label":"Amazon-US"},{"values":[[44.1,88.2,9],[88.2,132.3,7],[132.3,176.4,6],[176.4,220.5,4],[220.5,264.6,2],[308.7,352.8,1]],"label":"Amazon-US-Ace Micros"},{"values":[[0,44.1,4],[88.2,132.3,11],[132.3,176.4,9],[176.4,220.5,5],[220.5,264.6,3]],"label":"Amazon-US-DataVision Computer Video"},{"values":[[0,44.1,6],[44.1,88.2,11],[88.2,132.3,16],[132.3,176.4,10],[176.4,220.5,7],[264.6,308.7,2]],"label":"Amazon-US-http://ecx.images-amazon.com/images/I/01dXM-J1oeL.gif"},{"values":[[44.1,88.2,15],[88.2,132.3,19],[132.3,176.4,13],[176.4,220.5,9],[264.6,308.7,3]],"label":"Amazon-US-IPC-Store"},{"values":[[0,44.1,8],[44.1,88.2,19],[88.2,132.3,23],[132.3,176.4,15],[176.4,220.5,10],[220.5,264.6,4],[264.6,308.7,4]],"label":"NetGear-US"}]
     }
 d3charts("ColumnRange2D","#columnrange", columnrange);
 
@@ -1287,20 +1174,22 @@ var stackedbar = {
      {"name":"Lowest",
     "value":"#e0594b"}
     ],
+          "click":function(data){
+    alert(data[0].label);},
     "data": [
         {
             "label": "Electronic",
-            "value": 11,
+            "value": 11.234,
             "category":"Highest"
         },
         {
             "label": "Electronic",
-            "value": 22,
+            "value": 22.223423,
              "category":"Equal"
         },
         {
             "label": "Electronic",
-            "value": 33,
+            "value": 33.567567,
             "category":"Lowest"
 
         }
@@ -1478,17 +1367,19 @@ var stackedcolumn = {
      {"name":">30-40",
     "value":"#E77E22"}
     ],
+       "click":function(data){
+    alert(data[0].label + ' : '+data[0].value);},
     "data": [
         {
             "label": "Nikonasdsadsadsadsadsadsa",
-            "value": 33,
-            "tooltip":45,
+            "value": 33.123,
+            "tooltip":45.3423,
             "category":" > 50"
         },
         {
             "label": "Nikonasdsadsadsadsadsadsa",
-            "value": 22,
-             "tooltip":12,
+            "value": 22.234,
+             "tooltip":12.543,
              "category":">40-50"
         },
         {
@@ -1644,11 +1535,13 @@ var bubbledata = {
         "showexport": true,
          "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
     },
+    "click":function(data){
+    alert(data.name);},
     "data":  [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
         {
 
             "label": "Palladiumasdasdasdasdasd",
-            "value": 56
+            "value": 56.1232
         },
         {
             "label": "Lead",
@@ -1721,6 +1614,7 @@ var bubbledata = {
 
     ]
 }
+
     d3charts("Bubble2D", "#bubble", bubbledata);
 
     var barlinedata = {
@@ -1756,11 +1650,13 @@ var bubbledata = {
         "showexport": true,
          "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
     },
+         "barclick":function(data){
+    alert(data.label + ' : '+data.value);},
     "bardata":  [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
         {
 
             "label": "Snapdeal",
-            "value": 250
+            "value": 250.123
         },
         {
             "label": "Paytm",
@@ -1777,18 +1673,18 @@ var bubbledata = {
         {
             "category": "Snapdeal",
             "label": "01-08-15",
-            "value": 256
+            "value": 256.123
         },
         { 
             "category": "Snapdeal",
             "label": "02-08-15",
-            "value": 223
+            "value": 223.5464
         },
         {
     
             "category": "Snapdeal",
             "label": "03-08-15",
-            "value": 287
+            "value": 287.345
 
         }
         ,
@@ -2291,9 +2187,9 @@ var bubbledata = {
 }
     d3charts("BarLine2D", "#barline", barlinedata);
 
-    var calenderdata = {
+    var calenderMultidata = {
         "chart": {
-            "caption": "Calender Chart", //Name of the chart Header
+            "caption": "Calender Month Wise Chart", //Name of the chart Header
             "captionColor": "black", // Color of the Chart Header
             "showlegend":true,
             "yaxisname": "", // Name which gets displayed in the Yaxis
@@ -2364,4 +2260,80 @@ var bubbledata = {
           "values":[10,10,20,0,40,50,60,70,80,90,10,0,20,4,40,50,0,70,80,90,0,10,20,30,40,0,2,70,80,3,50]}
     ]
     }
-    d3charts("Calender2D", "#calender", calenderdata);
+    d3charts("CalenderMultiView2D", "#calendermultiview", calenderMultidata);
+
+
+     var calenderSingledata = {
+        "chart": {
+            "caption": "Calender Single Chart", //Name of the chart Header
+            "captionColor": "black", // Color of the Chart Header
+            "showlegend":false,
+            "yaxisname": "", // Name which gets displayed in the Yaxis
+            "slant": false, // X axis label slant
+            "slantdegree": "90", // Slant based on the degree specified
+            "credits": {            // Credits
+                "text": "Powered By", // Credit Name
+                "color": "#666",
+                "imageurl": "../images/logo.png"
+            },
+            "fillinside": "none", // fill or none
+            "pallattecolor": ["#008ee4", "#E94C3D", "#26AD5E", "#E77E22", "#2B80B9", "#F39C11", "#F2C40F", "#179F87", "#2D3E50", "#9045AE", "#5CADE2", "#2ECD71", "#BE3A2B", "#C85600", "#7E8C8D", "#9A59B5", "#34495E", "#BEC3C7", "#EC0000", "#BE3243", "#FF3243", "#BE0043", "#BE32FF", "#CC3243", "#BECC43", "#BE324C", "#f8bd19", "#e44a00", "#008FF4", "#33bdda", "#6baa01", "#583e78"] // Pallette colors for 30 values
+        },
+        "export": {
+            "showexport": true,
+            "format": ["-Download-", "jpeg", "png"] //Specify Format to export.Currently support jpeg,png
+        },
+         "colormap":[
+    {"name":"Very Low",
+    "value":"#c7001e"},
+       {"name":"Low",
+    "value":"#f6a580"},
+     {"name":"Average",
+    "value":"#cccccc"},
+      {"name":"High",
+    "value":"#92c6db"},
+      {"name":"Very High",
+    "value":"#086fad"}
+
+    ],
+    "calenderyear":[2015,2016],
+        "data": [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
+        {"month":'Jan',
+          "max":90,
+          "values":[10,10,20,30,40,50,60,70,0,90,10,10,20,30,40,50,60,70,80,90,0,10,20,30,40,50,60,70,80,90,50]},
+          {"month":'Feb',
+          "max":90,
+          "values":[13,45,20,30,40,50,60,23,80,90,10,10,20,30,33,0,60,70,80,90,55,10,0,30,40,88,60,70,88,99,50]},
+          {"month":'Mar',
+          "max":90,
+          "values":[10,10,20,0,40,50,60,11,80,90,22,10,20,33,40,50,60,70,55,90,10,10,0,99,40,50,0,70,80,90,50]},
+          {"month":'Apr',
+          "max":90,
+          "values":[10,10,20,0,40,50,60,0,80,90,10,0,20,30,40,50,60,0,80,90,10,10,0,30,40,50,60,70,80,90,50]},
+          {"month":'May',
+          "max":90,
+          "values":[10,10,0,30,40,50,60,70,0,90,10,10,20,30,40,0,0,0,0,90,10,10,0,30,40,50,60,70,80,90,50]},
+          {"month":'Jun',
+          "max":90,
+          "values":[10,45,20,30,0,50,60,0,80,90,0,10,78,30,40,0,60,70,80,90,0,23,20,30,40,50,60,70,80,90,50]},
+          {"month":'Jul',
+          "max":90,
+          "values":[10,10,20,0,0,0,0,70,66,90,10,10,20,30,40,50,60,70,0,90,54,0,0,0,40,50,60,70,80,90,50]},
+          {"month":'Aug',
+          "max":90,
+          "values":[10,10,23,30,0,0,0,70,80,90,0,10,67,30,0,50,60,0,80,90,10,0,54,30,40,0,60,70,80,90,50]},
+          {"month":'Sep',
+          "max":90,
+          "values":[10,10,0,66,0,0,0,70,0,90,10,55,20,30,40,50,60,33,80,0,0,0,0,30,40,50,60,70,80,90,50]},
+          {"month":'Oct',
+          "max":90,
+          "values":[10,10,20,0,77,50,60,70,0,90,10,10,20,30,40,50,0,70,21,90,10,10,0,30,40,55,60,70,0,90,50]},
+          {"month":'Nov',
+          "max":90,
+          "values":[10,10,55,0,40,50,0,70,80,90,10,10,20,0,40,50,55,70,0,90,10,10,0,55,40,50,60,0,80,90,50]},
+          {"month":'Dec',
+          "max":90,
+          "values":[10,10,20,0,40,50,60,70,80,90,10,0,20,4,40,50,0,70,80,90,0,10,20,30,40,0,2,70,80,3,50]}
+    ]
+    }
+    d3charts("CalenderSingleView2D", "#calendersingleview", calenderSingledata);

@@ -485,6 +485,12 @@ var column2D = function (chartId, chartdata, chartType) {
         })
         .attr('data-visibility', true)
         .style('opacity', 0.5)
+          .on("mousedown", function (d, i) {
+           if (chartdata.click != undefined && chartdata.click != '')
+               var curdataent = [];
+           curdataent.push({ "label": d.z,"value":d.tool,"category":d.y});
+           chartdata.click(curdataent);
+       })
          .on("mouseover", function (d, i) {
              this.style.cursor = 'pointer';
              this.style.opacity = 1;
@@ -502,12 +508,12 @@ var column2D = function (chartId, chartdata, chartType) {
              var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + headertool + ': ' + d.y + '</span><hr>';
              if (d.tool == '') {
                  var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">RANGE: ' + d.z + '</span><br>';
-                 var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">COUNT: ' + d.x + '</span>';
+                 var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">COUNT: ' + d.x.toFixed(2) / 1 + '</span>';
              }
 
              else {
                  var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">RANGE: ' + d.z + '</span><br>';
-                 var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">COUNT: ' + d.tool + '</span>';
+                 var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">COUNT: ' + d.tool.toFixed(2) / 1 + '</span>';
              }
              var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
              div.html(htmlcontent)
@@ -605,6 +611,12 @@ var column2D = function (chartId, chartdata, chartType) {
     })
     .style('stroke', 'white')
     .style('stroke-width', '0.5')
+       .on("mousedown", function (d, i) {
+           if (chartdata.click != undefined && chartdata.click != '')
+               var curdataent = [];
+           curdataent.push({ "label": cLabel,"data":d});
+           chartdata.click(curdataent);
+       })
     .on("mouseover", function (d, i) {
         this.style.opacity = 1;
         div.transition()
@@ -634,13 +646,13 @@ var column2D = function (chartId, chartdata, chartType) {
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + chartdata.chart.tooltipheader + ': ' + cLabel + '</span><hr>';
         if (d[1] != chartdata.range.highrange) {
             var nameval = chartdata.rangetype != undefined ? chartdata.rangetype : 'Range';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + nameval + ': ' + d[0] + '-' + d[1] + '</div>';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2] + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + nameval + ': ' + d[0].toFixed(2) / 1 + '-' + d[1].toFixed(2) / 1 + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2].toFixed(2) / 1 + '</div>';
         }
         else {
             var nameval = chartdata.rangetype != undefined ? chartdata.rangetype : 'Range';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + nameval + ': >' + d[0] + '</div>';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2] + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + nameval + ': >' + d[0].toFixed(2) / 1 + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'> Count' + ': ' + d[2].toFixed(2) / 1 + '</div>';
         }
         div.html(htmlcontent)
        .style("left", function (d, i) {
@@ -704,6 +716,12 @@ var column2D = function (chartId, chartdata, chartType) {
 
     })
     .attr('data-visibility', true)
+
+      .on("mousedown", function (d, i) {
+          if (chartdata.click != undefined && chartdata.click != '')
+              chartdata.click(d);
+      })
+
     .on("mouseover", function (d, i) {
         if (cType == 'Column2D')
             this.style.opacity = 1;
@@ -782,8 +800,8 @@ var column2D = function (chartId, chartdata, chartType) {
         // var yattr = (bodyRect.top-document.getElementById('barchart12').getBoundingClientRect().top + (this.getAttribute('x') / 1))+ 'px';
         if (cType == 'DoubleColumn2D') {
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + d.label + '</span><hr>';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + chartdata.data[i].highvalue + '</div>';
-            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + chartdata.data[i].lowvalue + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>High Value' + ': ' + chartdata.data[i].highvalue.toFixed(2) / 1 + '</div>';
+            htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>Low Value' + ': ' + chartdata.data[i].lowvalue.toFixed(2) / 1 + '</div>';
             div.html(htmlcontent)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
@@ -802,7 +820,7 @@ var column2D = function (chartId, chartdata, chartType) {
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + d.label + '</span><hr>';
             var newcontent = '';
             for (i = 0; i < d.tooltip.length; i++) {
-                newcontent = newcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + d.tooltip[i][0] + ': ' + d.tooltip[i][1] + '</div>';
+                newcontent = newcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + d.tooltip[i][0] + ': ' + (d.tooltip[i][1] / 1).toFixed(2) / 1 + '</div>';
             }
             htmlcontent = htmlcontent + newcontent;
 
@@ -828,7 +846,7 @@ var column2D = function (chartId, chartdata, chartType) {
         else {
             if (d.category != undefined && d.category != '') {
                 var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">Date' + ': ' + d.label + '</span><hr>';
-                htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + d.category + ': ' + d.value + '</div>';
+                htmlcontent = htmlcontent + '<div style=\'text-transform:uppercase;font-size:12px\'>' + d.category + ': ' + d.value.toFixed(2) / 1 + '</div>';
                 div.html(htmlcontent)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
@@ -844,7 +862,7 @@ var column2D = function (chartId, chartdata, chartType) {
             }
 
             else {
-                div.html(chartdata.data[i].label + ': ' + chartdata.data[i].value)
+                div.html(chartdata.data[i].label + ': ' + chartdata.data[i].value.toFixed(2) / 1)
        .style("left", function (d, i) {
            var asdfg = div[0][0];
            return (xattr.replace('px', '') / 1 + this.getAttribute('width') / 2) + 'px';

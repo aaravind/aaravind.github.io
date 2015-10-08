@@ -31,6 +31,6 @@ var d3charts = function (chartType, chartId, chartdata, chartwidth, chartheight)
         bubble2D(chartId, chartdata,chartType);
     if (chartType == 'BarLine2D')
         barline2D(chartId, chartdata,chartType);
-            if (chartType == 'Calender2D')
+            if (chartType == 'CalenderMultiView2D' || chartType == 'CalenderSingleView2D')
         calender2D(chartId, chartdata,chartType);
 };

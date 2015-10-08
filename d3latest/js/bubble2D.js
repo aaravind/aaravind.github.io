@@ -1,6 +1,7 @@
-var bubble2D = function (chartId, chartdata, chartType) {
+var bubble2D = function (chartId, chartdata, chartType, funcc) {
     if (chartdata.data != undefined) {
         if (chartdata.data.length != 0) {
+
             var color = d3.scale.linear()
     .domain([0, chartdata.data.length])
     .range([chartdata.chart.pallattecolor[0], chartdata.chart.pallattecolor[1]]);
@@ -64,9 +65,8 @@ var bubble2D = function (chartId, chartdata, chartType) {
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
 
-         if (chartdata.chart.hiddencaption != undefined) {
-                if (chartdata.chart.hiddencaption.length != 0)
-                { 
+            if (chartdata.chart.hiddencaption != undefined) {
+                if (chartdata.chart.hiddencaption.length != 0) {
                     svg.append("text")
            .attr("x", 0)
         .attr("y", 10)
@@ -80,17 +80,17 @@ var bubble2D = function (chartId, chartdata, chartType) {
         .style("fill", function (d) {
             return chartdata.chart.captionColor;
         })
-        .text( chartdata.chart.hiddencaption.toUpperCase());
+        .text(chartdata.chart.hiddencaption.toUpperCase());
                 }
-            
+
             }
 
-              if (chartdata.chart.subhiddencaption != undefined) {
+            if (chartdata.chart.subhiddencaption != undefined) {
                 if (chartdata.chart.subhiddencaption.length != 0) {
                     svg.append("text")
            .attr("x", function (d) {
-            return d3.select(chartId + ' .hiddencaptiontext').node().getBoundingClientRect().width + 15;
-        })
+               return d3.select(chartId + ' .hiddencaptiontext').node().getBoundingClientRect().width + 15;
+           })
         .attr("y", 7.5)
         .attr("text-anchor", "start")
          .attr('class', 'subhiddencaptiontext')
@@ -170,6 +170,7 @@ var bubble2D = function (chartId, chartdata, chartType) {
                 if (chartdata.chart.fillinside == 'none')
                     return 3;
             })
+        
             .on("mouseover", function (d, i) {
                 this.style.cursor = 'pointer';
                 d3.selectAll(chartId + ' .' + d.className).style('opacity', 1);
@@ -183,7 +184,7 @@ var bubble2D = function (chartId, chartdata, chartType) {
                 var xattr = (elemRect.right - bodyRect.left) + 'px';
                 var yattr = (elemRect.top - bodyRect.top) + 'px';
                 //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
-                var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.name + ': ' + d.value + '</span>';
+                var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.name + ': ' + d.value.toFixed(2) / 1 + '</span>';
                 div.html(htmlcontent)
        .style("left", xattr)
                 .style("top", yattr);
@@ -197,7 +198,7 @@ var bubble2D = function (chartId, chartdata, chartType) {
                 .duration(100)
                 .style("opacity", 0);
                     })
-                                .style('opacity', 0)
+                   .style('opacity', 0)
               .transition()
       .delay(function (d, i) { return i * 100; })
       .duration(400)
@@ -221,6 +222,10 @@ var bubble2D = function (chartId, chartdata, chartType) {
         .style('fill', function (d, i) {
             return color(i);
         })
+             .on("mousedown", function (d, i) { 
+                     if(chartdata.click != undefined && chartdata.click != '')
+                     chartdata.click(d);
+                    })
             .on("mouseover", function (d, i) {
                 this.style.cursor = 'pointer';
                 d3.selectAll(chartId + ' .' + d.className).style('opacity', 1)

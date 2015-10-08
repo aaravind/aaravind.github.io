@@ -6,76 +6,83 @@ var calender2D = function (chartId, chartdata, chartType) {
             var width = chartcontent[0][0].offsetWidth - 100;
             var height = chartcontent[0][0].offsetHeight;
             var no_months_in_a_row;
-            if (chartcontent[0][0].offsetWidth < 350) {
-                d3.select(chartId).style('height', '500px');
-                height = 500;
-                cellSize = 10; // cell size
-                no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
-            }
+            if (chartType == 'CalenderMultiView2D') {
+                if (chartcontent[0][0].offsetWidth < 350) {
+                    d3.select(chartId).style('height', '500px');
+                    height = 500;
+                    cellSize = 10; // cell size
+                    no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
+                }
 
-            else if (chartcontent[0][0].offsetWidth < 500) {
+                else if (chartcontent[0][0].offsetWidth < 500) {
 
-                cellSize = 15; // cell size
-                no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
-                if (no_months_in_a_row == 2) {
-                    d3.select(chartId).style('height', '600px');
-                    height = 600;
+                    cellSize = 15; // cell size
+                    no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
+                    if (no_months_in_a_row == 2) {
+                        d3.select(chartId).style('height', '600px');
+                        height = 600;
+                    }
+                    else {
+                        d3.select(chartId).style('height', '500px');
+                        height = 500;
+                    }
+
+
+                }
+                else if (chartcontent[0][0].offsetWidth < 800) {
+
+                    cellSize = 20; // cell size
+                    no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
+                    if (no_months_in_a_row == 3) {
+                        d3.select(chartId).style('height', '650px');
+                        height = 650;
+                    }
+                    else {
+                        d3.select(chartId).style('height', '500px');
+                        height = 500;
+                    }
+                }
+                else if (chartcontent[0][0].offsetWidth < 1000) {
+
+                    cellSize = 20; // cell size
+                    no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
+                    if (no_months_in_a_row == 4) {
+                        d3.select(chartId).style('height', '500px');
+                        height = 500;
+                    }
+                    if (no_months_in_a_row == 5) {
+                        d3.select(chartId).style('height', '500px');
+                        height = 500;
+                    }
+                    if (no_months_in_a_row == 6) {
+                        d3.select(chartId).style('height', '450px');
+                        height = 450;
+                    }
+
                 }
                 else {
-                    d3.select(chartId).style('height', '500px');
-                    height = 500;
-                }
-
-
-            }
-            else if (chartcontent[0][0].offsetWidth < 800) {
-
-                cellSize = 20; // cell size
-                no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
-                if (no_months_in_a_row == 3) {
-                    d3.select(chartId).style('height', '650px');
-                    height = 650;
-                }
-                else {
-                    d3.select(chartId).style('height', '500px');
-                    height = 500;
-                }
-            }
-            else if (chartcontent[0][0].offsetWidth < 1000) {
-
-                cellSize = 20; // cell size
-                no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
-                if (no_months_in_a_row == 4) {
-                    d3.select(chartId).style('height', '500px');
-                    height = 500;
-                }
-                if (no_months_in_a_row == 5) {
-                    d3.select(chartId).style('height', '500px');
-                    height = 500;
-                }
-                if (no_months_in_a_row == 6) {
-                    d3.select(chartId).style('height', '450px');
-                    height = 450;
+                    cellSize = 25; // cell size
+                    no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
+                    if (no_months_in_a_row == 12) {
+                        d3.select(chartId).style('height', '250px');
+                        height = 250;
+                    }
+                    if (no_months_in_a_row == 5) {
+                        d3.select(chartId).style('height', '600px');
+                        height = 600;
+                    }
+                    else {
+                        d3.select(chartId).style('height', '450px');
+                        height = 450;
+                    }
                 }
 
             }
             else {
-                cellSize = 25; // cell size
-                no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
-                if (no_months_in_a_row == 12) {
-                    d3.select(chartId).style('height', '250px');
-                    height = 250;
-                }
-                if (no_months_in_a_row == 5) {
-                    d3.select(chartId).style('height', '600px');
-                    height = 600;
-                }
-                else { 
-                 d3.select(chartId).style('height', '450px');
-                    height = 450;
-                }
+                cellSize = 23;
+                d3.select(chartId).style('height', '300px');
+                height = 300;
             }
-
 
 
 
@@ -99,7 +106,7 @@ var calender2D = function (chartId, chartdata, chartType) {
         data = options[0][selectedIndex].__data__;
                     if (selectedIndex != 0) {
                         if (chartdata.export.filename == undefined || chartdata.export.filename == '')
-                            exportfile(chartId, chartdata, 'Column2D', '.' + data, false);
+                            exportfile(chartId, chartdata, chartType, '.' + data, false);
                         else
                             exportfile(chartId, chartdata, chartdata.export.filename, '.' + data, false);
                     }
@@ -123,7 +130,7 @@ var calender2D = function (chartId, chartdata, chartType) {
 					.attr('height', '100%')
                        .attr('viewBox', '0 0 ' + (width + 100) + ' ' + (height))
         .attr('preserveAspectRatio', 'xMinYMin')
-        .attr("class", "RdYlGn")
+        .attr("class", chartType + "RdYlGn")
       .append("g")
          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             d3.select(chartId + ' svg').insert('rect', ':first-child').attr('width', '100%').attr('height', '100%').attr('x', '0').attr('y', '0').style('fill', 'white');
@@ -152,13 +159,30 @@ var calender2D = function (chartId, chartdata, chartType) {
         .attr("width", cellSize)
         .attr("height", cellSize)
         .attr("x", function (d) {
-            var month_padding = 1.2 * cellSize * 7 * ((month(d) - 1) % (no_months_in_a_row));
-            return day(d) * cellSize + month_padding;
+            if (chartType == 'CalenderMultiView2D') {
+                var month_padding = 1.2 * cellSize * 7 * ((month(d) - 1) % (no_months_in_a_row));
+                return day(d) * cellSize + month_padding;
+            }
+            else {
+                return d3.time.weekOfYear(d) * cellSize;
+            }
+
         })
         .attr("y", function (d) {
-            var week_diff = week(d) - week(new Date(year(d), month(d) - 1, 1));
-            var row_level = Math.ceil(month(d) / (no_months_in_a_row));
-            return (week_diff * cellSize) + row_level * cellSize * 8 - cellSize / 2 - shift_up;
+            if (chartType == 'CalenderMultiView2D') {
+                var week_diff = week(d) - week(new Date(year(d), month(d) - 1, 1));
+                var row_level = Math.ceil(month(d) / (no_months_in_a_row));
+                return (week_diff * cellSize) + row_level * cellSize * 8 - cellSize / 2 - shift_up;
+            }
+            else {
+                return d.getDay() * cellSize + (cellSize * 2);
+            }
+        })
+        .attr('transform', function (d) {
+            if (chartType == 'CalenderSingleView2D')
+                return 'translate(20,0)';
+            else
+                return '';
         })
         .datum(format);
 
@@ -172,21 +196,59 @@ var calender2D = function (chartId, chartdata, chartType) {
               return asd.split(' ')[1];
           })
           .attr("x", function (d, i) {
-              var month_padding = 1.2 * cellSize * 7 * ((month(d) - 1) % (no_months_in_a_row));
-              return month_padding + (cellSize * 7) / 2;
+
+              if (chartType == 'CalenderMultiView2D') {
+                  var month_padding = 1.2 * cellSize * 7 * ((month(d) - 1) % (no_months_in_a_row));
+                  return month_padding + (cellSize * 7) / 2;
+              }
+              else {
+                  return d3.time.weekOfYear(d) * cellSize;
+              }
           })
           .attr("y", function (d, i) {
-              var week_diff = week(d) - week(new Date(year(d), month(d) - 1, 1));
-              var row_level = Math.ceil(month(d) / (no_months_in_a_row));
-              return (week_diff * cellSize) + row_level * cellSize * 8 - cellSize - shift_up;
+
+              if (chartType == 'CalenderMultiView2D') {
+                  var week_diff = week(d) - week(new Date(year(d), month(d) - 1, 1));
+                  var row_level = Math.ceil(month(d) / (no_months_in_a_row));
+                  return (week_diff * cellSize) + row_level * cellSize * 8 - cellSize - shift_up;
+              }
+              else {
+                  return cellSize * 1.5;
+              }
+
           })
           .attr("class", "month-title")
-          .attr("text-anchor", "middle")
+          .attr("text-anchor", function (d) {
+              if (chartType == 'CalenderMultiView2D')
+                  return "middle";
+              else
+                  return "start";
+          })
           .attr("d", function (d, i) {
               var asd = d.toDateString()
               return asd.split(' ')[1];
-          });
+          })
+           .attr('transform', function (d) {
+            if (chartType == 'CalenderSingleView2D')
+                return 'translate(20,0)';
+            else
+                return '';
+        });
+            if (chartType == 'CalenderSingleView2D') {
 
+                svg.selectAll(".weekdays")
+    .data(['S', 'M', 'T', 'W', 'T', 'F', 'S'])
+  .enter().append("text")
+    .attr("class", "weekdays")
+    .attr('x', 0)
+    .attr('y', function (d, i) {
+        return cellSize * (i + 3) - cellSize / 4;
+    })
+    .text(function (d) {
+        return d;
+    });
+
+            }
             for (j = 0; j < chartdata.data.length; j++) {
                 d3.selectAll(chartId + ' .' + chartdata.data[j].month)
       .text(function (d, i) {
@@ -239,7 +301,7 @@ var calender2D = function (chartId, chartdata, chartType) {
           var bodyRect = document.body.getBoundingClientRect();
           var elemRect = this.getBoundingClientRect();
           if (elemRect.right > window.innerWidth / 2)
-              var xattr = (elemRect.right - bodyRect.left - div[0][0].offsetWidth) + 'px';
+              var xattr = (elemRect.left - bodyRect.left - div[0][0].offsetWidth) + 'px';
           else
               var xattr = (elemRect.right - bodyRect.left + 20) + 'px';
           var yattr = (elemRect.top - bodyRect.top) + 'px';
