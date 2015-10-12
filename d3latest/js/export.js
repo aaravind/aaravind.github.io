@@ -19,6 +19,10 @@ function exportfile(chartid,chartdata,filename,format,charttype)
      .attr("x", function (d) {
             return d3.select(chartid + ' .hiddencaptiontext').node().getBoundingClientRect().width + 40;
         });
+        if (charttype == 'Bilevel2D') {
+            d3.selectAll(chartid + " .zoominouttop").style('display', 'none');
+              d3.selectAll(chartid + " .zoominoutbottom").style('display', 'none');
+        }
     d3.selectAll(chartid +" path.domain").attr("style", "stroke: lightgrey;stroke-width: 1.2;fill: none");
     d3.selectAll(chartid+' .tick text').style('stroke-width', 0.7).style('font-weight', 200).style('font-family','Source Sans Pro,Trebuchet MS,Helvetica Neue, Helvetica,Lucida Grande,Arial,Verdana,sans-serif');
         d3.selectAll(chartid+' .legend text').style('font-family','Source Sans Pro,Trebuchet MS,Helvetica Neue, Helvetica,Lucida Grande,Arial,Verdana,sans-serif');
@@ -71,7 +75,10 @@ function exportfile(chartid,chartdata,filename,format,charttype)
         return this.getAttribute('x') / 1 - 30;
          
     });
-
+            if (charttype == 'Bilevel2D') {
+            d3.selectAll(chartid + " .zoominouttop").style('display', 'block');
+              d3.selectAll(chartid + " .zoominoutbottom").style('display', 'block');
+        }
 }
 
 function download(canvas,chartdataval,filename,format,charttype,chartid) {

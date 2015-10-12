@@ -1,4 +1,5 @@
-var bilevel2D = function (chartId, chartdata, chartType) {
+var zoomcontent;
+var bilevel2D = function (chartId, chartdata, chartType, zoomdata) {
     if (chartdata.data != undefined) {
         if (chartdata.data.length != 0) {
             var hue = d3.scale.category20();
@@ -25,7 +26,7 @@ var bilevel2D = function (chartId, chartdata, chartType) {
     .size([2 * Math.PI, radius]);
             var arc = d3.svg.arc()
     .startAngle(function (d) { return d.x; })
-    .endAngle(function (d) { return d.x + d.dx  - .01 / (d.depth + .5); })
+    .endAngle(function (d) { return d.x + d.dx - .01 / (d.depth + .5); })
     .innerRadius(function (d) { return radius / 3 * d.depth; })
     .outerRadius(function (d) { return radius / 3 * (d.depth + 1) - 1; });
             if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
@@ -34,9 +35,9 @@ var bilevel2D = function (chartId, chartdata, chartType) {
         data = options[0][selectedIndex].__data__;
                     if (selectedIndex != 0) {
                         if (chartdata.export.filename == undefined || chartdata.export.filename == '')
-                            exportfile(chartId, chartdata, 'Bilevel2D', '.' + data, false);
+                            exportfile(chartId, chartdata, 'Bilevel2D', '.' + data, chartType);
                         else
-                            exportfile(chartId, chartdata, chartdata.export.filename, '.' + data, false);
+                            exportfile(chartId, chartdata, chartdata.export.filename, '.' + data, chartType);
                     }
                 }
                 if (chartdata.export.showexport == true) {
@@ -58,7 +59,7 @@ var bilevel2D = function (chartId, chartdata, chartType) {
             var svg = d3.select(chartId).append('svg')
 					.attr('width', '100%')
 					.attr('height', '100%')
-                       .attr('viewBox', '0 0 ' + (width) + ' ' + (height + 40))
+                       .attr('viewBox', '0 0 ' + (width+70) + ' ' + (height + 40))
         .attr('preserveAspectRatio', 'xMinYMin');
             d3.select(chartId + ' svg').insert('rect', ':first-child').attr('width', '100%').attr('height', '100%').attr('x', '0').attr('y', '0').style('fill', 'white');
             svg.append("text")
@@ -174,14 +175,37 @@ var bilevel2D = function (chartId, chartdata, chartType) {
       .value(function (d) { return d.sum; });
                 var insidedraw = svg.append('g')
       .attr('class', 'insidedraw')
-      //.attr('width',width)
-      //.attr('height',height)
-      .attr('transform','translate('+(width/2)+ ' '+ (height/2  + 20) +')');
+                //.attr('width',width)
+                //.attr('height',height)
+      .attr('transform', 'translate(' + (width / 2) + ' ' + (height / 2 + 20) + ')');
+                insidedraw.append('text')
+                .attr('class', 'zoominouttop')
+      .attr('x', 0)
+        .attr('y', 0)
+        .text(function (d) {
+            return "Click segment";
+        })
+        .style('font-size', '14px')
+        .style('fill', 'black')
+        .style('text-anchor', 'middle');
+                insidedraw.append('text')
+                .attr('class', 'zoominoutbottom')
+      .attr('x', 0)
+        .attr('y', 15)
+        .text(function (d) {
+            return "to zoom in";
+        })
+        .style('font-size', '14px')
+        .style('fill', 'black')
+        .style('text-anchor', 'middle');
                 var center = insidedraw.append("circle")
       .attr("r", radius / 3)
       .style('fill', 'white')
+      .style('opacity', 0)
+      .style('cursor', 'pointer')
       .on("click", zoomOut)
                 // .style('transform','translate('+(width/2 +'px')+ ','+ (height/2  + 20 + 'px') +')');
+
 
                 center.append("title")
       .text("zoom out");
@@ -190,6 +214,13 @@ var bilevel2D = function (chartId, chartdata, chartType) {
       .data(partition.nodes(root).slice(1))
     .enter().append("path")
       .attr("d", arc)
+      .attr('class', function (d) {
+          if (d.category != undefined)
+              return 'zoominout' + d.category.replace(/[^a-zA-Z0-9]/g, "");
+          else
+              return 'zoominout' + d.label.replace(/[^a-zA-Z0-9]/g, "");
+      })
+      .attr("data-visibilitypath", "true")
       .style("fill", function (d) { return d.fill; })
       .style('stroke', 'white')
       .style('opacity', function (d, i) {
@@ -211,7 +242,7 @@ var bilevel2D = function (chartId, chartdata, chartType) {
             var xattr = bodyRect = elemRect = yattr = 0;
             bodyRect = document.body.getBoundingClientRect();
             elemRect = this.getBoundingClientRect();
-                xattr = (elemRect.left - bodyRect.left + div[0][0].offsetWidth) + 'px';
+            xattr = (elemRect.left - bodyRect.left + div[0][0].offsetWidth) + 'px';
             yattr = (elemRect.top - bodyRect.top) + 'px';
             //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
             var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.label + ': ' + d.value.toFixed(2) / 1 + '</span>';
@@ -236,12 +267,30 @@ var bilevel2D = function (chartId, chartdata, chartType) {
                 // .style('transform','translate('+(width/2 +'px')+ ','+ (height/2 + 20 + 'px') +')');
 
                 function zoomIn(p) {
+                    zoomcontent = p;
+                    d3.select('.zoominouttop')
+                    .style('cursor', 'pointer')
+                    .text('Click here');
+                    d3.select('.zoominoutbottom')
+                    .style('cursor', 'pointer')
+                    .text('to zoom out');
                     if (p.depth > 1) p = p.parent;
                     if (!p.children) return;
                     zoom(p, p);
                 }
 
+                if (zoomdata != undefined) {
+                    zoomIn(zoomdata);
+                }
+
                 function zoomOut(p) {
+                    zoomcontent = undefined;
+                    d3.select('.zoominouttop')
+                    .style('cursor', 'pointer')
+                    .text('Click segment');
+                    d3.select('.zoominoutbottom')
+                    .style('cursor', 'pointer')
+                    .text('to zoom in');
                     if (!p.parent) return;
                     zoom(p.parent, p);
                 }
@@ -278,13 +327,25 @@ var bilevel2D = function (chartId, chartdata, chartType) {
                     // Exiting outside arcs transition to the new layout.
                     if (root !== p) enterArc = insideArc, exitArc = outsideArc, outsideAngle.range([p.x, p.x + p.dx]);
 
-                    d3.transition().duration(d3.event.altKey ? 7500 : 750).each(function () {
+                    d3.transition().duration(function (d) {
+                        if (d3.event != null)
+                            return d3.event.altKey ? 7500 : 750;
+                        else
+                            return 750;
+                    }).each(function () {
                         path.exit().transition()
           .style("fill-opacity", function (d) { return d.depth === 1 + (root === p) ? 1 : 0; })
           .attrTween("d", function (d) { return arcTween.call(this, exitArc(d)); })
           .remove();
 
                         path.enter().append("path")
+                            .attr('class', function (d) {
+                                if (d.category != undefined)
+                                    return 'zoominout' + d.category.replace(/[^a-zA-Z0-9]/g, "");
+                                else
+                                    return 'zoominout' + d.label.replace(/[^a-zA-Z0-9]/g, "");
+                            })
+      .attr("data-visibilitypath", "true")
           .style("fill-opacity", function (d) { return d.depth === 2 - (root === p) ? 1 : 0; })
           .style("fill", function (d) { return d.fill; })
           .style('stroke', 'white')
@@ -307,7 +368,7 @@ var bilevel2D = function (chartId, chartdata, chartType) {
                var xattr = bodyRect = elemRect = yattr = 0;
                bodyRect = document.body.getBoundingClientRect();
                elemRect = this.getBoundingClientRect();
-       xattr = (elemRect.left - bodyRect.left + div[0][0].offsetWidth) + 'px';
+               xattr = (elemRect.left - bodyRect.left + div[0][0].offsetWidth) + 'px';
                yattr = (elemRect.top - bodyRect.top) + 'px';
                //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
                var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.label + ': ' + d.value.toFixed(2) / 1 + '</span>';
@@ -371,7 +432,7 @@ var bilevel2D = function (chartId, chartdata, chartType) {
             }
 
             function updateArc(d) {
-                return { depth: d.depth, x: d.x, dx: d.dx};
+                return { depth: d.depth, x: d.x, dx: d.dx };
             }
             drawpartion(finaldata[0]);
 
@@ -379,7 +440,8 @@ var bilevel2D = function (chartId, chartdata, chartType) {
                 if (chartdata.chart.credits.text != undefined && chartdata.chart.credits.text != '') {
                     var credits = svg.selectAll('.credits')
             .data([1])
-            .enter().append('g');
+            .enter().append('g')
+            .attr('transform','translate(70,0)');
                     var positionwidth;
                     var imagewidth;
                     if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '') {
@@ -437,7 +499,83 @@ var bilevel2D = function (chartId, chartdata, chartType) {
                     }
                 }
             }
+
+
+            if (chartdata.chart.showlegend) {
+
+                var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
+            .append('g')
+            .attr('class', 'legendgroup')
+            .attr('transform', 'translate(-10 20)');
+                legendgroup.append('g')
+            .append('rect')
+            .attr('width', '85')
+            .attr('height', chartdata.colormap.length * 15)
+            .attr('fill', 'rgb(255, 255, 255)')
+            .attr('x', width - 5)
+            .attr('y', 22.5)
+            .attr('stroke', 'lightgrey');
+
+                var legend = legendgroup.selectAll('.legend')
+        .data(chartdata.colormap)
+        .enter()
+      .append('g')
+        .attr('class', 'legend');
+                legend.append('rect')
+        .attr('x', width)
+        .attr('y', function (d, i) { return (i + 1) * 15 + 10; })
+         .attr('rx', 20)
+        .attr('ry', 20)
+        .attr('width', 10)
+        .attr('height', 10)
+        .style('opacity', 0.7)
+        .style('fill', function (d, i) {
+            return d.value;
+        });
+
+                legend.append('text')
+        .attr('x', width + 12)
+        .attr('y', function (d, i) { return ((i + 1) * 15) + 9 + 10; })
+        .text(function (d) {
+            if (d.name.length > 10)
+                return d.name.substr(0, 10).toUpperCase() + '...';
+            else
+                return d.name.toUpperCase();
+        })
+         .style('text-transform', 'uppercase')
+         .style('opacity', 0.4)
+        .style('font-size', '12px')
+        .style('fill', function (d, i) {
+            return d.value;
+        })
+        .on("click", function (d, i) {
+
+            var barselect = 'zoominout' + d.name.replace(/[^a-zA-Z0-9]/g, "");
+            this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
+            if (d3.selectAll('.' + barselect).style('display') == 'inline') {
+                d3.selectAll('.' + barselect).attr("data-visibilitypath", "false");
+                d3.selectAll('.' + barselect).style('display', 'none');
+            }
+
+            else {
+                this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
+                d3.selectAll('.' + barselect).attr("data-visibilitypath", "true");
+                d3.selectAll('.' + barselect).style('display', 'inline');
+            }
+
+        })
+         .on("mouseover", function (d, i) {
+             this.style.cursor = 'pointer';
+             this.style.opacity = 1;
+         })
+          .on("mouseout", function (d, i) {
+              this.style.cursor = 'pointer';
+              this.style.opacity = 0.4;
+          });
+
+            };
         }
+
         else {
             var bottommargin = chartdata.chart.slant ? 100 : 50;
             var margin = { top: 20, right: 12, bottom: 20, left: 12 };

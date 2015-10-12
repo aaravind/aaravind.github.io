@@ -1,18 +1,25 @@
 function redrawchart(chart,id,data) {
     if (chart.search('Column') == -1 && chart.search('Bar') == -1 && chart.search('Calender') == -1) {
-        var savelegends = d3.selectAll(id + ' path[data-visibilitypath = \'false\']')[0];
-        if (savelegends.length == 0)
-            d3charts(chart, id, data);
-        else {
-            var saveleg = [];
-            for (i = 0; i < savelegends.length; i++) {
-                saveleg.push(savelegends[i].getAttribute('class').split(' ')[0]);
-            };
-            d3charts(chart, id, data);
-            for (i = 0; i < saveleg.length; i++) {
-                d3.selectAll(id + ' .' + saveleg[i]).style('display', 'none').attr('data-visibilitypath', 'false');
-            };
+        if (chart == 'Bilevel2D' && zoomcontent != undefined) {
+           d3charts(chart, id, data,zoomcontent);
+          
         }
+        else { 
+         var savelegends = d3.selectAll(id + ' path[data-visibilitypath = \'false\']')[0];
+            if (savelegends.length == 0)
+                d3charts(chart, id, data);
+            else {
+                var saveleg = [];
+                for (i = 0; i < savelegends.length; i++) {
+                    saveleg.push(savelegends[i].getAttribute('class').split(' ')[0]);
+                };
+                d3charts(chart, id, data);
+                for (i = 0; i < saveleg.length; i++) {
+                    d3.selectAll(id + ' .' + saveleg[i]).style('display', 'none').attr('data-visibilitypath', 'false');
+                };
+            }
+        }
+        
     }
     else {
         var savelegends = d3.selectAll(id + ' rect[data-visibility = \'false\']')[0];
@@ -48,7 +55,7 @@ window.onresize = function (event) {
           d3charts("Bubble2D", "#bubble", bubbledata);
               redrawchart("BarLine2D", "#barline", barlinedata);
                 redrawchart("CalenderMultiView2D", "#calendermultiview", calenderMultidata);
-                d3charts("Bilevel2D", "#bilevel", bileveldata);
+                redrawchart("Bilevel2D", "#bilevel", bileveldata);
 };
 
 var linedata = {
