@@ -33,4 +33,6 @@ var d3charts = function (chartType, chartId, chartdata, chartwidth, chartheight)
         barline2D(chartId, chartdata,chartType);
             if (chartType == 'CalenderMultiView2D' || chartType == 'CalenderSingleView2D')
         calender2D(chartId, chartdata,chartType);
+        if (chartType == 'Bilevel2D')
+        bilevel2D(chartId, chartdata,chartType);
 };
