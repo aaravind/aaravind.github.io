@@ -32,7 +32,7 @@ function redrawchart(chart,id,data) {
             };
             d3charts(chart, id, data);
             for (i = 0; i < saveleg.length; i++) {
-                if(chart != 'Calender2D')
+                if(chart.search('Calender') == -1)
                 d3.selectAll(id + ' .' + saveleg[i]).style('display', 'none').attr('data-visibility', 'false');
                 else
                  d3.selectAll(id + ' .' + saveleg[i]).style('fill', 'none').attr('data-visibility', 'false');
@@ -54,7 +54,8 @@ window.onresize = function (event) {
       redrawchart("StackedColumn2D","#stackedcolumn", stackedcolumn);
           d3charts("Bubble2D", "#bubble", bubbledata);
               redrawchart("BarLine2D", "#barline", barlinedata);
-                redrawchart("CalenderMultiView2D", "#calendermultiview", calenderMultidata);
+              /*  redrawchart("CalenderMultiView2D", "#calendermultiview", calenderMultidata);*/
+                 redrawchart("CalenderSingleView2D", "#calendersingleview", calenderSingledata);
                 redrawchart("Bilevel2D", "#bilevel", bileveldata);
 };
 
@@ -2195,7 +2196,7 @@ var bubbledata = {
 }
     d3charts("BarLine2D", "#barline", barlinedata);
 
-    var calenderMultidata = {
+   /* var calenderMultidata = {
         "chart": {
             "caption": "Calender Month Wise Chart", //Name of the chart Header
             "captionColor": "black", // Color of the Chart Header
@@ -2268,14 +2269,14 @@ var bubbledata = {
           "values":[10,10,20,0,40,50,60,70,80,90,10,0,20,4,40,50,0,70,80,90,0,10,20,30,40,0,2,70,80,3,50]}
     ]
     }
-    d3charts("CalenderMultiView2D", "#calendermultiview", calenderMultidata);
+    d3charts("CalenderMultiView2D", "#calendermultiview", calenderMultidata);*/
 
 
      var calenderSingledata = {
         "chart": {
-            "caption": "Calender Single Chart", //Name of the chart Header
+            "caption": "Calendar Chart", //Name of the chart Header
             "captionColor": "black", // Color of the Chart Header
-            "showlegend":false,
+            "showlegend":true,
             "yaxisname": "", // Name which gets displayed in the Yaxis
             "slant": false, // X axis label slant
             "slantdegree": "90", // Slant based on the degree specified

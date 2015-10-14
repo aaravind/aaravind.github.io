@@ -2,6 +2,9 @@ var calender2D = function (chartId, chartdata, chartType) {
     if (chartdata.data != undefined) {
         if (chartdata.data.length != 0) {
             var chartcontent = d3.select(chartId);
+            if (chartcontent[0][0].offsetWidth < 800 && chartType == 'CalenderSingleView2D') {
+                chartType = 'CalenderMultiView2D';
+            }
             var margin = { top: 20, right: 12, bottom: 20, left: 12 };
             var width = chartcontent[0][0].offsetWidth - 100;
             var height = chartcontent[0][0].offsetHeight;
@@ -10,41 +13,41 @@ var calender2D = function (chartId, chartdata, chartType) {
                 if (chartcontent[0][0].offsetWidth < 350) {
                     d3.select(chartId).style('height', '500px');
                     height = 500;
-                    cellSize = 10; // cell size
+                    cellSize = 10 -0.5;// cell size
                     no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
                 }
 
-                else if (chartcontent[0][0].offsetWidth < 500) {
+                else if (chartcontent[0][0].offsetWidth < 600) {
 
-                    cellSize = 15; // cell size
+                    cellSize = 15 -0.5; // cell size
                     no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
                     if (no_months_in_a_row == 2) {
-                        d3.select(chartId).style('height', '600px');
-                        height = 600;
+                        d3.select(chartId).style('height', cellSize * 42 +100+'px');
+                        height = cellSize * 42 +100;
                     }
                     else {
-                        d3.select(chartId).style('height', '500px');
-                        height = 500;
+                        d3.select(chartId).style('height', cellSize * 28 +100+'px');
+                        height = cellSize * 28 +100;
                     }
 
 
                 }
                 else if (chartcontent[0][0].offsetWidth < 800) {
 
-                    cellSize = 20; // cell size
+                    cellSize = 20 -0.5;// cell size
                     no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
                     if (no_months_in_a_row == 3) {
-                        d3.select(chartId).style('height', '650px');
-                        height = 650;
+                        d3.select(chartId).style('height', cellSize * 28 +100+'px');
+                        height = cellSize * 28 +100;
                     }
                     else {
-                        d3.select(chartId).style('height', '500px');
-                        height = 500;
+                        d3.select(chartId).style('height', cellSize * 21 +100+'px');
+                        height = cellSize * 21 +100;
                     }
                 }
                 else if (chartcontent[0][0].offsetWidth < 1000) {
 
-                    cellSize = 20; // cell size
+                    cellSize = 20 -0.5;// cell size
                     no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
                     if (no_months_in_a_row == 4) {
                         d3.select(chartId).style('height', '500px');
@@ -61,7 +64,7 @@ var calender2D = function (chartId, chartdata, chartType) {
 
                 }
                 else {
-                    cellSize = 25; // cell size
+                    cellSize = 25 -0.5;// cell size
                     no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
                     if (no_months_in_a_row == 12) {
                         d3.select(chartId).style('height', '250px');
@@ -79,9 +82,11 @@ var calender2D = function (chartId, chartdata, chartType) {
 
             }
             else {
-                cellSize = 23;
-                d3.select(chartId).style('height', '300px');
-                height = 300;
+                cellSize = (chartcontent[0][0].offsetWidth / 60) -0.5;
+                d3.select(chartId).style('height', cellSize * 7 +100+'px');
+                height = cellSize * 7 +100;
+
+
             }
 
 
@@ -130,9 +135,14 @@ var calender2D = function (chartId, chartdata, chartType) {
 					.attr('height', '100%')
                        .attr('viewBox', '0 0 ' + (width + 100) + ' ' + (height))
         .attr('preserveAspectRatio', 'xMinYMin')
-        .attr("class", chartType + "RdYlGn")
+        .attr("class", 'calenderclass' + "RdYlGn")
       .append("g")
-         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+         .attr("transform", function (d) {
+             /*if (chartcontent[0][0].offsetWidth < 450)
+             return "translate(" + (chartcontent[0][0].offsetWidth - 40) + "," + margin.top + ") " + " rotate(90)";
+             else*/
+             return "translate(" + margin.left + "," + margin.top + ") ";
+         });
             d3.select(chartId + ' svg').insert('rect', ':first-child').attr('width', '100%').attr('height', '100%').attr('x', '0').attr('y', '0').style('fill', 'white');
 
             svg.append("text")
@@ -229,11 +239,17 @@ var calender2D = function (chartId, chartdata, chartType) {
               return asd.split(' ')[1];
           })
            .attr('transform', function (d) {
-            if (chartType == 'CalenderSingleView2D')
-                return 'translate(20,0)';
-            else
-                return '';
-        });
+               if (chartType == 'CalenderSingleView2D') {
+                   /*  if (chartcontent[0][0].offsetWidth < 450) {
+                   return 'translate(20,0)';
+                   }
+                   else*/
+                   return 'translate(20,5)';
+               }
+
+               else
+                   return '';
+           });
             if (chartType == 'CalenderSingleView2D') {
 
                 svg.selectAll(".weekdays")
@@ -276,15 +292,15 @@ var calender2D = function (chartId, chartdata, chartType) {
           var lessval = chartdata.data[j].max / 5;
           if (chartdata.data[j].values[i] != 0) {
               if (chartdata.data[j].values[i] < lessval)
-                  return chartType + chartdata.colormap[0].name.replace(/[^a-zA-Z0-9]/g, "") + ' day ' + chartdata.data[j].month;
+                  return 'calenderclass' + chartdata.colormap[0].name.replace(/[^a-zA-Z0-9]/g, "") + ' day ' + chartdata.data[j].month;
               else if (chartdata.data[j].values[i] < 2 * lessval)
-                  return chartType + chartdata.colormap[1].name.replace(/[^a-zA-Z0-9]/g, "") + ' day ' + chartdata.data[j].month;
+                  return 'calenderclass' + chartdata.colormap[1].name.replace(/[^a-zA-Z0-9]/g, "") + ' day ' + chartdata.data[j].month;
               else if (chartdata.data[j].values[i] < 3 * lessval)
-                  return chartType + chartdata.colormap[2].name.replace(/[^a-zA-Z0-9]/g, "") + ' day ' + chartdata.data[j].month;
+                  return 'calenderclass' + chartdata.colormap[2].name.replace(/[^a-zA-Z0-9]/g, "") + ' day ' + chartdata.data[j].month;
               else if (chartdata.data[j].values[i] < 4 * lessval)
-                  return chartType + chartdata.colormap[3].name.replace(/[^a-zA-Z0-9]/g, "") + ' day ' + chartdata.data[j].month;
+                  return 'calenderclass' + chartdata.colormap[3].name.replace(/[^a-zA-Z0-9]/g, "") + ' day ' + chartdata.data[j].month;
               else
-                  return chartType + chartdata.colormap[4].name.replace(/[^a-zA-Z0-9]/g, "") + ' day ' + chartdata.data[j].month;
+                  return 'calenderclass' + chartdata.colormap[4].name.replace(/[^a-zA-Z0-9]/g, "") + ' day ' + chartdata.data[j].month;
           }
           else
               return 'day ' + chartdata.data[j].month;
@@ -374,7 +390,7 @@ var calender2D = function (chartId, chartdata, chartType) {
             return d.value;
         })
         .on("click", function (d, i) {
-            var barselect = chartType + d.name.replace(/[^a-zA-Z0-9]/g, "");
+            var barselect = 'calenderclass' + d.name.replace(/[^a-zA-Z0-9]/g, "");
             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
             if (d3.selectAll('.' + barselect).style('fill') != 'none') {
                 d3.selectAll('.' + barselect).attr("data-visibility", "false");
@@ -398,6 +414,70 @@ var calender2D = function (chartId, chartdata, chartType) {
           });
 
             };
+             if (chartdata.chart.credits != undefined) {
+                if (chartdata.chart.credits.text != undefined && chartdata.chart.credits.text != '') {
+                    var credits = svg.selectAll('.credits')
+            .data([1])
+            .enter().append('g');
+                    var positionwidth;
+                    var imagewidth;
+                    if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '') {
+                        positionwidth = -30;
+                        imagewidth = -20;
+                    }
+                    else
+                        positionwidth = 0;
+                    credits.append('text')
+            .attr("class", 'credits' + chartId.replace("#", ''))
+                    // .attr("x", d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1)
+           .attr("x", document.getElementById(chartId.replace('#', '')).offsetWidth - positionwidth - 70)
+            .attr("y", height + margin.bottom - 58)
+            .attr("text-anchor", "end")
+            .style("font-size", "10px")
+            .style("stroke", "#ccc")
+            .style("text-decoration", "none")
+            .style("text-transform", "uppercase")
+            .style("font-weight", "100")
+            .style("stroke-width", "0.5px")
+            .style("fill", chartdata.chart.credits.color)
+            .text(chartdata.chart.credits.text.toUpperCase());
+
+
+                    if (chartdata.chart.credits.imageurl != undefined && chartdata.chart.credits.imageurl != '') {
+                        function getBase64FromImageUrl(url) {
+                            var img = new Image();
+
+                            img.onload = function () {
+                                var canvas2 = document.createElement("canvas");
+                                canvas2.width = this.width;
+                                canvas2.height = this.height;
+
+                                var ctx2 = canvas2.getContext("2d");
+                                ctx2.drawImage(this, 0, 0);
+
+                                var dataURL = canvas2.toDataURL("image/png");
+
+
+                                credits.append('image')
+                                //.attr('x', d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1 - 10)
+            .attr('x', document.getElementById(chartId.replace('#', '')).offsetWidth - imagewidth - 70)
+            .attr("y", height + margin.bottom - 75)
+            .attr("width", 40)
+            .attr("height", 30)
+            .attr("xlink:href", dataURL);
+
+
+
+                            };
+
+                            img.src = url;
+                        }
+                        getBase64FromImageUrl(chartdata.chart.credits.imageurl);
+                    }
+                }
+            }
+
+
         }
 
         else {
