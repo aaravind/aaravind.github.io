@@ -100,14 +100,14 @@ var line2D = function (chartType, chartId, chartdata) {
 	    .text(function (d) {
 	        if (chartType == 'Line2D' || chartType == 'Scatter2D' || chartType == 'StepLine2D' || chartType == 'Curve2D') {
 	            if (d.value != 0)
-	                return d.label + ' : ' + d.value.toFixed(2) / 1;
+	                return d.label + ' : ' + d3.format(',')(d.value.toFixed(2) / 1);
 	            else
 	                return d.label + ' : ' + 'N/A';
 	        }
 
 	        else {
 	            if (d.value != 0)
-	                return d.category + ' : ' + d.value.toFixed(2) / 1;
+	                return d.category + ' : ' + d3.format(',')(d.value.toFixed(2) / 1);
 	            else
 	                return d.category + ' : ' + 'N/A';
 	        }
@@ -751,7 +751,7 @@ var line2D = function (chartType, chartId, chartdata) {
          })
          .on("mouseover", function (d, i) {
              this.style.cursor = 'pointer';
-             this.style.opactiy = '1';
+             this.style.opacity = '1';
          });
 
                 }

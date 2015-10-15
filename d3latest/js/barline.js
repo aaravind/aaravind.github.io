@@ -332,7 +332,7 @@ var barline2D = function (chartId, chartdata, chartType) {
 
           var yattr = (elemRect.top - bodyRect.top) + 'px';
           //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
-          var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.label + ': ' + d.value.toFixed(2)/1 + '</span>';
+          var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.label + ': ' + d3.format(',')(d.value.toFixed(2)/1) + '</span>';
           var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
           div.html(htmlcontent)
        .style("left", xattr)
@@ -378,7 +378,7 @@ var barline2D = function (chartId, chartdata, chartType) {
 	    .text(function (d) {
 
 	        if (d.value != 0)
-	            return d.category + ' : ' + d.value.toFixed(2)/1;
+	            return d.category + ' : ' + d3.format(',')(d.value.toFixed(2)/1);
 	        else
 	            return d.category + ' : ' + 'N/A';
 

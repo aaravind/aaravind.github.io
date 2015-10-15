@@ -290,7 +290,7 @@ var bar2D = function (chartId, chartdata, chartType) {
                    var xattr = (elemRect.right - bodyRect.left + 20) + 'px';
                var yattr = (elemRect.top - bodyRect.top) + 'px';
                //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
-               var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d.x.toFixed(2) / 1 + '</span>';
+               var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d3.format(',')(d.x.toFixed(2) / 1) + '</span>';
                div.html(htmlcontent)
        .style("left", xattr)
                 .style("top", yattr);

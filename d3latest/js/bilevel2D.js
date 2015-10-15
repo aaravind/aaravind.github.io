@@ -245,7 +245,7 @@ var bilevel2D = function (chartId, chartdata, chartType, zoomdata) {
             xattr = (elemRect.left - bodyRect.left + div[0][0].offsetWidth) + 'px';
             yattr = (elemRect.top - bodyRect.top) + 'px';
             //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
-            var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.label + ': ' + d.value.toFixed(2) / 1 + '</span>';
+            var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.label + ': ' + d3.format(',')(d.value.toFixed(2) / 1)+ '</span>';
             div.html(htmlcontent)
        .style("left", xattr)
                 .style("top", yattr);
@@ -371,7 +371,7 @@ var bilevel2D = function (chartId, chartdata, chartType, zoomdata) {
                xattr = (elemRect.left - bodyRect.left + div[0][0].offsetWidth) + 'px';
                yattr = (elemRect.top - bodyRect.top) + 'px';
                //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
-               var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.label + ': ' + d.value.toFixed(2) / 1 + '</span>';
+               var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.label + ': ' + d3.format(',')(d.value.toFixed(2) / 1) + '</span>';
                div.html(htmlcontent)
        .style("left", xattr)
                 .style("top", yattr);

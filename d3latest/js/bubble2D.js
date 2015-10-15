@@ -1,4 +1,4 @@
-var bubble2D = function (chartId, chartdata, chartType, funcc) {
+var bubble2D = function (chartId, chartdata, chartType) {
     if (chartdata.data != undefined) {
         if (chartdata.data.length != 0) {
 
@@ -184,7 +184,7 @@ var bubble2D = function (chartId, chartdata, chartType, funcc) {
                 var xattr = (elemRect.right - bodyRect.left) + 'px';
                 var yattr = (elemRect.top - bodyRect.top) + 'px';
                 //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
-                var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.name + ': ' + d.value.toFixed(2) / 1 + '</span>';
+                var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.name + ': ' + d3.format(',')(d.value.toFixed(2) / 1) + '</span>';
                 div.html(htmlcontent)
        .style("left", xattr)
                 .style("top", yattr);
