@@ -1,5 +1,5 @@
 function redrawchart(chart,id,data) {
-    if (chart.search('Column') == -1 && chart.search('Bar') == -1 && chart.search('Calender') == -1) {
+    if (chart.search('Column') == -1 && chart.search('Bar') == -1 && chart.search('Calender') == -1 && chart.search('WeekHour2D') == -1) {
         if (chart == 'Bilevel2D' && zoomcontent != undefined) {
            d3charts(chart, id, data,zoomcontent);
           
@@ -32,7 +32,7 @@ function redrawchart(chart,id,data) {
             };
             d3charts(chart, id, data);
             for (i = 0; i < saveleg.length; i++) {
-                if(chart.search('Calender') == -1)
+                if(chart.search('Calender') == -1 && chart != 'WeekHour2D')
                 d3.selectAll(id + ' .' + saveleg[i]).style('display', 'none').attr('data-visibility', 'false');
                 else
                  d3.selectAll(id + ' .' + saveleg[i]).style('fill', 'none').attr('data-visibility', 'false');
@@ -57,6 +57,7 @@ window.onresize = function (event) {
               /*  redrawchart("CalenderMultiView2D", "#calendermultiview", calenderMultidata);*/
                  redrawchart("CalenderSingleView2D", "#calendersingleview", calenderSingledata);
                 redrawchart("Bilevel2D", "#bilevel", bileveldata);
+                    redrawchart("WeekHour2D", "#weekhour", hourlydata);
 };
 
 var linedata = {
@@ -2542,3 +2543,1061 @@ var bubbledata = {
 }
 
     d3charts("Bilevel2D", "#bilevel", bileveldata);
+
+
+      var hourlydata = {
+     "chart": {
+        "caption": "Week Hour Chart",
+        "captionColor":"black",
+         "subcaption": "More Info",
+        "subcaptionColor":"black",
+        "yaxisname": "",
+        "color":"white",
+        "fontsize":15,
+        "showlegend":true,
+        "slant":false,
+        "twoxaxis":false,
+        "slantdegree":"65",
+        "dynamicheight":true,
+        "credits":{
+               "text":"Powered By",
+            "color":"#666",
+            "imageurl":"../images/logo.png"
+        },
+        "pallattecolorsingle":true, // if set to True: Only First Value is Considered ; if set to False all values in the Pallate is considered
+         "pallattecolor":["#de8e43","#dfc133","#e0594b","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
+    },
+    "export":{
+        "showexport": true,
+         "format": ["-Download-","jpeg","png"]
+    },
+         "colormap":[
+    {"name":"Very Low",
+    "value":"#c7001e"},
+       {"name":"Low",
+    "value":"#f6a580"},
+     {"name":"Average",
+    "value":"#cccccc"},
+      {"name":"High",
+    "value":"#92c6db"},
+      {"name":"Very High",
+    "value":"#086fad"}
+
+    ],
+          "click":function(data){
+    alert(data[0].label);},
+    "data":[  
+   {  
+      "day":1,
+      "hour":1,
+      "value":16,
+      "category":"Very Low"
+   },
+   {  
+      "day":1,
+      "hour":2,
+      "value":20,
+      "category":"Very Low"
+   },
+   {  
+      "day":1,
+      "hour":3,
+      "value":0,
+      "category":"Very Low"
+   },
+   {  
+      "day":1,
+      "hour":4,
+      "value":0,
+      "category":"Very Low"
+   },
+   {  
+      "day":1,
+      "hour":5,
+      "value":0,
+      "category":"Very Low"
+   },
+   {  
+      "day":1,
+      "hour":6,
+      "value":2,
+      "category":"Average"
+   },
+   {  
+      "day":1,
+      "hour":7,
+      "value":0,
+      "category":"Average"
+   },
+   {  
+      "day":1,
+      "hour":8,
+      "value":9,
+      "category":"Average"
+   },
+   {  
+      "day":1,
+      "hour":9,
+      "value":25,
+      "category":"Average"
+   },
+   {  
+      "day":1,
+      "hour":10,
+      "value":49,
+      "category":"Average"
+   },
+   {  
+      "day":1,
+      "hour":11,
+      "value":57,
+      "category":"Low"
+   },
+   {  
+      "day":1,
+      "hour":12,
+      "value":61,
+      "category":"Low"
+   },
+   {  
+      "day":1,
+      "hour":13,
+      "value":37,
+      "category":"Low"
+   },
+   {  
+      "day":1,
+      "hour":14,
+      "value":66,
+      "category":"High"
+   },
+   {  
+      "day":1,
+      "hour":15,
+      "value":70,
+      "category":"High"
+   },
+   {  
+      "day":1,
+      "hour":16,
+      "value":55,
+      "category":"High"
+   },
+   {  
+      "day":1,
+      "hour":17,
+      "value":51,
+      "category":"High"
+   },
+   {  
+      "day":1,
+      "hour":18,
+      "value":55,
+      "category":"High"
+   },
+   {  
+      "day":1,
+      "hour":19,
+      "value":17,
+      "category":"High"
+   },
+   {  
+      "day":1,
+      "hour":20,
+      "value":20,
+      "category":"Very High"
+   },
+   {  
+      "day":1,
+      "hour":21,
+      "value":9,
+      "category":"Very High"
+   },
+   {  
+      "day":1,
+      "hour":22,
+      "value":4,
+      "category":"Very High"
+   },
+   {  
+      "day":1,
+      "hour":23,
+      "value":0,
+      "category":"Very High"
+   },
+   {  
+      "day":1,
+      "hour":24,
+      "value":12,
+      "category":"High"
+   },
+   {  
+      "day":2,
+      "hour":1,
+      "value":6
+      ,
+      "category":"High"
+   },
+   {  
+      "day":2,
+      "hour":2,
+      "value":2,
+      "category":"Very High"
+    },
+   {  
+      "day":2,
+      "hour":3,
+      "value":0,
+      "category":"High"
+   },
+   {  
+      "day":2,
+      "hour":4,
+      "value":0,
+      "category":"High"
+   },
+   {  
+      "day":2,
+      "hour":5,
+      "value":0,
+      "category":"Very High"
+   },
+   {  
+      "day":2,
+      "hour":6,
+      "value":2,
+      "category":"Very High"
+
+   },
+   {  
+      "day":2,
+      "hour":7,
+      "value":4,
+      "category":"Very High"
+   },
+   {  
+      "day":2,
+      "hour":8,
+      "value":11,
+      "category":"Very Low"
+   },
+   {  
+      "day":2,
+      "hour":9,
+      "value":28,
+      "category":"Very Low"
+   },
+   {  
+      "day":2,
+      "hour":10,
+      "value":49,
+      "category":"Low"
+   },
+   {  
+      "day":2,
+      "hour":11,
+      "value":51,
+      "category":"Very Low"
+   },
+   {  
+      "day":2,
+      "hour":12,
+      "value":47,
+      "category":"Very Low"
+   },
+   {  
+      "day":2,
+      "hour":13,
+      "value":38,
+      "category":"Very Low"
+   },
+   {  
+      "day":2,
+      "hour":14,
+      "value":65,
+      "category":"Very Low"
+   },
+   {  
+      "day":2,
+      "hour":15,
+      "value":60,
+      "category":"Very Low"
+   },
+   {  
+      "day":2,
+      "hour":16,
+      "value":50,
+      "category":"Average"
+   },
+   {  
+      "day":2,
+      "hour":17,
+      "value":65,
+      "category":"Average"
+   },
+   {  
+      "day":2,
+      "hour":18,
+      "value":50,
+      "category":"Average"
+   },
+   {  
+      "day":2,
+      "hour":19,
+      "value":22,
+      "category":"Average"
+   },
+   {  
+      "day":2,
+      "hour":20,
+      "value":11,
+      "category":"Average"
+   },
+   {  
+      "day":2,
+      "hour":21,
+      "value":12,
+      "category":"Average"
+   },
+   {  
+      "day":2,
+      "hour":22,
+      "value":9,
+      "category":"Average"
+   },
+   {  
+      "day":2,
+      "hour":23,
+      "value":0,
+      "category":"Low"
+   },
+   {  
+      "day":2,
+      "hour":24,
+      "value":13,
+      "category":"Low"
+   },
+   {  
+      "day":3,
+      "hour":1,
+      "value":5,
+      "category":"Low"
+   },
+   {  
+      "day":3,
+      "hour":2,
+      "value":8,
+      "category":"Low"
+   },
+   {  
+      "day":3,
+      "hour":3,
+      "value":8,
+      "category":"Low"
+   },
+   {  
+      "day":3,
+      "hour":4,
+      "value":0,
+      "category":"Low"
+   },
+   {  
+      "day":3,
+      "hour":5,
+      "value":0,
+      "category":"Low"
+   },
+   {  
+      "day":3,
+      "hour":6,
+      "value":2,
+      "category":"High"
+   },
+   {  
+      "day":3,
+      "hour":7,
+      "value":5,
+      "category":"High"
+   },
+   {  
+      "day":3,
+      "hour":8,
+      "value":12,
+      "category":"High"
+   },
+   {  
+      "day":3,
+      "hour":9,
+      "value":34,
+      "category":"High"
+   },
+   {  
+      "day":3,
+      "hour":10,
+      "value":43,
+      "category":"High"
+   },
+   {  
+      "day":3,
+      "hour":11,
+      "value":54,
+      "category":"High"
+   },
+   {  
+      "day":3,
+      "hour":12,
+      "value":44,
+      "category":"Very High"
+   },
+   {  
+      "day":3,
+      "hour":13,
+      "value":40,
+      "category":"Very High"
+   },
+   {  
+      "day":3,
+      "hour":14,
+      "value":48,
+      "category":"Very High"
+   },
+   {  
+      "day":3,
+      "hour":15,
+      "value":54,
+      "category":"Very High"
+   },
+   {  
+      "day":3,
+      "hour":16,
+      "value":59,
+      "category":"Very High"
+   },
+   {  
+      "day":3,
+      "hour":17,
+      "value":60,
+      "category":"Average"
+   },
+   {  
+      "day":3,
+      "hour":18,
+      "value":51,
+      "category":"Average"
+   },
+   {  
+      "day":3,
+      "hour":19,
+      "value":21,
+      "category":"Average"
+   },
+   {  
+      "day":3,
+      "hour":20,
+      "value":16,
+      "category":"Average"
+   },
+   {  
+      "day":3,
+      "hour":21,
+      "value":9,
+      "category":"Average"
+   },
+   {  
+      "day":3,
+      "hour":22,
+      "value":5,
+      "category":"Average"
+   },
+   {  
+      "day":3,
+      "hour":23,
+      "value":4,
+      "category":"Average"
+   },
+   {  
+      "day":3,
+      "hour":24,
+      "value":7,
+      "category":"Average"
+   },
+   {  
+      "day":4,
+      "hour":1,
+      "value":0,
+      "category":"Very High"
+   },
+   {  
+      "day":4,
+      "hour":2,
+      "value":0,
+      "category":"Very High"
+   },
+   {  
+      "day":4,
+      "hour":3,
+      "value":0,
+      "category":"Very High"
+   },
+   {  
+      "day":4,
+      "hour":4,
+      "value":0,
+      "category":"Very High"
+   },
+   {  
+      "day":4,
+      "hour":5,
+      "value":0,
+      "category":"Very High"
+   },
+   {  
+      "day":4,
+      "hour":6,
+      "value":2,
+      "category":"Very High"
+   },
+   {  
+      "day":4,
+      "hour":7,
+      "value":4,
+      "category":"Very High"
+   },
+   {  
+      "day":4,
+      "hour":8,
+      "value":13,
+      "category":"High"
+   },
+   {  
+      "day":4,
+      "hour":9,
+      "value":26,
+      "category":"High"
+   },
+   {  
+      "day":4,
+      "hour":10,
+      "value":58,
+      "category":"High"
+   },
+   {  
+      "day":4,
+      "hour":11,
+      "value":61,
+      "category":"High"
+   },
+   {  
+      "day":4,
+      "hour":12,
+      "value":59,
+      "category":"High"
+   },
+   {  
+      "day":4,
+      "hour":13,
+      "value":53,
+      "category":"High"
+   },
+   {  
+      "day":4,
+      "hour":14,
+      "value":54,
+      "category":"High"
+   },
+   {  
+      "day":4,
+      "hour":15,
+      "value":64,
+      "category":"High"
+   },
+   {  
+      "day":4,
+      "hour":16,
+      "value":55,
+      "category":"Low"
+   },
+   {  
+      "day":4,
+      "hour":17,
+      "value":52,
+      "category":"Low"
+   },
+   {  
+      "day":4,
+      "hour":18,
+      "value":53,
+      "category":"Low"
+   },
+   {  
+      "day":4,
+      "hour":19,
+      "value":18,
+      "category":"Low"
+   },
+   {  
+      "day":4,
+      "hour":20,
+      "value":3,
+      "category":"Low"
+   },
+   {  
+      "day":4,
+      "hour":21,
+      "value":9,
+      "category":"Low"
+   },
+   {  
+      "day":4,
+      "hour":22,
+      "value":12,
+      "category":"Low"
+   },
+   {  
+      "day":4,
+      "hour":23,
+      "value":2,
+      "category":"Very Low"
+   },
+   {  
+      "day":4,
+      "hour":24,
+      "value":8,
+      "category":"Very Low"
+   },
+   {  
+      "day":5,
+      "hour":1,
+      "value":2,
+      "category":"Very Low"
+   },
+   {  
+      "day":5,
+      "hour":2,
+      "value":0,
+      "category":"Very Low"
+   },
+   {  
+      "day":5,
+      "hour":3,
+      "value":8,
+      "category":"Very Low"
+   },
+   {  
+      "day":5,
+      "hour":4,
+      "value":2,
+      "category":"Very Low"
+   },
+   {  
+      "day":5,
+      "hour":5,
+      "value":0,
+      "category":"Very Low"
+   },
+   {  
+      "day":5,
+      "hour":6,
+      "value":2,
+      "category":"Very High"
+   },
+   {  
+      "day":5,
+      "hour":7,
+      "value":4,
+      "category":"Very High"
+   },
+   {  
+      "day":5,
+      "hour":8,
+      "value":14,
+      "category":"Very High"
+   },
+   {  
+      "day":5,
+      "hour":9,
+      "value":31,
+      "category":"Very High"
+   },
+   {  
+      "day":5,
+      "hour":10,
+      "value":48,
+      "category":"Very High"
+   },
+   {  
+      "day":5,
+      "hour":11,
+      "value":46,
+      "category":"Average"
+   },
+   {  
+      "day":5,
+      "hour":12,
+      "value":50,
+      "category":"Average"
+   },
+   {  
+      "day":5,
+      "hour":13,
+      "value":66,
+      "category":"Average"
+   },
+   {  
+      "day":5,
+      "hour":14,
+      "value":54,
+      "category":"Average"
+   },
+   {  
+      "day":5,
+      "hour":15,
+      "value":56,
+      "category":"Average"
+   },
+   {  
+      "day":5,
+      "hour":16,
+      "value":67,
+      "category":"Average"
+   },
+   {  
+      "day":5,
+      "hour":17,
+      "value":54,
+      "category":"Low"
+   },
+   {  
+      "day":5,
+      "hour":18,
+      "value":23,
+      "category":"Low"
+   },
+   {  
+      "day":5,
+      "hour":19,
+      "value":14,
+      "category":"Low"
+   },
+   {  
+      "day":5,
+      "hour":20,
+      "value":6,
+      "category":"Low"
+   },
+   {  
+      "day":5,
+      "hour":21,
+      "value":8,
+      "category":"Low"
+   },
+   {  
+      "day":5,
+      "hour":22,
+      "value":7,
+      "category":"Low"
+   },
+   {  
+      "day":5,
+      "hour":23,
+      "value":0,
+      "category":"Low"
+   },
+   {  
+      "day":5,
+      "hour":24,
+      "value":8,
+      "category":"Very Low"
+   },
+   {  
+      "day":6,
+      "hour":1,
+      "value":2,
+      "category":"Very Low"
+   },
+   {  
+      "day":6,
+      "hour":2,
+      "value":0,
+      "category":"Very Low"
+   },
+   {  
+      "day":6,
+      "hour":3,
+      "value":2,
+      "category":"Very Low"
+   },
+   {  
+      "day":6,
+      "hour":4,
+      "value":0,
+      "category":"Very Low"
+   },
+   {  
+      "day":6,
+      "hour":5,
+      "value":0,
+      "category":"Very Low"
+   },
+   {  
+      "day":6,
+      "hour":6,
+      "value":0,
+      "category":"Very Low"
+   },
+   {  
+      "day":6,
+      "hour":7,
+      "value":4,
+      "category":"Average"
+   },
+   {  
+      "day":6,
+      "hour":8,
+      "value":8,
+      "category":"Average"
+   },
+   {  
+      "day":6,
+      "hour":9,
+      "value":8,
+      "category":"Average"
+   },
+   {  
+      "day":6,
+      "hour":10,
+      "value":6,
+      "category":"Average"
+   },
+   {  
+      "day":6,
+      "hour":11,
+      "value":14,
+      "category":"Average"
+   },
+   {  
+      "day":6,
+      "hour":12,
+      "value":12,
+      "category":"Average"
+   },
+   {  
+      "day":6,
+      "hour":13,
+      "value":9,
+      "category":"Average"
+   },
+   {  
+      "day":6,
+      "hour":14,
+      "value":14,
+      "category":"Average"
+   },
+   {  
+      "day":6,
+      "hour":15,
+      "value":0,
+      "category":"Very High"
+   },
+   {  
+      "day":6,
+      "hour":16,
+      "value":4,
+      "category":"Very High"
+   },
+   {  
+      "day":6,
+      "hour":17,
+      "value":7,
+      "category":"Very High"
+   },
+   {  
+      "day":6,
+      "hour":18,
+      "value":6,
+      "category":"Very High"
+   },
+   {  
+      "day":6,
+      "hour":19,
+      "value":0,
+      "category":"Very High"
+   },
+   {  
+      "day":6,
+      "hour":20,
+      "value":0,
+      "category":"Very High"
+   },
+   {  
+      "day":6,
+      "hour":21,
+      "value":0,
+      "category":"High"
+   },
+   {  
+      "day":6,
+      "hour":22,
+      "value":0,
+      "category":"High"
+   },
+   {  
+      "day":6,
+      "hour":23,
+      "value":0,
+      "category":"High"
+   },
+   {  
+      "day":6,
+      "hour":24,
+      "value":0,
+      "category":"High"
+   },
+   {  
+      "day":7,
+      "hour":1,
+      "value":7,
+      "category":"High"
+   },
+   {  
+      "day":7,
+      "hour":2,
+      "value":6,
+      "category":"Average"
+   },
+   {  
+      "day":7,
+      "hour":3,
+      "value":0,
+      "category":"Average"
+   },
+   {  
+      "day":7,
+      "hour":4,
+      "value":0,
+      "category":"Average"
+   },
+   {  
+      "day":7,
+      "hour":5,
+      "value":0,
+      "category":"Average"
+   },
+   {  
+      "day":7,
+      "hour":6,
+      "value":0,
+      "category":"Average"
+   },
+   {  
+      "day":7,
+      "hour":7,
+      "value":0,
+      "category":"Average"
+   },
+   {  
+      "day":7,
+      "hour":8,
+      "value":0,
+      "category":"Average"
+   },
+   {  
+      "day":7,
+      "hour":9,
+      "value":0,
+      "category":"Very Low"
+   },
+   {  
+      "day":7,
+      "hour":10,
+      "value":0,
+      "category":"Very Low"
+   },
+   {  
+      "day":7,
+      "hour":11,
+      "value":2,
+      "category":"Very Low"
+   },
+   {  
+      "day":7,
+      "hour":12,
+      "value":2,
+      "category":"Very Low"
+   },
+   {  
+      "day":7,
+      "hour":13,
+      "value":5,
+      "category":"Very Low"
+   },
+   {  
+      "day":7,
+      "hour":14,
+      "value":6,
+      "category":"Very Low"
+   },
+   {  
+      "day":7,
+      "hour":15,
+      "value":0,
+      "category":"Very Low"
+   },
+   {  
+      "day":7,
+      "hour":16,
+      "value":4,
+      "category":"Very Low"
+   },
+   {  
+      "day":7,
+      "hour":17,
+      "value":0,
+      "category":"Very High"
+   },
+   {  
+      "day":7,
+      "hour":18,
+      "value":2,
+      "category":"Very High"
+   },
+   {  
+      "day":7,
+      "hour":19,
+      "value":10,
+      "category":"Very High"
+   },
+   {  
+      "day":7,
+      "hour":20,
+      "value":7,
+      "category":"Very High"
+   },
+   {  
+      "day":7,
+      "hour":21,
+      "value":0,
+      "category":"Very High"
+   },
+   {  
+      "day":7,
+      "hour":22,
+      "value":19,
+      "category":"High"
+   },
+   {  
+      "day":7,
+      "hour":23,
+      "value":9,
+      "category":"High"
+   },
+   {  
+      "day":7,
+      "hour":24,
+      "value":4,
+      "category":"High"
+   }
+] 
+    }
+
+    d3charts("WeekHour2D", "#weekhour", hourlydata);

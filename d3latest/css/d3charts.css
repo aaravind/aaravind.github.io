@@ -22,6 +22,11 @@ svg {
 svg text,div,span,select,.month,.month-title {
  font-family: 'Source Sans Pro', ’Trebuchet MS’, 'Helvetica Neue', Helvetica, 'Lucida Grande', Arial, Verdana, sans-serif;
     }
+@media screen and (max-width: 600px) {
+    .dayLabel, .timeLabel {
+        font-size: 10px;
+    }
+}
 @media screen and (max-width: 450px) {
     svg text {
         font-size: 8px;

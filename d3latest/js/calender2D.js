@@ -13,41 +13,41 @@ var calender2D = function (chartId, chartdata, chartType) {
                 if (chartcontent[0][0].offsetWidth < 350) {
                     d3.select(chartId).style('height', '500px');
                     height = 500;
-                    cellSize = 10 -0.5;// cell size
+                    cellSize = 10 - 0.5; // cell size
                     no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
                 }
 
                 else if (chartcontent[0][0].offsetWidth < 600) {
 
-                    cellSize = 15 -0.5; // cell size
+                    cellSize = 15 - 0.5; // cell size
                     no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
                     if (no_months_in_a_row == 2) {
-                        d3.select(chartId).style('height', cellSize * 42 +100+'px');
-                        height = cellSize * 42 +100;
+                        d3.select(chartId).style('height', cellSize * 42 + 100 + 'px');
+                        height = cellSize * 42 + 100;
                     }
                     else {
-                        d3.select(chartId).style('height', cellSize * 28 +100+'px');
-                        height = cellSize * 28 +100;
+                        d3.select(chartId).style('height', cellSize * 28 + 100 + 'px');
+                        height = cellSize * 28 + 100;
                     }
 
 
                 }
                 else if (chartcontent[0][0].offsetWidth < 800) {
 
-                    cellSize = 20 -0.5;// cell size
+                    cellSize = 20 - 0.5; // cell size
                     no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
                     if (no_months_in_a_row == 3) {
-                        d3.select(chartId).style('height', cellSize * 28 +100+'px');
-                        height = cellSize * 28 +100;
+                        d3.select(chartId).style('height', cellSize * 28 + 100 + 'px');
+                        height = cellSize * 28 + 100;
                     }
                     else {
-                        d3.select(chartId).style('height', cellSize * 21 +100+'px');
-                        height = cellSize * 21 +100;
+                        d3.select(chartId).style('height', cellSize * 21 + 100 + 'px');
+                        height = cellSize * 21 + 100;
                     }
                 }
                 else if (chartcontent[0][0].offsetWidth < 1000) {
 
-                    cellSize = 20 -0.5;// cell size
+                    cellSize = 20 - 0.5; // cell size
                     no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
                     if (no_months_in_a_row == 4) {
                         d3.select(chartId).style('height', '500px');
@@ -64,7 +64,7 @@ var calender2D = function (chartId, chartdata, chartType) {
 
                 }
                 else {
-                    cellSize = 25 -0.5;// cell size
+                    cellSize = 25 - 0.5; // cell size
                     no_months_in_a_row = Math.floor(width / (cellSize * 7 + 10));
                     if (no_months_in_a_row == 12) {
                         d3.select(chartId).style('height', '250px');
@@ -81,10 +81,19 @@ var calender2D = function (chartId, chartdata, chartType) {
                 }
 
             }
+            else if (chartType == 'WeekHour2D') {
+                var gridSize = Math.floor(width / 24) - 0.7,
+          buckets = 9,
+          hourcolors = ["#ffffd9", "#edf8b1", "#c7e9b4", "#7fcdbb", "#41b6c4", "#1d91c0", "#225ea8", "#253494", "#081d58"], // alternatively colorbrewer.YlGnBu[9]
+          weekdays = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+          hourtimes = ["1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a", "12a", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p", "12p"];
+                d3.select(chartId).style('height', gridSize * 7 + 100 + 'px');
+                height = gridSize * 7 + 100;
+            }
             else {
-                cellSize = (chartcontent[0][0].offsetWidth / 60) -0.5;
-                d3.select(chartId).style('height', cellSize * 7 +100+'px');
-                height = cellSize * 7 +100;
+                cellSize = (chartcontent[0][0].offsetWidth / 60) - 0.5;
+                d3.select(chartId).style('height', cellSize * 7 + 100 + 'px');
+                height = cellSize * 7 + 100;
 
 
             }
@@ -128,7 +137,8 @@ var calender2D = function (chartId, chartdata, chartType) {
 
                 }
             }
-            var svg = d3.select(chartId).selectAll("svg")
+            if (chartType != 'WeekHour2D') {
+                var svg = d3.select(chartId).selectAll("svg")
         .data(d3.range(chartdata.calenderyear[0], chartdata.calenderyear[1]))
       .enter().append("svg")
        .attr('width', '100%')
@@ -143,6 +153,25 @@ var calender2D = function (chartId, chartdata, chartType) {
              else*/
              return "translate(" + margin.left + "," + margin.top + ") ";
          });
+            }
+            else {
+
+                var svg = d3.select(chartId)
+         .append("svg")
+       .attr('width', '100%')
+					.attr('height', '100%')
+                       .attr('viewBox', '0 0 ' + (width + 100) + ' ' + (height))
+        .attr('preserveAspectRatio', 'xMinYMin')
+        .attr("class", 'calenderclass' + "RdYlGn")
+      .append("g")
+         .attr("transform", function (d) {
+             /*if (chartcontent[0][0].offsetWidth < 450)
+             return "translate(" + (chartcontent[0][0].offsetWidth - 40) + "," + margin.top + ") " + " rotate(90)";
+             else*/
+             return "translate(" + margin.left + "," + margin.top + ") ";
+         });
+
+            }
             d3.select(chartId + ' svg').insert('rect', ':first-child').attr('width', '100%').attr('height', '100%').attr('x', '0').attr('y', '0').style('fill', 'white');
 
             svg.append("text")
@@ -156,7 +185,9 @@ var calender2D = function (chartId, chartdata, chartType) {
          .style("font-weight", "bold")
         .style("fill", chartdata.chart.captionColor)
         .text(chartdata.chart.caption.toUpperCase());
-            var rect = svg.selectAll(".day")
+            if (chartType != 'WeekHour2D') {
+
+                var rect = svg.selectAll(".day")
         .data(function (d) {
             return d3.time.days(new Date(d, 0, 1), new Date(d + 1, 0, 1));
         })
@@ -196,7 +227,7 @@ var calender2D = function (chartId, chartdata, chartType) {
         })
         .datum(format);
 
-            var month_titles = svg.selectAll(".month-title")  // Jan, Feb, Mar and the whatnot
+                var month_titles = svg.selectAll(".month-title")  // Jan, Feb, Mar and the whatnot
           .data(function (d) {
               return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1));
           })
@@ -250,9 +281,9 @@ var calender2D = function (chartId, chartdata, chartType) {
                else
                    return '';
            });
-            if (chartType == 'CalenderSingleView2D') {
+                if (chartType == 'CalenderSingleView2D') {
 
-                svg.selectAll(".weekdays")
+                    svg.selectAll(".weekdays")
     .data(['S', 'M', 'T', 'W', 'T', 'F', 'S'])
   .enter().append("text")
     .attr("class", "weekdays")
@@ -264,9 +295,9 @@ var calender2D = function (chartId, chartdata, chartType) {
         return d;
     });
 
-            }
-            for (j = 0; j < chartdata.data.length; j++) {
-                d3.selectAll(chartId + ' .' + chartdata.data[j].month)
+                }
+                for (j = 0; j < chartdata.data.length; j++) {
+                    d3.selectAll(chartId + ' .' + chartdata.data[j].month)
       .text(function (d, i) {
           return d + ' : ' + chartdata.data[j].values[i];
       })
@@ -341,8 +372,132 @@ var calender2D = function (chartId, chartdata, chartType) {
       .delay(function (d, i) { return i * 100; })
       .duration(400)
       .style('opacity', 0.5); ;
+                }
+
             }
 
+            else {
+                //weekhour chart goes here
+
+                var dayLabels = svg.selectAll(".dayLabel")
+          .data(weekdays)
+          .enter().append("text")
+            .text(function (d) { return d; })
+            .attr("x", 0)
+            .attr("y", function (d, i) {
+                return ((i) * gridSize) + 30 + gridSize / 2;
+            })
+            .style("text-anchor", "end")
+             .style('display', function (d,i) {
+                if (chartcontent[0][0].offsetWidth < 800) {
+        
+                            if (i % 3 == 0 || i == 0)
+                                return "block"
+                            else
+                                return "none"
+                        
+                   
+                }
+                else {
+                    return "block";
+                }
+            }
+            )
+            .attr("transform", "translate(10,0)")
+            .attr("class", function (d, i) { return ((i >= 0 && i <= 4) ? "dayLabel mono axis axis-workweek" : "dayLabel mono axis"); });
+
+                var timeLabels = svg.selectAll(".timeLabel")
+          .data(hourtimes)
+          .enter().append("text")
+            .text(function (d) { return d; })
+            .attr("x", function (d, i) { return (i * gridSize) + gridSize / 2; })
+            .attr("y", 25)
+            .style("text-anchor", function (d) {
+                if (chartcontent[0][0].offsetWidth < 800)
+                    return "middle";
+                else
+                    return "end";
+            })
+            .style('display', function (d,i) {
+                if (chartcontent[0][0].offsetWidth < 800) {
+        
+                            if (i % 4 == 0 || i == 0 || i == 23)
+                                return "block"
+                            else
+                                return "none"
+                        
+                   
+                }
+                else {
+                    return "block";
+                }
+            }
+            )
+            .attr("transform", "translate(" + gridSize / 2 + ", 0)")
+            .attr("class", function (d, i) { return ((i >= 7 && i <= 16) ? "timeLabel mono axis axis-worktime" : "timeLabel mono axis"); });
+
+                var cards = svg.selectAll(".hour")
+              .data(chartdata.data);
+
+                cards.append("title");
+
+                cards.enter().append("rect")
+              .attr("x", function (d) { return ((d.hour - 1) * gridSize) + 15; })
+              .attr("y", function (d) { return ((d.day - 1) * gridSize) + 30; })
+              .attr("class", function (d) { return "hourclass" + d.category.replace(/[^a-zA-Z0-9]/g, "") + " hour bordered" })
+              .attr("width", gridSize)
+              .attr("height", gridSize)
+              .attr('data-visibility', 'true')
+              .style("opacity", '0.5')
+              .style("stroke", 'lightgray')
+              .style("stroke-width", '1px')
+              .style("fill", function (d, i) {
+                  if (chartdata.colormap != undefined && chartdata.colormap != '') {
+                      for (i = 0; i < chartdata.colormap.length; i++) {
+                          if (d.category == chartdata.colormap[i].name)
+                              return chartdata.colormap[i].value;
+                      }
+                  }
+                  else
+                      return 'black';
+              })
+               .on("mouseover", function (d, i) {
+             this.style.cursor = 'pointer';
+             this.style.opacity = 1;
+             div.transition()
+                .duration(100)
+                .style("opacity", .9);
+
+             var xattr = bodyRect = elemRect = yattr = 0;
+             var bodyRect = document.body.getBoundingClientRect();
+             var elemRect = this.getBoundingClientRect();
+
+             var yattr = (elemRect.top - bodyRect.top) + 'px';
+             //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
+ 
+                 var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">'+d.category+ ' : ' + d.value + '</span><br>';
+             
+             var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
+             div.html(htmlcontent)
+       .style("left", function (d) {
+           if (xattr.replace('px', '') / 1 < window.innerWidth / 2)
+               return (xattr.replace('px', '') / 1 + this.getAttribute('width') / 2) + 'px';
+           else
+               return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth - (elemRect.right - elemRect.left + 5)) + 'px';
+       })
+                .style("top", yattr);
+         })
+            .on("mouseout", function (d, i) {
+                this.style.cursor = 'pointer';
+                this.style.opacity = 0.5;
+                div.transition()
+                .duration(100)
+                .style("opacity", 0);
+            });
+
+
+                cards.select("title").text(function (d) { return d.value; });
+            }
             if (chartdata.chart.showlegend) {
 
                 var legendgroup = svg.selectAll(chartId + ' .legendgroup').data([0]).enter()
@@ -390,7 +545,10 @@ var calender2D = function (chartId, chartdata, chartType) {
             return d.value;
         })
         .on("click", function (d, i) {
-            var barselect = 'calenderclass' + d.name.replace(/[^a-zA-Z0-9]/g, "");
+            if (chartType != 'WeekHour2D')
+                var barselect = 'calenderclass' + d.name.replace(/[^a-zA-Z0-9]/g, "");
+            else
+                var barselect = 'hourclass' + d.name.replace(/[^a-zA-Z0-9]/g, "");
             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
             if (d3.selectAll('.' + barselect).style('fill') != 'none') {
                 d3.selectAll('.' + barselect).attr("data-visibility", "false");
@@ -414,7 +572,7 @@ var calender2D = function (chartId, chartdata, chartType) {
           });
 
             };
-             if (chartdata.chart.credits != undefined) {
+            if (chartdata.chart.credits != undefined) {
                 if (chartdata.chart.credits.text != undefined && chartdata.chart.credits.text != '') {
                     var credits = svg.selectAll('.credits')
             .data([1])
