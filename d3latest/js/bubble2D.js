@@ -1,13 +1,22 @@
 var bubble2D = function (chartId, chartdata, chartType) {
     if (chartdata.data != undefined) {
         if (chartdata.data.length != 0) {
-
+            var enabletrue = false;
+            d3.select(chartId + ' .prevbut').remove();
+            d3.select(chartId + ' .nextbut').remove();
+            var tempheight = d3.select(chartId).style('height');
+            if (d3.select(chartId).select('table')[0][0] != null) {
+                d3.select(chartId).select('table').remove();
+                d3.select(chartId).style('height', chartdata.tableshow.divheight);
+                enabletrue = true;
+            }
             var color = d3.scale.linear()
     .domain([0, chartdata.data.length])
     .range([chartdata.chart.pallattecolor[0], chartdata.chart.pallattecolor[1]]);
             var chartcontent = d3.select(chartId);
             var width = chartcontent[0][0].offsetWidth;
             var height = chartcontent[0][0].offsetHeight;
+
             var diameter = height;
             var div = d3.select("body").append("div")
     .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
@@ -31,6 +40,117 @@ var bubble2D = function (chartId, chartdata, chartType) {
                             exportfile(chartId, chartdata, chartdata.export.filename, '.' + data, false);
                     }
                 }
+                function generatetabledisplay() {
+                    if (d3.select(chartId).select('table')[0][0] != null) {
+                        d3.select(chartId).select('table').remove();
+                        d3.select(chartId).style('height', chartdata.tableshow.divheight);
+                        d3.select(chartId + ' .prevbut').remove();
+                        d3.select(chartId + ' .nextbut').remove();
+                    }
+
+                    else {
+                        var start = 0;
+                        var end = chartdata.tableshow.noofrows;
+                        var inc = chartdata.tableshow.noofrows;
+                        drawtablenow(start, end, inc);
+                    }
+
+
+
+                    function drawtablenow(start, end, inc) {
+
+                        if (d3.select(chartId).select('table')[0][0] != null) {
+                            d3.select(chartId).select('table').remove();
+                            d3.select(chartId).style('height', chartdata.tableshow.divheight);
+                            d3.select(chartId + ' .prevbut').remove();
+                            d3.select(chartId + ' .nextbut').remove();
+                        }
+                        var curstart = start;
+                        var curend = end;
+                        /* function nextgen(nstart,nend,ninc) {
+                        var tempnextprev = nend;
+                        var tempnextnext = nend + ninc <= chartdata.data.length ? nend + ninc : chartdata.data.length;
+                        drawtablenow(tempnextprev, tempnextnext, ninc);
+                        };
+                        function prevgen(pstart,pend,pinc) {
+                        var tempprevprev = pend - pinc >= 0 ? pend - pinc : 0;
+                        var tempprevnext = pend;
+                        drawtablenow(tempprevprev, tempprevnext, pinc);
+                        };*/
+
+                        var prevbut = d3.select(chartId).append("button").on("click", function () {
+                            var tempprevprev = start - inc >= 0 ? start - inc : 0;
+                            var tempprevnext = start < inc ? inc : start;
+                            drawtablenow(tempprevprev, tempprevnext, inc);
+
+                        }).attr('style', 'height:20px;border: 0px;margin-right:5px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px;margin-left:' + ((width / 2) - 20) + 'px').text('<').attr('class', 'prevbut');
+
+                        var nextbut = d3.select(chartId).append("button").on("click", function () {
+                            var tempnextprev = end < chartdata.data.length ? end : chartdata.data.length - inc;
+                            var tempnextnext = end + inc <= chartdata.data.length ? end + inc : chartdata.data.length;
+                            drawtablenow(tempnextprev, tempnextnext, inc);
+
+                        }).attr('style', 'height:20px;border: 0px;margin-right:5px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px').text('>').attr('class', 'nextbut');
+
+                        var table = d3.select(chartId).append('table').style('border', '1px solid #dde4e6').style('border-collapse', 'collapse');
+                        var thead = table.append('thead')
+                        var tbody = table.append('tbody')
+                        var columns = ['label', 'value'];
+                        thead.append('tr')
+	  .selectAll('th')
+	    .data(columns)
+	    .enter()
+	  .append('th')
+      .style('text-align', 'left')
+      .style('padding', '4px 2px')
+      .style('border', '1px solid #dde4e6')
+	    .text(function (d) { return d.toUpperCase() })
+
+                        var rows = tbody.selectAll('tr')
+	    .data(chartdata.data)
+	    .enter()
+	  .append('tr')
+      .filter(function (d, i) {
+          if (i >= curstart && i < curend)
+              return true;
+      })
+      .style('background', function (d, i) {
+          if (i % 2 == 0)
+              return '#ecf0f1';
+          else
+              return 'white';
+      })
+
+                        var cells = rows.selectAll('td')
+	    .data(function (row, i) {
+	        return columns.map(function (column) {
+	            return { column: column, value: row[column] }
+	        })
+
+	    })
+      .enter()
+    .append('td')
+    .style('text-align', 'left')
+    .style('padding', '4px 2px')
+    .style('max-width', '150px')
+    .style('overflow', 'hidden')
+    .style('text-overflow', 'ellipsis')
+    .style('white-space', 'nowrap')
+     .style('border', '1px solid #dde4e6')
+      .text(function (d, i) {
+          return d.value
+      });
+
+                        d3.select(chartId).style('height', 'auto');
+                        table.style('margin-left', ((width / 2) - table[0][0].offsetWidth / 2) + 'px');
+                        //  d3.select(chartId + ' .prevbut').style('margin-left', ((width / 2) + table[0][0].offsetWidth / 2) + 'px');
+                    }
+
+
+
+
+
+                }
                 if (chartdata.export.showexport == true) {
                     var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:35px ;height:20px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
     options = select.selectAll('option').data(chartdata.export.format); // Data join
@@ -42,11 +162,19 @@ var bubble2D = function (chartId, chartdata, chartType) {
 
 
                 }
+
+                if (chartdata.tableshow.show == true) {
+                    var databutton = d3.select(chartId).append("button").on("click", generatetabledisplay).attr('style', 'float:right;position:relative;top:35px ;height:20px;border: 0px;margin-right:5px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px').text('Data');
+
+
+
+                }
             }
 
 
             if (d3.select(chartId).select('svg')[0][0] != null)
                 d3.select(chartId).select('svg').remove();
+
             var svg = d3.select(chartId).append('svg')
 					.attr('width', '100%')
 					.attr('height', '100%')
@@ -170,7 +298,7 @@ var bubble2D = function (chartId, chartdata, chartType) {
                 if (chartdata.chart.fillinside == 'none')
                     return 3;
             })
-        
+
             .on("mouseover", function (d, i) {
                 this.style.cursor = 'pointer';
                 d3.selectAll(chartId + ' .' + d.className).style('opacity', 1);
@@ -222,10 +350,10 @@ var bubble2D = function (chartId, chartdata, chartType) {
         .style('fill', function (d, i) {
             return color(i);
         })
-             .on("mousedown", function (d, i) { 
-                     if(chartdata.click != undefined && chartdata.click != '')
+             .on("mousedown", function (d, i) {
+                 if (chartdata.click != undefined && chartdata.click != '')
                      chartdata.click(d);
-                    })
+             })
             .on("mouseover", function (d, i) {
                 this.style.cursor = 'pointer';
                 d3.selectAll(chartId + ' .' + d.className).style('opacity', 1)
@@ -339,6 +467,9 @@ var bubble2D = function (chartId, chartdata, chartType) {
                         getBase64FromImageUrl(chartdata.chart.credits.imageurl);
                     }
                 }
+            }
+            if (enabletrue) {
+                generatetabledisplay();
             }
         }
         else {

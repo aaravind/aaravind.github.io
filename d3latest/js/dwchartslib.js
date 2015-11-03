@@ -877,7 +877,7 @@ var columndata = {
         ,
         {
             "label": "10-08-15",
-            "value": -2.05671,
+            "value": 2.05671,
 
             "tooltip":[['Snapdeal','100'],['Your Price','100'],['% Diff','11']]
         }
@@ -1528,31 +1528,37 @@ d3charts("StackedColumn2D","#stackedcolumn", stackedcolumn);
 var bubbledata = {
     "chart": {
         "caption": "Bubble Chart", //Name of the chart Header
-        "captionColor":"black", // Color of the Chart Header
+        "captionColor": "black", // Color of the Chart Header
 
         "yaxisname": "", // Name which gets displayed in the Yaxis
-        "slant":false, // X axis label slant
-        "slantdegree":"90", // Slant based on the degree specified
-          "credits":{            // Credits
-            "text":"Powered By", // Credit Name
-            "color":"#666",
-            "imageurl":"../images/logo.png"
+        "slant": false, // X axis label slant
+        "slantdegree": "90", // Slant based on the degree specified
+        "credits": {            // Credits
+            "text": "Powered By", // Credit Name
+            "color": "#666",
+            "imageurl": "../images/logo.png"
         },
-        "fillinside":"none", // fill or none
-         "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"] // Pallette colors for 30 values
+        "fillinside": "none", // fill or none
+        "pallattecolor": ["#008ee4", "#E94C3D", "#26AD5E", "#E77E22", "#2B80B9", "#F39C11", "#F2C40F", "#179F87", "#2D3E50", "#9045AE", "#5CADE2", "#2ECD71", "#BE3A2B", "#C85600", "#7E8C8D", "#9A59B5", "#34495E", "#BEC3C7", "#EC0000", "#BE3243", "#FF3243", "#BE0043", "#BE32FF", "#CC3243", "#BECC43", "#BE324C", "#f8bd19", "#e44a00", "#008FF4", "#33bdda", "#6baa01", "#583e78"] // Pallette colors for 30 values
     },
-    "export":{
+    "export": {
         "showexport": true,
-         "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
+        "format": ["-Download-", "jpeg", "png"] //Specify Format to export.Currently support jpeg,png
     },
-    "click":function(data){
-    alert(data.name);},
-    "data":  [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
+    "click": function (data) {
+        alert(data.name);
+    },
+    "tableshow": {
+        "show":true,
+        "divheight":'500px',
+        "noofrows":5
+    },
+    "data": [ // Specify in label and value pairs for Single Type Charts.Specify category,label and value for Multi type charts
         {
 
-            "label": "Palladiumasdasdasdasdasd",
-            "value": 56.1232
-        },
+        "label": "Palladiumasdasdasdasdasd",
+        "value": 56.1232
+    },
         {
             "label": "Lead",
             "value": 23
@@ -1605,11 +1611,11 @@ var bubbledata = {
         {
             "label": "Tin",
             "value": 44
-        } ,
+        },
         {
             "label": "Plastic",
             "value": 55
-        } ,
+        },
         {
             "label": "Glass",
             "value": 89
@@ -1618,9 +1624,9 @@ var bubbledata = {
             "label": "Steel",
             "value": 23
         },
-      
 
-        
+
+
 
     ]
 }
