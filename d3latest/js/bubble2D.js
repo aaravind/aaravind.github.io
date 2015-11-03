@@ -104,6 +104,7 @@ var bubble2D = function (chartId, chartdata, chartType) {
       .style('text-align', 'left')
       .style('padding', '4px 2px')
       .style('border', '1px solid #dde4e6')
+       .style('width', '150px')
 	    .text(function (d) { return d.toUpperCase() })
 
                         var rows = tbody.selectAll('tr')
