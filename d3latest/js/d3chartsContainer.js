@@ -35,4 +35,6 @@ var d3charts = function (chartType, chartId, chartdata, chartwidth, chartheight)
         calender2D(chartId, chartdata,chartType);
         if (chartType == 'Bilevel2D')
         bilevel2D(chartId, chartdata,chartType,chartwidth);
+            if (chartType == 'Pricing2D')
+        pricing2D(chartId, chartdata,chartType,chartwidth);
 };

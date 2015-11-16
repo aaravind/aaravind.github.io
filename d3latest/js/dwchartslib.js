@@ -58,6 +58,7 @@ window.onresize = function (event) {
                  redrawchart("CalenderSingleView2D", "#calendersingleview", calenderSingledata);
                 redrawchart("Bilevel2D", "#bilevel", bileveldata);
                     redrawchart("WeekHour2D", "#weekhour", hourlydata);
+                    d3charts("Pricing2D", "#pricing", pricing);
 };
 
 var linedata = {
@@ -3607,3 +3608,67 @@ var bubbledata = {
     }
 
     d3charts("WeekHour2D", "#weekhour", hourlydata);
+
+
+
+    var pricing = {
+    "chart": {
+        "caption": "Pricing chart", //Name of the chart Header
+        "captionColor":"black", // Color of the Chart Header
+         "subcaption": "More Info",
+        "subcaptionColor":"black",
+        "yaxisname": "", // Name which gets displayed in the Yaxis
+        "slant":false, // X axis label slant
+        "slantdegree":"90", // Slant based on the degree specified
+          "credits":{            // Credits
+            "text":"Powered By", // Credit Name
+            "color":"#666",
+            "imageurl":"../images/logo.png"
+        },
+          "tickinterval":5, // Number of label visible in the X axis
+         "pallattecolor":["#ff3232","#ff7f7f","#00b200","#004c00","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"] // Pallette colors for 30 values
+    },
+    "rectheight":50,
+    "export":{
+        "showexport": true,
+         "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
+    },
+    "data":  [
+        {
+
+            "label": "Snapdeal",
+            "value": 10
+        },
+         {
+
+            "label": "shopclues",
+            "value": 15
+        },
+        {
+            "label": "flipkart",
+            "value": 23,
+            "flag":true
+        },
+        {
+            "label": "Amazon",
+            "value": 67
+
+        }
+        ,
+        {
+            "label": "Rediff",
+            "value": 87
+        }
+        ,
+        {
+            "label": "Paytm",
+            "value": 100
+        }
+      
+
+
+        
+
+    ]
+}
+    d3charts("Pricing2D", "#pricing", pricing);
