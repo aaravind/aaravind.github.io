@@ -378,7 +378,11 @@ var calender2D = function (chartId, chartdata, chartType) {
 
             else {
                 //weekhour chart goes here
-
+                if (chartdata.chart.valuerank) {
+                    var colorweek = d3.scale.linear()
+    .domain([chartdata.chart.lowrank, chartdata.chart.maxrank])
+    .range([chartdata.chart.pallattecolor[0], chartdata.chart.pallattecolor[1]]);
+                }
                 var dayLabels = svg.selectAll(".dayLabel")
           .data(weekdays)
           .enter().append("text")
@@ -388,20 +392,20 @@ var calender2D = function (chartId, chartdata, chartType) {
                 return ((i) * gridSize) + 30 + gridSize / 2;
             })
             .style("text-anchor", "end")
-             .style('display', function (d,i) {
-                if (chartcontent[0][0].offsetWidth < 800) {
-        
-                            if (i % 3 == 0 || i == 0)
-                                return "block"
-                            else
-                                return "none"
-                        
-                   
-                }
-                else {
-                    return "block";
-                }
-            }
+             .style('display', function (d, i) {
+                 if (chartcontent[0][0].offsetWidth < 800) {
+
+                     if (i % 3 == 0 || i == 0)
+                         return "block"
+                     else
+                         return "none"
+
+
+                 }
+                 else {
+                     return "block";
+                 }
+             }
             )
             .attr("transform", "translate(10,0)")
             .attr("class", function (d, i) { return ((i >= 0 && i <= 4) ? "dayLabel mono axis axis-workweek" : "dayLabel mono axis"); });
@@ -418,15 +422,15 @@ var calender2D = function (chartId, chartdata, chartType) {
                 else
                     return "end";
             })
-            .style('display', function (d,i) {
+            .style('display', function (d, i) {
                 if (chartcontent[0][0].offsetWidth < 800) {
-        
-                            if (i % 4 == 0 || i == 0 || i == 23)
-                                return "block"
-                            else
-                                return "none"
-                        
-                   
+
+                    if (i % 4 == 0 || i == 0 || i == 23)
+                        return "block"
+                    else
+                        return "none"
+
+
                 }
                 else {
                     return "block";
@@ -437,66 +441,95 @@ var calender2D = function (chartId, chartdata, chartType) {
             .attr("class", function (d, i) { return ((i >= 7 && i <= 16) ? "timeLabel mono axis axis-worktime" : "timeLabel mono axis"); });
 
                 var cards = svg.selectAll(".hour")
-              .data(chartdata.data);
+                .data(chartdata.data);
 
                 cards.append("title");
 
                 cards.enter().append("rect")
-              .attr("x", function (d) { return ((d.hour - 1) * gridSize) + 15; })
-              .attr("y", function (d) { return ((d.day - 1) * gridSize) + 30; })
-              .attr("class", function (d) { return "hourclass" + d.category.replace(/[^a-zA-Z0-9]/g, "") + " hour bordered" })
-              .attr("width", gridSize)
-              .attr("height", gridSize)
-              .attr('data-visibility', 'true')
-              .style("opacity", '0.5')
-              .style("stroke", 'lightgray')
-              .style("stroke-width", '1px')
-              .style("fill", function (d, i) {
-                  if (chartdata.colormap != undefined && chartdata.colormap != '') {
-                      for (i = 0; i < chartdata.colormap.length; i++) {
-                          if (d.category == chartdata.colormap[i].name)
-                              return chartdata.colormap[i].value;
-                      }
-                  }
-                  else
-                      return 'black';
-              })
-               .on("mouseover", function (d, i) {
-             this.style.cursor = 'pointer';
-             this.style.opacity = 1;
-             div.transition()
+                .attr("x", function (d) { return ((d.hour - 1) * gridSize) + 15; })
+                .attr("y", function (d) { return ((d.day - 1) * gridSize) + 30; })
+                .attr("class", function (d) {
+                    if (chartdata.chart.valuerank != undefined && chartdata.chart.valuerank != true)
+                        return "hourclass" + d.category.replace(/[^a-zA-Z0-9]/g, "") + " hour bordered";
+                    else
+                        return "hourclass rank" + d.value + " hour bordered";
+                })
+                .attr("width", gridSize)
+                .attr("height", gridSize)
+                .attr('data-visibility', 'true')
+                .style("opacity", '0.5')
+                .style("stroke", 'lightgray')
+                .style("stroke-width", '1px')
+                .style("fill", function (d, i) {
+                    if (chartdata.chart.valuerank == undefined || chartdata.chart.valuerank == false) {
+                        if (chartdata.colormap != undefined && chartdata.colormap != '') {
+                            for (i = 0; i < chartdata.colormap.length; i++) {
+                                if (d.category == chartdata.colormap[i].name)
+                                    return chartdata.colormap[i].value;
+                            }
+                        }
+                        else
+                            return 'black';
+                    }
+                    else {
+                        if (d.value == 0)
+                            return 'lightgrey';
+                        else
+                            return colorweek(d.value);
+                    }
+
+                })
+                .on("mouseover", function (d, i) {
+                    this.style.cursor = 'pointer';
+                    this.style.opacity = 1;
+
+                    div.transition()
                 .duration(100)
                 .style("opacity", .9);
 
-             var xattr = bodyRect = elemRect = yattr = 0;
-             var bodyRect = document.body.getBoundingClientRect();
-             var elemRect = this.getBoundingClientRect();
+                    var xattr = bodyRect = elemRect = yattr = 0;
+                    var bodyRect = document.body.getBoundingClientRect();
+                    var elemRect = this.getBoundingClientRect();
 
-             var yattr = (elemRect.top - bodyRect.top) + 'px';
-             //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
- 
-                 var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">'+d.category+ ' : ' + d.value + '</span><br>';
-             
-             var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
-             div.html(htmlcontent)
-       .style("left", function (d) {
-           if (xattr.replace('px', '') / 1 < window.innerWidth / 2)
-               return (xattr.replace('px', '') / 1 + this.getAttribute('width') / 2) + 'px';
-           else
-               return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth - (elemRect.right - elemRect.left + 5)) + 'px';
-       })
+                    var yattr = (elemRect.top - bodyRect.top) + 'px';
+                    //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
+                    if (chartdata.chart.valuerank != undefined && chartdata.chart.valuerank != true)
+                        var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.category + ' : ' + d.value + '</span><br>';
+                    else {
+                        if (d.value != 0) { 
+                         var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Rank' + ' : ' + d.value + '</span><br>';
+                        }
+                        else
+                         var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Rank' + ' : ' + 'N/A'+ '</span><br>';
+                    }
+                   
+                    var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
+                    div.html(htmlcontent)
+                .style("left", function (d) {
+                    if (xattr.replace('px', '') / 1 < window.innerWidth / 2)
+                        return (xattr.replace('px', '') / 1 + this.getAttribute('width') / 2) + 'px';
+                    else
+                        return (xattr.replace('px', '') / 1 - div[0][0].offsetWidth - (elemRect.right - elemRect.left + 5)) + 'px';
+                })
                 .style("top", yattr);
-         })
-            .on("mouseout", function (d, i) {
-                this.style.cursor = 'pointer';
-                this.style.opacity = 0.5;
-                div.transition()
+
+
+                })
+                .on("mouseout", function (d, i) {
+                    this.style.cursor = 'pointer';
+                    this.style.opacity = 0.5;
+                    div.transition()
                 .duration(100)
                 .style("opacity", 0);
-            });
+                });
 
 
                 cards.select("title").text(function (d) { return d.value; });
+
+
+
+
+
             }
             if (chartdata.chart.showlegend) {
 
@@ -506,7 +539,11 @@ var calender2D = function (chartId, chartdata, chartType) {
                 legendgroup.append('g')
             .append('rect')
             .attr('width', '85')
-            .attr('height', chartdata.colormap.length * 15)
+            .attr('height', function (d) {
+
+                return chartdata.colormap.length * 15;
+
+            })
             .attr('fill', 'rgb(255, 255, 255)')
             .attr('x', width - 5)
             .attr('y', 22.5)
@@ -545,21 +582,24 @@ var calender2D = function (chartId, chartdata, chartType) {
             return d.value;
         })
         .on("click", function (d, i) {
-            if (chartType != 'WeekHour2D')
-                var barselect = 'calenderclass' + d.name.replace(/[^a-zA-Z0-9]/g, "");
-            else
-                var barselect = 'hourclass' + d.name.replace(/[^a-zA-Z0-9]/g, "");
-            this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
-            if (d3.selectAll('.' + barselect).style('fill') != 'none') {
-                d3.selectAll('.' + barselect).attr("data-visibility", "false");
-                d3.selectAll('.' + barselect).style('fill', 'none');
+            if (chartType != 'WeekHour2D') {
+                if (chartType != 'WeekHour2D')
+                    var barselect = 'calenderclass' + d.name.replace(/[^a-zA-Z0-9]/g, "");
+                else
+                    var barselect = 'hourclass' + d.name.replace(/[^a-zA-Z0-9]/g, "");
+                this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
+                if (d3.selectAll('.' + barselect).style('fill') != 'none') {
+                    d3.selectAll('.' + barselect).attr("data-visibility", "false");
+                    d3.selectAll('.' + barselect).style('fill', 'none');
+                }
+
+                else {
+                    this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
+                    d3.selectAll('.' + barselect).attr("data-visibility", "true");
+                    d3.selectAll('.' + barselect).style('fill', d.value);
+                }
             }
 
-            else {
-                this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
-                d3.selectAll('.' + barselect).attr("data-visibility", "true");
-                d3.selectAll('.' + barselect).style('fill', d.value);
-            }
 
         })
          .on("mouseover", function (d, i) {
