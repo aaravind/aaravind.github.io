@@ -383,8 +383,24 @@ var calender2D = function (chartId, chartdata, chartType) {
     .domain([chartdata.chart.lowrank, chartdata.chart.maxrank])
     .range([chartdata.chart.pallattecolor[0], chartdata.chart.pallattecolor[1]]);
                 }
+                if (chartdata.chart.weekstartdate != undefined && chartdata.chart.weekstartdate != '') {
+                    weekhourarray = [];
+                    for (i = 0; i < 7; i++) {
+                        var newdatecur1 = new Date(chartdata.chart.weekstartdate);
+                        var datetempcur1 = newdatecur1;
+                        datetempcur1.setDate(datetempcur1.getDate() + i);
+                        var weekdayfind = datetempcur1.toDateString();
+                        weekdayfind = weekdayfind.substring(0, 2);
+                        weekhourarray.push(weekdayfind);
+                    }
+
+                }
+                else if (chartdata.chart.weekarray != undefined && chartdata.chart.weekarray.length != 0)
+                    var weekhourarray = chartdata.chart.weekarray;
+                else
+                    var weekhourarray = weekdays;
                 var dayLabels = svg.selectAll(".dayLabel")
-          .data(weekdays)
+          .data(weekhourarray)
           .enter().append("text")
             .text(function (d) { return d; })
             .attr("x", 0)
@@ -496,13 +512,31 @@ var calender2D = function (chartId, chartdata, chartType) {
                     if (chartdata.chart.valuerank != undefined && chartdata.chart.valuerank != true)
                         var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.category + ' : ' + d.value + '</span><br>';
                     else {
-                        if (d.value != 0) { 
-                         var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Rank' + ' : ' + d.value + '</span><br>';
+                        var htmlcontent = '';
+                        if (d.value != 0) {
+                            if (chartdata.chart.weekstartdate != undefined && chartdata.chart.weekstartdate != '') {
+                                var newdatecur = new Date(chartdata.chart.weekstartdate);
+                                var datetempcur = newdatecur;
+                                datetempcur.setDate(datetempcur.getDate() + d.day - 1);
+                                dateformated = datetempcur.getDate() + '-' + (datetempcur.getMonth() + 1) + '-' + datetempcur.getFullYear();
+                                htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Date' + ' : ' + dateformated + '</span><br><hr>';
+                            }
+                            htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Rank' + ' : ' + d.value + '</span><br>';
                         }
-                        else
-                         var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Rank' + ' : ' + 'N/A'+ '</span><br>';
+                        else {
+                            if (chartdata.chart.weekstartdate != undefined && chartdata.chart.weekstartdate != '') {
+                                var newdatecur = new Date(chartdata.chart.weekstartdate);
+                                var datetempcur = newdatecur;
+                                datetempcur.setDate(datetempcur.getDate() + d.day - 1);
+                                dateformated = datetempcur.getDate() + '-' + (datetempcur.getMonth() + 1) + '-' + datetempcur.getFullYear();
+
+                                htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Date' + ' : ' + dateformated + '</span><br><hr>';
+                            }
+                            var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Rank' + ' : ' + 'N/A' + '</span><br>';
+                        }
+
                     }
-                   
+
                     var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
                     div.html(htmlcontent)
                 .style("left", function (d) {
