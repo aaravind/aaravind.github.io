@@ -89,7 +89,7 @@ var calender2D = function (chartId, chartdata, chartType) {
           hourtimes = ["1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a", "12a", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p", "12p"];
                 d3.select(chartId).style('height', gridSize * 7 + 100 + 'px');
                 height = gridSize * 7 + 100;
-                 cellSize = (chartcontent[0][0].offsetWidth / 60) - 0.5;
+                cellSize = (chartcontent[0][0].offsetWidth / 60) - 0.5;
 
             }
             else {
@@ -104,7 +104,7 @@ var calender2D = function (chartId, chartdata, chartType) {
 
             var shift_up = cellSize * 5;
             var div = d3.select("body").append("div")
-    .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black");
+    .attr("style", " position: absolute;opacity:0;text-align: left;max-width: 200px;height: auto;padding: 8px 12px;font: 12px sans-serif;background: white;border: 1px solid lightgrey;border-radius: 3px;pointer-events: none;color:black;z-index:999999");
 
             var day = d3.time.format("%w"), // day of the week
         day_of_month = d3.time.format("%e") // day of the month
@@ -519,8 +519,10 @@ var calender2D = function (chartId, chartdata, chartType) {
                             if (chartdata.chart.weekstartdate != undefined && chartdata.chart.weekstartdate != '') {
                                 var newdatecur = new Date(chartdata.chart.weekstartdate);
                                 var datetempcur = newdatecur;
+                                
                                 datetempcur.setDate(datetempcur.getDate() + d.day - 1);
-                                dateformated = datetempcur.getDate() + '-' + (datetempcur.getMonth() + 1) + '-' + datetempcur.getFullYear();
+                                 var montrial = datetempcur.getMonth() + 1;
+                                dateformated = (datetempcur.getDate().toString().length == 1 ? ('0' + datetempcur.getDate()) : datetempcur.getDate()) + '-' + (montrial.toString().length == 1 ? ('0' + montrial) : montrial) + '-' + datetempcur.getFullYear();
                                 htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Date' + ' : ' + dateformated + '</span><br><hr>';
                             }
                             htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Rank' + ' : ' + d.value + '</span><br>';
@@ -529,8 +531,10 @@ var calender2D = function (chartId, chartdata, chartType) {
                             if (chartdata.chart.weekstartdate != undefined && chartdata.chart.weekstartdate != '') {
                                 var newdatecur = new Date(chartdata.chart.weekstartdate);
                                 var datetempcur = newdatecur;
+                               
                                 datetempcur.setDate(datetempcur.getDate() + d.day - 1);
-                                dateformated = datetempcur.getDate() + '-' + (datetempcur.getMonth() + 1) + '-' + datetempcur.getFullYear();
+                                 var montrial = datetempcur.getMonth() + 1;
+                                dateformated = (datetempcur.getDate().toString().length == 1 ? ('0' + datetempcur.getDate()) : datetempcur.getDate()) + '-' + (montrial.toString().length == 1 ? ('0' + montrial) : montrial) + '-' + datetempcur.getFullYear();
 
                                 htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Date' + ' : ' + dateformated + '</span><br><hr>';
                             }
