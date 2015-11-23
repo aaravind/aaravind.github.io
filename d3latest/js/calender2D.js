@@ -475,7 +475,7 @@ var calender2D = function (chartId, chartdata, chartType) {
                 .attr("width", gridSize)
                 .attr("height", gridSize)
                 .attr('data-visibility', 'true')
-                .style("opacity", '0.5')
+                .style("opacity", '0.8')
                 .style("stroke", 'lightgray')
                 .style("stroke-width", '1px')
                 .style("fill", function (d, i) {
@@ -557,7 +557,7 @@ var calender2D = function (chartId, chartdata, chartType) {
                 })
                 .on("mouseout", function (d, i) {
                     this.style.cursor = 'pointer';
-                    this.style.opacity = 0.5;
+                    this.style.opacity = 0.8;
                     div.transition()
                 .duration(100)
                 .style("opacity", 0);
