@@ -6,7 +6,10 @@ var calender2D = function (chartId, chartdata, chartType) {
                 chartType = 'CalenderMultiView2D';
             }
             var margin = { top: 20, right: 12, bottom: 20, left: 12 };
-            var width = chartcontent[0][0].offsetWidth - 100;
+            if (chartType != 'WeekHour2D')
+                var width = chartcontent[0][0].offsetWidth - 100;
+            else
+                var width = chartcontent[0][0].offsetWidth - 5;
             var height = chartcontent[0][0].offsetHeight;
             var no_months_in_a_row;
             if (chartType == 'CalenderMultiView2D') {
@@ -118,6 +121,7 @@ var calender2D = function (chartId, chartdata, chartType) {
                 d3.select(chartId).select('svg').remove();
             if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
                 function change() {
+                    
                     var selectedIndex = select.property('selectedIndex'),
         data = options[0][selectedIndex].__data__;
                     if (selectedIndex != 0) {
@@ -162,7 +166,12 @@ var calender2D = function (chartId, chartdata, chartType) {
          .append("svg")
        .attr('width', '100%')
 					.attr('height', '100%')
-                       .attr('viewBox', '0 0 ' + (width + 100) + ' ' + (height))
+                       .attr('viewBox',function (d) {
+                           if (chartType == 'WeekHour2D')
+                               return '0 0 ' + (width + 15) + ' ' + (height);
+                           else
+                               return '0 0 ' + (width + 100) + ' ' + (height);
+                       })
         .attr('preserveAspectRatio', 'xMinYMin')
         .attr("class", 'calenderclass' + "RdYlGn")
       .append("g")
@@ -170,7 +179,7 @@ var calender2D = function (chartId, chartdata, chartType) {
              /*if (chartcontent[0][0].offsetWidth < 450)
              return "translate(" + (chartcontent[0][0].offsetWidth - 40) + "," + margin.top + ") " + " rotate(90)";
              else*/
-             return "translate(" + margin.left + "," + margin.top + ") ";
+             return "translate(" + margin.left + "," + (margin.top + 10) + ") ";
          });
 
             }
@@ -178,7 +187,12 @@ var calender2D = function (chartId, chartdata, chartType) {
 
             svg.append("text")
         .attr("x", 0)
-        .attr("y", 10)
+        .attr("y", function (d) {
+            if (chartType != 'WeekHour2D')
+                return 10;
+            else
+                return 5;
+        })
         .attr('class', 'captiontext')
         .attr("text-anchor", "start")
         .style("font-size", "18px")
@@ -519,9 +533,9 @@ var calender2D = function (chartId, chartdata, chartType) {
                             if (chartdata.chart.weekstartdate != undefined && chartdata.chart.weekstartdate != '') {
                                 var newdatecur = new Date(chartdata.chart.weekstartdate);
                                 var datetempcur = newdatecur;
-                                
+
                                 datetempcur.setDate(datetempcur.getDate() + d.day - 1);
-                                 var montrial = datetempcur.getMonth() + 1;
+                                var montrial = datetempcur.getMonth() + 1;
                                 dateformated = (datetempcur.getDate().toString().length == 1 ? ('0' + datetempcur.getDate()) : datetempcur.getDate()) + '-' + (montrial.toString().length == 1 ? ('0' + montrial) : montrial) + '-' + datetempcur.getFullYear();
                                 htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Date' + ' : ' + dateformated + '</span><br><hr>';
                             }
@@ -531,9 +545,9 @@ var calender2D = function (chartId, chartdata, chartType) {
                             if (chartdata.chart.weekstartdate != undefined && chartdata.chart.weekstartdate != '') {
                                 var newdatecur = new Date(chartdata.chart.weekstartdate);
                                 var datetempcur = newdatecur;
-                               
+
                                 datetempcur.setDate(datetempcur.getDate() + d.day - 1);
-                                 var montrial = datetempcur.getMonth() + 1;
+                                var montrial = datetempcur.getMonth() + 1;
                                 dateformated = (datetempcur.getDate().toString().length == 1 ? ('0' + datetempcur.getDate()) : datetempcur.getDate()) + '-' + (montrial.toString().length == 1 ? ('0' + montrial) : montrial) + '-' + datetempcur.getFullYear();
 
                                 htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Date' + ' : ' + dateformated + '</span><br><hr>';
@@ -578,15 +592,33 @@ var calender2D = function (chartId, chartdata, chartType) {
             .attr('class', 'legendgroup');
                 legendgroup.append('g')
             .append('rect')
-            .attr('width', '85')
+            .attr('width', function (d) {
+                if (chartType != 'WeekHour2D')
+                    return '85';
+                else
+                    return '153';
+            })
             .attr('height', function (d) {
+                if (chartType != 'WeekHour2D')
+                    return chartdata.colormap.length * 15;
+                else
+                    return '21';
 
-                return chartdata.colormap.length * 15;
 
             })
             .attr('fill', 'rgb(255, 255, 255)')
-            .attr('x', width - 5)
-            .attr('y', 22.5)
+            .attr('x', function (d) {
+                if (chartType != 'WeekHour2D')
+                    return width - 5;
+                else
+                    return 15.5;
+            })
+            .attr('y', function (d) {
+                if (chartType != 'WeekHour2D')
+                    return 22.5;
+                else
+                    return gridSize * 7 + 32.5;
+            })
             .attr('stroke', 'lightgrey');
 
                 var legend = legendgroup.selectAll('.legend')
@@ -595,20 +627,60 @@ var calender2D = function (chartId, chartdata, chartType) {
       .append('g')
         .attr('class', 'legend');
                 legend.append('rect')
-        .attr('x', width)
-        .attr('y', function (d, i) { return (i + 1) * 15 + 10; })
+        .attr('x', function (d, i) {
+            if (chartType != 'WeekHour2D')
+                return width;
+            else {
+                if (i == 0)
+                    return 22.5;
+                else
+                    return (i + 1) * 50 - 22.5;
+            }
+
+        })
+        .attr('y', function (d, i) {
+
+            if (chartType != 'WeekHour2D')
+                return (i + 1) * 15 + 10;
+            else
+                return (1) * 15 + 12.5 + (gridSize * 7 + 10);
+        })
          .attr('rx', 20)
         .attr('ry', 20)
         .attr('width', 10)
         .attr('height', 10)
-        .style('opacity', 0.7)
+        .style('opacity', function (d) {
+            if (chartType != 'WeekHour2D')
+                return 0.7;
+            else
+                return 0.8;
+
+
+        })
         .style('fill', function (d, i) {
             return d.value;
         });
 
                 legend.append('text')
-        .attr('x', width + 12)
-        .attr('y', function (d, i) { return ((i + 1) * 15) + 9 + 10; })
+        .attr('x', function (d, i) {
+            if (chartType != 'WeekHour2D')
+                return width + 12;
+            else {
+                if (i == 0)
+                    return 37.5;
+                else
+                    return (i + 1) * 50 - 8.5;
+            }
+
+        })
+        .attr('y', function (d, i) {
+
+            if (chartType != 'WeekHour2D')
+                return ((i + 1) * 15) + 9 + 10;
+            else
+                return ((1) * 15) + 9 + 12.5 + (gridSize * 7 + 10);
+
+        })
         .text(function (d) {
             if (d.name.length > 10)
                 return d.name.substr(0, 10).toUpperCase() + '...';
@@ -616,18 +688,31 @@ var calender2D = function (chartId, chartdata, chartType) {
                 return d.name.toUpperCase();
         })
          .style('text-transform', 'uppercase')
-         .style('opacity', 0.4)
+         .style('opacity', function (d) {
+             if (chartType != 'WeekHour2D')
+                 return 0.4;
+             else
+                 return 0.8;
+
+
+         })
         .style('font-size', '12px')
         .style('fill', function (d, i) {
             return d.value;
         })
         .on("click", function (d, i) {
             if (chartType != 'WeekHour2D') {
-                if (chartType != 'WeekHour2D')
+                if (chartType != 'WeekHour2D') {
                     var barselect = 'calenderclass' + d.name.replace(/[^a-zA-Z0-9]/g, "");
-                else
+                    this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
+                }
+
+                else {
                     var barselect = 'hourclass' + d.name.replace(/[^a-zA-Z0-9]/g, "");
-                this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
+                    this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.8;
+                }
+
+
                 if (d3.selectAll('.' + barselect).style('fill') != 'none') {
                     d3.selectAll('.' + barselect).attr("data-visibility", "false");
                     d3.selectAll('.' + barselect).style('fill', 'none');
@@ -648,7 +733,12 @@ var calender2D = function (chartId, chartdata, chartType) {
          })
           .on("mouseout", function (d, i) {
               this.style.cursor = 'pointer';
-              this.style.opacity = 0.4;
+              if (chartType != 'WeekHour2D') {
+                  this.style.opacity = 0.4;
+              }
+              else {
+                  this.style.opacity = 0.8;
+              }
           });
 
             };
@@ -668,8 +758,20 @@ var calender2D = function (chartId, chartdata, chartType) {
                     credits.append('text')
             .attr("class", 'credits' + chartId.replace("#", ''))
                     // .attr("x", d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1)
-           .attr("x", document.getElementById(chartId.replace('#', '')).offsetWidth - positionwidth - 70)
-            .attr("y", height + margin.bottom - 58)
+           .attr("x", function (d) {
+               if (chartType != 'WeekHour2D') {
+                   return document.getElementById(chartId.replace('#', '')).offsetWidth - positionwidth - 70;
+               }
+               else
+                   return document.getElementById(chartId.replace('#', '')).offsetWidth - positionwidth - 60;
+           })
+            .attr("y", function (d) {
+                if (chartType != 'WeekHour2D') {
+                    return height + margin.bottom - 58;
+                }
+                else
+                    return height + margin.bottom - 58 - 15;
+            })
             .attr("text-anchor", "end")
             .style("font-size", "10px")
             .style("stroke", "#ccc")
@@ -698,8 +800,20 @@ var calender2D = function (chartId, chartdata, chartType) {
 
                                 credits.append('image')
                                 //.attr('x', d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1 - 10)
-            .attr('x', document.getElementById(chartId.replace('#', '')).offsetWidth - imagewidth - 70)
-            .attr("y", height + margin.bottom - 75)
+            .attr('x',function (d) {
+               if (chartType != 'WeekHour2D') {
+                   return document.getElementById(chartId.replace('#', '')).offsetWidth - imagewidth - 70;
+               }
+               else
+                   return document.getElementById(chartId.replace('#', '')).offsetWidth - imagewidth - 60;
+           })
+            .attr("y", function (d) {
+                if (chartType != 'WeekHour2D') {
+                    return height + margin.bottom - 75;
+                }
+                else
+                    return height + margin.bottom - 75 - 15;
+            })
             .attr("width", 40)
             .attr("height", 30)
             .attr("xlink:href", dataURL);
