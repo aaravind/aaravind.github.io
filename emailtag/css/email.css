@@ -1,0 +1,46 @@
+body {
+}
+.emailbox {
+     width: 600px;
+    border: 2px solid lightgrey;
+    border-radius: 3px 3px;
+    position: absolute;
+    min-height: 25px;
+}
+.alignleft {
+    float: left;
+    margin-left: 5px;
+}
+.emailtag,.typenext {
+          height: 25px;
+    max-width: 150px;
+    margin-left: 5px;
+    float: left;
+    padding: 0px 10px 0 10px;
+    background: #dfe1e0;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.emailmax {
+    max-width: 120px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.delete {
+
+    background: #0f88a1;
+    color: white;
+    font-weight: bold;
+    padding: 0px 5px 0px 5px;
+        margin-top: 3px;
+}
+.typenext {
+    background: white;
+    color: black;
+    float: left;
+}
+.emailparent {
+    height: 45px;
+    float: left;
+}
