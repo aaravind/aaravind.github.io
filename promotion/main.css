@@ -1,0 +1,88 @@
+body {
+}
+.promotionimageitem {
+    display: table;
+    border: 1px solid lightgray;
+    padding: 10px 10px;
+}
+.promotionimageitem:hover {
+    box-shadow: 0px 0px 10px 1px lightgrey;
+}
+.promotionimageitem .promotioninner
+{
+        display: table;
+}
+
+.promotionimageitem .overlayimage
+{
+    position: absolute;
+     z-index: 100;
+         opacity: 0.9;
+       font-weight: 900;
+        color: white;
+         cursor: pointer;
+          width: 400px;
+           height: 100%; 
+           display: none;
+            font-size: 12px;
+             background: rgb(81, 81, 81);
+             z-index: 1;
+}
+
+.promotionimageitem .overlaytextabout {
+        /* line-height: 1.1; */
+    /* background: #515151; */
+    /* bottom: 26px; */
+    /* position: absolute; */
+    width: 100%;
+    height: inherit;
+    display: table;
+}
+
+.promotionimageitem .overlaytextinside {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: relative;
+    /* width: 50px; */
+}
+.overlaytextinside.left {
+    float: left;
+    padding: 15px;
+}
+.overlaytextinside.right {
+float: right;
+    padding: 5px 10px;
+    background: black;
+    margin-right: 15px;
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+.promotionimageitem .imageactual {
+width: 250px;
+    height: auto;
+}
+.promotionimageitem .image_act {
+     background: url('active_inactive.png');
+    background-size: 100px 50px;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    position: relative;
+    margin-top: -30px;
+    /* margin-bottom: 0; */
+    /* margin-left: 25%; */
+    z-index: 10;
+}
+
+.promotionimageitem .textdesc .head{
+    padding: 0px 10px 10px 10px;
+    color: #35bcff;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.promotionimageitem .textdesc .sub{
+       color: black;
+    font-size: 1em;
+    padding: 0px 10px 10px 10px;
+}
