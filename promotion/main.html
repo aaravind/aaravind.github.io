@@ -7,8 +7,17 @@
     <body>
         <script>
               function fixparentheight(asd) {
+            if(asd.offsetWidth < 150){
+            var nodeelmt = asd.parentElement.children[0];
+            nodeelmt.getElementsByClassName('overlaytextinside')[1].style.float = 'left';
+            nodeelmt.getElementsByClassName('overlaytextinside')[1].style.paddingTop = '0px';
+             nodeelmt.getElementsByClassName('overlaytextinside')[0].style.paddingBottom = '0px';
+            nodeelmt.getElementsByClassName('overlaytextinside')[1].style.marginLeft = '15px';
+
+            }
    asd.parentElement.firstElementChild.style.height = asd.offsetHeight +'px'; 
              asd.parentElement.firstElementChild.style.width = asd.offsetWidth +'px'; 
+            asd.parentElement.lastElementChild.style.maxWidth = asd.offsetWidth +'px';
     }
             </script>
       <div class="promotionimageitem">
@@ -18,12 +27,41 @@
 <div class="overlaytextinside left">Dimension<br>1920 * 350</div><div class="overlaytextinside right">1</div>
                         </div>
                         </div>
-                        <img src="horizontal.jpg" class="imageactual"onload="fixparentheight(this)">
+                        <img src="horizontal.jpg" width="250px" height="auto" class="imageactual"onload="fixparentheight(this)">
                        <div class="image_act" style="visibility: hidden"></div>
                         <div class="textdesc">
                         <div class="head">Amazon</div><div class="sub"><strong>Category</strong> Men Shoes</div></div>
         </div>
-                 
+                 </div>
+
+          <div class="promotionimageitem">
+					<div class="promotioninner">
+                        <div class="overlayimage">
+                            <div class="overlaytextabout">                         
+<div class="overlaytextinside left">Dimension<br>1920 * 350</div><div class="overlaytextinside right">1</div>
+                        </div>
+                        </div>
+                        <img src="horizontal.jpg" width="250px" height="auto" class="imageactual"onload="fixparentheight(this)">
+                       <div class="image_inact" style="visibility: hidden"></div>
+                        <div class="textdesc">
+                        <div class="head">Amazon</div><div class="sub"><strong>Category</strong> Men Shoes</div></div>
+        </div>
+                 </div>
+
+        <div class="promotionimageitem">
+					<div class="promotioninner">
+                        <div class="overlayimage">
+                            <div class="overlaytextabout">                         
+<div class="overlaytextinside left">Dimension<br>1920 * 350</div><div class="overlaytextinside right">1</div>
+                        </div>
+                        </div>
+                        <img src="verticalimage.jpg" width="100px" height="300px" class="imageactual"onload="fixparentheight(this)">
+                       <div class="image_inact" style="visibility: hidden"></div>
+                        <div class="textdesc">
+                        <div class="head">Amazon</div><div class="sub"><strong>Category</strong> Men Shoes</div></div>
+        </div>
+                 </div>
+
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
         <script src="main.js"></script>
     </body>
