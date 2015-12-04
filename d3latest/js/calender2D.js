@@ -132,6 +132,10 @@ var calender2D = function (chartId, chartdata, chartType) {
                     }
                 }
                 if (chartdata.export.showexport == true) {
+                    if(chartType == 'WeekHour2D')
+                             var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:15px ;height:20px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
+    options = select.selectAll('option').data(chartdata.export.format); // Data join
+    else
                     var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:35px ;height:20px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
     options = select.selectAll('option').data(chartdata.export.format); // Data join
 
@@ -179,7 +183,7 @@ var calender2D = function (chartId, chartdata, chartType) {
              /*if (chartcontent[0][0].offsetWidth < 450)
              return "translate(" + (chartcontent[0][0].offsetWidth - 40) + "," + margin.top + ") " + " rotate(90)";
              else*/
-             return "translate(" + margin.left + "," + (margin.top + 10) + ") ";
+             return "translate(" + margin.left + "," + (10) + ") ";
          });
 
             }
