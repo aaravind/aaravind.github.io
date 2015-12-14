@@ -1,0 +1,200 @@
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333; }
+
+.clear {
+  clear: both; }
+
+.flexbox, .searchcontent, .searchcontent .searchresult .search_image_content .products li {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
+
+.searchcontainer {
+  padding: 20px 20px; }
+  .searchcontainer .logo {
+    font-size: 2em; }
+    .searchcontainer .logo .first {
+      float: left;
+      color: #d04040;
+      font-weight: bold; }
+    .searchcontainer .logo .last {
+      float: left;
+      color: #181818;
+      font-weight: bold; }
+  .searchcontainer .searchbar {
+    color: lightgray;
+    border-bottom: 1px solid lightgray;
+    height: 2.1em; }
+    .searchcontainer .searchbar .searchicon {
+      width: 3%;
+      float: left;
+      font-size: 1.2em;
+      padding: 2px 3px; }
+    .searchcontainer .searchbar .searchtool {
+      width: 90%;
+      float: left;
+      font-size: 1.2em;
+      padding: 1px 3px;
+      margin-left: 2%; }
+      .searchcontainer .searchbar .searchtool input, .searchcontainer .searchbar .searchtool input:focus {
+        border: none;
+        width: 100%;
+        outline: 0; }
+  .searchcontainer .button {
+    background: #fa3d44;
+    color: white;
+    width: 100px;
+    height: 25px;
+    border-radius: 5px 5px;
+    text-align: center;
+    padding: 5px 5px;
+    font-size: 1.3em;
+    float: right;
+    margin-top: -5px; }
+
+.searchcontent {
+  background: #f7eee9;
+  margin-top: 15px;
+  padding: 30px 0px; }
+  @media (min-width: 768px) {
+    .searchcontent .searchcategory .navbar-collapse {
+      height: auto;
+      border-top: 0;
+      box-shadow: none;
+      max-height: none;
+      padding-left: 0;
+      padding-right: 0; }
+      .searchcontent .searchcategory .navbar-collapse .navbar-nav li {
+        text-align: right;
+        font-size: 1.5em;
+        font-weight: bold; }
+        .searchcontent .searchcategory .navbar-collapse .navbar-nav li :hover {
+          color: #fa3d44; }
+      .searchcontent .searchcategory .navbar-collapse .navbar-nav li.active a {
+        color: #fa3d44;
+        background: transparent;
+        border-right: 2px solid #fa3d44; }
+    .searchcontent .searchcategory .navbar-collapse.collapse {
+      display: block !important;
+      width: auto !important;
+      padding-bottom: 0;
+      overflow: visible !important; }
+    .searchcontent .searchcategory .navbar-collapse.in {
+      overflow-x: visible; }
+    .searchcontent .searchcategory .navbar {
+      max-width: 300px;
+      margin-right: 0;
+      margin-left: 0;
+      background: transparent;
+      border: none;
+      border-right: 1px solid #87827c; }
+    .searchcontent .searchcategory .navbar-nav, .searchcontent .searchcategory .navbar-nav > li, .searchcontent .searchcategory .navbar-left, .searchcontent .searchcategory .navbar-right, .searchcontent .searchcategory .navbar-header {
+      float: none !important; }
+    .searchcontent .searchcategory .navbar-right .dropdown-menu {
+      left: 0;
+      right: auto; }
+    .searchcontent .searchcategory .navbar-collapse .navbar-nav.navbar-right:last-child {
+      margin-right: 0; } }
+  .searchcontent .searchresult {
+    background: white;
+    display: table;
+    padding: 0px 0px;
+    margin-top: 20px; }
+    .searchcontent .searchresult .search_image {
+      margin-left: 0px;
+      padding: 0px 0px; }
+      .searchcontent .searchresult .search_image .imagecontainer img {
+        width: 100%;
+        height: 250px; }
+      .searchcontent .searchresult .search_image .imagecontainer .image_bottom {
+        position: absolute;
+        bottom: 0px;
+        color: white;
+        font-size: 1.3em;
+        padding: 10px 5px; }
+        .searchcontent .searchresult .search_image .imagecontainer .image_bottom .image_bottom_content {
+          float: left;
+          margin-left: 10px; }
+          .searchcontent .searchresult .search_image .imagecontainer .image_bottom .image_bottom_content .glyicon, .searchcontent .searchresult .search_image .imagecontainer .image_bottom .image_bottom_content .glycontent {
+            float: left;
+            margin-left: 5px; }
+      .searchcontent .searchresult .search_image .imagecontainer .image_top {
+        position: absolute;
+        top: 0;
+        padding: 8px 15px 10px 18px;
+        background: white;
+        border-radius: 50%;
+        width: 50px;
+        color: red;
+        font-size: 1.2em;
+        margin: 20px; }
+    .searchcontent .searchresult .search_image_content .header {
+      padding: 15px 0px; }
+      .searchcontent .searchresult .search_image_content .header .logo {
+        float: left; }
+        .searchcontent .searchresult .search_image_content .header .logo img {
+          width: 50px; }
+      .searchcontent .searchresult .search_image_content .header .content {
+        float: left;
+        margin-left: 15px;
+        font-size: 2em;
+        font-weight: bold; }
+      .searchcontent .searchresult .search_image_content .header .content.marginnone {
+        margin-left: 0px; }
+    .searchcontent .searchresult .search_image_content .maincontent {
+      font-size: 1.5em;
+      padding: 15px 0px;
+      color: gray; }
+    .searchcontent .searchresult .search_image_content .images {
+      display: table; }
+      .searchcontent .searchresult .search_image_content .images img {
+        width: 17%;
+        height: 75px;
+        float: left;
+        margin-left: 2%; }
+      .searchcontent .searchresult .search_image_content .images .addition {
+        width: 17%;
+        height: 75px;
+        float: left;
+        margin-left: 2%;
+        background: white;
+        border: 1px solid #c17a8a;
+        font-size: 2.5em;
+        color: #c17a8a;
+        padding: 21px; }
+    .searchcontent .searchresult .search_image_content .price {
+      padding: 15px 0px;
+      font-size: 1.5em;
+      color: grey;
+      width: 95%; }
+      .searchcontent .searchresult .search_image_content .price .left {
+        float: left; }
+        .searchcontent .searchresult .search_image_content .price .left .pricetag {
+          color: #c17a8a; }
+      .searchcontent .searchresult .search_image_content .price .right {
+        float: right; }
+        .searchcontent .searchresult .search_image_content .price .right .button {
+          background: #fa3d44;
+          color: white;
+          width: 130px;
+          height: 30px;
+          border-radius: 5px 5px;
+          text-align: center;
+          padding: 5px 5px;
+          font-size: 1.3em;
+          float: right;
+          margin-top: -5px; }
+    .searchcontent .searchresult .search_image_content .products ul {
+      padding: 10px 0px 0px 0px; }
+    .searchcontent .searchresult .search_image_content .products li {
+      border-top: 1px solid lightgray;
+      padding: 5px 0px;
+      color: grey; }
+      .searchcontent .searchresult .search_image_content .products li .right {
+        font-size: 1.5em;
+        padding: 10px 25px; }
+
+/*# sourceMappingURL=control.css.map */
