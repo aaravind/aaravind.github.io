@@ -5,6 +5,10 @@ body {
 .clear {
   clear: both; }
 
+.padleftrightnone {
+  padding-left: 0px;
+  padding-right: 0px; }
+
 .flexbox, .searchcontent, .searchcontent .searchresult .search_image_content .products li {
   display: -webkit-box;
   display: -moz-box;
@@ -59,6 +63,9 @@ body {
   background: #f7eee9;
   margin-top: 15px;
   padding: 30px 0px; }
+  .searchcontent .searchcategory .navbar-default {
+    background: transparent;
+    border: none; }
   @media (min-width: 768px) {
     .searchcontent .searchcategory .navbar-collapse {
       height: auto;
@@ -131,70 +138,81 @@ body {
         color: red;
         font-size: 1.2em;
         margin: 20px; }
-    .searchcontent .searchresult .search_image_content .header {
-      padding: 15px 0px; }
-      .searchcontent .searchresult .search_image_content .header .logo {
-        float: left; }
-        .searchcontent .searchresult .search_image_content .header .logo img {
-          width: 50px; }
-      .searchcontent .searchresult .search_image_content .header .content {
-        float: left;
-        margin-left: 15px;
-        font-size: 2em;
-        font-weight: bold; }
-      .searchcontent .searchresult .search_image_content .header .content.marginnone {
-        margin-left: 0px; }
-    .searchcontent .searchresult .search_image_content .maincontent {
-      font-size: 1.5em;
-      padding: 15px 0px;
-      color: gray; }
-    .searchcontent .searchresult .search_image_content .images {
-      display: table; }
-      .searchcontent .searchresult .search_image_content .images img {
-        width: 17%;
-        height: 75px;
-        float: left;
-        margin-left: 2%; }
-      .searchcontent .searchresult .search_image_content .images .addition {
-        width: 17%;
-        height: 75px;
-        float: left;
-        margin-left: 2%;
-        background: white;
-        border: 1px solid #c17a8a;
-        font-size: 2.5em;
-        color: #c17a8a;
-        padding: 21px; }
-    .searchcontent .searchresult .search_image_content .price {
-      padding: 15px 0px;
-      font-size: 1.5em;
-      color: grey;
-      width: 95%; }
-      .searchcontent .searchresult .search_image_content .price .left {
-        float: left; }
-        .searchcontent .searchresult .search_image_content .price .left .pricetag {
-          color: #c17a8a; }
-      .searchcontent .searchresult .search_image_content .price .right {
-        float: right; }
-        .searchcontent .searchresult .search_image_content .price .right .button {
-          background: #fa3d44;
-          color: white;
-          width: 130px;
-          height: 30px;
-          border-radius: 5px 5px;
-          text-align: center;
-          padding: 5px 5px;
-          font-size: 1.3em;
-          float: right;
-          margin-top: -5px; }
-    .searchcontent .searchresult .search_image_content .products ul {
-      padding: 10px 0px 0px 0px; }
-    .searchcontent .searchresult .search_image_content .products li {
-      border-top: 1px solid lightgray;
-      padding: 5px 0px;
-      color: grey; }
-      .searchcontent .searchresult .search_image_content .products li .right {
+    .searchcontent .searchresult .search_image_content {
+      height: 250px; }
+      .searchcontent .searchresult .search_image_content .header {
+        padding: 15px 0px; }
+        .searchcontent .searchresult .search_image_content .header .logo {
+          float: left; }
+          .searchcontent .searchresult .search_image_content .header .logo img {
+            width: 50px; }
+        .searchcontent .searchresult .search_image_content .header .content {
+          float: left;
+          margin-left: 15px;
+          font-size: 2em;
+          font-weight: bold; }
+        .searchcontent .searchresult .search_image_content .header .content.marginnone {
+          margin-left: 0px; }
+      .searchcontent .searchresult .search_image_content .maincontent {
         font-size: 1.5em;
-        padding: 10px 25px; }
+        padding: 15px 0px;
+        color: gray; }
+      .searchcontent .searchresult .search_image_content .images {
+        display: table; }
+        .searchcontent .searchresult .search_image_content .images img {
+          width: 17%;
+          height: 75px;
+          float: left;
+          margin-left: 2%; }
+        .searchcontent .searchresult .search_image_content .images .addition {
+          width: 17%;
+          height: 75px;
+          float: left;
+          margin-left: 2%;
+          background: white;
+          border: 1px solid #c17a8a;
+          font-size: 2.5em;
+          color: #c17a8a; }
+          .searchcontent .searchresult .search_image_content .images .addition div {
+            margin: 0 auto;
+            width: 30px;
+            margin-top: 25%; }
+      .searchcontent .searchresult .search_image_content .price {
+        position: absolute;
+        bottom: 5px;
+        padding: 10px 0px;
+        font-size: 1.5em;
+        color: grey;
+        width: 90%; }
+        .searchcontent .searchresult .search_image_content .price .left {
+          float: left; }
+          .searchcontent .searchresult .search_image_content .price .left .pricetag {
+            color: #c17a8a;
+            font-style: italic; }
+        .searchcontent .searchresult .search_image_content .price .right {
+          float: right; }
+          .searchcontent .searchresult .search_image_content .price .right .button {
+            background: #fa3d44;
+            color: white;
+            width: 130px;
+            height: 30px;
+            border-radius: 5px 5px;
+            text-align: center;
+            padding: 5px 5px;
+            font-size: 1.3em;
+            float: right;
+            margin-top: -5px; }
+      .searchcontent .searchresult .search_image_content .products ul {
+        padding: 0px 0px 0px 0px; }
+      .searchcontent .searchresult .search_image_content .products li {
+        border-top: 1px solid lightgray;
+        padding: 3px 0px;
+        color: grey; }
+        .searchcontent .searchresult .search_image_content .products li .right {
+          font-size: 1.5em;
+          padding: 10px 25px; }
+      .searchcontent .searchresult .search_image_content .products li:last-child {
+        border-bottom: 1px solid lightgray;
+        padding-bottom: 0px; }
 
 /*# sourceMappingURL=control.css.map */
