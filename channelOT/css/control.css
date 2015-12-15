@@ -18,6 +18,16 @@ body {
 
 .searchcontainer {
   padding: 20px 20px; }
+  @media only screen and (max-width: 530px) {
+    .searchcontainer .mobile {
+      width: 100%; }
+    .searchcontainer .logo {
+      margin: 0 auto;
+      width: 150px; }
+    .searchcontainer .button {
+      float: left !important;
+      width: 100% !important;
+      margin-top: 5px !important; } }
   .searchcontainer .logo {
     font-size: 2em; }
     .searchcontainer .logo .first {
@@ -66,6 +76,16 @@ body {
   .searchcontent .searchcategory .navbar-default {
     background: transparent;
     border: none; }
+  .searchcontent .searchcategory .navbar-collapse .navbar-nav li {
+    font-size: 1.5em;
+    font-weight: bold; }
+    .searchcontent .searchcategory .navbar-collapse .navbar-nav li a {
+      color: #555;
+      background: transparent; }
+    .searchcontent .searchcategory .navbar-collapse .navbar-nav li :hover {
+      color: #fa3d44; }
+  .searchcontent .searchcategory .navbar-collapse .navbar-nav li.active a {
+    color: #fa3d44; }
   @media (min-width: 768px) {
     .searchcontent .searchcategory .navbar-collapse {
       height: auto;
@@ -78,10 +98,7 @@ body {
         text-align: right;
         font-size: 1.5em;
         font-weight: bold; }
-        .searchcontent .searchcategory .navbar-collapse .navbar-nav li :hover {
-          color: #fa3d44; }
       .searchcontent .searchcategory .navbar-collapse .navbar-nav li.active a {
-        color: #fa3d44;
         background: transparent;
         border-right: 2px solid #fa3d44; }
     .searchcontent .searchcategory .navbar-collapse.collapse {
@@ -115,7 +132,7 @@ body {
       padding: 0px 0px; }
       .searchcontent .searchresult .search_image .imagecontainer img {
         width: 100%;
-        height: 250px; }
+        height: 275px; }
       .searchcontent .searchresult .search_image .imagecontainer .image_bottom {
         position: absolute;
         bottom: 0px;
@@ -139,7 +156,7 @@ body {
         font-size: 1.2em;
         margin: 20px; }
     .searchcontent .searchresult .search_image_content {
-      height: 250px; }
+      height: 275px; }
       .searchcontent .searchresult .search_image_content .header {
         padding: 15px 0px; }
         .searchcontent .searchresult .search_image_content .header .logo {
