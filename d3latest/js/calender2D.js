@@ -152,7 +152,7 @@ var calender2D = function (chartId, chartdata, chartType) {
         .data(d3.range(chartdata.calenderyear[0], chartdata.calenderyear[1]))
       .enter().append("svg")
        .attr('width', '100%')
-					.attr('height', '100%')
+          .attr('height', '100%')
                        .attr('viewBox', '0 0 ' + (width + 100) + ' ' + (height))
         .attr('preserveAspectRatio', 'xMinYMin')
         .attr("class", 'calenderclass' + "RdYlGn")
@@ -169,7 +169,7 @@ var calender2D = function (chartId, chartdata, chartType) {
                 var svg = d3.select(chartId)
          .append("svg")
        .attr('width', '100%')
-					.attr('height', '100%')
+          .attr('height', '100%')
                        .attr('viewBox',function (d) {
                            if (chartType == 'WeekHour2D')
                                return '0 0 ' + (width + 15) + ' ' + (height);
@@ -538,7 +538,7 @@ var calender2D = function (chartId, chartdata, chartType) {
                                 var newdatecur = new Date(chartdata.chart.weekstartdate);
                                 var datetempcur = newdatecur;
 
-                                datetempcur.setDate(datetempcur.getDate() + d.day - 1);
+                                datetempcur.setDate(datetempcur.getDate() + (d.day/1) - 1);
                                 var montrial = datetempcur.getMonth() + 1;
                                 dateformated = (datetempcur.getDate().toString().length == 1 ? ('0' + datetempcur.getDate()) : datetempcur.getDate()) + '-' + (montrial.toString().length == 1 ? ('0' + montrial) : montrial) + '-' + datetempcur.getFullYear();
                                 htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Date' + ' : ' + dateformated + '</span><br><hr>';
@@ -550,7 +550,7 @@ var calender2D = function (chartId, chartdata, chartType) {
                                 var newdatecur = new Date(chartdata.chart.weekstartdate);
                                 var datetempcur = newdatecur;
 
-                                datetempcur.setDate(datetempcur.getDate() + d.day - 1);
+                                datetempcur.setDate(datetempcur.getDate() + (d.day/1) - 1);
                                 var montrial = datetempcur.getMonth() + 1;
                                 dateformated = (datetempcur.getDate().toString().length == 1 ? ('0' + datetempcur.getDate()) : datetempcur.getDate()) + '-' + (montrial.toString().length == 1 ? ('0' + montrial) : montrial) + '-' + datetempcur.getFullYear();
 
