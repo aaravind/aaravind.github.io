@@ -1,0 +1,138 @@
+@import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic");
+body {
+  font-family: 'Source Sans Pro'; }
+
+.prom_detail {
+  width: 100%;
+  background: #4a4a4a;
+  opacity: 0.98;
+  display: table;
+  padding-bottom: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%; }
+  .prom_detail .details_main {
+    max-width: 75%;
+    margin: 0 auto; }
+    .prom_detail .details_main .view_type {
+      display: table;
+      width: 100%; }
+      .prom_detail .details_main .view_type ul {
+        padding: 20px 0px;
+        display: table;
+        width: 100%;
+        border-bottom: 1px solid #746f6f; }
+        .prom_detail .details_main .view_type ul li {
+          color: #9c9c9c;
+          list-style: none;
+          float: left;
+          font-size: 1.9em;
+          padding: 10px 15px;
+          font-weight: 300; }
+        .prom_detail .details_main .view_type ul li:first-child {
+          border-right: 1px solid #746f6f;
+          padding-left: 0px; }
+        .prom_detail .details_main .view_type ul li.active {
+          color: white; }
+    .prom_detail .details_main .details_container {
+      display: table;
+      width: 100%; }
+      .prom_detail .details_main .details_container .banner_container {
+        width: 50%;
+        float: left; }
+        @media screen and (max-width: 768px) {
+          .prom_detail .details_main .details_container .banner_container {
+            width: 100%;
+            display: table; } }
+        .prom_detail .details_main .details_container .banner_container .banner_basicinfo {
+          display: table;
+          width: 100%; }
+          .prom_detail .details_main .details_container .banner_container .banner_basicinfo .rank {
+            padding: 5px 10px;
+            background: #272727;
+            margin-right: 15px;
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: white;
+            display: table;
+            float: left; }
+          .prom_detail .details_main .details_container .banner_container .banner_basicinfo .info {
+            float: left;
+            padding: 5px 10px; }
+            .prom_detail .details_main .details_container .banner_container .banner_basicinfo .info .head {
+              color: white;
+              font-weight: 600;
+              font-size: 1.2em; }
+            .prom_detail .details_main .details_container .banner_container .banner_basicinfo .info .categ {
+              color: #d3d2d2;
+              font-size: 0.9em; }
+          .prom_detail .details_main .details_container .banner_container .banner_basicinfo .open_icon {
+            float: right;
+            padding: 20px 0px 0px 0px; }
+        .prom_detail .details_main .details_container .banner_container .banner_image {
+          max-width: 100%;
+          max-height: 250px;
+          padding: 15px 0px;
+          position: relative; }
+          .prom_detail .details_main .details_container .banner_container .banner_image img {
+            max-width: inherit;
+            max-height: inherit;
+            display: block;
+            margin-left: auto;
+            margin-right: auto; }
+      .prom_detail .details_main .details_container .banner_details {
+        width: 50%;
+        float: left; }
+        @media screen and (max-width: 768px) {
+          .prom_detail .details_main .details_container .banner_details {
+            width: 100%;
+            display: table; } }
+        .prom_detail .details_main .details_container .banner_details .each_detail {
+          display: table;
+          width: 100%;
+          padding: 15px 20px 0px 20px; }
+          .prom_detail .details_main .details_container .banner_details .each_detail .left {
+            width: 30%;
+            float: left;
+            color: #9c9c9c;
+            font-size: 1.3em; }
+            .prom_detail .details_main .details_container .banner_details .each_detail .left .hisbutton {
+              background: #505050;
+              border: 2px solid #746f6f;
+              border-radius: 2px;
+              padding: 4px 0px;
+              text-align: center; }
+          .prom_detail .details_main .details_container .banner_details .each_detail .right {
+            float: left;
+            width: 60%;
+            color: #d3d2d2;
+            font-size: 1em;
+            padding-left: 5px;
+            padding-top: 2px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap; }
+            .prom_detail .details_main .details_container .banner_details .each_detail .right a {
+              color: #d3d2d2;
+              font-size: 1em;
+              text-decoration: none; }
+            .prom_detail .details_main .details_container .banner_details .each_detail .right .circle_green {
+              width: 0.5em;
+              height: 0.5em;
+              background: #66c770;
+              float: left;
+              border-radius: 0.5em;
+              margin-top: 0.45em; }
+            .prom_detail .details_main .details_container .banner_details .each_detail .right .circle_red {
+              width: 0.5em;
+              height: 0.5em;
+              background: #e71546;
+              float: left;
+              border-radius: 0.5em;
+              margin-top: 0.45em; }
+            .prom_detail .details_main .details_container .banner_details .each_detail .right .date {
+              float: left;
+              padding-left: 10px; }
+
+/*# sourceMappingURL=prom.css.map */
