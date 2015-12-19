@@ -13,6 +13,16 @@ body {
   top: 0;
   left: 0;
   height: 100%; }
+  .prom_detail .close_prom_detail {
+    float: right;
+    background: #505050;
+    border: 2px solid #746f6f;
+    border-radius: 2px;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 0.7em;
+    margin-right: 25px;
+    color: #9c9c9c; }
   .prom_detail .details_main {
     max-width: 75%;
     margin: 0 auto; }
