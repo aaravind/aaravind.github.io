@@ -6,23 +6,17 @@ body {
   width: 100%;
   background: #4a4a4a;
   opacity: 0.98;
-  display: table;
   padding-bottom: 25px;
   padding-top: 50px;
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%; }
+  bottom: 0;
+  overflow: auto; }
   .prom_detail .close_prom_detail {
     float: right;
-    background: #505050;
-    border: 2px solid #746f6f;
-    border-radius: 2px;
-    padding: 5px 10px;
-    text-align: center;
-    font-size: 0.7em;
-    margin-right: 25px;
-    color: #9c9c9c; }
+    margin-right: 50px;
+    padding-top: 0px; }
   .prom_detail .details_main {
     max-width: 75%;
     margin: 0 auto; }
@@ -126,9 +120,9 @@ body {
             width: 100%;
             float: left;
             color: #9c9c9c;
-            font-size: 1.5em;
-            font-weight: bold;
-            padding-top: 3px; }
+            font-size: 1.9em;
+            font-weight: 300;
+            padding-top: 1px; }
           .prom_detail .details_main .details_container .banner_details .each_detail .right {
             float: left;
             width: 60%;
