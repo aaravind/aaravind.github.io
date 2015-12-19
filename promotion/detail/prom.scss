@@ -25,7 +25,8 @@ body {
 	opacity:0.98;
     display: table;
     padding-bottom: 25px;
-    position: absolute;
+    padding-top: 50px;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -143,8 +144,8 @@ body {
 							}
 	                    .each_detail{
 	                              display: table;
-                                  width: 100%;
-                                  padding: 10px 20px 10px 20px;
+                                width: 100%;
+                                padding: 8px 20px 8px 20px;
 	                    .left{
 	                    width:30%;
 	                    float:left;
@@ -152,6 +153,14 @@ body {
 	                        font-size: 1.3em;
 	                       
 	                     }
+                       .full{
+                           width: 100%;
+                           float: left;
+                           color: #9c9c9c;
+                           font-size: 1.5em;
+                           font-weight: bold;
+                           padding-top: 3px;
+                     }
 	                     .right{
                                float: left;
 							   width: 60%;
