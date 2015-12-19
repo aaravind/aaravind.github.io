@@ -46,7 +46,7 @@ body {
                         float: left;
                         font-size: 1.9em;
                         padding: 10px 15px;
-                        font-weight: 300;                        
+                        font-weight: 300;                       
                         }
                       li:first-child{
                         border-right: 1px solid #746f6f;
@@ -55,14 +55,34 @@ body {
                       li.active{
                         color:white;
                          }
-               }
+                      li:last-child{
+                          float: right;
+                          padding-right: 0px;
+                          @media screen and (max-width:580px) {
+                                  float:left;
+                                  padding-left: 0px;
+              }
+                      }   
+
+                           .hisbutton{
+                                  background: #505050;
+                                  border: 2px solid #746f6f;
+                                  border-radius: 2px;
+                                  padding: 5px 10px;
+                                  text-align: center;
+                                  font-size: 0.7em;
+                      }
+
+
+               } 
+
                }
                .details_container
                {
                display:table;
                          width:100%;
                .banner_container{
-                        width:50%;
+                        width:60%;
                         float:left;
                         
                         @media screen and (max-width:768px) {
@@ -102,12 +122,12 @@ body {
                  		}
                  		.banner_image{
                  						max-width:100%;
-                 						max-height: 250px;
+                 						height: auto;
    										padding: 15px 0px;
    										position: relative;
                  						img{
                  							max-width:inherit;
-                          					max-height:inherit;
+                          					height:auto;
                           					display: block;
 										    margin-left: auto;
 										    margin-right: auto;
@@ -115,7 +135,7 @@ body {
 				                 	}
            			}
            	    .banner_details{
-	                    width:50%;
+	                    width:40%;
 	                    float:left;
 	                    @media screen and (max-width:768px) {
                                 width:100%;
@@ -124,19 +144,13 @@ body {
 	                    .each_detail{
 	                              display: table;
                                   width: 100%;
-                                  padding: 15px 20px 0px 20px;
+                                  padding: 10px 20px 10px 20px;
 	                    .left{
 	                    width:30%;
 	                    float:left;
 	                    color:#9c9c9c;
 	                        font-size: 1.3em;
-	                        .hisbutton{
-	                            background: #505050;
-							    border: 2px solid #746f6f;
-							    border-radius: 2px;
-							    padding: 4px 0px;
-							    text-align: center;
-	                    }
+	                       
 	                     }
 	                     .right{
                                float: left;
@@ -145,9 +159,6 @@ body {
 							   font-size: 1em;
 							   padding-left: 5px;
 							   padding-top: 2px;
-							       overflow: hidden;
-								   text-overflow: ellipsis;
-								   white-space: nowrap;
 							   a{
 							   color: #d3d2d2;
 							   font-size: 1em;
