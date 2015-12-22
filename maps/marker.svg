@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="49" height="53.5" viewBox="0 0 98 107">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #da2043;
+        stroke: #fff;
+        stroke-linejoin: round;
+        stroke-opacity: 0.79;
+        stroke-width: 7px;
+        fill-rule: evenodd;
+        filter: url(#filter);
+      }
+      .svgtext{
+          font-size: 2em;
+          fill: white;
+          font-weight: bold;
+      }
+    </style>
+    <filter id="filter" x="1007" y="406" width="91" height="100" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="3" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="3.162"/>
+      <feFlood result="flood" flood-opacity="0.1"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+      <feFlood result="flood-2" flood-color="#6d4d8c"/>
+      <feComposite result="composite-2" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend-2" in2="blend"/>
+    </filter>
+  </defs>
+  <g transform="translate(-1003.5 -402.5)" style="fill: #da2043; filter: url(#filter)">
+    <path id="path" class="cls-1" d="M1091,451.1c0,19.882-36,44.8-36,44.8s-36-24.918-36-44.8A36,36,0,1,1,1091,451.1Z" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+    <text class="svgtext" xmlns="http://www.w3.org/2000/svg" x="50" text-anchor="middle" y="60">02</text>
+  <use transform="translate(-1003.5 -402.5)" xlink:href="#path" style="stroke: #fff; filter: none; fill: none"/>
+</svg>
