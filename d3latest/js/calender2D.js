@@ -121,7 +121,7 @@ var calender2D = function (chartId, chartdata, chartType) {
                 d3.select(chartId).select('svg').remove();
             if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
                 function change() {
-                    
+
                     var selectedIndex = select.property('selectedIndex'),
         data = options[0][selectedIndex].__data__;
                     if (selectedIndex != 0) {
@@ -132,11 +132,11 @@ var calender2D = function (chartId, chartdata, chartType) {
                     }
                 }
                 if (chartdata.export.showexport == true) {
-                    if(chartType == 'WeekHour2D')
-                             var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:15px ;height:20px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
+                    if (chartType == 'WeekHour2D')
+                        var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:20px ;height:20px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
     options = select.selectAll('option').data(chartdata.export.format); // Data join
-    else
-                    var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:35px ;height:20px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
+                    else
+                        var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:35px ;height:20px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
     options = select.selectAll('option').data(chartdata.export.format); // Data join
 
                     // Enter selection
@@ -170,7 +170,7 @@ var calender2D = function (chartId, chartdata, chartType) {
          .append("svg")
        .attr('width', '100%')
           .attr('height', '100%')
-                       .attr('viewBox',function (d) {
+                       .attr('viewBox', function (d) {
                            if (chartType == 'WeekHour2D')
                                return '0 0 ' + (width + 15) + ' ' + (height);
                            else
@@ -187,7 +187,7 @@ var calender2D = function (chartId, chartdata, chartType) {
          });
 
             }
-            d3.select(chartId + ' svg').insert('rect', ':first-child').attr('width', '100%').attr('height', '100%').attr('x', '0').attr('y', '0').style('fill', 'white');
+            d3.select(chartId + ' svg').insert('rect', ':first-child').attr('width', '100%').attr('height', '100%').attr('x', '0').attr('y', '0').style('fill', chartdata.chart.backgroundcolor != undefined ? chartdata.chart.backgroundcolor : 'white').style('opacity', '0.98');
 
             svg.append("text")
         .attr("x", 0)
@@ -443,6 +443,12 @@ var calender2D = function (chartId, chartdata, chartType) {
                  }
              }
             )
+               .style('fill', function (d) {
+                if (chartdata.chart.textcolor != undefined)
+                    return chartdata.chart.textcolor;
+                else
+                    return 'black';
+            })
             .attr("transform", "translate(10,0)")
             .attr("class", function (d, i) { return ((i >= 0 && i <= 4) ? "dayLabel mono axis axis-workweek" : "dayLabel mono axis"); });
 
@@ -473,6 +479,12 @@ var calender2D = function (chartId, chartdata, chartType) {
                 }
             }
             )
+            .style('fill', function (d) {
+                if (chartdata.chart.textcolor != undefined)
+                    return chartdata.chart.textcolor;
+                else
+                    return 'black';
+            })
             .attr("transform", "translate(" + gridSize / 2 + ", 0)")
             .attr("class", function (d, i) { return ((i >= 7 && i <= 16) ? "timeLabel mono axis axis-worktime" : "timeLabel mono axis"); });
 
@@ -538,7 +550,7 @@ var calender2D = function (chartId, chartdata, chartType) {
                                 var newdatecur = new Date(chartdata.chart.weekstartdate);
                                 var datetempcur = newdatecur;
 
-                                datetempcur.setDate(datetempcur.getDate() + (d.day/1) - 1);
+                                datetempcur.setDate(datetempcur.getDate() + (d.day / 1) - 1);
                                 var montrial = datetempcur.getMonth() + 1;
                                 dateformated = (datetempcur.getDate().toString().length == 1 ? ('0' + datetempcur.getDate()) : datetempcur.getDate()) + '-' + (montrial.toString().length == 1 ? ('0' + montrial) : montrial) + '-' + datetempcur.getFullYear();
                                 htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + 'Date' + ' : ' + dateformated + '</span><br><hr>';
@@ -550,7 +562,7 @@ var calender2D = function (chartId, chartdata, chartType) {
                                 var newdatecur = new Date(chartdata.chart.weekstartdate);
                                 var datetempcur = newdatecur;
 
-                                datetempcur.setDate(datetempcur.getDate() + (d.day/1) - 1);
+                                datetempcur.setDate(datetempcur.getDate() + (d.day / 1) - 1);
                                 var montrial = datetempcur.getMonth() + 1;
                                 dateformated = (datetempcur.getDate().toString().length == 1 ? ('0' + datetempcur.getDate()) : datetempcur.getDate()) + '-' + (montrial.toString().length == 1 ? ('0' + montrial) : montrial) + '-' + datetempcur.getFullYear();
 
@@ -610,7 +622,12 @@ var calender2D = function (chartId, chartdata, chartType) {
 
 
             })
-            .attr('fill', 'rgb(255, 255, 255)')
+            .attr('fill', function (d) {
+                if (chartdata.chart.backgroundcolor == undefined)
+                    return 'rgb(255, 255, 255)';
+                else
+                    return chartdata.chart.backgroundcolor;
+            })
             .attr('x', function (d) {
                 if (chartType != 'WeekHour2D')
                     return width - 5;
@@ -804,13 +821,13 @@ var calender2D = function (chartId, chartdata, chartType) {
 
                                 credits.append('image')
                                 //.attr('x', d3.select(chartId + ' .gridy .tick line')[0][0].getAttribute('x2') / 1 - 10)
-            .attr('x',function (d) {
-               if (chartType != 'WeekHour2D') {
-                   return document.getElementById(chartId.replace('#', '')).offsetWidth - imagewidth - 70;
-               }
-               else
-                   return document.getElementById(chartId.replace('#', '')).offsetWidth - imagewidth - 60;
-           })
+            .attr('x', function (d) {
+                if (chartType != 'WeekHour2D') {
+                    return document.getElementById(chartId.replace('#', '')).offsetWidth - imagewidth - 70;
+                }
+                else
+                    return document.getElementById(chartId.replace('#', '')).offsetWidth - imagewidth - 60;
+            })
             .attr("y", function (d) {
                 if (chartType != 'WeekHour2D') {
                     return height + margin.bottom - 75;
