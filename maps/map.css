@@ -7,6 +7,7 @@
   position: absolute;
   background: white;
   padding: 10px;
+  display: none;
   top: 25px !important;
   right: 25px !important; }
   #map_legend .header {

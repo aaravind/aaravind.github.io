@@ -8,6 +8,7 @@
         min-height:450px;
         }
      #map_legend {
+         display: none;
      position:absolute;
     background: $map_legend_bg;
     padding: 10px;
