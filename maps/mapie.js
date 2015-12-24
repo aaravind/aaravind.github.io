@@ -67,7 +67,7 @@
 
                 $('#map_legend').html('');
                  $('#map_legend').css('display','block');
-               $('#map_legend').html('<div class="header">'+ title +'</div><div class="image_slide_content"></div><div class="detail_container"></div>');
+               $('#map_legend').html('<div class="header">'+ title +'</div><div class="image_slide_content"></div><div class="detail_container" style="visibility:hidden;"></div>');
      $('#map_legend .image_slide_content').html('<div id="slider"><a href="#" class="control_next">></a><a href="#" class="control_prev"><</a><ul class="add_each_image"></ul></div>');
     for(j=0;j<legend_object.slider_data.length;j++){
      $('#map_legend .image_slide_content .add_each_image').append('<li><img src='+legend_object.slider_data[j] +'></img></li>');
@@ -80,8 +80,11 @@
           +'</b> offers</span></div></div>');
     }
        
+$('.detail_container').imagesLoaded( function() {
+  $('.detail_container').css('visibility','visible')
+  $('.detail_container').jScrollPane({showArrows: true});
+});
 
-$('.detail_container').jScrollPane({showArrows: true});
     
 
 
@@ -125,33 +128,6 @@ $('.detail_container').jScrollPane({showArrows: true});
 
             }
    
-     
-
-
-             function svg_container(number,color,floodcolor){
-              var svg_form = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="49" height="53.5" viewBox="0 0 98 107">'
-  +'<defs>'
-  +'<style> .cls-1 {fill: '+color+';stroke: #fff;stroke-linejoin: round;stroke-opacity: 0.79;stroke-width: 7px;fill-rule: evenodd;filter: url(#filter);}'
-      +'.svgtext{font-size: 2em;fill: white;font-weight: bold;} </style>'
-    +'<filter id="filter" x="1007" y="406" width="91" height="100" filterUnits="userSpaceOnUse">'
-     +'<feOffset result="offset" dx="3" in="SourceAlpha"/>'
-     +'<feGaussianBlur result="blur" stdDeviation="3.162"/>'
-     +'<feFlood result="flood" flood-opacity="0.1"/>'
-     +'<feComposite result="composite" operator="in" in2="blur"/>'
-     +'<feBlend result="blend" in="SourceGraphic"/>' 
-     +'<feFlood result="flood-2" flood-color="'+floodcolor+'"/>' 
-     +'<feComposite result="composite-2" operator="in" in2="SourceGraphic"/>'
-     +'<feBlend result="blend-2" in2="blend"/>'
-     +'</filter>'
-   +'</defs>'
-  +'<g transform="translate(-1003.5 -402.5)" style="fill: '+ color +'; ">'
-    +'<path id="path" class="cls-1" d="M1091,451.1c0,19.882-36,44.8-36,44.8s-36-24.918-36-44.8A36,36,0,1,1,1091,451.1Z" style="stroke: inherit; filter: none;fill: inherit"/>'
-  +'</g>'
-    +'<text class="svgtext" xmlns="http://www.w3.org/2000/svg" x="50" text-anchor="middle" y="60">'+ number +'</text>'
-  +'<use transform="translate(-1003.5 -402.5)" xlink:href="#path" style="stroke: #fff; filter: none; fill: none"/>'
-+'</svg>';
-             return svg_form
-             }
           for( i = 0; i < marker_object.length; i++ ) {
         var position = new google.maps.LatLng(marker_object[i].latitude, marker_object[i].longitude);
         bounds.extend(position);
@@ -159,21 +135,46 @@ $('.detail_container').jScrollPane({showArrows: true});
           var iconqwe = {
         
         path: "M 0,0 c 0,19.882-36,44.8-36,44.8 s -36-24.918-36-44.8 A 36,36,0,1,1,0,0 Z",
-        fillColor: '#FF0000',
+        fillColor: '#6d4d8b',
         fillOpacity: .6,
-        strokeWeight: 0,
-        strokeColor:'#FF0000',
-        scale: .25,
+        strokeWeight: 2,
+        strokeColor:'#ffffff',
+        scale: 0.5,
+    }
+    var iconred = {
+        
+        path: "M 0,0 c 0,19.882-36,44.8-36,44.8 s -36-24.918-36-44.8 A 36,36,0,1,1,0,0 Z",
+        fillColor: '#bf6aa5',
+        fillOpacity: .6,
+        strokeWeight: 2,
+        strokeColor:'#ffffff',
+        scale: 0.5
     }
 
-        marker = new google.maps.Marker({
+       /* marker = new google.maps.Marker({
             position: position,
             map: map,
             title: marker_object[i].title,
             idnumber : marker_object[i].id,
             data: marker_object[i].data,
-            icon: { url: 'data:image/svg+xml;charset=UTF-8;base64,' + btoa(svg_container(marker_object[i].id,'#6d4d8b')) } 
-        });
+            icon: iconqwe
+        });*/
+
+    var marker = new MarkerWithLabel({
+       position: position,
+       draggable: false,
+       raiseOnDrag: false,
+       map: map,
+      title: marker_object[i].title,
+      idnumber : marker_object[i].id,
+      data: marker_object[i].data,
+      icon: iconqwe,
+       labelContent: marker_object[i].id,
+       labelAnchor: new google.maps.Point(25, 10),
+       labelClass: "map_labels",
+       labelStyle: {opacity: 1}
+     });
+
         
            var prev_marker='';
           marker.addListener('click', function() {
@@ -181,13 +182,13 @@ $('.detail_container').jScrollPane({showArrows: true});
      if(prev_marker == '')
       {
         prev_marker = this;
-       this.setIcon('data:image/svg+xml;charset=UTF-8;base64,' + btoa(svg_container(this.idnumber,'#bf6aa5')));
-       each_marker_detail(this.title,this.data);
+        this.setIcon(iconred);
+        each_marker_detail(this.title,this.data);
       }
       else{
-         prev_marker.setIcon('data:image/svg+xml;charset=UTF-8;base64,' + btoa(svg_container(prev_marker.idnumber,'#6d4d8b')));
+         prev_marker.setIcon(iconqwe);
          prev_marker = this;
-         this.setIcon('data:image/svg+xml;charset=UTF-8;base64,' + btoa(svg_container(this.idnumber,'#bf6aa5')));
+         this.setIcon(iconred);
           each_marker_detail(this.title,this.data);
       }
     
