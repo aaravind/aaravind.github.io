@@ -101,7 +101,7 @@ var bar2D = function (chartId, chartdata, chartType) {
         .domain(labels)
         .rangeRoundBands([25, height], 0.1);
             function xAxis5() {
-                return d3.svg.axis()
+                return d3.svg.axis() // zxc
         .scale(xScale1)
         .orient("bottom")
             }

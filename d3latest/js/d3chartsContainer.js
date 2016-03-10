@@ -37,4 +37,10 @@ var d3charts = function (chartType, chartId, chartdata, chartwidth, chartheight)
         bilevel2D(chartId, chartdata,chartType,chartwidth);
             if (chartType == 'Pricing2D')
         pricing2D(chartId, chartdata,chartType,chartwidth);
+        if (chartType == 'MultiDonut2D')
+        MultiDonut2D(chartId, chartdata,chartType);
+     if (chartType == 'CustomBar2D')
+        customBar2D(chartId, chartdata,chartType);
+    if (chartType == 'CustomColumn2D')
+        customColumn2D(chartId, chartdata,chartType);
 };

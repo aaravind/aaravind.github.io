@@ -59,6 +59,9 @@ window.onresize = function (event) {
                 redrawchart("Bilevel2D", "#bilevel", bileveldata);
                     redrawchart("WeekHour2D", "#weekhour", hourlydata);
                     d3charts("Pricing2D", "#pricing", pricing);
+                    d3charts("MultiDonut2D", "#multidonut", multipledonut);
+                    d3charts("CustomBar2D", "#custombar", custombar);
+                    d3charts("CustomColumn2D", "#customcolumn", customcolumn);
 };
 
 var linedata = {
@@ -2662,3 +2665,234 @@ var bubbledata = {
     ]
 }
     d3charts("Pricing2D", "#pricing", pricing);
+
+
+     var multipledonut = {
+    "chart": {
+        "caption": "Discount distribution of product by category", //Name of the chart Header
+        "captionColor":"white", // Color of the Chart Header
+        "yaxisname": "", // Name which gets displayed in the Yaxis
+        "slant":false, // X axis label slant
+        "slantdegree":"90", // Slant based on the degree specified
+          "credits":{            // Credits
+            "text":"Powered By", // Credit Name
+            "color":"#666",
+            "imageurl":"../images/logo.png"
+        },
+         "suffix":'%',
+          "tickinterval":5, // Number of label visible in the X axis
+         "pallattecolor":["#50e2c2","#f5a623","#8b572a"] // Pallette colors for 30 values
+    },
+    "export":{
+        "showexport": true,
+         "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
+    },
+    "data":  [
+        {
+           "category": "Electronics",
+            "arrowhead" : 'top',
+            "arrowcolor" : 'red',
+            "data":[
+                    {'label':'Snapdeal',
+                     'value':50
+                     },
+                     {'label':'Amazon',
+                     'value':50
+                     },
+                     {'label':'Paytm',
+                     'value':100
+                     }
+                    ] 
+        },
+        {
+           "category": "Apparel",
+            "arrowhead" : 'bottom',
+            "arrowcolor" : 'green',
+            "data":[
+                    {'label':'Snapdeal',
+                     'value':100
+                     },
+                     {'label':'Amazon',
+                     'value':50
+                     },
+                     {'label':'Paytm',
+                     'value':20
+                     }
+                    ] 
+        },
+        {
+           "category": "Clothing",
+            "arrowhead" : 'top',
+            "arrowcolor" : 'green',
+            "data":[
+                    {'label':'Snapdeal',
+                     'value':20
+                     },
+                     {'label':'Amazon',
+                     'value':50
+                     },
+                     {'label':'Paytm',
+                     'value':100
+                     }
+                    ] 
+        },
+        {
+           "category": "Footwear",
+            "arrowhead" : 'bottom',
+            "arrowcolor" : 'red',
+            "data":[
+                    {'label':'Snapdeal',
+                     'value':89
+                     },
+                     {'label':'Amazon',
+                     'value':100
+                     },
+                     {'label':'Paytm',
+                     'value':50
+                     }
+                    ] 
+        },
+        {
+           "category": "Accesories",
+            "arrowhead" : 'bottom',
+            "arrowcolor" : 'green',
+            "data":[
+                    {'label':'Snapdeal',
+                     'value':20
+                     },
+                     {'label':'Amazon',
+                     'value':100
+                     },
+                     {'label':'Paytm',
+                     'value':50
+                     }
+                    ] 
+        }                       
+    ]
+}
+    d3charts("MultiDonut2D", "#multidonut", multipledonut);
+
+    var custombar = {
+    "chart": {
+        "caption": "Top brands by discount", //Name of the chart Header
+        "captionColor":"#d09d34", // Color of the Chart Header
+        "yaxisname": "", // Name which gets displayed in the Yaxis
+        "slant":false, // X axis label slant
+        "slantdegree":"90", // Slant based on the degree specified
+          "credits":{            // Credits
+            "text":"Powered By", // Credit Name
+            "color":"#666",
+            "imageurl":"../images/logo.png"
+        },
+          "tickinterval":5, // Number of label visible in the X axis
+         "pallattecolor":["#44d62c","#4a90e2","#00b200","#004c00","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"] // Pallette colors for 30 values
+    },
+    "rectheight":50,
+    "export":{
+        "showexport": true,
+         "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
+    },
+    "data":  [
+        {
+
+            "label": "Snapdeal",
+            "value": 99,
+            "type":'up',
+            "denomination":'plus'
+        },
+         {
+
+            "label": "shopclues",
+            "value": 3,
+            "type":'down',
+            "denomination":'plus'
+        },
+        {
+            "label": "flipkart",
+            "value": 50,
+            "type":'up',
+            "denomination":'minus'
+        },
+        {
+            "label": "Amazon",
+            "value": 100,
+            "type":'down',
+            "denomination":'plus'
+
+        }
+        ,
+        {
+            "label": "Rediff",
+            "value": 75,
+            "type":'down',
+            "denomination":'minus'
+        }          
+    ]
+}
+    d3charts("CustomBar2D", "#custombar", custombar);
+
+    var customcolumn = {
+    "chart": {
+        "caption": "% of Products Discounted", //Name of the chart Header
+        "captionColor":"#d09d34", // Color of the Chart Header
+        "yaxisname": "", // Name which gets displayed in the Yaxis
+        "slant":false, // X axis label slant
+        "slantdegree":"90", // Slant based on the degree specified
+          "credits":{            // Credits
+            "text":"Powered By", // Credit Name
+            "color":"#666",
+            "imageurl":"../images/logo.png"
+        },
+          "tickinterval":5, // Number of label visible in the X axis
+         "pallattecolor":["#44d62c","#4a90e2","#00b200","#004c00","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"] // Pallette colors for 30 values
+    },
+    "rectheight":50,
+    "export":{
+        "showexport": true,
+         "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
+    },
+    "sourcecolor":{
+        'SNAPDEAL':'#7277d5',
+        'SHOPCLUES':'#3bb0d9',
+        'FLIPKART':'#d8434e',
+        'AMAZON':'#b1c252',
+        'REDIFF':'#f5ba42'
+    },
+    "data":  [
+        {
+
+            "label": "Snapdeal",
+            "value": 99,
+            "type":'up',
+            "denomination":'plus'
+        },
+         {
+
+            "label": "Shopclues",
+            "value": 10,
+            "type":'down',
+            "denomination":'minus'
+        },
+        {
+            "label": "Flipkart",
+            "value": 50,
+            "type":'down',
+            "denomination":'minus'
+        },
+        {
+            "label": "Amazon",
+            "value": 100,
+            "type":'up',
+            "denomination":'plus'
+
+        }
+        ,
+        {
+            "label": "Rediff",
+            "value": 75,
+            "type":'up',
+            "denomination":'minus'
+        }          
+    ]
+}
+    d3charts("CustomColumn2D", "#customcolumn", customcolumn);
