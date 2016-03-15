@@ -2305,15 +2305,15 @@ var bubbledata = {
         },
          "colormap":[
     {"name":"Very Low",
-    "value":"#c7001e"},
+    "value":"#cee1e2"},
        {"name":"Low",
-    "value":"#f6a580"},
+    "value":"#96c3c2"},
      {"name":"Average",
-    "value":"#cccccc"},
+    "value":"#85baba"},
       {"name":"High",
-    "value":"#92c6db"},
+    "value":"#56a1a0"},
       {"name":"Very High",
-    "value":"#086fad"}
+    "value":"#35908f"}
 
     ],
     "calenderyear":[2015,2016],
