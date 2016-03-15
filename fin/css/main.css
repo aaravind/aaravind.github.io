@@ -1,0 +1,65 @@
+body {
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, "Lucida Grande", Arial, Verdana, sans-serif;
+  margin: 0; }
+
+.howitworks {
+  background: #50d2c2;
+  padding: 20px 20px; }
+  .howitworks h1 {
+    margin: 0px;
+    margin-left: 8%;
+    color: white; }
+  .howitworks .eachstep {
+    float: left;
+    width: 30%;
+    margin-left: 2%; }
+    .howitworks .eachstep .header {
+      clear: both;
+      padding: 5px 0px;
+      font-size: 1.2em;
+      color: white;
+      margin-left: 20%; }
+    .howitworks .eachstep .desc {
+      margin-left: 20%;
+      max-width: 50%; }
+    .howitworks .eachstep .step1 {
+      width: 100px;
+      height: 100px;
+      background: url("../images/finoico.png") 475px 132px;
+      background-size: 502px 150px;
+      margin: auto;
+      margin-left: 20%;
+      float: left; }
+    .howitworks .eachstep .step2 {
+      width: 100px;
+      height: 100px;
+      background: url("../images/finoico.png") 300px 132px;
+      background-size: 502px 150px;
+      margin: auto;
+      margin-left: 20%;
+      float: left; }
+    .howitworks .eachstep .step3 {
+      width: 100px;
+      height: 100px;
+      background: url("../images/finoico.png") 110px 132px;
+      background-size: 502px 150px;
+      margin: auto;
+      margin-left: 20%;
+      float: left; }
+  @media (max-width: 600px) {
+    .howitworks h1 {
+      margin-left: 2%; }
+    .howitworks .eachstep {
+      clear: both;
+      width: auto;
+      display: table;
+      margin-left: 30%; }
+      .howitworks .eachstep .header, .howitworks .eachstep .desc {
+        margin-left: 0;
+        max-width: 70%; }
+      .howitworks .eachstep .image_bg {
+        margin-left: 0; } }
+  .howitworks .clear {
+    clear: both; }
+
+/*# sourceMappingURL=main.css.map */

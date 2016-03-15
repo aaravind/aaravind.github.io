@@ -1,0 +1,71 @@
+$howwork_bg : #50d2c2;
+$howwork_header: white;
+$howworks_image_icon : '../images/finoico.png';
+@mixin spriteimage($bg_left,$bg_top,$bg_size1,$bg_size2) {
+    width: 100px;
+    height: 100px;
+    background: url($howworks_image_icon) $bg_left $bg_top;
+    background-size: $bg_size1 $bg_size2;
+    margin: auto;
+    margin-left:20%;
+    float: left;
+}
+body{
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, "Lucida Grande", Arial, Verdana, sans-serif;
+    margin: 0;
+}
+.howitworks{
+	background:$howwork_bg;
+	padding:20px 20px;
+	h1{
+	margin:0px;
+	margin-left: 8%;
+	color:white;
+	}
+	.eachstep{
+	float:left;
+	width :30%;
+	margin-left:2%;
+	.header{
+	clear:both;
+	padding: 5px 0px;
+    font-size: 1.2em;
+	color:$howwork_header;
+    margin-left:20%;
+	}
+	.desc{
+	margin-left: 20%;
+    max-width: 50%;
+	}
+	.step1{
+     @include spriteimage(475px,132px,502px,150px);
+	}
+	.step2{
+     @include spriteimage(300px,132px,502px,150px);
+	}
+	.step3{
+     @include spriteimage(110px,132px,502px,150px);
+	}
+	}
+	@media (max-width:600px){
+	  h1{
+	  margin-left:2%;
+	  }
+	  .eachstep{
+	   clear: both;
+	    width: auto;
+	    display: table;
+	    margin-left: 30%;
+	  .header,.desc{
+	  margin-left:0;
+	  max-width: 70%;
+	  }
+	  .image_bg {
+	  margin-left:0;
+	  }
+	  }
+	}
+	.clear{
+	clear:both;
+	}
+}
