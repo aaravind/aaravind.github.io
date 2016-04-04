@@ -43,4 +43,6 @@ var d3charts = function (chartType, chartId, chartdata, chartwidth, chartheight)
         customBar2D(chartId, chartdata,chartType);
     if (chartType == 'CustomColumn2D')
         customColumn2D(chartId, chartdata,chartType);
+    if (chartType == 'GroupBar2D')
+        groupBar2D(chartId, chartdata,chartType);
 };
