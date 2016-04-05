@@ -80,9 +80,20 @@ function yAxis() {
 
   x0.domain(chartdata.data.map(function(d) { return d.category; }));
   x1.domain(eachcolumn).rangeRoundBands([0, x0.rangeBand()]);
-  y.domain([0, d3.max(chartdata.data, function(d) { return d3.max(d.data, function(d) { return d.value; }); })]);
+  var minval =d3.min(chartdata.data, function(d) { return d3.min(d.data, function(d) { return d.value; }); });
+  var minnow = minval < 0 ? minval : 0; 
+  y.domain([minnow, d3.max(chartdata.data, function(d) { return d3.max(d.data, function(d) { return d.value; }); })]);
 
-  
+  if(chartdata.colormap == undefined)
+  {
+        chartdata.colormap = [];
+        for(i=0;i<eachcolumn.length;i++){
+            var tempobjcolor={};
+            tempobjcolor.name = eachcolumn[i];
+            tempobjcolor.value = chartdata.chart.pallattecolor[i];
+             chartdata.colormap.push(tempobjcolor);
+        }
+  }
 
             var svg = d3.select(chartId).append("svg")
     .attr("width", "100%")
@@ -196,8 +207,16 @@ function yAxis() {
       })
       .attr('data-visibility',"true")
       .attr("x", function(d) { return x1(d.label); })
-      .attr("y", function(d) { return y(d.value); })
-      .attr("height", function(d) { return height - y(d.value); })
+      .attr("y", function(d) { 
+        if(d.value<0) 
+        return y(0);
+        else
+        return y(d.value); })
+      .attr("height", function(d) { 
+        if(d.value < 0)
+        return y(d.value) -y(0);
+        else
+        return y(0) - y(d.value); })
       .style("fill", function(d) { 
             if (chartdata.colormap != undefined && chartdata.colormap != '') {
                 for (i = 0; i < chartdata.colormap.length; i++) {
@@ -250,7 +269,7 @@ function yAxis() {
 
    d3.selectAll(chartId + ' path.domain').attr('d', '');
    d3.selectAll(chartId + ' .grid .tick text').attr('transform', 'translate(5,10)').style('text-anchor','start');
-   d3.selectAll(chartId + ' .chartgroup').attr('transform', 'translate(0,15)');
+   d3.selectAll(chartId + ' .chartgroup').attr('transform', 'translate(0,20)');
 
 
    if (chartdata.chart.showlegend) {
