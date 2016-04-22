@@ -4,8 +4,7 @@ body {
 
 .twitter_container {
   max-width: 960px;
-  margin: 0 auto;
-  height: 100%; }
+  margin: 0 auto; }
   .twitter_container .header {
     width: 100%;
     height: 75px;
