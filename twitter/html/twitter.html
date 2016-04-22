@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Twitter v1.1 API - A JavaScript and PHP solution</title>
+		<link rel="stylesheet" type="text/css" href="../css/twitter.css">
+	</head>
+	<body>
+	 <script id="tweet_template" type="text/x-handlebars-template">
+	<div class="each_tweet">
+	    <div class="left">
+	    <a href={{profileurl}})><img src={{profileimage}} class="profile_image" alt={{name}}></img></a>
+	    </div>
+		<div class="right">
+		 <div class ="profile_info">
+		 <div class="name"><p>{{name}}</p></div>
+		 <div class="screenname"><p>@{{screenname}}</p></div>
+		 <div class="posttime"><p>{{tweetdate}}</p></div>
+		 </div>
+         <div class="tweet"><p>{{tweet}}</p></div>
+		</div>
+	</div>
+</script>
+
+
+        <div class="twitter_container">
+        	<div class="header">
+        		<p class="left"> Twitter @Olacabs</p>
+        		<p class="right"><span>Auto refresh in</span> <span class="timeout"></span><span>seconds</span>
+        	</div>
+        	<div class="search_bar">
+
+        	<input type="text" placeholder="Search inside Olacabs Eg: #olaprime,auto" class="search_input">
+        	<input type="button" value="SEARCH" class='search_but'>
+        	</div>	
+        	<div class="tweets_container">
+        		<div class="loader">
+        			<img src="../image/blue-spinner.gif" class="loader">
+        		</div>
+        	</div>
+        </div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+		<script src="../js/twitter.js"></script>
+	</body>
+</html>
+<!DOCTYPE html>
