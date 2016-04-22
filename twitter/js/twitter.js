@@ -11,7 +11,8 @@ function refreshtweets(querystring){
 	}).done(function(data) {
 		$('.tweets_container .loader').css('display','none');
 	  var tweetdata = JSON.parse(data);
-	  var source   = $("#tweet_template").html();
+	  if(tweetdata.length != 0){
+	  		  var source   = $("#tweet_template").html();
 	  var template = Handlebars.compile(source);
 		            for(var index in tweetdata){
 		            var html = template(tweetdata[index]);
@@ -20,7 +21,13 @@ function refreshtweets(querystring){
 		$('.tweets_container .each_tweet').animate({opacity: '1'}, "slow");        
      if(timerId != undefined)
       clearTimeout(timerId);		        
-      timer();		        
+      timer();
+	  }
+	  else{
+	  	$('.tweets_container').append('<div class="each_tweet"><p>No data to display</p></div>');
+	  	$('.tweets_container .each_tweet').animate({opacity: '1'}, "slow"); 
+	  }
+		        
 	});
 }
 refreshtweets('');
@@ -45,3 +52,10 @@ function countdown() {
   }
 }
 }
+
+$(".search_input").keypress(function(event) {
+    if (event.which == 13) {
+	inputquery = encodeURIComponent($('.search_input').val());
+    refreshtweets(inputquery);
+     }
+});
