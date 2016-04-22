@@ -18,7 +18,7 @@ body {
       color: #1da1f2;
       margin-top: 1.6em;
       font-size: 1.1em; }
-    @media screen and (max-width: 380px) {
+    @media screen and (max-width: 420px) {
       .twitter_container .header .right {
         float: left; } }
   .twitter_container .search_bar .search_input {
