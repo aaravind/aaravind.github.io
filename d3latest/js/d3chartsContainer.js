@@ -45,4 +45,6 @@ var d3charts = function (chartType, chartId, chartdata, chartwidth, chartheight)
         customColumn2D(chartId, chartdata,chartType);
     if (chartType == 'GroupBar2D')
         groupBar2D(chartId, chartdata,chartType);
+    if (chartType == 'MultiSeriesRange2D')
+        multiSeriesRange2D(chartId, chartdata,chartType);
 };

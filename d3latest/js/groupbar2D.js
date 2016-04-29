@@ -207,27 +207,6 @@ function yAxis() {
       })
       .attr('data-visibility',"true")
       .attr("x", function(d) { return x1(d.label); })
-      .attr("y", function(d) { 
-        if(d.value<0) 
-        return y(0);
-        else
-        return y(d.value); })
-      .attr("height", function(d) { 
-        if(d.value < 0)
-        return y(d.value) -y(0);
-        else
-        return y(0) - y(d.value); })
-      .style("fill", function(d) { 
-            if (chartdata.colormap != undefined && chartdata.colormap != '') {
-                for (i = 0; i < chartdata.colormap.length; i++) {
-                    if (d.label == chartdata.colormap[i].name)
-                        return chartdata.colormap[i].value;
-                }
-            }
-            else
-                return color(d.label);
-            })
-      .style("opacity",'0.7')
       .on("mouseover", function (d, i) {
              this.style.cursor = 'pointer';
              this.style.opacity = 1;
@@ -265,11 +244,44 @@ function yAxis() {
                 div.transition()
                 .duration(100)
                 .style("opacity", 0);
-            });
+            })
+      .attr('height', 0)
+                               .attr('y', function (d, i) {
+                                   return y(0);
+                               })
+               .transition()
+      .delay(function (d, i) { return i * 100; })
+      .duration(400)
+      .attr("y", function(d) { 
+        if(d.value<0) 
+        return y(0);
+        else
+        return y(d.value); })
+      .attr("height", function(d) { 
+        if(d.value < 0)
+        return y(d.value) -y(0);
+        else
+        return y(0) - y(d.value); })
 
-   d3.selectAll(chartId + ' path.domain').attr('d', '');
+      .style("fill", function(d) { 
+            if (chartdata.colormap != undefined && chartdata.colormap != '') {
+                for (i = 0; i < chartdata.colormap.length; i++) {
+                    if (d.label == chartdata.colormap[i].name)
+                        return chartdata.colormap[i].value;
+                }
+            }
+            else
+                return color(d.label);
+            })
+      .style("opacity",'0.7');
+
+   d3.selectAll(chartId + ' .y path.domain').attr('d', '');
    d3.selectAll(chartId + ' .grid .tick text').attr('transform', 'translate(5,10)').style('text-anchor','start');
    d3.selectAll(chartId + ' .chartgroup').attr('transform', 'translate(0,20)');
+
+  d3.selectAll(chartId + ' .x.axis .tick line').attr('y2',0);
+  d3.select(chartId + ' .y.grid .tick line').attr('x2',0)
+  d3.selectAll(chartId + ' .x.axis .domain').attr('d','M0,0V0H'+(width+70)+'V0');
 
 
    if (chartdata.chart.showlegend) {
