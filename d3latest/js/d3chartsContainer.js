@@ -47,4 +47,6 @@ var d3charts = function (chartType, chartId, chartdata, chartwidth, chartheight)
         groupBar2D(chartId, chartdata,chartType);
     if (chartType == 'MultiSeriesRange2D')
         multiSeriesRange2D(chartId, chartdata,chartType);
+        if (chartType == 'BoxPlot2D')
+        boxplot2D(chartId, chartdata,chartType);
 };
