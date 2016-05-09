@@ -1192,8 +1192,8 @@ var stackedbar = {
      {"name":"Lowest",
     "value":"#e0594b"}
     ],
-          "click":function(data){
-    alert(data[0].label);},
+         // "click":function(data){
+   // alert(data[0].label);},
     "data": [
         {
             "label": "Electronic",
@@ -2920,159 +2920,62 @@ var bubbledata = {
           "tickinterval":5, // Number of label visible in the X axis
          "pallattecolor":["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"] // Pallette colors for 30 values
     },
-    "colormap":[
-    {"name":"Snapdeal",
-    "value":"#98abc5"},
-       {"name":"Amazon",
-    "value":"#8a89a6"},
-     {"name":"Paytm",
-    "value":"#7b6888"},
-    {"name":"Shopclues",
-    "value":"#6b486b"},
-    {"name":"Jabong",
-    "value":"#a05d56"},
-    {"name":"Flipkart",
-    "value":"#d0743c"},
-    {"name":"Rediff",
-    "value":"#ff8c00"}
-    ],
     "export":{
         "showexport": true,
          "format": ["-Download-","jpeg","png"], //Specify Format to export.Currently support jpeg,png
          "filename":"groupchart"
     },
     "data":  [
-        {
-           "category": "Electronics",
-            "data":[
-                    {'label':'Snapdeal',
-                     'value':50
-                     },
-                     {'label':'Amazon',
-                     'value':50
-                     },
-                     {'label':'Paytm',
-                     'value':100
-                     },
-                     {'label':'Shopclues',
-                     'value':45
-                     },
-                     {'label':'Jabong',
-                     'value':23
-                     },
-                     {'label':'Flipkart',
-                     'value':87
-                     },
-                     {'label':'Rediff',
-                     'value':45
-                     }
-                    ] 
-        },
-        {
-           "category": "Apparel",
-            "data":[
-                    {'label':'Snapdeal',
-                     'value':100
-                     },
-                     {'label':'Amazon',
-                     'value':50
-                     },
-                     {'label':'Paytm',
-                     'value':20
-                     },
-                     {'label':'Shopclues',
-                     'value':66
-                     },
-                     {'label':'Jabong',
-                     'value':22
-                     },
-                     {'label':'Flipkart',
-                     'value':99
-                     },
-                     {'label':'Rediff',
-                     'value':33
-                     }
-                    ] 
-        },
-        {
-           "category": "Clothing",
-            "data":[
-                    {'label':'Snapdeal',
-                     'value':20
-                     },
-                     {'label':'Amazon',
-                     'value':50
-                     },
-                     {'label':'Paytm',
-                     'value':100
-                     },
-                     {'label':'Shopclues',
-                     'value':67
-                     },
-                     {'label':'Jabong',
-                     'value':11
-                     },
-                     {'label':'Flipkart',
-                     'value':9
-                     },
-                     {'label':'Rediff',
-                     'value':55
-                     }
-                    ] 
-        },
-        {
-           "category": "Footwear",
-            "data":[
-                    {'label':'Snapdeal',
-                     'value':89
-                     },
-                     {'label':'Amazon',
-                     'value':100
-                     },
-                     {'label':'Paytm',
-                     'value':50
-                     },
-                     {'label':'Shopclues',
-                     'value':23
-                     },
-                     {'label':'Jabong',
-                     'value':56
-                     },
-                     {'label':'Flipkart',
-                     'value':32
-                     },
-                     {'label':'Rediff',
-                     'value':90
-                     }
-                    ] 
-        },
-        {
-           "category": "Accesories",
-            "data":[
-                    {'label':'Snapdeal',
-                     'value':20
-                     },
-                     {'label':'Amazon',
-                     'value':10
-                     },
-                     {'label':'Paytm',
-                     'value':50
-                     },
-                     {'label':'Shopclues',
-                     'value':100
-                     },
-                     {'label':'Jabong',
-                     'value':23
-                     },
-                     {'label':'Flipkart',
-                     'value':66
-                     },
-                     {'label':'Rediff',
-                     'value':33
-                     }
-                    ] 
-        }                       
-    ]
+{
+category: "2016-5-3",
+data: [ ]
+},
+{
+category: "2016-5-4",
+data: [ ]
+},
+{
+category: "2016-5-5",
+data: [
+{
+label: "Amazon",
+value: 83
+},
+{
+label: "PaytmEffective-IN",
+value: 5
+},
+{
+label: "SnapDeal",
+value: 33
+},
+{
+label: "Paytm",
+value: 5
+},
+{
+label: "Flipkart",
+value: 84
+}
+]
+},
+{
+category: "2016-5-6",
+data: [ ]
+},
+{
+category: "2016-5-7",
+data: [ ]
+},
+{
+category: "2016-5-8",
+data: [ ]
+},
+{
+category: "2016-5-9",
+data: [ ]
+}
+]
 }
     d3charts("GroupBar2D", "#groupbar", groupbar);
 
