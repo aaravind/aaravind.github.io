@@ -74,9 +74,19 @@ function yAxis() {
           })
             };
  eachcolumn = [];
-  chartdata.data[0].data.forEach(function(d) {
-   eachcolumn.push(d.label);
-  });
+ execonce = false;
+ chartdata.data.forEach(function(d){
+  if(d.data.length != 0 && !execonce)
+  {
+    d.data.forEach(function(x){
+      eachcolumn.push(x.label);
+    })
+    execonce =  true;
+  }
+ });
+  //chartdata.data[0].data.forEach(function(d) {
+  // eachcolumn.push(d.label);
+ // });
 
   x0.domain(chartdata.data.map(function(d) { return d.category; }));
   x1.domain(eachcolumn).rangeRoundBands([0, x0.rangeBand()]);
@@ -199,7 +209,20 @@ function yAxis() {
       .attr("transform", function(d) { return "translate(" + x0(d.category) + ",0)"; });
 
   categ.selectAll("rect")
-      .data(function(d) { return d.data; })
+      .data(function(d) { 
+        if(d.data.length == 0)
+        {
+          var temparr = [];
+          var tempobj = {};
+          eachcolumn.forEach(function(d){
+            tempobj.label=d;
+            tempobj.value = 0;
+            temparr.push(tempobj);
+          })
+          return temparr;
+        }
+        else
+        return d.data; })
     .enter().append("rect")
       .attr("width", x1.rangeBand())
       .attr("class", function(d){
