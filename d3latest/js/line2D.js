@@ -426,8 +426,18 @@ var line2D = function (chartType, chartId, chartdata) {
                 }
             }
             x.domain(chartdata.data.map(function (d) { return d.label; }));
-            var domainmin = d3.min(chartdata.data, function (d) { if (d.value != 0) return d.value - 0.25 * d.value; });
-            var domainmax = d3.max(chartdata.data, function (d) { return d.value + 0.3 * d.value; });
+            var domainmin = d3.min(chartdata.data, function (d) {
+             if (d.value != 0 & d.value>= 0)
+              return d.value - 0.25 * d.value;
+          else
+             return d.value + 0.25 * d.value;
+               });
+            var domainmax = d3.max(chartdata.data, function (d) {
+                 if (d.value>= 0)
+             return d.value + 0.3 * d.value; 
+                 else
+             return d.value - 0.3 * d.value;        
+              });
             y.domain([domainmin, domainmax]);
 
 
