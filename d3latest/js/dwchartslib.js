@@ -66,6 +66,8 @@ window.onresize = function (event) {
                         redrawchart("GroupBar2D", "#groupbarneg", groupbarneg);
                              redrawchart("MultiSeriesRange2D", "#multiseriesrange", multiseriesrange);
                              d3charts("BoxPlot2D", "#boxplot", boxplot);
+                             d3charts("CustomVerticalBar2D", "#customverticalbar", customverticalbar);
+                             redrawchart("GroupBar2D", "#groupbarcustom", groupbarcustom);
 };
 
 var linedata = {
@@ -248,545 +250,134 @@ var linedata = {
 // Data is the above formed Data
     d3charts("Line2D", "#linechart", linedata);
 
- var Multilinedata = {
-    "chart": {
-        "caption": "Multi Line Chart",
-        "captionColor":"#333",
-         "subcaption": "More Info",
-        "subcaptionColor":"black",
-        "yaxisname": "",
-        "showlegend":true,
-        "tickinterval":5,
-        "tooltipheader":"Date", //Header in the TooTip if Not specified taken as Node
-        "slant":false,
-        "slantdegree":"90",
-          "credits":{
-            "text":"Powered By",
-            "color":"#666",
-            "imageurl":"../images/logo.png"
-    
-        },
-        "pallattecolor":["#008ee4","#E94C3D","#26AD5E","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
-    },
-    "export":{
-        "showexport": true,
-         "format": ["-Download-","jpeg","png"]
-    },
-    "data":  [ // Data Format example for Multi chart Type
-        {
-            "category": "Snapdeal",
-            "label": "01-08-15",
-            "value": 256.122
-        },
-        { 
-            "category": "Snapdeal",
-            "label": "02-08-15",
-            "value": 223
-        },
-        {
-    
-            "category": "Snapdeal",
-            "label": "03-08-15",
-            "value": 287
+ var Multilinedata = {  
+   "chart":{  
+      "caption":"Price Gap with Lowest Priced Competitor",
+      "captionColor":"black",
+      "yaxisname":"",
+      "showlegend":true,
+      "tickinterval":1,
+      "tooltipheader":"Date",
+      "slant":false,
+      "slantdegree":"90",
+      "suffixsymbol":'%',
+      "credits":{  
+         "text":" ",
+         "color":"#666",
+         "imageurl":"../images/logo.png"
+      },
+      "pallattecolor":[  
+         "#008ee4",
+         "#E94C3D",
+         "#26AD5E",
+         "#E77E22",
+         "#2B80B9",
+         "#F2C40F",
+         "#2D3E50",
+         "#5CADE2",
+         "#BE3A2B",
+         "#7E8C8D",
+         "#9A59B5",
+         "#34495E",
+         "#BEC3C7",
+         "#EC0000",
+         "#BE3243",
+         "#FF3243",
+         "#BE0043",
+         "#BE32FF",
+         "#CC3243",
+         "#BECC43",
+         "#BE324C",
+         "#f8bd19",
+         "#e44a00",
+         "#008FF4",
+         "#33bdda",
+         "#6baa01",
+         "#583e78"
+      ]
+   },
+   "export":{  
+      "showexport":true,
+      "filename":"http://localhost/priceweave_v3/insights/loadchart/price_gap_comparison/#3-Zoook ZB-BS100R Blue",
+      "format":[  
+         "Download",
+         "jpeg",
+         "png"
+      ]
+   },
+   "data":[  
+      {  
+         "label":"2016-5-5",
+         "category":"Price Gap",
+         "value":31
+      },
+      {  
+         "label":"2016-5-6",
+         "category":"Price Gap",
+         "value":31
+      },
+      {  
+         "label":"2016-5-7",
+         "category":"Price Gap",
+         "value":0
+      },
+      {  
+         "label":"2016-5-8",
+         "category":"Price Gap",
+         "value":31
+      },
+      {  
+         "label":"2016-5-9",
+         "category":"Price Gap",
+         "value":31
+      },
+      {  
+         "label":"2016-5-10",
+         "category":"Price Gap",
+         "value":31
+      },
+      {  
+         "label":"2016-5-11",
+         "category":"Price Gap",
+         "value":31
+      },
 
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "04-08-15",
-            "value": 210
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "05-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "06-08-15",
-            "value": 250
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "07-08-15",
-            "value": 212
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "08-08-15",
-            "value": 0
-        },
-        {
-            "category": "Snapdeal",
-            "label": "09-08-15",
-            "value": 298
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "10-08-15",
-            "value": 255
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "11-08-15",
-            "value": 288
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "12-08-15",
-            "value": 278
-        } ,
-        {
-            "category": "Snapdeal",
-            "label": "13-08-15",
-            "value": 255
-        } ,
-        {
-            "category": "Snapdeal",
-            "label": "14-08-15",
-            "value": 289
-        },
-        {
-            "category": "Snapdeal",
-            "label": "15-08-15",
-            "value": 223
-        },
-        {
-            "category": "Snapdeal",
-            "label": "16-08-15",
-            "value": 280
-        },
-        {
-            "category": "Snapdeal",
-            "label": "17-08-15",
-            "value": 0
-        },
-        {
-            "category": "Snapdeal",
-            "label": "18-08-15",
-            "value": 0
-
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "19-08-15",
-            "value": 211
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "20-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "21-08-15",
-            "value": 276
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "22-08-15",
-            "value": 277
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "23-08-15",
-            "value": 259
-        },
-        {
-            "category": "Snapdeal",
-            "label": "24-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "25-08-15",
-            "value": 280
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "26-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Snapdeal",
-            "label": "27-08-15",
-            "value": 212
-        } ,
-        {
-            "category": "Snapdeal",
-            "label": "28-08-15",
-            "value": 0
-        } ,
-        {
-            "category": "Snapdeal",
-            "label": "29-08-15",
-            "value": 289
-
-        },
-        {
-            "category": "Snapdeal",
-            "label": "30-08-15",
-            "value": 223
-
-        }, {
-             "category": "Paytm",
-            "label": "01-08-15",
-            "value": 206
-        },
-        { 
-            "category": "Paytm",
-            "label": "02-08-15",
-            "value": 227.343543
-        },
-        {
-            "category": "Paytm",
-            "label": "03-08-15",
-            "value": 204
-
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "04-08-15",
-            "value": 290
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "05-08-15",
-            "value": 255
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "06-08-15",
-            "value": 245
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "07-08-15",
-            "value": 287
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "08-08-15",
-            "value": 222
-        },
-        {
-            "category": "Paytm",
-            "label": "09-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "10-08-15",
-            "value": 211
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "11-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "12-08-15",
-            "value": 0
-        } ,
-        {
-            "category": "Paytm",
-            "label": "13-08-15",
-            "value": 277
-        } ,
-        {
-            "category": "Paytm",
-            "label": "14-08-15",
-            "value": 237
-        },
-        {
-            "category": "Paytm",
-            "label": "15-08-15",
-            "value": 222
-        },
-        {
-            "category": "Paytm",
-            "label": "16-08-15",
-            "value": 277
-        },
-        {
-            "category": "Paytm",
-            "label": "17-08-15",
-            "value": 0
-        },
-        {
-            "category": "Paytm",
-            "label": "18-08-15",
-            "value": 222
-
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "19-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "20-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "21-08-15",
-            "value": 277
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "22-08-15",
-            "value": 255
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "23-08-15",
-            "value": 215
-        },
-        {
-            "category": "Paytm",
-            "label": "24-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "25-08-15",
-            "value": 273
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "26-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Paytm",
-            "label": "27-08-15",
-            "value": 0
-        } ,
-        {
-            "category": "Paytm",
-            "label": "28-08-15",
-            "value": 276
-        } ,
-        {
-            "category": "Paytm",
-            "label": "29-08-15",
-            "value": 150
-
-        },
-        {
-            "category": "Paytm",
-            "label": "30-08-15",
-            "value": 123
-
-        }, {
-             "category": "Flipkart",
-            "label": "01-08-15",
-            "value": 150
-        },
-        { 
-            "category": "Flipkart",
-            "label": "02-08-15",
-            "value": 210
-        },
-        {
-            "category": "Flipkart",
-            "label": "03-08-15",
-            "value": 264.453
-
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "04-08-15",
-            "value": 255
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "05-08-15",
-            "value": 244
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "06-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "07-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "08-08-15",
-            "value": 288
-        },
-        {
-            "category": "Flipkart",
-            "label": "09-08-15",
-            "value": 277
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "10-08-15",
-            "value": 277
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "11-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "12-08-15",
-            "value": 206
-        } ,
-        {
-            "category": "Flipkart",
-            "label": "13-08-15",
-            "value": 255
-        } ,
-        {
-            "category": "Flipkart",
-            "label": "14-08-15",
-            "value": 230
-        },
-        {
-            "category": "Flipkart",
-            "label": "15-08-15",
-            "value": 276
-        },
-        {
-            "category": "Flipkart",
-            "label": "16-08-15",
-            "value": 210
-        },
-        {
-            "category": "Flipkart",
-            "label": "17-08-15",
-            "value": 0
-        },
-        {
-            "category": "Flipkart",
-            "label": "18-08-15",
-            "value": 0
-
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "19-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "20-08-15",
-            "value": 0
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "21-08-15",
-            "value": 222
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "22-08-15",
-            "value": 211
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "23-08-15",
-            "value": 0
-        },
-        {
-            "category": "Flipkart",
-            "label": "24-08-15",
-            "value": 210
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "25-08-15",
-            "value": 220
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "26-08-15",
-            "value": 278
-        }
-        ,
-        {
-            "category": "Flipkart",
-            "label": "27-08-15",
-            "value": 0
-        } ,
-        {
-            "category": "Flipkart",
-            "label": "28-08-15",
-            "value": 224
-        } ,
-        {
-            "category": "Flipkart",
-            "label": "29-08-15",
-            "value": 0
-
-        },
-        {
-            "category": "Flipkart",
-            "label": "30-08-15",
-            "value": 295
-
-        }
-
-
-        
-
-    ]
+      {  
+         "label":"2016-5-5",
+         "category":"Temp Gap",
+         "value":23
+      },
+      {  
+         "label":"2016-5-6",
+         "category":"Temp Gap",
+         "value":12
+      },
+      {  
+         "label":"2016-5-7",
+         "category":"Temp Gap",
+         "value":31
+      },
+      {  
+         "label":"2016-5-8",
+         "category":"Temp Gap",
+         "value":67
+      },
+      {  
+         "label":"2016-5-9",
+         "category":"Temp Gap",
+         "value":89
+      },
+      {  
+         "label":"2016-5-10",
+         "category":"Temp Gap",
+         "value":45
+      },
+      {  
+         "label":"2016-5-11",
+         "category":"Temp Gap",
+         "value":43
+      }
+   ]
 }
 
 
@@ -2779,22 +2370,22 @@ var bubbledata = {
     var custombar = {
     "chart": {
         "caption": "Top brands by discount", //Name of the chart Header
-        "captionColor":"#d09d34", // Color of the Chart Header
+        "captionColor":"#727272", // Color of the Chart Header
         "yaxisname": "", // Name which gets displayed in the Yaxis
         "slant":false, // X axis label slant
         "slantdegree":"90", // Slant based on the degree specified
-          "credits":{            // Credits
-            "text":"Powered By", // Credit Name
-            "color":"#666",
-            "imageurl":"../images/logo.png"
-        },
+          //"credits":{            // Credits
+         //   "text":"Powered By", // Credit Name
+         //   "color":"#666",
+         //   "imageurl":"../images/logo.png"
+        //},
           "tickinterval":5, // Number of label visible in the X axis
-         "pallattecolor":["#44d62c","#4a90e2","#00b200","#004c00","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"] // Pallette colors for 30 values
+         "pallattecolor":["#fcb249","#c2d661","#3ecfc1","#599bf0","#fe949e","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"] // Pallette colors for 30 values
     },
     "rectheight":50,
     "export":{
         "showexport": true,
-         "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
+         "format": ["Download","jpeg","png"] //Specify Format to export.Currently support jpeg,png
     },
     "data":  [
         {
@@ -2835,32 +2426,27 @@ var bubbledata = {
 }
     d3charts("CustomBar2D", "#custombar", custombar);
 
-    var customcolumn = {
+
+
+var customverticalbar = {
     "chart": {
-        "caption": "% of Products Discounted", //Name of the chart Header
-        "captionColor":"#d09d34", // Color of the Chart Header
+        "caption": "Top brands by discount", //Name of the chart Header
+        "captionColor":"#727272", // Color of the Chart Header
         "yaxisname": "", // Name which gets displayed in the Yaxis
         "slant":false, // X axis label slant
         "slantdegree":"90", // Slant based on the degree specified
-          "credits":{            // Credits
-            "text":"Powered By", // Credit Name
-            "color":"#666",
-            "imageurl":"../images/logo.png"
-        },
+          //"credits":{            // Credits
+         //   "text":"Powered By", // Credit Name
+         //   "color":"#666",
+         //   "imageurl":"../images/logo.png"
+        //},
           "tickinterval":5, // Number of label visible in the X axis
-         "pallattecolor":["#44d62c","#4a90e2","#00b200","#004c00","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"] // Pallette colors for 30 values
+         "pallattecolor":["#fcb249","#c2d661","#3ecfc1","#599bf0","#fe949e","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"] // Pallette colors for 30 values
     },
     "rectheight":50,
     "export":{
         "showexport": true,
-         "format": ["-Download-","jpeg","png"] //Specify Format to export.Currently support jpeg,png
-    },
-    "sourcecolor":{
-        'SNAPDEAL':'#7277d5',
-        'SHOPCLUES':'#3bb0d9',
-        'FLIPKART':'#d8434e',
-        'AMAZON':'#b1c252',
-        'REDIFF':'#f5ba42'
+         "format": ["Download","jpeg","png"] //Specify Format to export.Currently support jpeg,png
     },
     "data":  [
         {
@@ -2872,21 +2458,21 @@ var bubbledata = {
         },
          {
 
-            "label": "Shopclues",
-            "value": 10,
+            "label": "shopclues",
+            "value": 3,
             "type":'down',
-            "denomination":'minus'
+            "denomination":'plus'
         },
         {
-            "label": "Flipkart",
+            "label": "flipkart",
             "value": 50,
-            "type":'down',
+            "type":'up',
             "denomination":'minus'
         },
         {
             "label": "Amazon",
             "value": 100,
-            "type":'up',
+            "type":'down',
             "denomination":'plus'
 
         }
@@ -2894,12 +2480,76 @@ var bubbledata = {
         {
             "label": "Rediff",
             "value": 75,
+            "type":'down',
+            "denomination":'minus'
+        }          
+    ]
+}
+    d3charts("CustomVerticalBar2D", "#customverticalbar", customverticalbar);
+
+
+    var customcolumn = {
+    "chart": {
+        "caption": "% of Products Discounted", //Name of the chart Header
+        "captionColor":"#727272", // Color of the Chart Header
+        "yaxisname": "", // Name which gets displayed in the Yaxis
+        "slant":false, // X axis label slant
+        "slantdegree":"90", // Slant based on the degree specified
+         // "credits":{            // Credits
+          //  "text":"Powered By", // Credit Name
+         //   "color":"#666",
+          //  "imageurl":"../images/logo.png"
+       // },
+          "tickinterval":5, // Number of label visible in the X axis
+         "pallattecolor":["#7277d5","#3bb0d9","#d8434e","#b1c252","#f5ba42","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"] // Pallette colors for 30 values
+    },
+    "rectheight":50,
+    "export":{
+        "showexport": true,
+         "format": ["Download","jpeg","png"] //Specify Format to export.Currently support jpeg,png
+    },
+
+    "data":  [
+        {
+
+            "label": "Snapdeal(10.03)",
+            "value": 99,
+            "type":'up',
+            "denomination":'plus'
+        },
+         {
+
+            "label": "Shopclues(40.23)",
+            "value": 10,
+            "type":'down',
+            "denomination":'minus'
+        },
+        {
+            "label": "Flipkart(12.0)",
+            "value": 50,
+            "type":'down',
+            "denomination":'minus'
+        },
+        {
+            "label": "Amazon(7.89)",
+            "value": 100,
+            "type":'up',
+            "denomination":'plus'
+
+        }
+        ,
+        {
+            "label": "Rediff(66.55)",
+            "value": 75,
             "type":'up',
             "denomination":'minus'
         }          
     ]
 }
     d3charts("CustomColumn2D", "#customcolumn", customcolumn);
+
+
+
 
 
      var groupbar = {
@@ -2978,6 +2628,121 @@ data: [ ]
 ]
 }
     d3charts("GroupBar2D", "#groupbar", groupbar);
+
+
+
+var groupbarcustom = {
+    "chart": {
+        "caption": "Discount distribution of product by category", //Name of the chart Header
+        "captionColor":"#727272", // Color of the Chart Header
+        "yaxisname": "", // Name which gets displayed in the Yaxis
+        "slant":false, // X axis label slant
+        "slantdegree":"90", // Slant based on the degree specified
+        "showlegend":true,
+        "tooltipheader":'CATEGORY',
+          "credits":{            // Credits
+            "text":"Powered By", // Credit Name
+            "color":"#666",
+            "imageurl":"../images/logo.png"
+        },
+         "suffix":'%',
+          "tickinterval":5, // Number of label visible in the X axis
+         "pallattecolor":["#dee2a1", "#f39684", "#d3eee7", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"] // Pallette colors for 30 values
+    },
+    "export":{
+        "showexport": true,
+         "format": ["-Download-","jpeg","png"], //Specify Format to export.Currently support jpeg,png
+         "filename":"groupchart"
+    },
+    "data":  [
+{
+        category: "Clothing",
+        data: [ 
+              {
+              label: "0-30",
+              value: 83
+              },
+              {
+              label: "30-60",
+              value: 5
+              },
+              {
+              label: "60-90",
+              value: 33
+              }
+              ]
+},
+{
+category: "Mobile",
+        data: [ 
+              {
+              label: "0-30",
+              value: 23
+              },
+              {
+              label: "30-60",
+              value: 9
+              },
+              {
+              label: "60-90",
+              value: 65
+              }
+              ]
+},
+{
+category: "Electronics",
+        data: [ 
+              {
+              label: "0-30",
+              value: 34
+              },
+              {
+              label: "30-60",
+              value: 67
+              },
+              {
+              label: "60-90",
+              value: 32
+              }
+              ]
+},
+{
+category: "Accesories",
+        data: [ 
+              {
+              label: "0-30",
+              value: 4
+              },
+              {
+              label: "30-60",
+              value: 8
+              },
+              {
+              label: "60-90",
+              value: 12
+              }
+              ]
+},
+{
+category: "Footwear",
+        data: [ 
+              {
+              label: "0-30",
+              value: 34
+              },
+              {
+              label: "30-60",
+              value: 67
+              },
+              {
+              label: "60-90",
+              value: 32
+              }
+              ]
+}
+]
+}
+    d3charts("GroupBar2D", "#groupbarcustom", groupbarcustom);
 
 
     var groupbarneg = {

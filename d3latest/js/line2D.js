@@ -98,16 +98,27 @@ var line2D = function (chartType, chartId, chartdata) {
      .attr("dy", function (d) { return y(d.value) - 5; })
       .attr("class", function (d) { return cType + d.label.replace(/[^a-zA-Z0-9]/g, "") })
 	    .text(function (d) {
+                        symbol = '';
+                        if(chartdata.chart.suffixsymbol != undefined)
+            {
+                if(chartdata.chart.suffixsymbol != '')
+                {
+                    symbol = chartdata.chart.suffixsymbol;
+                } 
+                else
+                    symbol = '';
+            }
+
 	        if (chartType == 'Line2D' || chartType == 'Scatter2D' || chartType == 'StepLine2D' || chartType == 'Curve2D') {
 	            if (d.value != 0)
-	                return d.label + ' : ' + d3.format(',')(d.value.toFixed(2) / 1);
+	                return d.label + ' : ' + d3.format(',')(d.value.toFixed(2) / 1) + symbol;
 	            else
 	                return d.label + ' : ' + 'N/A';
 	        }
 
 	        else {
 	            if (d.value != 0)
-	                return d.category + ' : ' + d3.format(',')(d.value.toFixed(2) / 1);
+	                return d.category + ' : ' + d3.format(',')(d.value.toFixed(2) / 1) + symbol;
 	            else
 	                return d.category + ' : ' + 'N/A';
 	        }
@@ -162,6 +173,7 @@ var line2D = function (chartType, chartId, chartdata) {
           .style("cursor", "pointer")
          .style("opacity", "0")
          .on('mouseover', function (d, i) {
+
              if (chartType != 'Line2D' && chartType != 'Curve2D' && chartType != 'Area2D' && chartType != 'StepLine2D' && chartType != 'Scatter2D') {
                  /* d3.select(this)
                  .attr('stroke', '#666')
@@ -305,14 +317,14 @@ var line2D = function (chartType, chartId, chartdata) {
             var xaxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
-    .ticks(5);
+    .ticks(5); //nothing
             function xAxis() {
                 return d3.svg.axis()
         .scale(x)
         .orient("bottom")
         .ticks(5)
             }
-            function yaxis() {
+            function yaxis() { 
                 return d3.svg.axis()
         .scale(y)
         .orient("left")
