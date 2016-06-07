@@ -281,8 +281,11 @@ var barline2D = function (chartId, chartdata, chartType) {
 
             var barmax = d3.max(chartdata.bardata, function (d) { return d.value });
             var linemax = d3.max(chartdata.linedata, function (d) { return d.value });
+            var barmin = d3.min(chartdata.bardata, function (d) { return d.value });
+            var linemin = d3.min(chartdata.linedata, function (d) { return d.value });
             var domainmaxcol = barmax > linemax ? barmax + 0.2 * barmax : linemax + 0.2 * linemax;
-            y.domain([0, domainmaxcol]);
+            var domainmincol = barmin < linemin ? barmin : linemin;
+            y.domain([domainmincol, domainmaxcol]);
             x.domain(chartdata.bardata.map(function (d) { return d.label; }));
             svg.append("g")
   .attr("class", "grid exportgrid yrange")
@@ -473,6 +476,7 @@ var barline2D = function (chartId, chartdata, chartType) {
       .attr("class", "grid xgrid xtick")
       .attr("transform", "translate(0," + (height) + ")")
       .call(xlineaxis);
+      d3.selectAll(chartId +' .grid.xgrid.xtick .tick text').attr('dy','1.2em');
             svg.selectAll(chartId + ' .xgrid').selectAll('line')
           .style("stroke-width", 20)
           .style("cursor", "pointer")

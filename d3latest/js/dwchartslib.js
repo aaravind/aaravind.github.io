@@ -305,79 +305,7 @@ var linedata = {
          "png"
       ]
    },
-   "data":[  
-      {  
-         "label":"2016-5-5",
-         "category":"Price Gap",
-         "value":31
-      },
-      {  
-         "label":"2016-5-6",
-         "category":"Price Gap",
-         "value":31
-      },
-      {  
-         "label":"2016-5-7",
-         "category":"Price Gap",
-         "value":0
-      },
-      {  
-         "label":"2016-5-8",
-         "category":"Price Gap",
-         "value":31
-      },
-      {  
-         "label":"2016-5-9",
-         "category":"Price Gap",
-         "value":31
-      },
-      {  
-         "label":"2016-5-10",
-         "category":"Price Gap",
-         "value":31
-      },
-      {  
-         "label":"2016-5-11",
-         "category":"Price Gap",
-         "value":31
-      },
-
-      {  
-         "label":"2016-5-5",
-         "category":"Temp Gap",
-         "value":23
-      },
-      {  
-         "label":"2016-5-6",
-         "category":"Temp Gap",
-         "value":12
-      },
-      {  
-         "label":"2016-5-7",
-         "category":"Temp Gap",
-         "value":31
-      },
-      {  
-         "label":"2016-5-8",
-         "category":"Temp Gap",
-         "value":67
-      },
-      {  
-         "label":"2016-5-9",
-         "category":"Temp Gap",
-         "value":89
-      },
-      {  
-         "label":"2016-5-10",
-         "category":"Temp Gap",
-         "value":45
-      },
-      {  
-         "label":"2016-5-11",
-         "category":"Temp Gap",
-         "value":43
-      }
-   ]
+   "data":[{"label":"2016-5-7","category":"Price Gap","value":-2},{"label":"2016-5-8","category":"Price Gap","value":0},{"label":"2016-5-9","category":"Price Gap","value":100},{"label":"2016-5-10","category":"Price Gap","value":-2},{"label":"2016-5-11","category":"Price Gap","value":-2},{"label":"2016-5-12","category":"Price Gap","value":-2},{"label":"2016-5-13","category":"Price Gap","value":-2}]
 }
 
 
@@ -1271,15 +1199,15 @@ var bubbledata = {
         {
 
             "label": "Snapdeal",
-            "value": 250.123
+            "value": 20
         },
         {
             "label": "Paytm",
-            "value": 100
+            "value": -50
         },
         {
             "label": "Flipkart",
-            "value": 350
+            "value": 100
 
         }
            
@@ -1288,25 +1216,25 @@ var bubbledata = {
         {
             "category": "Snapdeal",
             "label": "01-08-15",
-            "value": 256.123
+            "value": 23
         },
         { 
             "category": "Snapdeal",
             "label": "02-08-15",
-            "value": 223.5464
+            "value": 12
         },
         {
     
             "category": "Snapdeal",
             "label": "03-08-15",
-            "value": 287.345
+            "value": 34
 
         }
         ,
         {
             "category": "Snapdeal",
             "label": "04-08-15",
-            "value": 210
+            "value": 56
         }
         ,
         {
@@ -1318,13 +1246,13 @@ var bubbledata = {
         {
             "category": "Snapdeal",
             "label": "06-08-15",
-            "value": 250
+            "value": 76
         }
         ,
         {
             "category": "Snapdeal",
             "label": "07-08-15",
-            "value": 212
+            "value": 43
         }
         ,
         {
@@ -1335,45 +1263,45 @@ var bubbledata = {
         {
             "category": "Snapdeal",
             "label": "09-08-15",
-            "value": 298
+            "value": 65
         }
         ,
         {
             "category": "Snapdeal",
             "label": "10-08-15",
-            "value": 255
+            "value": -12
         }
         ,
         {
             "category": "Snapdeal",
             "label": "11-08-15",
-            "value": 288
+            "value": 12
         }
         ,
         {
             "category": "Snapdeal",
             "label": "12-08-15",
-            "value": 278
+            "value": -34
         } ,
         {
             "category": "Snapdeal",
             "label": "13-08-15",
-            "value": 255
+            "value": 45
         } ,
         {
             "category": "Snapdeal",
             "label": "14-08-15",
-            "value": 289
+            "value": -90
         },
         {
             "category": "Snapdeal",
             "label": "15-08-15",
-            "value": 223
+            "value": 34
         },
         {
             "category": "Snapdeal",
             "label": "16-08-15",
-            "value": 280
+            "value": 12
         },
         {
             "category": "Snapdeal",
@@ -1390,7 +1318,7 @@ var bubbledata = {
         {
             "category": "Snapdeal",
             "label": "19-08-15",
-            "value": 211
+            "value": 54
         }
         ,
         {
@@ -1402,19 +1330,19 @@ var bubbledata = {
         {
             "category": "Snapdeal",
             "label": "21-08-15",
-            "value": 276
+            "value": -100
         }
         ,
         {
             "category": "Snapdeal",
             "label": "22-08-15",
-            "value": 277
+            "value": 23
         }
         ,
         {
             "category": "Snapdeal",
             "label": "23-08-15",
-            "value": 259
+            "value": 54
         },
         {
             "category": "Snapdeal",
@@ -1425,7 +1353,7 @@ var bubbledata = {
         {
             "category": "Snapdeal",
             "label": "25-08-15",
-            "value": 280
+            "value": -10
         }
         ,
         {
@@ -1437,7 +1365,7 @@ var bubbledata = {
         {
             "category": "Snapdeal",
             "label": "27-08-15",
-            "value": 212
+            "value": 87
         } ,
         {
             "category": "Snapdeal",
@@ -1447,59 +1375,59 @@ var bubbledata = {
         {
             "category": "Snapdeal",
             "label": "29-08-15",
-            "value": 289
+            "value": -23
 
         },
         {
             "category": "Snapdeal",
             "label": "30-08-15",
-            "value": 223
+            "value": 80
 
         }, {
              "category": "Paytm",
             "label": "01-08-15",
-            "value": 206
+            "value": 23
         },
         { 
             "category": "Paytm",
             "label": "02-08-15",
-            "value": 227
+            "value": 11
         },
         {
             "category": "Paytm",
             "label": "03-08-15",
-            "value": 204
+            "value": 11
 
         }
         ,
         {
             "category": "Paytm",
             "label": "04-08-15",
-            "value": 290
+            "value": 76
         }
         ,
         {
             "category": "Paytm",
             "label": "05-08-15",
-            "value": 255
+            "value": -34
         }
         ,
         {
             "category": "Paytm",
             "label": "06-08-15",
-            "value": 245
+            "value": 43
         }
         ,
         {
             "category": "Paytm",
             "label": "07-08-15",
-            "value": 287
+            "value": 0
         }
         ,
         {
             "category": "Paytm",
             "label": "08-08-15",
-            "value": 222
+            "value": -33
         },
         {
             "category": "Paytm",
@@ -1510,7 +1438,7 @@ var bubbledata = {
         {
             "category": "Paytm",
             "label": "10-08-15",
-            "value": 211
+            "value": -2
         }
         ,
         {
@@ -1527,22 +1455,22 @@ var bubbledata = {
         {
             "category": "Paytm",
             "label": "13-08-15",
-            "value": 277
+            "value": 12
         } ,
         {
             "category": "Paytm",
             "label": "14-08-15",
-            "value": 237
+            "value": 45
         },
         {
             "category": "Paytm",
             "label": "15-08-15",
-            "value": 222
+            "value": 23
         },
         {
             "category": "Paytm",
             "label": "16-08-15",
-            "value": 277
+            "value": -90
         },
         {
             "category": "Paytm",
@@ -1552,7 +1480,7 @@ var bubbledata = {
         {
             "category": "Paytm",
             "label": "18-08-15",
-            "value": 222
+            "value": 54
 
         }
         ,
@@ -1571,19 +1499,19 @@ var bubbledata = {
         {
             "category": "Paytm",
             "label": "21-08-15",
-            "value": 277
+            "value": 34
         }
         ,
         {
             "category": "Paytm",
             "label": "22-08-15",
-            "value": 255
+            "value": 23
         }
         ,
         {
             "category": "Paytm",
             "label": "23-08-15",
-            "value": 215
+            "value": 78
         },
         {
             "category": "Paytm",
@@ -1594,7 +1522,7 @@ var bubbledata = {
         {
             "category": "Paytm",
             "label": "25-08-15",
-            "value": 273
+            "value": 54
         }
         ,
         {
@@ -1611,46 +1539,46 @@ var bubbledata = {
         {
             "category": "Paytm",
             "label": "28-08-15",
-            "value": 276
+            "value": 23
         } ,
         {
             "category": "Paytm",
             "label": "29-08-15",
-            "value": 150
+            "value": 32
 
         },
         {
             "category": "Paytm",
             "label": "30-08-15",
-            "value": 123
+            "value": 56
 
         }, {
              "category": "Flipkart",
             "label": "01-08-15",
-            "value": 150
+            "value": 78
         },
         { 
             "category": "Flipkart",
             "label": "02-08-15",
-            "value": 210
+            "value": 54
         },
         {
             "category": "Flipkart",
             "label": "03-08-15",
-            "value": 264
+            "value": -12
 
         }
         ,
         {
             "category": "Flipkart",
             "label": "04-08-15",
-            "value": 255
+            "value": -10
         }
         ,
         {
             "category": "Flipkart",
             "label": "05-08-15",
-            "value": 244
+            "value": -20
         }
         ,
         {
@@ -1668,18 +1596,18 @@ var bubbledata = {
         {
             "category": "Flipkart",
             "label": "08-08-15",
-            "value": 288
+            "value": 90
         },
         {
             "category": "Flipkart",
             "label": "09-08-15",
-            "value": 277
+            "value": 23
         }
         ,
         {
             "category": "Flipkart",
             "label": "10-08-15",
-            "value": 277
+            "value": 45
         }
         ,
         {
@@ -1691,27 +1619,27 @@ var bubbledata = {
         {
             "category": "Flipkart",
             "label": "12-08-15",
-            "value": 206
+            "value": 54
         } ,
         {
             "category": "Flipkart",
             "label": "13-08-15",
-            "value": 255
+            "value": 67
         } ,
         {
             "category": "Flipkart",
             "label": "14-08-15",
-            "value": 230
+            "value": 78
         },
         {
             "category": "Flipkart",
             "label": "15-08-15",
-            "value": 276
+            "value": 43
         },
         {
             "category": "Flipkart",
             "label": "16-08-15",
-            "value": 210
+            "value": -20
         },
         {
             "category": "Flipkart",
@@ -1740,13 +1668,13 @@ var bubbledata = {
         {
             "category": "Flipkart",
             "label": "21-08-15",
-            "value": 222
+            "value": -30
         }
         ,
         {
             "category": "Flipkart",
             "label": "22-08-15",
-            "value": 211
+            "value": -50
         }
         ,
         {
@@ -1757,19 +1685,19 @@ var bubbledata = {
         {
             "category": "Flipkart",
             "label": "24-08-15",
-            "value": 210
+            "value": 100
         }
         ,
         {
             "category": "Flipkart",
             "label": "25-08-15",
-            "value": 220
+            "value": -40
         }
         ,
         {
             "category": "Flipkart",
             "label": "26-08-15",
-            "value": 278
+            "value": 34
         }
         ,
         {
@@ -1780,7 +1708,7 @@ var bubbledata = {
         {
             "category": "Flipkart",
             "label": "28-08-15",
-            "value": 224
+            "value": -10
         } ,
         {
             "category": "Flipkart",
@@ -1791,7 +1719,7 @@ var bubbledata = {
         {
             "category": "Flipkart",
             "label": "30-08-15",
-            "value": 295
+            "value": 23
 
         }
 
