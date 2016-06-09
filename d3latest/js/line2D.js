@@ -540,7 +540,10 @@ var line2D = function (chartType, chartId, chartdata) {
         if (d.value == 0) {
             if (i == 0 && currentchartdata[i].value == 0) {
                 xprev = x(currentchartdata[i].label) + x.rangeBand() / 2;
+                if(domainmin >=0)
                 yprev = y(domainmin);
+                else
+                 yprev = y(0);   
             }
 
             else {
@@ -566,7 +569,10 @@ var line2D = function (chartType, chartId, chartdata) {
                 }
                 else if (i + 1 == currentchartdata.length && currentchartdata[i].value == 0) {
                     xnext = x(currentchartdata[i].label) + x.rangeBand() / 2;
+                    if(domainmin >= 0)
                     ynext = y(domainmin);
+                    else
+                     ynext = y(0);   
                     dottedlinearr.push('M' + xprev + ',' + yprev + 'L' + xnext + ',' + ynext);
                 }
                 else {
