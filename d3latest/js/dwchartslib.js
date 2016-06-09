@@ -256,7 +256,7 @@ var linedata = {
       "captionColor":"black",
       "yaxisname":"",
       "showlegend":true,
-      "tickinterval":1,
+      "tickinterval":4,
       "tooltipheader":"Date",
       "slant":false,
       "slantdegree":"90",
@@ -305,7 +305,938 @@ var linedata = {
          "png"
       ]
    },
-   "data":[{"label":"2016-5-7","category":"Price Gap","value":-2},{"label":"2016-5-8","category":"Price Gap","value":0},{"label":"2016-5-9","category":"Price Gap","value":100},{"label":"2016-5-10","category":"Price Gap","value":-2},{"label":"2016-5-11","category":"Price Gap","value":-2},{"label":"2016-5-12","category":"Price Gap","value":-2},{"label":"2016-5-13","category":"Price Gap","value":-2}]
+   "data":[
+{
+category: "Amazon",
+count: 0,
+value: 0,
+label: "08-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -1.6387663716807863,
+label: "09-05-2016"
+},
+{
+category: "Amazon",
+count: 233,
+value: 4.62185342009323,
+label: "10-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -4.9207098714097945,
+label: "11-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -1.5335278828203724,
+label: "12-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -11.689026220452298,
+label: "13-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: 0.7342856216381797,
+label: "14-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: 2.8332749438060483,
+label: "15-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: 4.147104692833814,
+label: "16-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: 4.34200769221191,
+label: "17-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: 0.9474852579667148,
+label: "18-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -0.5952074159491971,
+label: "19-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -0.4395192880267956,
+label: "20-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: 0.10310619599719036,
+label: "21-05-2016"
+},
+{
+category: "Amazon",
+count: 239,
+value: 1.438854611631572,
+label: "22-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -0.6211790747087651,
+label: "23-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: 1.0784401258979388,
+label: "24-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -1.419785817666947,
+label: "25-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -3.381400329675996,
+label: "26-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: 1.4520300033685196,
+label: "27-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -0.10585498228140378,
+label: "28-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -0.16232145679748797,
+label: "29-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -0.005499496137001852,
+label: "30-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: 1.5663531582203545,
+label: "31-05-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -1.1293363421850742,
+label: "01-06-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -1.995003277951798,
+label: "02-06-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: 0.03243495070630577,
+label: "03-06-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: 7.485664113182571,
+label: "04-06-2016"
+},
+{
+category: "Amazon",
+count: 242,
+value: -4.035752921323774,
+label: "05-06-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: -0.14831965822796883,
+label: "06-06-2016"
+},
+{
+category: "Amazon",
+count: 243,
+value: 1.275645788137955,
+label: "07-06-2016"
+},
+{
+category: "Flipkart",
+count: 0,
+value: 0,
+label: "08-05-2016"
+},
+{
+category: "Flipkart",
+count: 259,
+value: 1.7693673584319989,
+label: "09-05-2016"
+},
+{
+category: "Flipkart",
+count: 257,
+value: 4.633401191882265,
+label: "10-05-2016"
+},
+{
+category: "Flipkart",
+count: 259,
+value: -3.176537141972334,
+label: "11-05-2016"
+},
+{
+category: "Flipkart",
+count: 260,
+value: 0.41593199820790966,
+label: "12-05-2016"
+},
+{
+category: "Flipkart",
+count: 261,
+value: -12.731532914514569,
+label: "13-05-2016"
+},
+{
+category: "Flipkart",
+count: 261,
+value: -0.5112357388076011,
+label: "14-05-2016"
+},
+{
+category: "Flipkart",
+count: 261,
+value: -0.713135123652104,
+label: "15-05-2016"
+},
+{
+category: "Flipkart",
+count: 260,
+value: 7.584884783652194,
+label: "16-05-2016"
+},
+{
+category: "Flipkart",
+count: 259,
+value: 1.0100661188447242,
+label: "17-05-2016"
+},
+{
+category: "Flipkart",
+count: 260,
+value: 2.0571888276923906,
+label: "18-05-2016"
+},
+{
+category: "Flipkart",
+count: 262,
+value: -2.1882995677760957,
+label: "19-05-2016"
+},
+{
+category: "Flipkart",
+count: 262,
+value: 0.4025141844998536,
+label: "20-05-2016"
+},
+{
+category: "Flipkart",
+count: 258,
+value: 1.1035256859284897,
+label: "21-05-2016"
+},
+{
+category: "Flipkart",
+count: 210,
+value: 15.85315709161014,
+label: "22-05-2016"
+},
+{
+category: "Flipkart",
+count: 264,
+value: -28.549345416898376,
+label: "23-05-2016"
+},
+{
+category: "Flipkart",
+count: 262,
+value: 7.509869403502922,
+label: "24-05-2016"
+},
+{
+category: "Flipkart",
+count: 262,
+value: -1.0430696398647192,
+label: "25-05-2016"
+},
+{
+category: "Flipkart",
+count: 263,
+value: -2.877706885885243,
+label: "26-05-2016"
+},
+{
+category: "Flipkart",
+count: 264,
+value: 0.8641722638816107,
+label: "27-05-2016"
+},
+{
+category: "Flipkart",
+count: 264,
+value: 0.07512582657009187,
+label: "28-05-2016"
+},
+{
+category: "Flipkart",
+count: 263,
+value: 0.5707410520782891,
+label: "29-05-2016"
+},
+{
+category: "Flipkart",
+count: 263,
+value: 0.14054085798089586,
+label: "30-05-2016"
+},
+{
+category: "Flipkart",
+count: 262,
+value: 0.13168679184516174,
+label: "31-05-2016"
+},
+{
+category: "Flipkart",
+count: 264,
+value: -3.1226183863454886,
+label: "01-06-2016"
+},
+{
+category: "Flipkart",
+count: 264,
+value: -3.107539293483373,
+label: "02-06-2016"
+},
+{
+category: "Flipkart",
+count: 259,
+value: 4.612285320799264,
+label: "03-06-2016"
+},
+{
+category: "Flipkart",
+count: 258,
+value: 4.689541911279291,
+label: "04-06-2016"
+},
+{
+category: "Flipkart",
+count: 254,
+value: -1.3034399143546183,
+label: "05-06-2016"
+},
+{
+category: "Flipkart",
+count: 259,
+value: -1.3648904819067174,
+label: "06-06-2016"
+},
+{
+category: "Flipkart",
+count: 257,
+value: 0.2606862177184872,
+label: "07-06-2016"
+},
+{
+category: "Jabong",
+count: 0,
+value: 0,
+label: "08-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 100,
+label: "09-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: -1.1962931760741404,
+label: "10-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 1.6407026847862116,
+label: "11-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "12-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "13-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: -1.6680707666385848,
+label: "14-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "15-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "16-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 18.508856240560206,
+label: "17-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: -22.712721145745572,
+label: "18-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 1.6407026847862116,
+label: "19-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 1.1629811629811666,
+label: "20-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "21-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "22-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "23-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "24-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "25-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "26-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "27-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "28-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "29-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "30-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "31-05-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "01-06-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "02-06-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "03-06-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "04-06-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "05-06-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "06-06-2016"
+},
+{
+category: "Jabong",
+count: 6,
+value: 0,
+label: "07-06-2016"
+},
+{
+category: "Paytm",
+count: 0,
+value: 0,
+label: "08-05-2016"
+},
+{
+category: "Paytm",
+count: 224,
+value: -17.642175372104703,
+label: "09-05-2016"
+},
+{
+category: "Paytm",
+count: 193,
+value: 13.144102076622332,
+label: "10-05-2016"
+},
+{
+category: "Paytm",
+count: 223,
+value: -12.278384224214527,
+label: "11-05-2016"
+},
+{
+category: "Paytm",
+count: 223,
+value: -1.6720678016297779,
+label: "12-05-2016"
+},
+{
+category: "Paytm",
+count: 223,
+value: -30.121925890992934,
+label: "13-05-2016"
+},
+{
+category: "Paytm",
+count: 224,
+value: 1.4515900885651352,
+label: "14-05-2016"
+},
+{
+category: "Paytm",
+count: 224,
+value: -1.1600007428804906,
+label: "15-05-2016"
+},
+{
+category: "Paytm",
+count: 224,
+value: 17.799428243502682,
+label: "16-05-2016"
+},
+{
+category: "Paytm",
+count: 223,
+value: 8.038973707496622,
+label: "17-05-2016"
+},
+{
+category: "Paytm",
+count: 223,
+value: -2.3581220457101413,
+label: "18-05-2016"
+},
+{
+category: "Paytm",
+count: 223,
+value: 0.4597607019124281,
+label: "19-05-2016"
+},
+{
+category: "Paytm",
+count: 223,
+value: -0.28948337267870083,
+label: "20-05-2016"
+},
+{
+category: "Paytm",
+count: 223,
+value: 0.13296557673058196,
+label: "21-05-2016"
+},
+{
+category: "Paytm",
+count: 191,
+value: 10.041288175496977,
+label: "22-05-2016"
+},
+{
+category: "Paytm",
+count: 223,
+value: -18.464468684493735,
+label: "23-05-2016"
+},
+{
+category: "Paytm",
+count: 223,
+value: 5.962205297429532,
+label: "24-05-2016"
+},
+{
+category: "Paytm",
+count: 223,
+value: 0.6470253376280543,
+label: "25-05-2016"
+},
+{
+category: "Paytm",
+count: 224,
+value: -7.640735409193454,
+label: "26-05-2016"
+},
+{
+category: "Paytm",
+count: 224,
+value: 8.046266790732536,
+label: "27-05-2016"
+},
+{
+category: "Paytm",
+count: 224,
+value: -2.0737665668754124,
+label: "28-05-2016"
+},
+{
+category: "Paytm",
+count: 224,
+value: 0.015834370165690108,
+label: "29-05-2016"
+},
+{
+category: "Paytm",
+count: 224,
+value: -14.391213985629339,
+label: "30-05-2016"
+},
+{
+category: "Paytm",
+count: 224,
+value: 12.350932576041648,
+label: "31-05-2016"
+},
+{
+category: "Paytm",
+count: 225,
+value: -0.23119084958945516,
+label: "01-06-2016"
+},
+{
+category: "Paytm",
+count: 225,
+value: 0.02709430504869215,
+label: "02-06-2016"
+},
+{
+category: "Paytm",
+count: 225,
+value: -5.293614381491466,
+label: "03-06-2016"
+},
+{
+category: "Paytm",
+count: 225,
+value: 5.202130576448425,
+label: "04-06-2016"
+},
+{
+category: "Paytm",
+count: 225,
+value: 1.395588595268307,
+label: "05-06-2016"
+},
+{
+category: "Paytm",
+count: 223,
+value: -0.3918112871002805,
+label: "06-06-2016"
+},
+{
+category: "Paytm",
+count: 225,
+value: -1.2555480579323757,
+label: "07-06-2016"
+},
+{
+category: "SnapDeal",
+count: 0,
+value: 0,
+label: "08-05-2016"
+},
+{
+category: "SnapDeal",
+count: 342,
+value: -0.79532518600355,
+label: "09-05-2016"
+},
+{
+category: "SnapDeal",
+count: 342,
+value: 5.520666493335201,
+label: "10-05-2016"
+},
+{
+category: "SnapDeal",
+count: 342,
+value: -0.010276439200531942,
+label: "11-05-2016"
+},
+{
+category: "SnapDeal",
+count: 341,
+value: -3.454023485741119,
+label: "12-05-2016"
+},
+{
+category: "SnapDeal",
+count: 341,
+value: -11.963971823375587,
+label: "13-05-2016"
+},
+{
+category: "SnapDeal",
+count: 337,
+value: -2.279785260482457,
+label: "14-05-2016"
+},
+{
+category: "SnapDeal",
+count: 339,
+value: 1.0975154405920224,
+label: "15-05-2016"
+},
+{
+category: "SnapDeal",
+count: 338,
+value: 10.983110953160114,
+label: "16-05-2016"
+},
+{
+category: "SnapDeal",
+count: 341,
+value: 4.42128685921347,
+label: "17-05-2016"
+},
+{
+category: "SnapDeal",
+count: 340,
+value: 1.6180939762844762,
+label: "18-05-2016"
+},
+{
+category: "SnapDeal",
+count: 341,
+value: -1.97094528251027,
+label: "19-05-2016"
+},
+{
+category: "SnapDeal",
+count: 342,
+value: 0.643281497347748,
+label: "20-05-2016"
+},
+{
+category: "SnapDeal",
+count: 343,
+value: -2.4385163478959035,
+label: "21-05-2016"
+},
+{
+category: "SnapDeal",
+count: 337,
+value: 0.5147191769848752,
+label: "22-05-2016"
+},
+{
+category: "SnapDeal",
+count: 342,
+value: -6.666974978254818,
+label: "23-05-2016"
+},
+{
+category: "SnapDeal",
+count: 342,
+value: 6.014507605619831,
+label: "24-05-2016"
+},
+{
+category: "SnapDeal",
+count: 342,
+value: 1.7951097088643964,
+label: "25-05-2016"
+},
+{
+category: "SnapDeal",
+count: 342,
+value: -6.123570597769139,
+label: "26-05-2016"
+},
+{
+category: "SnapDeal",
+count: 343,
+value: 4.076223402323272,
+label: "27-05-2016"
+},
+{
+category: "SnapDeal",
+count: 344,
+value: -3.394306278686057,
+label: "28-05-2016"
+},
+{
+category: "SnapDeal",
+count: 343,
+value: 0.15234462802555276,
+label: "29-05-2016"
+},
+{
+category: "SnapDeal",
+count: 342,
+value: 0.5717501279186762,
+label: "30-05-2016"
+},
+{
+category: "SnapDeal",
+count: 342,
+value: -0.6208749542498371,
+label: "31-05-2016"
+},
+{
+category: "SnapDeal",
+count: 344,
+value: -2.1789558307568773,
+label: "01-06-2016"
+},
+{
+category: "SnapDeal",
+count: 342,
+value: -1.449913381794605,
+label: "02-06-2016"
+},
+{
+category: "SnapDeal",
+count: 342,
+value: 1.0297109106776903,
+label: "03-06-2016"
+},
+{
+category: "SnapDeal",
+count: 341,
+value: 5.3946516800587405,
+label: "04-06-2016"
+},
+{
+category: "SnapDeal",
+count: 340,
+value: -1.8145025604133855,
+label: "05-06-2016"
+},
+{
+category: "SnapDeal",
+count: 341,
+value: -6.486949357459413,
+label: "06-06-2016"
+},
+{
+category: "SnapDeal",
+count: 341,
+value: 4.775914694194823,
+label: "07-06-2016"
+}
+]
 }
 
 

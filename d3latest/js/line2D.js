@@ -264,7 +264,27 @@ var line2D = function (chartType, chartId, chartdata) {
      .attr("height", height - 25)
      .attr("x", function (d)
      { return x(d.label) + x.rangeBand() / 2; })
-     .attr("y", 45)
+     .attr("y", 45);
+     
+     for(i=0;i<chartdata.data.length;i++){
+            if(chartdata.data[i].value < 0){
+                 
+                 var linerect = svg.selectAll('linetickeach')
+     .data(cData)
+    .enter().append('g')
+    .attr('class', 'linetickeach');
+                linerect.append('rect')
+    .attr("class", function (d) { return cType + d.label.replace(/[^a-zA-Z0-9]/g, "") })
+    .style("fill", "lightgrey")
+    .attr("width", 1)
+     .attr("height", 5)
+     .attr("x", function (d)
+     { return x(d.label) + x.rangeBand() / 2; })
+     .attr("y", height+20);
+
+
+            }
+        }
             }
             if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
                 function change() {
@@ -1205,12 +1225,27 @@ var line2D = function (chartType, chartId, chartdata) {
             var last = dval.substring(dval.lastIndexOf('V'), dval.length);
             var middle = dval.substring(dval.lastIndexOf('H') + 1, dval.lastIndexOf('V')) / 1 + 70;
             return first + middle + last;
-        })
+        });
+        for(i=0;i<chartdata.data.length;i++){
+            if(chartdata.data[i].value < 0){
+                d3.selectAll(chartId + ' .gridy .tick line').style('stroke',function(d,i){
+                    if(d == 0)
+                    return '#999';
+                })
+                .style('opacity',function(d,i){
+                    if(d == 0)
+                    return 1;
+                });
+                d3.selectAll(chartId + ' path.domain').style('stroke','lightgrey')
+                break;
+            }
+        }
     }
     else {
         d3.selectAll(chartId + ' .gridy .tick line').attr('x2', function () {
             return this.getAttribute('x2') / 1 + 40;
         });
+        
         d3.selectAll(chartId + ' .grid.xtick .domain').attr('d', function () {
             var dval = this.getAttribute('d');
             var first = dval.substring(0, dval.lastIndexOf('H') + 1);
