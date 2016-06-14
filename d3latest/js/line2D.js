@@ -288,8 +288,8 @@ var line2D = function (chartType, chartId, chartdata) {
             }
             if (chartdata.export != undefined && d3.select(chartId + ' select')[0][0] == null) {
                 function change() {
-                    var selectedIndex = select.property('selectedIndex'),
-        data = options[0][selectedIndex].__data__;
+                    var selectedIndex = select1.property('selectedIndex'),
+        data = options1[0][selectedIndex].__data__;
                     if (selectedIndex != 0) {
                         var multitrue = chartType.search("Multi") != -1 ? true : false;
                         if (chartdata.export.filename == undefined || chartdata.export.filename == '')
@@ -304,12 +304,74 @@ var line2D = function (chartType, chartId, chartdata) {
                         var selecttopval = '35px';
                     else
                         var selecttopval = '22px';
-                    var select = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:' + selecttopval + ';height:18px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
-    options = select.selectAll('option').data(chartdata.export.format); // Data join
+                    var select1 = d3.select(chartId).append("select").on("change", change).attr('style', 'float:right;position:relative;top:' + selecttopval + ';height:18px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px'),
+    options1 = select1.selectAll('option').data(chartdata.export.format); // Data join
+
+                    // Enter selection
+                    options1.enter().append("option").text(function (d) {
+                        return d;
+                    });
+
+
+                }
+            }
+              
+              if (chartdata.multichart != undefined && d3.select(chartId + ' .selectcharttype')[0][0] == null) {
+                function change() {
+                    var selectedIndex = select.property('selectedIndex'),
+        data1 = options[0][selectedIndex].__data__;
+                    if (selectedIndex != 0) {
+                        if(data1.source == false){
+                      d3charts(data1.type,chartId, chartdata);
+                      d3.select(window).on("resize.one", function() {
+                       redrawchart(data1.type,chartId, chartdata);
+                        });
+                  }
+                  else{
+                           var dataGroup = d3.nest()
+                            .key(function (d) {
+                                return d.category;
+                            })
+                            .entries(chartdata.data);
+
+                             for(var i = 0; i < dataGroup.length; i++){
+        if(dataGroup[i].hasOwnProperty("key")){
+            dataGroup[i]["category"] = dataGroup[i]["key"];
+            delete dataGroup[i]["key"];
+        }
+
+        if(dataGroup[i].hasOwnProperty("values")){ //added missing closing parenthesis
+            dataGroup[i]["data"] = dataGroup[i]["values"];
+            delete dataGroup[i]["values"];
+        }
+    }
+                                var changeddata = JSON.parse(JSON.stringify(chartdata));;
+                            changeddata.data = dataGroup;
+                       d3charts(data1.type,chartId, changeddata);
+                       d3.select(window).on("resize.two", function() {
+                       redrawchart(data1.type,chartId, changeddata);
+                        });
+}
+
+                  }
+
+                    }
+
+                
+                if (chartdata.multichart.show == true && d3.select(chartId + ' .selectchart')[0][0] == null) {
+                        var selecttopval = '35px';
+                    var select = d3.select(chartId).append("select").attr('class','selectchart').on("change", change).attr('style', 'float:right;position:relative;top:' + selecttopval + ';height:18px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px;margin-right:10px'),
+    options = select.selectAll('option').data(chartdata.multichart.format); // Data join
 
                     // Enter selection
                     options.enter().append("option").text(function (d) {
-                        return d;
+                        return d.name;
+                    })
+                    .attr('data-chart',function(d){
+                        return d.type;
+                    })
+                    .attr('data-source',function(d){
+                        return d.source;
                     });
 
 
