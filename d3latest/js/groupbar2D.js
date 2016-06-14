@@ -32,6 +32,8 @@ if (chartdata.export.showexport == true) {
 
 
                 }
+
+                
             }
             if (d3.select(chartId).select('svg')[0][0] != null)
                 d3.select(chartId).select('svg').remove();
@@ -226,7 +228,7 @@ function yAxis() {
     .enter().append("rect")
       .attr("width", x1.rangeBand())
       .attr("class", function(d){
-        return chartType+d.label;
+        return chartType+d.label.replace(/[^a-zA-Z0-9]/g, "");
       })
       .attr('data-visibility',"true")
       .attr("x", function(d) { return x1(d.label); })
@@ -263,7 +265,7 @@ function yAxis() {
          })
             .on("mouseout", function (d, i) {
                 this.style.cursor = 'pointer';
-                this.style.opacity = 0.7;
+                this.style.opacity = 0.9;
                 div.transition()
                 .duration(100)
                 .style("opacity", 0);
@@ -296,7 +298,7 @@ function yAxis() {
             else
                 return color(d.label);
             })
-      .style("opacity",'0.7');
+      .style("opacity",'0.9');
 
    d3.selectAll(chartId + ' .y path.domain').attr('d', '');
    d3.selectAll(chartId + ' .grid .tick text').attr('transform', 'translate(5,10)').style('text-anchor','start');
@@ -332,7 +334,7 @@ function yAxis() {
         .attr('ry', 20)
         .attr('width', 10)
         .attr('height', 10)
-        .style('opacity', 0.7)
+        .style('opacity', 0.9)
         .style('fill', function (d, i) {
             return d.value;
         });
@@ -347,21 +349,21 @@ function yAxis() {
                 return d.name.toUpperCase();
         })
          .style('text-transform', 'uppercase')
-         .style('opacity', 0.8)
+         .style('opacity', 0.9)
         .style('font-size', '12px')
         .style('fill', function (d, i) {
             return d.value;
         })
         .on("click", function (d, i) {
              var graphselect = chartType + d.name.replace(/[^a-zA-Z0-9]/g, "");
-             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
+             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
              if (d3.selectAll(chartId +' .' + graphselect).style('display') == 'inline') {
                  d3.selectAll(chartId +' .' + graphselect).style('display', 'none');
                  d3.selectAll(chartId +' .' + graphselect).attr("data-visibility", "false");
              }
 
              else {
-                 this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
+                 this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.9;
                  d3.selectAll(chartId +' .' + graphselect).style('display', 'inline');
                  d3.selectAll(chartId +' .' + graphselect).attr("data-visibility", "true");
              }
@@ -373,7 +375,7 @@ function yAxis() {
          })
           .on("mouseout", function (d, i) {
               this.style.cursor = 'pointer';
-              this.style.opacity = 0.8;
+              this.style.opacity = 0.9;
           });
 
             };
