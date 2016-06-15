@@ -46,7 +46,8 @@ function redrawchart(chart,id,data) {
 window.onresize = function (event) {
 
     d3charts("Line2D", "#linechart", linedata);
-    redrawchart("MultiLine2D","#Multiline", Multilinedata); // For Multiline call Redraw Function to Save the legends interactions
+    //redrawchart("MultiLine2D","#Multiline", Multilinedata); // For Multiline call Redraw Function to Save the legends interactions
+    redrawchart("MultiLine2D","#Multilinealone", Multilinealonedata);
     redrawchart("Column2D", "#column", columndata);
      redrawchart("DoubleColumn2D","#doublecolumn", doublecolumndata);
       redrawchart("ColumnRange2D","#columnrange", columnrange);
@@ -308,142 +309,142 @@ var Multilinealonedata = {
    "data":[
 {
 label: "2016-6-7",
-category: "Amazon",
+category: "Fashion",
 value: 177
 },
 {
 label: "2016-6-7",
-category: "SnapDeal",
+category: "Tablet",
 value: 216
 },
 {
 label: "2016-6-7",
-category: "Paytm",
+category: "Mobile",
 value: 144
 },
 {
 label: "2016-6-7",
-category: "Flipkart",
+category: "Laptop",
 value: 202
 },
 {
 label: "2016-6-8",
-category: "Amazon",
+category: "Fashion",
 value: 194
 },
 {
 label: "2016-6-8",
-category: "SnapDeal",
+category: "Tablet",
 value: 207
 },
 {
 label: "2016-6-8",
-category: "Paytm",
+category: "Mobile",
 value: 133
 },
 {
 label: "2016-6-8",
-category: "Flipkart",
+category: "Laptop",
 value: 166
 },
 {
 label: "2016-6-9",
-category: "Amazon",
+category: "Fashion",
 value: 197
 },
 {
 label: "2016-6-9",
-category: "SnapDeal",
+category: "Tablet",
 value: 201
 },
 {
 label: "2016-6-9",
-category: "Paytm",
+category: "Mobile",
 value: 106
 },
 {
 label: "2016-6-9",
-category: "Flipkart",
+category: "Laptop",
 value: 138
 },
 {
 label: "2016-6-10",
-category: "Amazon",
+category: "Fashion",
 value: 129
 },
 {
 label: "2016-6-10",
-category: "SnapDeal",
+category: "Tablet",
 value: 249
 },
 {
 label: "2016-6-10",
-category: "Paytm",
+category: "Mobile",
 value: 108
 },
 {
 label: "2016-6-10",
-category: "Flipkart",
+category: "Laptop",
 value: 132
 },
 {
 label: "2016-6-11",
-category: "Amazon",
+category: "Fashion",
 value: 90
 },
 {
 label: "2016-6-11",
-category: "SnapDeal",
+category: "Tablet",
 value: 249
 },
 {
 label: "2016-6-11",
-category: "Paytm",
+category: "Mobile",
 value: 92
 },
 {
 label: "2016-6-11",
-category: "Flipkart",
+category: "Laptop",
 value: 145
 },
 {
 label: "2016-6-12",
-category: "Amazon",
+category: "Fashion",
 value: 79
 },
 {
 label: "2016-6-12",
-category: "SnapDeal",
+category: "Tablet",
 value: 284
 },
 {
 label: "2016-6-12",
-category: "Paytm",
+category: "Mobile",
 value: 93
 },
 {
 label: "2016-6-12",
-category: "Flipkart",
+category: "Laptop",
 value: 129
 },
 {
 label: "2016-6-13",
-category: "Amazon",
+category: "Fashion",
 value: 31
 },
 {
 label: "2016-6-13",
-category: "SnapDeal",
+category: "Tablet",
 value: 251
 },
 {
 label: "2016-6-13",
-category: "Paytm",
+category: "Mobile",
 value: 87
 },
 {
 label: "2016-6-13",
-category: "Flipkart",
+category: "Laptop",
 value: 66
 }
 ]
