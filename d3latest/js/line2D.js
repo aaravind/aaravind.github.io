@@ -189,7 +189,7 @@ var line2D = function (chartType, chartId, chartdata) {
          .duration(0)
          .style('opacity', 1);
 
-                 var alltext = d3.selectAll('text' + '.' + cType + d.replace(/[^a-zA-Z0-9]/g, ""));
+                 var alltext = d3.selectAll(chartId + ' text' + '.' + cType + d.replace(/[^a-zA-Z0-9]/g, ""));
                  if (chartType.search('Multi') == -1)
                      var htmlcontent = '';
                  else {
