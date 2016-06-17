@@ -511,11 +511,6 @@ d3charts("MultiLine2D","#Multilinealone", Multilinealonedata);
    "multichart":{  
       "show":true,
       "format":[  
-      {
-          "name":"Choose",
-          "type":"",
-          "source":false
-         },
          {
           "name":"By Date",
           "type":"MultiLine2D",
