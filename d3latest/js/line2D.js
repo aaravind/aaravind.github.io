@@ -321,7 +321,6 @@ var line2D = function (chartType, chartId, chartdata) {
                 function change() {
                     var selectedIndex = select.property('selectedIndex'),
         data1 = options[0][selectedIndex].__data__;
-                    if (selectedIndex != 0) {
                         if(data1.source == false){
                       d3charts(data1.type,chartId, chartdata);
                       d3.select(window).on("resize", function() {
@@ -354,7 +353,7 @@ var line2D = function (chartType, chartId, chartdata) {
                         });
 }
 
-                  }
+                  
 
                     }
 
@@ -364,7 +363,7 @@ var line2D = function (chartType, chartId, chartdata) {
                                               d3.select(window).on("resize", function() {
                        redrawchart(chartType,chartId, chartdata);
                         });
-                    var select = d3.select(chartId).append("select").attr('class','selectchart').on("change", change).attr('style', 'float:right;position:relative;top:' + selecttopval + ';height:18px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px;margin-right:10px'),
+                    var select = d3.select(chartId).append("select").attr('class','selectchart').on("change", change).attr('style', 'float:right;position:relative;top:' + selecttopval + ';height:18px;border: 0px;margin:0px;background-color: #ecf0f1;box-shadow: 0px 1px 2px #cccccc;font-size:11px;margin-right:20px'),
     options = select.selectAll('option').data(chartdata.multichart.format); // Data join
 
                     // Enter selection
