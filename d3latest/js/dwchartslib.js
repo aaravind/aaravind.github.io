@@ -261,7 +261,7 @@ var Multilinealonedata = {
       "tooltipheader":"Date",
       "slant":false,
       "slantdegree":"90",
-      "suffixsymbol":'',
+      "suffixsymbol":'%',
       "credits":{  
          "text":" ",
          "color":"#666",
@@ -308,144 +308,179 @@ var Multilinealonedata = {
    },
    "data":[
 {
-label: "2016-6-7",
-category: "Fashion",
-value: 177
+label: "2016-6-17",
+category: "Jabong",
+value: 0
 },
 {
-label: "2016-6-7",
-category: "Tablet",
-value: 216
+label: "2016-6-17",
+category: "Amazon",
+value: 0
 },
 {
-label: "2016-6-7",
-category: "Mobile",
-value: 144
+label: "2016-6-17",
+category: "Paytm",
+value: 0
 },
 {
-label: "2016-6-7",
-category: "Laptop",
-value: 202
+label: "2016-6-17",
+category: "SnapDeal",
+value: 0
 },
 {
-label: "2016-6-8",
-category: "Fashion",
-value: 194
+label: "2016-6-17",
+category: "Flipkart",
+value: 0
 },
 {
-label: "2016-6-8",
-category: "Tablet",
-value: 207
+label: "2016-6-18",
+category: "Jabong",
+value: 0
 },
 {
-label: "2016-6-8",
-category: "Mobile",
-value: 133
+label: "2016-6-18",
+category: "Amazon",
+value: 0
 },
 {
-label: "2016-6-8",
-category: "Laptop",
-value: 166
+label: "2016-6-18",
+category: "Paytm",
+value: 0
 },
 {
-label: "2016-6-9",
-category: "Fashion",
-value: 197
+label: "2016-6-18",
+category: "SnapDeal",
+value: 0
 },
 {
-label: "2016-6-9",
-category: "Tablet",
-value: 201
+label: "2016-6-18",
+category: "Flipkart",
+value: 0
 },
 {
-label: "2016-6-9",
-category: "Mobile",
-value: 106
+label: "2016-6-19",
+category: "Jabong",
+value: 0
 },
 {
-label: "2016-6-9",
-category: "Laptop",
-value: 138
+label: "2016-6-19",
+category: "Amazon",
+value: 0
 },
 {
-label: "2016-6-10",
-category: "Fashion",
-value: 129
+label: "2016-6-19",
+category: "Paytm",
+value: 0
 },
 {
-label: "2016-6-10",
-category: "Tablet",
-value: 249
+label: "2016-6-19",
+category: "SnapDeal",
+value: 0
 },
 {
-label: "2016-6-10",
-category: "Mobile",
-value: 108
+label: "2016-6-19",
+category: "Flipkart",
+value: 0.11198208286674
 },
 {
-label: "2016-6-10",
-category: "Laptop",
-value: 132
+label: "2016-6-20",
+category: "Jabong",
+value: 0
 },
 {
-label: "2016-6-11",
-category: "Fashion",
-value: 90
+label: "2016-6-20",
+category: "Amazon",
+value: 0
 },
 {
-label: "2016-6-11",
-category: "Tablet",
-value: 249
+label: "2016-6-20",
+category: "Paytm",
+value: 0
 },
 {
-label: "2016-6-11",
-category: "Mobile",
-value: 92
+label: "2016-6-20",
+category: "SnapDeal",
+value: 0
 },
 {
-label: "2016-6-11",
-category: "Laptop",
-value: 145
+label: "2016-6-20",
+category: "Flipkart",
+value: 0
 },
 {
-label: "2016-6-12",
-category: "Fashion",
-value: 79
+label: "2016-6-21",
+category: "Jabong",
+value: 0
 },
 {
-label: "2016-6-12",
-category: "Tablet",
-value: 284
+label: "2016-6-21",
+category: "Amazon",
+value: 0
 },
 {
-label: "2016-6-12",
-category: "Mobile",
-value: 93
+label: "2016-6-21",
+category: "Paytm",
+value: 0
 },
 {
-label: "2016-6-12",
-category: "Laptop",
-value: 129
+label: "2016-6-21",
+category: "SnapDeal",
+value: 0
 },
 {
-label: "2016-6-13",
-category: "Fashion",
-value: 31
+label: "2016-6-21",
+category: "Flipkart",
+value: 0.11198208286674
 },
 {
-label: "2016-6-13",
-category: "Tablet",
-value: 251
+label: "2016-6-22",
+category: "Jabong",
+value: 0
 },
 {
-label: "2016-6-13",
-category: "Mobile",
-value: 87
+label: "2016-6-22",
+category: "Amazon",
+value: 0
 },
 {
-label: "2016-6-13",
-category: "Laptop",
-value: 66
+label: "2016-6-22",
+category: "Paytm",
+value: 0
+},
+{
+label: "2016-6-22",
+category: "SnapDeal",
+value: 0
+},
+{
+label: "2016-6-22",
+category: "Flipkart",
+value: 0
+},
+{
+label: "2016-6-23",
+category: "Jabong",
+value: 0
+},
+{
+label: "2016-6-23",
+category: "Amazon",
+value: 0
+},
+{
+label: "2016-6-23",
+category: "Paytm",
+value: 0
+},
+{
+label: "2016-6-23",
+category: "SnapDeal",
+value: 0
+},
+{
+label: "2016-6-23",
+category: "Flipkart",
+value: 0
 }
 ]
 }
@@ -523,148 +558,7 @@ d3charts("MultiLine2D","#Multilinealone", Multilinealonedata);
          }
       ]
    },
-   "data":[
-{
-label: "2016-6-7",
-category: "Amazon",
-value: 177
-},
-{
-label: "2016-6-7",
-category: "SnapDeal",
-value: 216
-},
-{
-label: "2016-6-7",
-category: "Paytm",
-value: 144
-},
-{
-label: "2016-6-7",
-category: "Flipkart",
-value: 202
-},
-{
-label: "2016-6-8",
-category: "Amazon",
-value: 194
-},
-{
-label: "2016-6-8",
-category: "SnapDeal",
-value: 207
-},
-{
-label: "2016-6-8",
-category: "Paytm",
-value: 133
-},
-{
-label: "2016-6-8",
-category: "Flipkart",
-value: 166
-},
-{
-label: "2016-6-9",
-category: "Amazon",
-value: 197
-},
-{
-label: "2016-6-9",
-category: "SnapDeal",
-value: 201
-},
-{
-label: "2016-6-9",
-category: "Paytm",
-value: 106
-},
-{
-label: "2016-6-9",
-category: "Flipkart",
-value: 138
-},
-{
-label: "2016-6-10",
-category: "Amazon",
-value: 129
-},
-{
-label: "2016-6-10",
-category: "SnapDeal",
-value: 249
-},
-{
-label: "2016-6-10",
-category: "Paytm",
-value: 108
-},
-{
-label: "2016-6-10",
-category: "Flipkart",
-value: 132
-},
-{
-label: "2016-6-11",
-category: "Amazon",
-value: 90
-},
-{
-label: "2016-6-11",
-category: "SnapDeal",
-value: 249
-},
-{
-label: "2016-6-11",
-category: "Paytm",
-value: 92
-},
-{
-label: "2016-6-11",
-category: "Flipkart",
-value: 145
-},
-{
-label: "2016-6-12",
-category: "Amazon",
-value: 79
-},
-{
-label: "2016-6-12",
-category: "SnapDeal",
-value: 284
-},
-{
-label: "2016-6-12",
-category: "Paytm",
-value: 93
-},
-{
-label: "2016-6-12",
-category: "Flipkart",
-value: 129
-},
-{
-label: "2016-6-13",
-category: "Amazon",
-value: 31
-},
-{
-label: "2016-6-13",
-category: "SnapDeal",
-value: 251
-},
-{
-label: "2016-6-13",
-category: "Paytm",
-value: 87
-},
-{
-label: "2016-6-13",
-category: "Flipkart",
-value: 66
-}
-]
+   "data":[{"label":"2016-7-25","category":"Amazon","value":0.18},{"label":"2016-7-25","category":"SnapDeal","value":0.14},{"label":"2016-7-25","category":"Paytm","value":0.09},{"label":"2016-7-25","category":"Flipkart","value":0.12},{"label":"2016-7-26","category":"Amazon","value":0.18},{"label":"2016-7-26","category":"SnapDeal","value":0.17},{"label":"2016-7-26","category":"Paytm","value":0.16},{"label":"2016-7-26","category":"Flipkart","value":0.15},{"label":"2016-7-27","category":"Amazon","value":0.16},{"label":"2016-7-27","category":"SnapDeal","value":0.13},{"label":"2016-7-27","category":"Paytm","value":0.2},{"label":"2016-7-27","category":"Flipkart","value":0.16},{"label":"2016-7-28","category":"Amazon","value":0.2},{"label":"2016-7-28","category":"SnapDeal","value":0.15},{"label":"2016-7-28","category":"Paytm","value":0.08},{"label":"2016-7-28","category":"Flipkart","value":0.15},{"label":"2016-7-29","category":"Amazon","value":0.18},{"label":"2016-7-29","category":"SnapDeal","value":0.18},{"label":"2016-7-29","category":"Paytm","value":0.06},{"label":"2016-7-29","category":"Flipkart","value":0.16},{"label":"2016-7-30","category":"Amazon","value":0.19},{"label":"2016-7-30","category":"SnapDeal","value":0.13},{"label":"2016-7-30","category":"Paytm","value":0.1},{"label":"2016-7-30","category":"Flipkart","value":0.15}]
 }
 
 
@@ -1058,175 +952,208 @@ var stackedbar = {
             "imageurl":"../images/logo.png"
         },
         "pallattecolorsingle":true, // if set to True: Only First Value is Considered ; if set to False all values in the Pallate is considered
-         "pallattecolor":["#de8e43","#dfc133","#e0594b","#E77E22","#2B80B9","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
+         "pallattecolor":["#fcb249","#c2d661","#3ecfc1","#599bf0","#fe949e","#F39C11","#F2C40F","#179F87","#2D3E50","#9045AE","#5CADE2","#2ECD71","#BE3A2B"     ,"#C85600","#7E8C8D","#9A59B5","#34495E","#BEC3C7","#EC0000","#BE3243","#FF3243","#BE0043","#BE32FF","#CC3243","#BECC43","#BE324C","#f8bd19","#e44a00","#008FF4","#33bdda","#6baa01","#583e78"]
     },
     "export":{
         "showexport": true,
          "format": ["-Download-","jpeg","png"]
     },
-    "colormap":[
-    {"name":"Highest",
-    "value":"#de8e43"},
-       {"name":"Equal",
-    "value":"#dfc133"},
-     {"name":"Lowest",
-    "value":"#e0594b"}
-    ],
          // "click":function(data){
    // alert(data[0].label);},
     "data": [
-        {
-            "label": "Electronic",
-            "value": 11.234,
-            "category":"Highest"
-        },
-        {
-            "label": "Electronic",
-            "value": 22.223423,
-             "category":"Equal"
-        },
-        {
-            "label": "Electronic",
-            "value": 33.567567,
-            "category":"Lowest"
-
-        }
-        ,
-        {
-            "label": "Watch",
-            "value": 44,
-            "category":"Highest"
-        }
-        ,
-        {
-            "label": "Watch",
-            "value": 55,
-             "category":"Equal"
-        }
-        ,
-        {
-            "label": "Watch",
-            "value": 12,
-            "category":"Lowest"
-        }
-        ,
-        {
-            "label": "Shoe",
-            "value": 77,
-             "category":"Highest"
-        }
-        ,
-        {
-            "label": "Shoe",
-            "value": 88,
-             "category":"Equal"
-        },
-        {
-            "label": "Shoe",
-            "value": 99,
-            "category":"Lowest"
-        }
-        ,
-        {
-            "label": "bag",
-            "value": 100,
-             "category":"Highest"
-        }
-        ,
-        {
-            "label": "bag",
-            "value": 200,
-             "category":"Equal"
-        },
-        {
-            "label": "bag",
-            "value": 50,
-            "category":"Lowest"
-        }
-         ,
-        {
-            "label": "fitness equipments",
-            "value": 100,
-            "category":"Highest"
-        }
-        ,
-        {
-            "label": "fitness equipments",
-            "value": 200,
-             "category":"Equal"
-        },
-        {
-            "label": "fitness equipments",
-            "value": 50,
-            "category":"Lowest"
-        }
-        ,
-        {
-            "label": "T shirt",
-            "value": 100,
-            "category":"Highest"
-        }
-        ,
-        {
-            "label": "T shirt",
-            "value": 200,
-            "category":"Equal"
-        },
-        {
-            "label": "T shirt",
-            "value": 50,
-            "category":"Lowest"
-        } ,
-        {
-            "label": "Jean",
-            "value": 34,
-            "category":"Highest"
-        }
-        ,
-        {
-            "label": "Jean",
-            "value": 56,
-            "category":"Equal"
-        },
-        {
-            "label": "Jean",
-            "value": 78,
-            "category":"Lowest"
-        }
-         ,
-        {
-            "label": "Watch for Men",
-            "value": 32,
-            "category":"Highest"
-        }
-        ,
-        {
-            "label": "Watch for Men",
-            "value": 134,
-            "category":"Equal"
-        },
-        {
-            "label": "Watch for Men",
-            "value": 12,
-            "category":"Lowest"
-        } ,
-        {
-            "label": "Watch for Women",
-            "value": 12,
-            "category":"Highest"
-        }
-        ,
-        {
-            "label": "Watch for Women",
-            "value": 34,
-            "category":"Equal"
-        },
-        {
-            "label": "Watch for Women",
-            "value": 56,
-            "category":"Lowest"
-        }
-    ]
+{
+category: "Postition: 1",
+position: 1,
+value: 120,
+label: "Apparel"
+},
+{
+category: "Postition: 2",
+position: 2,
+value: 12,
+label: "Apparel"
+},
+{
+category: "Postition: 3",
+position: 3,
+value: 0,
+label: "Apparel"
+},
+{
+category: "Postition: 4",
+position: 4,
+value: 0,
+label: "Apparel"
+},
+{
+category: "Postition: 1",
+position: 1,
+value: 225,
+label: "Appliance"
+},
+{
+category: "Postition: 2",
+position: 2,
+value: 98,
+label: "Appliance"
+},
+{
+category: "Postition: 3",
+position: 3,
+value: 52,
+label: "Appliance"
+},
+{
+category: "Postition: 4",
+position: 4,
+value: 20,
+label: "Appliance"
+},
+{
+category: "Postition: 1",
+position: 1,
+value: 0,
+label: "Cameras & Accessories"
+},
+{
+category: "Postition: 2",
+position: 2,
+value: 0,
+label: "Cameras & Accessories"
+},
+{
+category: "Postition: 3",
+position: 3,
+value: 0,
+label: "Cameras & Accessories"
+},
+{
+category: "Postition: 4",
+position: 4,
+value: 4,
+label: "Cameras & Accessories"
+},
+{
+category: "Postition: 1",
+position: 1,
+value: 304,
+label: "Electronics"
+},
+{
+category: "Postition: 2",
+position: 2,
+value: 189,
+label: "Electronics"
+},
+{
+category: "Postition: 3",
+position: 3,
+value: 104,
+label: "Electronics"
+},
+{
+category: "Postition: 4",
+position: 4,
+value: 32,
+label: "Electronics"
+},
+{
+category: "Postition: 1",
+position: 1,
+value: 91,
+label: "Footwear"
+},
+{
+category: "Postition: 2",
+position: 2,
+value: 11,
+label: "Footwear"
+},
+{
+category: "Postition: 3",
+position: 3,
+value: 0,
+label: "Footwear"
+},
+{
+category: "Postition: 4",
+position: 4,
+value: 0,
+label: "Footwear"
+},
+{
+category: "Postition: 1",
+position: 1,
+value: 22,
+label: "Gaming"
+},
+{
+category: "Postition: 2",
+position: 2,
+value: 48,
+label: "Gaming"
+},
+{
+category: "Postition: 3",
+position: 3,
+value: 56,
+label: "Gaming"
+},
+{
+category: "Postition: 4",
+position: 4,
+value: 16,
+label: "Gaming"
+},
+{
+category: "Postition: 1",
+position: 1,
+value: 89,
+label: "HomeAndLiving"
+},
+{
+category: "Postition: 2",
+position: 2,
+value: 57,
+label: "HomeAndLiving"
+},
+{
+category: "Postition: 3",
+position: 3,
+value: 24,
+label: "HomeAndLiving"
+},
+{
+category: "Postition: 4",
+position: 4,
+value: 12,
+label: "HomeAndLiving"
+},
+{
+category: "Postition: 1",
+position: 1,
+value: 86,
+label: "SportsAndHealth"
+},
+{
+category: "Postition: 2",
+position: 2,
+value: 55,
+label: "SportsAndHealth"
+},
+{
+category: "Postition: 3",
+position: 3,
+value: 25,
+label: "SportsAndHealth"
+},
+{
+category: "Postition: 4",
+position: 4,
+value: 4,
+label: "SportsAndHealth"
+}
+]
 }
 d3charts("StackedBar2D","#stackedbar", stackedbar);
 
@@ -1258,155 +1185,276 @@ var stackedcolumn = {
          "format": ["-Download-","jpeg","png"]
     },
     "colormap":[
-    {"name":" > 50",
-    "value":"#008ee4"},
-       {"name":">40-50",
+    {"name":"0%",
+    "value":"#00FFe4"},
+       {"name":"0-5%",
     "value":"#26AD5E"},
-     {"name":">30-40",
+     {"name":"5-10%",
+    "value":"#E77E22"},
+    {"name":"10-20%",
+    "value":"#FF8ee4"},
+       {"name":"20-30%",
+    "value":"#26AD5E"},
+     {"name":"30-50%",
+    "value":"#E77E22"},
+     {"name":">50%",
     "value":"#E77E22"}
     ],
        "click":function(data){
     alert(data[0].label + ' : '+data[0].value);},
     "data": [
         {
-            "label": "Nikonasdsadsadsadsadsadsa",
-            "value": 33.123,
-            "tooltip":45.3423,
-            "category":" > 50"
-        },
-        {
-            "label": "Nikonasdsadsadsadsadsadsa",
-            "value": 22.234,
-             "tooltip":12.543,
-             "category":">40-50"
-        },
-        {
-            "label": "Nikonasdsadsadsadsadsadsa",
-            "value": 45,
-             "tooltip":23,
-            "category":">30-40"
-
-        }
-        ,
-        {
-            "label": "Livon",
-            "value": 50,
-             "tooltip":43,
-            "category":" > 50"
-        }
-        ,
-        {
-            "label": "Livon",
-            "value": 20,
-             "tooltip":78,
-            "category":">40-50"
-        }
-        ,
-        {
-            "label": "Livon",
-            "value": 30,
-             "tooltip":56,
-           "category":">30-40"
-        }
-        ,
-        {
-            "label": "WD",
-            "value": 10,
-             "tooltip":12,
-             "category":" > 50"
-        }
-        ,
-        {
-            "label": "WD",
-            "value": 20,
-             "tooltip":34,
-             "category":">40-50"
-        },
-        {
-            "label": "WD",
-            "value": 70,
-             "tooltip":65,
-             "category":">30-40"
-        }
-        ,
-        {
-            "label": "Spy",
-            "value": 80,
-             "tooltip":78,
-             "category":" > 50"
-        }
-        ,
-        {
-            "label": "Spy",
-            "value": 10,
-             "tooltip":23,
-            "category":">40-50"
-        },
-        {
-            "label": "Spy",
-            "value": 10,
-             "tooltip":56,
-            "category":">30-40"
-        }
-         ,
-        {
-            "label": "Lego",
-            "value": 15,
-             "tooltip":321,
-             "category":" > 50"
-        }
-        ,
-        {
-            "label": "Lego",
-            "value": 25,
-             "tooltip":234,
-             "category":">40-50"
-        },
-        {
-             "label": "Lego",
-            "value": 60,
-             "tooltip":90,
-            "category":">30-40"
-        }
-        ,
-        {
-            "label": "Orion",
-            "value": 50,
-             "tooltip":89,
-             "category":" > 50"
-        }
-        ,
-        {
-            "label": "Orion",
-            "value": 25,
-             "tooltip":87,
-             "category":">40-50"
-        },
-        {
-            "label": "Orion",
-            "value": 25,
-             "tooltip":76,
-             "category":">30-40"
-        } ,
-        {
-            "label": "Metz",
-            "value": 60,
-             "tooltip":54,
-           "category":" > 50"
-        }
-        ,
-        {
-             "label": "Metz",
-            "value": 20,
-             "tooltip":34,
-             "category":">40-50"
-        },
-        {
-             "label": "Metz",
-            "value": 20,
-             "tooltip":12,
-            "category":">30-40"
-        }
+"label": "Nikon",
+"value": 46.774193548387,
+"category": "0%",
+"tooltip": 29
+},
+{
+"label": "Nikon",
+"value": 19.354838709677,
+"category": "0-5%",
+"tooltip": 12
+},
+{
+"label": "Nikon",
+"value": 6.4516129032258,
+"category": "5-10%",
+"tooltip": 4
+},
+{
+"label": "Nikon",
+"value": 12.903225806452,
+"category": "10-20%",
+"tooltip": 8
+},
+{
+"label": "Nikon",
+"value": 8.0645161290323,
+"category": "20-30%",
+"tooltip": 5
+},
+{
+"label": "Nikon",
+"value": 4.8387096774194,
+"category": "30-50%",
+"tooltip": 3
+},
+{
+"label": "Nikon",
+"value": 1.6129032258065,
+"category": ">50%",
+"tooltip": 1
+},
+{
+"label": "Sony",
+"value": 51.219512195122,
+"category": "0%",
+"tooltip": 21
+},
+{
+"label": "Sony",
+"value": 21.951219512195,
+"category": "0-5%",
+"tooltip": 9
+},
+{
+"label": "Sony",
+"value": 12.19512195122,
+"category": "5-10%",
+"tooltip": 5
+},
+{
+"label": "Sony",
+"value": 12.19512195122,
+"category": "10-20%",
+"tooltip": 5
+},
+{
+"label": "Sony",
+"value": 2.4390243902439,
+"category": "20-30%",
+"tooltip": 1
+},
+{
+"label": "Sony",
+"value": 0,
+"category": "30-50%",
+"tooltip": 0
+},
+{
+"label": "Sony",
+"value": 0,
+"category": ">50%",
+"tooltip": 0
+},
+{
+"label": "Samsung",
+"value": 72.222222222222,
+"category": "0%",
+"tooltip": 26
+},
+{
+"label": "Samsung",
+"value": 0,
+"category": "0-5%",
+"tooltip": 0
+},
+{
+"label": "Samsung",
+"value": 2.7777777777778,
+"category": "5-10%",
+"tooltip": 1
+},
+{
+"label": "Samsung",
+"value": 22.222222222222,
+"category": "10-20%",
+"tooltip": 8
+},
+{
+"label": "Samsung",
+"value": 0,
+"category": "20-30%",
+"tooltip": 0
+},
+{
+"label": "Samsung",
+"value": 2.7777777777778,
+"category": "30-50%",
+"tooltip": 1
+},
+{
+"label": "Samsung",
+"value": 0,
+"category": ">50%",
+"tooltip": 0
+},
+{
+"label": "Lg",
+"value": 76.666666666667,
+"category": "0%",
+"tooltip": 23
+},
+{
+"label": "Lg",
+"value": 10,
+"category": "0-5%",
+"tooltip": 3
+},
+{
+"label": "Lg",
+"value": 3.3333333333333,
+"category": "5-10%",
+"tooltip": 1
+},
+{
+"label": "Lg",
+"value": 3.3333333333333,
+"category": "10-20%",
+"tooltip": 1
+},
+{
+"label": "Lg",
+"value": 3.3333333333333,
+"category": "20-30%",
+"tooltip": 1
+},
+{
+"label": "Lg",
+"value": 0,
+"category": "30-50%",
+"tooltip": 0
+},
+{
+"label": "Lg",
+"value": 3.3333333333333,
+"category": ">50%",
+"tooltip": 1
+},
+{
+"label": "Canon",
+"value": 65.51724137931,
+"category": "0%",
+"tooltip": 19
+},
+{
+"label": "Canon",
+"value": 10.344827586207,
+"category": "0-5%",
+"tooltip": 3
+},
+{
+"label": "Canon",
+"value": 0,
+"category": "5-10%",
+"tooltip": 0
+},
+{
+"label": "Canon",
+"value": 10.344827586207,
+"category": "10-20%",
+"tooltip": 3
+},
+{
+"label": "Canon",
+"value": 6.8965517241379,
+"category": "20-30%",
+"tooltip": 2
+},
+{
+"label": "Canon",
+"value": 6.8965517241379,
+"category": "30-50%",
+"tooltip": 2
+},
+{
+"label": "Canon",
+"value": 0,
+"category": ">50%",
+"tooltip": 0
+},
+{
+"label": "Lowepro",
+"value": 26.923076923077,
+"category": "0%",
+"tooltip": 7
+},
+{
+"label": "Lowepro",
+"value": 0,
+"category": "0-5%",
+"tooltip": 0
+},
+{
+"label": "Lowepro",
+"value": 0,
+"category": "5-10%",
+"tooltip": 0
+},
+{
+"label": "Lowepro",
+"value": 26.923076923077,
+"category": "10-20%",
+"tooltip": 7
+},
+{
+"label": "Lowepro",
+"value": 38.461538461538,
+"category": "20-30%",
+"tooltip": 10
+},
+{
+"label": "Lowepro",
+"value": 7.6923076923077,
+"category": "30-50%",
+"tooltip": 2
+},
+{
+"label": "Lowepro",
+"value": 0,
+"category": ">50%",
+"tooltip": 0
+}
          
     ]
 }

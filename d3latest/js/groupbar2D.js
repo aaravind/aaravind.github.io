@@ -72,6 +72,9 @@ function yAxis() {
         .ticks(4)
           .tickFormat(function (d) {
               var prefix = d3.formatPrefix(d);
+              if(d3.formatPrefix(d).symbol == "m")
+                return d;
+            else
               return prefix.scale(d) + prefix.symbol;
           })
             };

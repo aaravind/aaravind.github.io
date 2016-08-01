@@ -73,6 +73,16 @@ var bar2D = function (chartId, chartdata, chartType) {
                     };
                 });
             });
+            if(chartdata.colormap == undefined)
+  {
+        chartdata.colormap = [];
+        for(i=0;i<dataGroup.length;i++){
+            var tempobjcolor={};
+            tempobjcolor.name = dataGroup[i][0].z;
+            tempobjcolor.value = chartdata.chart.pallattecolor[i];
+             chartdata.colormap.push(tempobjcolor);
+        }
+  }
             var stack = d3.layout.stack();
             stack(dataGroup);
             var dataGroup = dataGroup.map(function (group) {
@@ -290,7 +300,13 @@ var bar2D = function (chartId, chartdata, chartType) {
                    var xattr = (elemRect.right - bodyRect.left + 20) + 'px';
                var yattr = (elemRect.top - bodyRect.top) + 'px';
                //var xattr = (elemRect.left - bodyRect.left - elemRect.left/2) + 'px';
+               if(d.z.search(':') == -1)
                var htmlcontent = '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.z + ': ' + d3.format(',')(d.x.toFixed(2) / 1) + '</span>';
+               else{
+                htmlcontent = '<div style=\'color:' + 'black' + ';text-transform:uppercase;font-size:12px\'>' + d.z.split(':')[0] + ' : ' + d.z.split(':')[1] +'</div>';
+                htmlcontent = htmlcontent + '<div style=\'color:' + 'black' + ';text-transform:uppercase;font-size:12px\'>Count : ' + d3.format(',')(d.x.toFixed(2) / 1) + '</div>';
+               }
+
                div.html(htmlcontent)
        .style("left", xattr)
                 .style("top", yattr);
@@ -378,7 +394,7 @@ var bar2D = function (chartId, chartdata, chartType) {
         .attr('ry', 20)
         .attr('width', 10)
         .attr('height', 10)
-        .style('opacity', 0.7)
+        .style('opacity', 0.5)
         .style('fill', function (d, i) {
             return d.value;
         });
@@ -393,21 +409,21 @@ var bar2D = function (chartId, chartdata, chartType) {
                 return d.name.toUpperCase();
         })
          .style('text-transform', 'uppercase')
-         .style('opacity', 0.8)
+         .style('opacity', 1)
         .style('font-size', '12px')
         .style('fill', function (d, i) {
             return d.value;
         })
         .on("click", function (d, i) {
             var graphselect = 'barstack' + d.name.replace(/[^a-zA-Z0-9]/g, "");
-            this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.8;
+            this.parentNode.getElementsByTagName('rect')[0].style.opacity = 1;
             if (d3.selectAll('.' + graphselect).style('display') == 'inline') {
                 d3.selectAll('.' + graphselect).attr("data-visibility", "false");
                 d3.selectAll('.' + graphselect).style('display', 'none');
             }
 
             else {
-                this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
+                this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.5;
                 d3.selectAll('.' + graphselect).attr("data-visibility", "true");
                 d3.selectAll('.' + graphselect).style('display', 'inline');
             }
@@ -419,7 +435,7 @@ var bar2D = function (chartId, chartdata, chartType) {
          })
           .on("mouseout", function (d, i) {
               this.style.cursor = 'pointer';
-              this.style.opacity = 0.8;
+              this.style.opacity = 0.5;
           });
 
             };
