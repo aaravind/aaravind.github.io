@@ -1,0 +1,20 @@
+{
+	"parser": [{
+		"name": "ip_address",
+		"logic": ["", " - - "]
+	}, {
+		"name": "timestamp",
+		"logic": ["[", "]"]
+	}, {
+		"name": "request_url",
+		"logic": ["\"GET", "\""]
+	}, {
+		"name": "referal_url",
+		"logic": ["\"http", "\""]
+	}, {
+		"name": "user_agent",
+		"logic": ["\"", "\""]
+	}],
+	"search_on": ["ip_address", "user_agent"]
+
+}

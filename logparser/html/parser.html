@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Log Parser</title>
+        <meta name="title" content="Log Parser | Aravind Arivarasan">
+    <meta name="Keywords" content="log parser,aravind arivarasan,aravind arivarasan works">
+    <meta name="Description" content="Log parser allows user to read a txt file and process into table with search features">
+    <meta property="og:title" content="Log Parser | Aravind Arivarasan">
+    <meta property="og:url" content="http://aaravind.github.io/logparser/html/parser.html">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Log parser allows user to read a txt file and process into table with search features">
+    <meta property="og:image" content="http://dataweave.com/images/slide-01-man-blackboard-new.jpg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@aaravind">
+    <meta name="twitter:title" content="Log Parser | Aravind Arivarasan">
+    <meta name="twitter:description" content="Log parser allows user to read a txt file and process into table with search features">
+    <meta name="twitter:url" content="http://aaravind.github.io/logparser/html/parser.html">
+    <meta name="twitter:image" content="http://dataweave.com/images/slide-01-man-blackboard-new.jpg">
+    <meta name="twitter:image:alt" content="Log Parser | Aravind Arivarasan">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/3.0.10/footable.core.standalone.css' rel='stylesheet' type='text/css'>
+    <link href='../css/parser.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+      <h1>LOG PARSER</h1>
+      <div class="filter">
+        <input type="text" id="ip_num" class="inputselect" placeholder="Enter IP Address"></input>
+        <input type="text" id="device_os" class="inputselect" placeholder="Enter Device OS"></input>
+        <input type="button" id="search" class="searchbutton" value="SEARCH"></input>
+        <input type="button" id="referal" class="searchbutton" value="TOP REFERRAL"></input>
+      </div>
+     <div class="logstable">
+      <table class="footable">
+
+            <tbody>
+            </tbody>  
+      </table>
+     </div> 
+     <!--<div class="pagination">
+        <ul class="pager">
+   <li class="next"><a href="#"><span> NEXT</span></a></li>
+   <li class="previous"><a href="#"><span>PREVIOUS</span></a></li>
+  </ul></div>-->
+       <div class="loading" class="page">
+<img src="../files/loader.gif">
+      </div>
+  <div class="footer"> © Aravind Arivarasan 2016</div>
+<div class="notify_mess_right">
+          <div class="inner_cont">
+            <div>
+            <div class="close_icon"></div>
+            </div>
+          <div class="icon" style="background-position: -2px -65px;"></div>
+          <div class="message"></div>
+        </div>
+         </div>
+     <script id="logstemplate" type="text/template">
+             <thead>
+              <tr>
+                <th data-type="html">IP ADDRESS</th>
+                <th data-type="html" data-breakpoints=" xs " class="right">REQUEST URL</th>
+                <th  data-type="html" data-breakpoints="xs sm" class="right">REFERENCE URL</th>
+                <th data-type="html" data-breakpoints="xs" class="right">USER AGENT</th>
+                <th data-type="html" data-breakpoints="" class="left">LAST UPDATE</th>
+              </tr>
+            </thead>
+           <% _.each(items, function(current) { %>
+              <tr>
+                <td><div class="right top" title="<%= current.ip_address %>"><%= current.ip_address %></div></td>
+                <td><div class="right top" title="<%= current.request_url %>"><%= current.request_url %></div></td>
+                <td><div class="right top" title="<%= current.referal_url %>"><a href="<%= current.referal_url %>" target="_blank"><%= current.referal_url %></a></div></td>
+                <td><div class="left top" title="<%= current.user_agent %>"><%= current.user_agent %></div></td>
+                <td><div class="left top" title="<%= current.timestamp %>"><%= current.timestamp %></div></td>
+              </tr>
+            <% }); %>
+          </script>
+
+                <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js" charset="utf-8"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js" type="text/javascript"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/3.0.9/footable.core.min.js" type="text/javascript"></script>
+                <script type="text/javascript" src="../js/shared/jquery.floatThead-slim.min.js" charset="utf-8"></script>
+                <script type="text/javascript" src="../js/parser.js" charset="utf-8"></script>
+    
+    </body>
+
+</html>
