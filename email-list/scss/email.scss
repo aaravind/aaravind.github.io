@@ -7,13 +7,13 @@ $close_color:white;
 $bg_white:white;
 $box_border :#d5d5d5;
 body{
-  font-family: "Roboto Condensed", "Helvetica Neue", "Myriad Pro", "Trebuchet MS", sans-serif;
 	.email_box{
 	border:1px solid $email_box_color;
 	ul{
 	margin: 0px;
     padding: 0px 10px 15px 0px;
 		li{
+		font-size: 14px;
 		cursor:pointer;
 		padding: 3px 5px;
 		background:$each_li_bg;
