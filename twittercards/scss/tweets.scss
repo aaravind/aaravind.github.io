@@ -65,10 +65,10 @@ body{
 							    }
 							    .card_content{
 							    	display:table;
+							    	width:100%;
 								    .user_image{
 										     display:table-cell;
 											 box-sizing: border-box;
-											 width: 25%;
 											 img{
 											    background: lightgrey;
 											    width: 50px;
@@ -80,11 +80,11 @@ body{
 									        display:table-cell;
 										    box-sizing: border-box;
 										    padding: 0px 20px;
-										    width: 75%;
+										    width: 100%;
 										    position:relative;
 											    div{
 												    position:absolute;
-												    width: 100%;
+												    width: 95%;
 												    p{
 													    font-size: 14px;
 													    padding: 2px 0px;

@@ -53,11 +53,11 @@ body {
               text-overflow: ellipsis;
               white-space: nowrap;*/ }
             body .main_flex .inner_flex .inner_flex_col .inner_flex_row .each_tile .card_content {
-              display: table; }
+              display: table;
+              width: 100%; }
               body .main_flex .inner_flex .inner_flex_col .inner_flex_row .each_tile .card_content .user_image {
                 display: table-cell;
-                box-sizing: border-box;
-                width: 25%; }
+                box-sizing: border-box; }
                 body .main_flex .inner_flex .inner_flex_col .inner_flex_row .each_tile .card_content .user_image img {
                   background: lightgrey;
                   width: 50px;
@@ -67,11 +67,11 @@ body {
                 display: table-cell;
                 box-sizing: border-box;
                 padding: 0px 20px;
-                width: 75%;
+                width: 100%;
                 position: relative; }
                 body .main_flex .inner_flex .inner_flex_col .inner_flex_row .each_tile .card_content .user_details div {
                   position: absolute;
-                  width: 100%; }
+                  width: 95%; }
                   body .main_flex .inner_flex .inner_flex_col .inner_flex_row .each_tile .card_content .user_details div p {
                     font-size: 14px;
                     padding: 2px 0px; }
