@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+		<title>Tweets | Aravind Arivarasan</title>
+		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="../css/tweets.css">
+	</head>
+	<body>
+       
+       <div class="main_flex">
+   <div class="inner_flex">
+    </div>
+</div>
+
+		<script id="tweets_template" type="text/template">
+      			<div class="inner_flex_col">
+      				<div class="inner_flex_row">
+                       <% _.each(items, function(current) { %>
+                          <div class="each_tile" style="background-color:<%= current.color %>"data-name="<%= current.name %>" data-location="<%= current.location %>" data-url="<%= current.profileurl %>" data-tweet= "<%= current.tweet %>" data-image="<%= current.profileimage %>"><p><%= current.screenname %></p></div>
+                        <% }); %>
+      				</div>
+      			</div>
+          </script>
+          <script id="tweets_card" type="text/template">
+      			<div class="card_content">
+      			<div class="user_image">
+      			<a href="<%= card.url %>" target="_blank"><img src="<%= card.image %>"></img></a>
+      			</div>
+      			<div class="user_details">
+      			<div class="each">
+                <p><%= card.name %></p>
+                <p><%= card.location %></p>
+                <p class="ellipsis" data-tweet='<%= card.tweet %>' title='<%= card.tweet %>'><%= card.tweet %></p>
+      			</div>
+      			</div>
+      			</div>
+          </script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js" type="text/javascript"></script>
+		<script src="../js/tweets.js"></script>
+	</body>
+</html>

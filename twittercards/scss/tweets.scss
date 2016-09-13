@@ -1,0 +1,120 @@
+$bg_color:#eff2f3;
+$p_color:white;
+$a_color:#cccccc;
+$border_color:#cccccc;
+
+@mixin flex-display($display) {
+    display: -webkit-#{$display};
+    display: $display;
+}
+@mixin flex-direction($direction) {
+    -webkit-flex-direction: $direction;
+    flex-direction: $direction;
+}
+@mixin flex-unit($count){
+	-webkit-flex: $count;
+    -ms-flex: $count;
+    flex: $count;
+}
+@mixin flex-align($align){
+	    -webkit-align-items: $align;
+    -ms-flex-align: $align;
+    align-items: $align;
+}
+
+body{
+    font-family: "Roboto Condensed", "Helvetica Neue", "Myriad Pro", "Trebuchet MS", sans-serif;
+    max-width: 100%;
+    margin: 0 auto;
+    background: $bg_color;
+	.main_flex{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    @include flex-display(flex);
+    .inner_flex{
+	    @include flex-display(flex);
+	    @include flex-unit(1);
+	    @include flex-direction(column);
+	    height: 100%;
+	    .inner_flex_col{
+	                    @include flex-unit(1);
+	    .inner_flex_row{
+						@include flex-display(flex);
+						@include flex-direction(row);
+                        height: 100%;
+                        .each_tile{
+							@include flex-unit(1);
+							@include flex-display(inline-flex);
+							@include flex-align(center);
+						    padding:0px 20px;
+						    border:1px solid $border_color;
+						    overflow: hidden;
+	                        cursor:pointer;
+							    p{
+							    margin:0px;
+							    padding:0px;
+							    font-size: 20px;
+							    color:$p_color;
+							    /*max-width: 90%;
+							    overflow: hidden;
+							    text-overflow: ellipsis;
+							    white-space: nowrap;*/
+							    }
+							    .card_content{
+							    	display:table;
+								    .user_image{
+										     display:table-cell;
+											 box-sizing: border-box;
+											 width: 25%;
+											 img{
+											    background: lightgrey;
+											    width: 50px;
+											    height: 50px;
+											    border-radius: 50%;
+											 }
+								    }
+							    .user_details{
+									        display:table-cell;
+										    box-sizing: border-box;
+										    padding: 0px 20px;
+										    width: 75%;
+										    position:relative;
+											    div{
+												    position:absolute;
+												    width: 100%;
+												    p{
+													    font-size: 14px;
+													    padding: 2px 0px;
+													    &.ellipsis{
+													    overflow: hidden;
+													    text-overflow: ellipsis;
+													    white-space: nowrap;
+													    }
+													    a{
+													    text-transform:uppercase;
+													    color:white;    
+													    text-decoration:none;
+													    &:hover{
+													    color:$a_color;
+													    }
+													    }
+												    }
+											    }
+							    }
+							    }
+							    &.rotated{
+							    -webkit-transform: rotateX(180deg);
+							    -webkit-transition: all 2s ease;
+							    .card_content{
+							    -webkit-transform: rotateX(180deg);
+							    }
+							    }
+                        }
+	                    }
+	                    }
+                }
+	        }
+}
