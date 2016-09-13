@@ -33,7 +33,7 @@
       			<div class="inner_flex_col">
       				<div class="inner_flex_row">
                        <% _.each(items, function(current) { %>
-                          <div class="each_tile" style="background-color:<%= current.color %>"data-name="<%= current.name %>" data-location="<%= current.location %>" data-url="<%= current.profileurl %>" data-tweet= "<%= current.tweet %>" data-image="<%= current.profileimage %>">@<p><%= current.screenname %></p></div>
+                          <div class="each_tile" style="background-color:<%= current.color %>"data-name="<%= current.name %>" data-location="<%= current.location %>" data-url="<%= current.profileurl %>" data-tweet= "<%= current.tweet %>" data-image="<%= current.profileimage %>"><p>@<%= current.screenname %></p></div>
                         <% }); %>
       				</div>
       			</div>
