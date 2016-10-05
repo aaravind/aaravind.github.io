@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pratilipi</title>
+        <link rel="icon" type="image/ico" href="http://0.ptlp.co/resource-hi/logo/pratilipi_logo.png">
+        <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>     
+
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+    
+    </head>
+    <body>
+         <div class="main_head">
+             <div class="logo"><img src="http://0.ptlp.co/resource-hi/logo/pratilipi_logo.png"></div>
+             <!--<div class="search"><input type="text"></input><span><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" class="style-scope iron-icon" style="pointer-events: none; display: block; width: 30; height: 30"><g class="style-scope iron-icon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" class="style-scope iron-icon"></path></g></svg></span></div> -->
+            <div class="floatright"> <div class ="user"><span><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" class="style-scope iron-icon" style="pointer-events: none;display: block;width: 35;height: 35;"><g class="style-scope iron-icon" style="
+    /* background: red; */
+"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" class="style-scope iron-icon"></path></g></svg></span></div>
+             <div class="toggle"><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" class="style-scope iron-icon" style="pointer-events: none; display: block; width: 35; height: 35;"><g class="style-scope iron-icon"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" class="style-scope iron-icon"></path></g></svg></div></div>
+         </div>
+         <div class="inner_content"> 
+         <div class="main_card">
+
+         </div> 
+         <div class="review_container">
+            
+
+
+             
+     </div>
+
+     <script id="main_card_template" type="text/template">
+                 <div class="title"><%= data.title %></div>
+         <div class="cover_pic"><img src="<%= data.coverImageUrl %>"/>
+         </div>
+         <div class="views">
+           <div class="rate"><span class="star" style="font-size: 24px;color: #303030;top: -4px;position: relative;"> &#9733;</span><span class="number"><%= data.averageRating %></span></div>
+           <div class="review_count"><span><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" class="style-scope iron-icon" style="pointer-events: none; display: inline-block; width: 24; height: 24;"><g class="style-scope iron-icon"><path d="M16.5 12c1.38 0 2.49-1.12 2.49-2.5S17.88 7 16.5 7C15.12 7 14 8.12 14 9.5s1.12 2.5 2.5 2.5zM9 11c1.66 0 2.99-1.34 2.99-3S10.66 5 9 5C7.34 5 6 6.34 6 8s1.34 3 3 3zm7.5 3c-1.83 0-5.5.92-5.5 2.75V19h11v-2.25c0-1.83-3.67-2.75-5.5-2.75zM9 13c-2.33 0-7 1.17-7 3.5V19h7v-2.25c0-.85.33-2.34 2.37-3.47C10.5 13.1 9.66 13 9 13z" class="style-scope iron-icon"></path></g></svg></span><span><%= data.ratingCount %></span></div>
+           <div class="total_views"><span><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" class="style-scope iron-icon" style="pointer-events: none; display: inline-block; width: 24; height: 24;"><g class="style-scope iron-icon"><path d="M13 12h7v1.5h-7zm0-2.5h7V11h-7zm0 5h7V16h-7zM21 4H3c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 15h-9V6h9v13z" class="style-scope iron-icon"></path></g></svg></span><span><%= data.readCount %></span></div>
+         </div>
+         <div class="posted_by"><%= data.type %> by <a href="<%= data.author.pageUrl%>"><%= data.author.name %></a>on <%= data.listingDateMillis %></div>
+         <div class="read_write">
+         <button class="read">पढ़िए</button>
+         <button class="write">लाइब्रेरी में जोड़े</button>
+         </div>
+     </script>
+
+     <script id="reviewtemplate" type="text/template">
+     <% _.each(data, function(current) { %>
+     <div class="each_review">
+                <div class="comment_person_url"><span><img src="http://0.ptlp.co/author/image?width=64"/></span><span class="desc_color main"><%= current.user.displayName %> on <%= current.reviewDateMillis %></span></div>
+                <div class="rating"><span class="star"> &#9733;</span><span class="number">
+                <% if (current.rating.length == 1) { %>  
+                <%= current.rating %>
+                <% } else { %>
+                <%= current.rating %>.0
+                    <% }; %>
+                 </span></div>
+                <div class="review_content desc_color"><%= current.review %></div>
+                <div class ="bottom">
+                <div class="like"><span><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" class="style-scope iron-icon" style="pointer-events: none; display: block; width: 20; height: 20;"><g class="style-scope iron-icon"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z" class="style-scope iron-icon"></path></g></svg> </span><span class="count"><%= current.likeCount %></span></div>
+                <div class="comment"> <span><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" class="style-scope iron-icon" style="pointer-events: none; display: block; width: 20; height: 20;"><g class="style-scope iron-icon"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01L23 10z" class="style-scope iron-icon"></path></g></svg></span><span class="count"> <%= current.commentCount %></span></div>
+                </div>
+            </div>
+     <% }); %>
+     </script>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js" charset="utf-8"></script>
+                <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js" charset="utf-8"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js" type="text/javascript"></script>
+                     <script type="text/javascript" src="js/data.js" charset="utf-8"></script>
+     <script type="text/javascript" src="js/main.js" charset="utf-8"></script>
+    
+    </body>
+
+</html>
