@@ -1,0 +1,83 @@
+$translate_box_color:#dfdfdf;
+$each_li_bg:white;
+$each_li_color:black;
+$close_bg:#058ca5;
+$close_color:white;
+$bg_white:white;
+$box_border:#d5d5d5;
+$box-shadow:lightgrey;
+$head_color:#737392;
+body {
+    .header {
+        text-align: center;
+        padding: 10px 0px;
+        font-size: 26px;
+        text-transform: uppercase;
+        color: $head_color;
+    }
+    .translate_box {
+        border: 1px solid $translate_box_color;
+        margin: 0 auto;
+        max-width: 960px;
+        margin-top: 10px;
+        ul {
+            margin: 0px;
+            padding: 15px 10px 15px 5px;
+            li {
+                font-size: 14px;
+                cursor: pointer;
+                padding: 3px 4px;
+                background: $each_li_bg;
+                color: $each_li_color;
+                list-style-type: none;
+                display: inline-block;
+                margin-top: 15px;
+                margin-left: 1px;
+                display: table-cell;
+                .options {
+                    position: absolute;
+                    padding-top: 3px;
+                    background: white;
+                    ul {
+                        border: 1px solid $box-shadow;
+                        border-radius: 0px 0px 5px 5px;
+                        padding: 5px 10px 5px 10px;
+                        box-shadow: 2px 2px 4px 0px $box-shadow;
+                        li {
+                            display: block;
+                            &:hover, &.hlight {
+                                background: $box-shadow;
+                            }
+                        }
+                    }
+                }
+                span {
+                    background: $close_bg;
+                    color: $close_color;
+                    padding: 0px 5px;
+                    margin-left: 5px;
+                    cursor: pointer;
+                    &:after {
+                        content: 'x';
+                        margin: 0px;
+                        top: -2px;
+                        position: relative;
+                        font-weight: 100;
+                        font-size: 12px;
+                    }
+                }
+                &.highlight {
+                    border: 1px solid $close_bg;
+                }
+                &:last-child {
+                    background: $bg_white;
+                    padding: 0px 5px;
+                    input {
+                        border: 0px;
+                        outline: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
