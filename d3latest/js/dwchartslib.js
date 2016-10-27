@@ -48,6 +48,7 @@ window.onresize = function (event) {
     d3charts("Line2D", "#linechart", linedata);
     //redrawchart("MultiLine2D","#Multiline", Multilinedata); // For Multiline call Redraw Function to Save the legends interactions
     redrawchart("MultiLine2D","#Multilinealone", Multilinealonedata);
+    redrawchart("MultiLine2D","#Multilinealone2", Multilinealonedata);
     redrawchart("Column2D", "#column", columndata);
      redrawchart("DoubleColumn2D","#doublecolumn", doublecolumndata);
       redrawchart("ColumnRange2D","#columnrange", columnrange);
@@ -488,7 +489,93 @@ value: 0
 
 d3charts("MultiLine2D","#Multilinealone", Multilinealonedata);
 
+
+
+
+
  var Multilinedata = {  
+   "chart":{  
+      "caption":"Price Gap with Lowest Priced Competitor",
+      "captionColor":"black",
+      "yaxisname":"",
+      "showlegend":true,
+      "tickinterval":1,
+      "tooltipheader":"Date",
+      "tooltipcontenttitle":"Violation",
+      "slant":false,
+      "slantdegree":"90",
+      "suffixsymbol":'',
+      "credits":{  
+         "text":" ",
+         "color":"#666",
+         "imageurl":"../images/logo.png"
+      },
+      "pallattecolor":[  
+       "#d4145a",
+       "#f15a24",
+       "#a556a5",
+       "#1e89b5",
+       "#67c2e9",
+       "#bede62",
+       "#d2ccb1",
+       "#c2c8cb",
+       "#a8b1b6",
+       "#fbca6f",
+       "#dea2d1",
+       "#f2a6ae",
+       "#c5e0c2",
+       "#ec7c86",
+       "#97d8ff",
+       "#f4d853",
+       "#e74d5c",
+       "#54a8a8",
+       "#fbd99c",
+       "#eaa15b",
+       "#9ec1cd",
+       "#5dc2d2",
+       "#eaa15b",
+       "#fbd99c",
+       "#6caf61",
+       "#a7cd33",
+       "#5dc2d2",
+       "#9d62d1",
+       "#dfe04f",
+       "#a2b3fc",
+       "#f9b52e",
+       "#8f9a9e"
+      ]
+   },
+   "export":{  
+      "showexport":true,
+      "filename":"Price Gap",
+      "format":[  
+         "Download",
+         "jpeg",
+         "png"
+      ]
+   },
+   "multichart":{  
+      "show":true,
+      "format":[  
+         {
+          "name":"By Date",
+          "type":"MultiLine2D",
+          "source":false
+         },
+         {
+          "name":"By Source",
+          "type":"GroupBar2D",
+          "source":true
+         }
+      ]
+   },
+   "data":[{"label":"2016-7-25","category":"Amazon","value":0.18},{"label":"2016-7-25","category":"SnapDeal","value":0.14},{"label":"2016-7-25","category":"Paytm","value":0.09},{"label":"2016-7-25","category":"Flipkart","value":0.12},{"label":"2016-7-26","category":"Amazon","value":0.18},{"label":"2016-7-26","category":"SnapDeal","value":0.17},{"label":"2016-7-26","category":"Paytm","value":0.16},{"label":"2016-7-26","category":"Flipkart","value":0.15},{"label":"2016-7-27","category":"Amazon","value":0.16},{"label":"2016-7-27","category":"SnapDeal","value":0.13},{"label":"2016-7-27","category":"Paytm","value":0.2},{"label":"2016-7-27","category":"Flipkart","value":0.16},{"label":"2016-7-28","category":"Amazon","value":0.2},{"label":"2016-7-28","category":"SnapDeal","value":0.15},{"label":"2016-7-28","category":"Paytm","value":0.08},{"label":"2016-7-28","category":"Flipkart","value":0.15},{"label":"2016-7-29","category":"Amazon","value":0.18},{"label":"2016-7-29","category":"SnapDeal","value":0.18},{"label":"2016-7-29","category":"Paytm","value":0.06},{"label":"2016-7-29","category":"Flipkart","value":0.16},{"label":"2016-7-30","category":"Amazon","value":0.19},{"label":"2016-7-30","category":"SnapDeal","value":0.13},{"label":"2016-7-30","category":"Paytm","value":0.1},{"label":"2016-7-30","category":"Flipkart","value":0.15}]
+}
+
+
+d3charts("MultiLine2D","#Multiline", Multilinedata);
+
+var Multilinedata2 = {  
    "chart":{  
       "caption":"Price Gap with Lowest Priced Competitor",
       "captionColor":"black",
@@ -558,13 +645,11 @@ d3charts("MultiLine2D","#Multilinealone", Multilinealonedata);
          }
       ]
    },
-   "data":[{"label":"2016-7-25","category":"Amazon","value":0.18},{"label":"2016-7-25","category":"SnapDeal","value":0.14},{"label":"2016-7-25","category":"Paytm","value":0.09},{"label":"2016-7-25","category":"Flipkart","value":0.12},{"label":"2016-7-26","category":"Amazon","value":0.18},{"label":"2016-7-26","category":"SnapDeal","value":0.17},{"label":"2016-7-26","category":"Paytm","value":0.16},{"label":"2016-7-26","category":"Flipkart","value":0.15},{"label":"2016-7-27","category":"Amazon","value":0.16},{"label":"2016-7-27","category":"SnapDeal","value":0.13},{"label":"2016-7-27","category":"Paytm","value":0.2},{"label":"2016-7-27","category":"Flipkart","value":0.16},{"label":"2016-7-28","category":"Amazon","value":0.2},{"label":"2016-7-28","category":"SnapDeal","value":0.15},{"label":"2016-7-28","category":"Paytm","value":0.08},{"label":"2016-7-28","category":"Flipkart","value":0.15},{"label":"2016-7-29","category":"Amazon","value":0.18},{"label":"2016-7-29","category":"SnapDeal","value":0.18},{"label":"2016-7-29","category":"Paytm","value":0.06},{"label":"2016-7-29","category":"Flipkart","value":0.16},{"label":"2016-7-30","category":"Amazon","value":0.19},{"label":"2016-7-30","category":"SnapDeal","value":0.13},{"label":"2016-7-30","category":"Paytm","value":0.1},{"label":"2016-7-30","category":"Flipkart","value":0.15}]
+   "data":[{"label":"2016-7-25","category":"Amazon1","value":0.18},{"label":"2016-7-25","category":"SnapDeal1","value":0.14},{"label":"2016-7-25","category":"Paytm1","value":0.09},{"label":"2016-7-25","category":"Flipkart1","value":0.12},{"label":"2016-7-26","category":"Amazon1","value":0.18},{"label":"2016-7-26","category":"SnapDeal1","value":0.17},{"label":"2016-7-26","category":"Paytm1","value":0.16},{"label":"2016-7-26","category":"Flipkart1","value":0.15},{"label":"2016-7-27","category":"Amazon1","value":0.16},{"label":"2016-7-27","category":"SnapDeal1","value":0.13},{"label":"2016-7-27","category":"Paytm1","value":0.2},{"label":"2016-7-27","category":"Flipkart1","value":0.16},{"label":"2016-7-28","category":"Amazon1","value":0.2},{"label":"2016-7-28","category":"SnapDeal1","value":0.15},{"label":"2016-7-28","category":"Paytm1","value":0.08},{"label":"2016-7-28","category":"Flipkart1","value":0.15},{"label":"2016-7-29","category":"Amazon1","value":0.18},{"label":"2016-7-29","category":"SnapDeal1","value":0.18},{"label":"2016-7-29","category":"Paytm1","value":0.06},{"label":"2016-7-29","category":"Flipkart1","value":0.16},{"label":"2016-7-30","category":"Amazon1","value":0.19},{"label":"2016-7-30","category":"SnapDeal1","value":0.13},{"label":"2016-7-30","category":"Paytm1","value":0.1},{"label":"2016-7-30","category":"Flipkart1","value":0.15}]
 }
 
 
-d3charts("MultiLine2D","#Multiline", Multilinedata);
-
-
+d3charts("MultiLine2D","#Multiline2", Multilinedata2);
 
 var columndata = {
     "chart": {

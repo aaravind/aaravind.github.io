@@ -254,7 +254,12 @@ function yAxis() {
              }
 
              else {
+              if(chartdata.chart.tooltipcontenttitle == undefined || chartdata.chart.tooltipcontenttitle == '')
                   var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + d.label + ':' + d3.format(',')(d.value.toFixed(2) / 1) +'</span><br>';
+              else{
+                var tooltiphead = (chartdata.chart.tooltipheader != undefined && chartdata.chart.tooltipheader != '') ? (chartdata.chart.tooltipheader + ' : ') : ''; 
+                var htmlcontent = htmlcontent + '<span style=\"height:10px!important;text-transform:uppercase;font-size:12px\">' + tooltiphead + d.label + '<hr>' +  chartdata.chart.tooltipcontenttitle + ' : '+ d3.format(',')(d.value.toFixed(2) / 1) +'</span><br>';
+                  }
              }
              var xattr = (elemRect.right - bodyRect.left + 10) + 'px';
              div.html(htmlcontent)
@@ -268,7 +273,7 @@ function yAxis() {
          })
             .on("mouseout", function (d, i) {
                 this.style.cursor = 'pointer';
-                this.style.opacity = 0.9;
+                this.style.opacity = 0.6;
                 div.transition()
                 .duration(100)
                 .style("opacity", 0);
@@ -301,7 +306,7 @@ function yAxis() {
             else
                 return color(d.label);
             })
-      .style("opacity",'0.9');
+      .style("opacity",'0.6');
 
    d3.selectAll(chartId + ' .y path.domain').attr('d', '');
    d3.selectAll(chartId + ' .grid .tick text').attr('transform', 'translate(5,10)').style('text-anchor','start');
@@ -337,7 +342,7 @@ function yAxis() {
         .attr('ry', 20)
         .attr('width', 10)
         .attr('height', 10)
-        .style('opacity', 0.9)
+        .style('opacity', 0.6)
         .style('fill', function (d, i) {
             return d.value;
         });
@@ -352,7 +357,7 @@ function yAxis() {
                 return d.name.toUpperCase();
         })
          .style('text-transform', 'uppercase')
-         .style('opacity', 0.9)
+         .style('opacity', 0.6)
         .style('font-size', '12px')
         .style('fill', function (d, i) {
             return d.value;
@@ -374,11 +379,11 @@ function yAxis() {
          })
          .on("mouseover", function (d, i) {
              this.style.cursor = 'pointer';
-             this.style.opacity = 1;
+             this.style.opacity = 0.9;
          })
           .on("mouseout", function (d, i) {
               this.style.cursor = 'pointer';
-              this.style.opacity = 0.9;
+              this.style.opacity = 0.5;
           });
 
             };
