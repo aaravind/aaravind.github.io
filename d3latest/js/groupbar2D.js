@@ -6,6 +6,8 @@
  * http://opensource.org/licenses/mit-license
  */
 var groupBar2D = function (chartId, chartdata, chartType) {
+  var opacitymin = 0.7;
+  var opacitymax = 1;
     if (chartdata.data != undefined) {
         if (chartdata.data.length != 0) {
 
@@ -273,7 +275,7 @@ function yAxis() {
          })
             .on("mouseout", function (d, i) {
                 this.style.cursor = 'pointer';
-                this.style.opacity = 0.6;
+                this.style.opacity = opacitymin;
                 div.transition()
                 .duration(100)
                 .style("opacity", 0);
@@ -306,7 +308,7 @@ function yAxis() {
             else
                 return color(d.label);
             })
-      .style("opacity",'0.6');
+      .style("opacity",opacitymin);
 
    d3.selectAll(chartId + ' .y path.domain').attr('d', '');
    d3.selectAll(chartId + ' .grid .tick text').attr('transform', 'translate(5,10)').style('text-anchor','start');
@@ -342,7 +344,7 @@ function yAxis() {
         .attr('ry', 20)
         .attr('width', 10)
         .attr('height', 10)
-        .style('opacity', 0.6)
+        .style('opacity', opacitymin)
         .style('fill', function (d, i) {
             return d.value;
         });
@@ -357,21 +359,21 @@ function yAxis() {
                 return d.name.toUpperCase();
         })
          .style('text-transform', 'uppercase')
-         .style('opacity', 0.6)
+         .style('opacity', opacitymin)
         .style('font-size', '12px')
         .style('fill', function (d, i) {
             return d.value;
         })
         .on("click", function (d, i) {
              var graphselect = chartType + d.name.replace(/[^a-zA-Z0-9]/g, "");
-             this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
+             this.parentNode.getElementsByTagName('rect')[0].style.opacity = opacitymin;
              if (d3.selectAll(chartId +' .' + graphselect).style('display') == 'inline') {
                  d3.selectAll(chartId +' .' + graphselect).style('display', 'none');
                  d3.selectAll(chartId +' .' + graphselect).attr("data-visibility", "false");
              }
 
              else {
-                 this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.9;
+                 this.parentNode.getElementsByTagName('rect')[0].style.opacity = opacitymax;
                  d3.selectAll(chartId +' .' + graphselect).style('display', 'inline');
                  d3.selectAll(chartId +' .' + graphselect).attr("data-visibility", "true");
              }
@@ -379,11 +381,11 @@ function yAxis() {
          })
          .on("mouseover", function (d, i) {
              this.style.cursor = 'pointer';
-             this.style.opacity = 0.9;
+             this.style.opacity = opacitymax;
          })
           .on("mouseout", function (d, i) {
               this.style.cursor = 'pointer';
-              this.style.opacity = 0.5;
+              this.style.opacity = opacitymin;
           });
 
             };

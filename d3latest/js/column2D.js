@@ -6,6 +6,8 @@
  * http://opensource.org/licenses/mit-license
  */
 var column2D = function (chartId, chartdata, chartType) {
+      var opacitymin = 0.7;
+  var opacitymax = 1;
     if (chartdata.data != undefined) {
         if (chartdata.data.length != 0) {
 
@@ -484,7 +486,7 @@ var column2D = function (chartId, chartdata, chartType) {
             return 'Column' + d.z.replace(/[^a-zA-Z0-9]/g, "");
         })
         .attr('data-visibility', true)
-        .style('opacity', 0.5)
+        .style('opacity', opacitymin)
           .on("mousedown", function (d, i) {
            if (chartdata.click != undefined && chartdata.click != '')
                var curdataent = [];
@@ -527,7 +529,7 @@ var column2D = function (chartId, chartdata, chartType) {
          })
             .on("mouseout", function (d, i) {
                 this.style.cursor = 'pointer';
-                this.style.opacity = 0.5;
+                this.style.opacity = opacitymin;
                 div.transition()
                 .duration(100)
                 .style("opacity", 0);
@@ -668,13 +670,13 @@ var column2D = function (chartId, chartdata, chartType) {
                 });
     })
       .on("mouseout", function (d, i) {
-          this.style.opacity = 0.5;
+          this.style.opacity = opacitymin;
           div.transition()
                 .duration(0)
                 .style("opacity", 0);
       })
       .style("opacity", function (d, i) {
-          return 0.5;
+          return opacitymin;
       })
       .attr("x", function (d) { return x(cLabel) + x.rangeBand() / 4; })
       .attr("width", x.rangeBand() / 2)
@@ -882,9 +884,9 @@ var column2D = function (chartId, chartdata, chartType) {
     })
         .on("mouseout", function (d, i) {
             if (cType == 'Column2D')
-                this.style.opacity = 0.5;
+                this.style.opacity = opacitymin;
             else
-                d3.selectAll(chartId + ' .Column' + i).style('opacity', 0.5);
+                d3.selectAll(chartId + ' .Column' + i).style('opacity', opacitymin);
             if (cType == 'Column2D')
                 d3.selectAll('.' + chartId.replace('#', '') + d.label.replace(/[^a-zA-Z0-9]/g, "")).style("display", "none");
             else
@@ -932,7 +934,7 @@ var column2D = function (chartId, chartdata, chartType) {
           }
 
       })
-      .style("opacity", 0.5)
+      .style("opacity", opacitymin)
       .attr("x", function (d) {
           return x(d.label);
       })
@@ -1223,7 +1225,7 @@ var column2D = function (chartId, chartdata, chartType) {
         .attr('ry', 20)
         .attr('width', 10)
         .attr('height', 10)
-        .style('opacity', 0.7)
+        .style('opacity', opacitymin)
         .style('fill', function (d, i) {
             return d.value;
         });
@@ -1233,21 +1235,21 @@ var column2D = function (chartId, chartdata, chartType) {
         .attr('y', function (d, i) { return ((i + 1) * 15) + 9; })
         .text(function (d) { return d.name.toUpperCase(); })
          .style('text-transform', 'uppercase')
-         .style('opacity', 0.4)
+         .style('opacity', opacitymin)
         .style('font-size', '12px')
         .style('fill', function (d, i) {
             return d.value;
         })
         .on("click", function (d, i) {
             var graphselect = 'Column' + d.name.replace(/[^a-zA-Z0-9]/g, "");
-            this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.4;
+            this.parentNode.getElementsByTagName('rect')[0].style.opacity = opacitymin;
             if (d3.selectAll(chartId + ' .' + graphselect).style('display') == 'inline') {
                 d3.selectAll(chartId + ' .' + graphselect).attr("data-visibility", "false");
                 d3.selectAll(chartId + ' .' + graphselect).style('display', 'none');
             }
 
             else {
-                this.parentNode.getElementsByTagName('rect')[0].style.opacity = 0.7;
+                this.parentNode.getElementsByTagName('rect')[0].style.opacity = opacitymax;
                 d3.selectAll(chartId + ' .' + graphselect).attr("data-visibility", "true");
                 d3.selectAll(chartId + ' .' + graphselect).style('display', 'inline');
             }
@@ -1255,11 +1257,11 @@ var column2D = function (chartId, chartdata, chartType) {
         })
          .on("mouseover", function (d, i) {
              this.style.cursor = 'pointer';
-             this.style.opacity = 1;
+             this.style.opacity = opacitymax;
          })
           .on("mouseout", function (d, i) {
               this.style.cursor = 'pointer';
-              this.style.opacity = 0.4;
+              this.style.opacity = opacitymin;
           });
 
             };
