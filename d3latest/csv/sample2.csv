@@ -1,140 +1,183 @@
-page,total_brand,hul_brand,p&g_brand,source,week
-Amazon Pantry,64,33,0,Amazon,2016-10-01/2016-10-07
-Bath & Shower,7,6,0,Amazon,2016-10-01/2016-10-07
-Beauty Page,40,15,7,Amazon,2016-10-01/2016-10-07
-Body Wash,2,2,0,Amazon,2016-10-01/2016-10-07
-Cleaning Store,12,4,1,Amazon,2016-10-01/2016-10-07
-Coffee and Espresso,10,8,0,Amazon,2016-10-01/2016-10-07
-Diet & Nutrition,9,0,0,Amazon,2016-10-01/2016-10-07
-Feminine Hygiene Products,2,0,1,Amazon,2016-10-01/2016-10-07
-Fly out,9,4,4,Amazon,2016-10-01/2016-10-07
-Fragrance,2,2,0,Amazon,2016-10-01/2016-10-07
-Grocery & Gourmet,61,25,0,Amazon,2016-10-01/2016-10-07
-Hair Care & Styling,12,7,2,Amazon,2016-10-01/2016-10-07
-Health Household & Personal Care,6,0,0,Amazon,2016-10-01/2016-10-07
-Household Supplies,17,11,1,Amazon,2016-10-01/2016-10-07
-Luxury Beauty,17,0,0,Amazon,2016-10-01/2016-10-07
-Make up & Nails,9,2,0,Amazon,2016-10-01/2016-10-07
-Mens Grooming,8,1,0,Amazon,2016-10-01/2016-10-07
-Personal Care,6,0,0,Amazon,2016-10-01/2016-10-07
-Skin Care,22,10,2,Amazon,2016-10-01/2016-10-07
-Snack Food Store,5,1,0,Amazon,2016-10-01/2016-10-07
-Subscribe & Save,49,27,6,Amazon,2016-10-01/2016-10-07
-Tea,10,7,0,Amazon,2016-10-01/2016-10-07
-Home page,138,39,13,Amazon,2016-10-01/2016-10-07
-Household,4,1,1,BigBasket-BLR,2016-10-01/2016-10-07
-Personal Care,5,1,2,BigBasket-BLR,2016-10-01/2016-10-07
-Personal Care-Personal Hygiene,2,1,0,BigBasket-BLR,2016-10-01/2016-10-07
-Promotions,173,15,0,BigBasket-BLR,2016-10-01/2016-10-07
-Home page,15,8,4,BigBasket-BLR,2016-10-01/2016-10-07
-Bath & Body,14,2,1,Nykaa,2016-10-01/2016-10-07
-Fragrance,7,0,0,Nykaa,2016-10-01/2016-10-07
-Hair,20,5,0,Nykaa,2016-10-01/2016-10-07
-Herbal,16,2,0,Nykaa,2016-10-01/2016-10-07
-Makeup,18,4,0,Nykaa,2016-10-01/2016-10-07
-SALE,256,10,2,Nykaa,2016-10-01/2016-10-07
-Skin,19,1,0,Nykaa,2016-10-01/2016-10-07
-Wellness,15,1,0,Nykaa,2016-10-01/2016-10-07
-Home page,45,5,1,Nykaa,2016-10-01/2016-10-07
-Offers,44,5,3,Nykaa,2016-10-01/2016-10-07
-Beauty & Personal care,7,2,0,SnapDeal,2016-10-01/2016-10-07
-Food & Gourment,17,0,0,SnapDeal,2016-10-01/2016-10-07
-Household essentials,21,7,4,SnapDeal,2016-10-01/2016-10-07
-Men's Fragrances,1,0,0,SnapDeal,2016-10-01/2016-10-07
-Home page,80,13,4,SnapDeal,2016-10-01/2016-10-07
-Offers,3,0,0,SnapDeal,2016-10-01/2016-10-07
-Subscribe & Save,33,18,6,Amazon,2016-10-08/2016-10-14
-Tea,10,7,0,Amazon,2016-10-08/2016-10-14
-Coffee and Espresso,9,7,0,Amazon,2016-10-08/2016-10-14
-Amazon Pantry,20,6,1,Amazon,2016-10-08/2016-10-14
-Home Page,51,6,5,Amazon,2016-10-08/2016-10-14
-Bath & Shower,6,4,0,Amazon,2016-10-08/2016-10-14
-Body Wash,4,4,0,Amazon,2016-10-08/2016-10-14
-Cleaning Store,12,4,1,Amazon,2016-10-08/2016-10-14
-Mens Grooming,7,2,0,Amazon,2016-10-08/2016-10-14
-Beauty Page,5,2,0,Amazon,2016-10-08/2016-10-14
-Fragrance,2,2,0,Amazon,2016-10-08/2016-10-14
-Hair Care & Styling,4,2,0,Amazon,2016-10-08/2016-10-14
-Snack Food Store,5,1,0,Amazon,2016-10-08/2016-10-14
-Make up & Nails,6,1,0,Amazon,2016-10-08/2016-10-14
-Skin Care,5,1,1,Amazon,2016-10-08/2016-10-14
-Grocery & Gourmet,4,1,0,Amazon,2016-10-08/2016-10-14
-Feminine Hygiene Products,2,0,1,Amazon,2016-10-08/2016-10-14
-Luxury Beauty,13,0,0,Amazon,2016-10-08/2016-10-14
-Diet & Nutrition,7,0,0,Amazon,2016-10-08/2016-10-14
-Personal Care,6,0,0,Amazon,2016-10-08/2016-10-14
-Promotions,194,17,0,BigBasket-BLR,2016-10-08/2016-10-14
-Home Page,27,10,0,BigBasket-BLR,2016-10-08/2016-10-14
-Personal Care Skin Care,5,2,0,BigBasket-BLR,2016-10-08/2016-10-14
-Personal Care,4,1,1,BigBasket-BLR,2016-10-08/2016-10-14
-Personal Care Cosmetics,4,1,0,BigBasket-BLR,2016-10-08/2016-10-14
-Household Detergents,3,0,1,BigBasket-BLR,2016-10-08/2016-10-14
-Household,3,0,1,BigBasket-BLR,2016-10-08/2016-10-14
-Personal Care Personal Hygiene,2,0,0,BigBasket-BLR,2016-10-08/2016-10-14
-SALE,376,24,2,Nykaa,2016-10-08/2016-10-14
-Home Page,64,8,0,Nykaa,2016-10-08/2016-10-14
-Makeup,36,6,0,Nykaa,2016-10-08/2016-10-14
-Hair,31,5,0,Nykaa,2016-10-08/2016-10-14
-Bath & Body,31,3,0,Nykaa,2016-10-08/2016-10-14
-Herbal,38,3,0,Nykaa,2016-10-08/2016-10-14
-Skin,35,2,0,Nykaa,2016-10-08/2016-10-14
-Mom & Baby,10,0,0,Nykaa,2016-10-08/2016-10-14
-Fragrance,6,0,0,Nykaa,2016-10-08/2016-10-14
-Wellness,5,0,0,Nykaa,2016-10-08/2016-10-14
-Household essentials,22,10,4,SnapDeal,2016-10-08/2016-10-14
-Beauty & Personal care,13,8,0,SnapDeal,2016-10-08/2016-10-14
-RHS Card,0,0,0,SnapDeal,2016-10-08/2016-10-14
-Men's Fragrances,1,0,0,SnapDeal,2016-10-08/2016-10-14
-offers,3,0,0,SnapDeal,2016-10-08/2016-10-14
-Home Page,56,0,0,SnapDeal,2016-10-08/2016-10-14
-Food & Gourment,10,0,0,SnapDeal,2016-10-08/2016-10-14
-Below the fold Cards,4,0,0,SnapDeal,2016-10-08/2016-10-14
-Amazon Pantry,27,6,1,Amazon,2016-10-14/2016-10-21
-Bath & Shower,6,4,0,Amazon,2016-10-14/2016-10-21
-Beauty Page,20,6,4,Amazon,2016-10-14/2016-10-21
-Body Wash,2,2,0,Amazon,2016-10-14/2016-10-21
-Cleaning Store,12,4,1,Amazon,2016-10-14/2016-10-21
-Coffee and Espresso,9,7,0,Amazon,2016-10-14/2016-10-21
-"Coffee, Tea & Beverages Store",5,1,0,Amazon,2016-10-14/2016-10-21
-Diet & Nutrition,8,0,0,Amazon,2016-10-14/2016-10-21
-Feminine Hygiene Products,2,0,1,Amazon,2016-10-14/2016-10-21
-Fragrance,4,2,0,Amazon,2016-10-14/2016-10-21
-Grocery & Gourmet,44,14,0,Amazon,2016-10-14/2016-10-21
-Hair Care & Styling,13,8,2,Amazon,2016-10-14/2016-10-21
-Home Page,96,25,7,Amazon,2016-10-14/2016-10-21
-Household Supplies,12,6,1,Amazon,2016-10-14/2016-10-21
-Luxury Beauty,20,0,0,Amazon,2016-10-14/2016-10-21
-Make up & Nails,9,2,0,Amazon,2016-10-14/2016-10-21
-Mens Grooming,9,2,0,Amazon,2016-10-14/2016-10-21
-Personal Care,6,0,0,Amazon,2016-10-14/2016-10-21
-Skin Care,18,10,2,Amazon,2016-10-14/2016-10-21
-Snack Food Store,5,1,0,Amazon,2016-10-14/2016-10-21
-Subscribe & Save,32,17,6,Amazon,2016-10-14/2016-10-21
-Tea,10,7,0,Amazon,2016-10-14/2016-10-21
-Home Page,12,0,0,BigBasket-BLR,2016-10-14/2016-10-21
-Household,3,0,1,BigBasket-BLR,2016-10-14/2016-10-21
-Household Detergents,3,0,1,BigBasket-BLR,2016-10-14/2016-10-21
-Personal Care,3,0,1,BigBasket-BLR,2016-10-14/2016-10-21
-Personal Care Cosmetics,3,0,0,BigBasket-BLR,2016-10-14/2016-10-21
-Personal Care Personal Hygiene,1,0,0,BigBasket-BLR,2016-10-14/2016-10-21
-Personal Care Skin Care,2,1,0,BigBasket-BLR,2016-10-14/2016-10-21
-Promotions,185,6,0,BigBasket-BLR,2016-10-14/2016-10-21
-Bath & Body,11,1,1,Nykaa,2016-10-14/2016-10-21
-Fragrance,9,0,0,Nykaa,2016-10-14/2016-10-21
-Hair,10,3,0,Nykaa,2016-10-14/2016-10-21
-Herbal,7,0,0,Nykaa,2016-10-14/2016-10-21
-Home Page,33,8,0,Nykaa,2016-10-14/2016-10-21
-Makeup,12,2,0,Nykaa,2016-10-14/2016-10-21
-Mom & Baby,20,0,0,Nykaa,2016-10-14/2016-10-21
-Offers,56,10,1,Nykaa,2016-10-14/2016-10-21
-SALE,292,16,2,Nykaa,2016-10-14/2016-10-21
-Skin,15,4,1,Nykaa,2016-10-14/2016-10-21
-Wellness,8,0,0,Nykaa,2016-10-14/2016-10-21
-Beauty & Personal care,4,1,0,SnapDeal,2016-10-14/2016-10-21
-Below the fold Cards,7,0,0,SnapDeal,2016-10-14/2016-10-21
-Food & Gourment,6,0,0,SnapDeal,2016-10-14/2016-10-21
-Home Page,70,8,5,SnapDeal,2016-10-14/2016-10-21
-Household essentials,8,2,2,SnapDeal,2016-10-14/2016-10-21
-NA,3,3,0,SnapDeal,2016-10-14/2016-10-21
-Offers,3,0,0,SnapDeal,2016-10-14/2016-10-21
-RHS Card,0,0,0,SnapDeal,2016-10-14/2016-10-21
+Category,Sum of Count of Brands,Sum of HUL Brands,Sum of P&G Brands,WEEK,SOURCE
+Amazon Pantry,64,33,0,2016-10-01-2016-10-07,AMAZON
+Bath & Shower,7,6,0,2016-10-01-2016-10-07,AMAZON
+Beauty Page,40,15,7,2016-10-01-2016-10-07,AMAZON
+Body Wash,2,2,0,2016-10-01-2016-10-07,AMAZON
+Cleaning Store,12,4,1,2016-10-01-2016-10-07,AMAZON
+Coffee and Espresso,10,8,0,2016-10-01-2016-10-07,AMAZON
+Diet & Nutrition,9,0,0,2016-10-01-2016-10-07,AMAZON
+Feminine Hygiene Products,2,0,1,2016-10-01-2016-10-07,AMAZON
+Fly out,9,4,4,2016-10-01-2016-10-07,AMAZON
+Fragrance,2,2,0,2016-10-01-2016-10-07,AMAZON
+Grocery & Gourmet,61,25,0,2016-10-01-2016-10-07,AMAZON
+Hair Care & Styling,12,7,2,2016-10-01-2016-10-07,AMAZON
+Health Household & Personal Care,6,0,0,2016-10-01-2016-10-07,AMAZON
+Home Page,138,39,13,2016-10-01-2016-10-07,AMAZON
+Household Supplies,17,11,1,2016-10-01-2016-10-07,AMAZON
+Luxury Beauty,17,0,0,2016-10-01-2016-10-07,AMAZON
+Make up & Nails,9,2,0,2016-10-01-2016-10-07,AMAZON
+Mens Grooming,8,1,0,2016-10-01-2016-10-07,AMAZON
+Personal Care,6,0,0,2016-10-01-2016-10-07,AMAZON
+Skin Care,22,10,2,2016-10-01-2016-10-07,AMAZON
+Snack Food Store,5,1,0,2016-10-01-2016-10-07,AMAZON
+Subscribe & Save,49,27,6,2016-10-01-2016-10-07,AMAZON
+Tea,10,7,0,2016-10-01-2016-10-07,AMAZON
+Amazon Pantry,20,6,1,2016-10-08-2016-10-14,AMAZON
+Bath & Shower,6,4,0,2016-10-08-2016-10-14,AMAZON
+Beauty Page,5,2,0,2016-10-08-2016-10-14,AMAZON
+Body Wash,4,4,0,2016-10-08-2016-10-14,AMAZON
+Cleaning Store,12,4,1,2016-10-08-2016-10-14,AMAZON
+Coffee and Espresso,9,7,0,2016-10-08-2016-10-14,AMAZON
+Diet & Nutrition,7,0,0,2016-10-08-2016-10-14,AMAZON
+Feminine Hygiene Products,2,0,1,2016-10-08-2016-10-14,AMAZON
+Fragrance,2,2,0,2016-10-08-2016-10-14,AMAZON
+Grocery & Gourmet,4,1,0,2016-10-08-2016-10-14,AMAZON
+Hair Care & Styling,4,2,0,2016-10-08-2016-10-14,AMAZON
+Home Page,51,6,5,2016-10-08-2016-10-14,AMAZON
+Luxury Beauty,13,0,0,2016-10-08-2016-10-14,AMAZON
+Make up & Nails,6,1,0,2016-10-08-2016-10-14,AMAZON
+Mens Grooming,7,2,0,2016-10-08-2016-10-14,AMAZON
+Personal Care,6,0,0,2016-10-08-2016-10-14,AMAZON
+Skin Care,5,2,1,2016-10-08-2016-10-14,AMAZON
+Snack Food Store,5,1,0,2016-10-08-2016-10-14,AMAZON
+Subscribe & Save,33,18,6,2016-10-08-2016-10-14,AMAZON
+Tea,10,7,0,2016-10-08-2016-10-14,AMAZON
+Amazon Pantry,27,6,1,2016-10-15-2016-10-21,AMAZON
+Bath & Shower,6,4,0,2016-10-15-2016-10-21,AMAZON
+Beauty Page,20,6,4,2016-10-15-2016-10-21,AMAZON
+Body Wash,2,2,0,2016-10-15-2016-10-21,AMAZON
+Cleaning Store,12,4,1,2016-10-15-2016-10-21,AMAZON
+Coffee and Espresso,9,7,0,2016-10-15-2016-10-21,AMAZON
+"Coffee, Tea & Beverages Store",5,1,0,2016-10-15-2016-10-21,AMAZON
+Diet & Nutrition,8,0,0,2016-10-15-2016-10-21,AMAZON
+Feminine Hygiene Products,2,0,1,2016-10-15-2016-10-21,AMAZON
+Fragrance,4,2,0,2016-10-15-2016-10-21,AMAZON
+Grocery & Gourmet,44,14,0,2016-10-15-2016-10-21,AMAZON
+Hair Care & Styling,13,8,2,2016-10-15-2016-10-21,AMAZON
+Home Page,96,25,7,2016-10-15-2016-10-21,AMAZON
+Household Supplies,12,6,1,2016-10-15-2016-10-21,AMAZON
+Luxury Beauty,20,0,0,2016-10-15-2016-10-21,AMAZON
+Make up & Nails,9,2,0,2016-10-15-2016-10-21,AMAZON
+Mens Grooming,9,2,0,2016-10-15-2016-10-21,AMAZON
+Personal Care,6,0,0,2016-10-15-2016-10-21,AMAZON
+Skin Care,18,10,2,2016-10-15-2016-10-21,AMAZON
+Snack Food Store,5,1,0,2016-10-15-2016-10-21,AMAZON
+Subscribe & Save,34,19,6,2016-10-15-2016-10-21,AMAZON
+Tea,10,7,0,2016-10-15-2016-10-21,AMAZON
+Home Page,15,8,4,2016-10-01-2016-10-07,BigBasket-BLR
+Household,4,1,1,2016-10-01-2016-10-07,BigBasket-BLR
+Personal Care,5,1,2,2016-10-01-2016-10-07,BigBasket-BLR
+Personal Care-Personal Hygiene,2,1,0,2016-10-01-2016-10-07,BigBasket-BLR
+Promotions,173,15,0,2016-10-01-2016-10-07,BigBasket-BLR
+Home Page,27,10,0,2016-10-08-2016-10-14,BigBasket-BLR
+Household,3,0,1,2016-10-08-2016-10-14,BigBasket-BLR
+Household Detergents,3,0,1,2016-10-08-2016-10-14,BigBasket-BLR
+Personal Care,4,1,1,2016-10-08-2016-10-14,BigBasket-BLR
+Personal Care Cosmetics,4,1,0,2016-10-08-2016-10-14,BigBasket-BLR
+Personal Care Personal Hygiene,2,0,0,2016-10-08-2016-10-14,BigBasket-BLR
+Personal Care Skin Care,5,2,0,2016-10-08-2016-10-14,BigBasket-BLR
+Promotions,194,17,0,2016-10-08-2016-10-14,BigBasket-BLR
+Home Page,12,0,0,2016-10-15-2016-10-21,BigBasket-BLR
+Household,3,0,1,2016-10-15-2016-10-21,BigBasket-BLR
+Household Detergents,3,0,1,2016-10-15-2016-10-21,BigBasket-BLR
+Personal Care,3,0,1,2016-10-15-2016-10-21,BigBasket-BLR
+Personal Care Cosmetics,3,0,0,2016-10-15-2016-10-21,BigBasket-BLR
+Personal Care Personal Hygiene,1,0,0,2016-10-15-2016-10-21,BigBasket-BLR
+Personal Care Skin Care,2,1,0,2016-10-15-2016-10-21,BigBasket-BLR
+Promotions,185,6,0,2016-10-15-2016-10-21,BigBasket-BLR
+Bath & Body,14,2,1,2016-10-01-2016-10-07,Nykaa
+Fragrance,7,0,0,2016-10-01-2016-10-07,Nykaa
+Hair,20,5,0,2016-10-01-2016-10-07,Nykaa
+Herbal,16,2,0,2016-10-01-2016-10-07,Nykaa
+Home Page,45,5,1,2016-10-01-2016-10-07,Nykaa
+Makeup,18,4,0,2016-10-01-2016-10-07,Nykaa
+offers,44,5,3,2016-10-01-2016-10-07,Nykaa
+SALE,256,10,2,2016-10-01-2016-10-07,Nykaa
+Skin,19,1,0,2016-10-01-2016-10-07,Nykaa
+Wellness,15,1,0,2016-10-01-2016-10-07,Nykaa
+Bath & Body,31,3,0,2016-10-08-2016-10-14,Nykaa
+Fragrance,6,0,0,2016-10-08-2016-10-14,Nykaa
+Hair,31,5,0,2016-10-08-2016-10-14,Nykaa
+Herbal,38,3,0,2016-10-08-2016-10-14,Nykaa
+Home Page,64,8,0,2016-10-08-2016-10-14,Nykaa
+Makeup,36,6,0,2016-10-08-2016-10-14,Nykaa
+Mom & Baby,10,0,0,2016-10-08-2016-10-14,Nykaa
+SALE,376,24,2,2016-10-08-2016-10-14,Nykaa
+Skin,35,2,0,2016-10-08-2016-10-14,Nykaa
+Wellness,5,0,0,2016-10-08-2016-10-14,Nykaa
+Bath & Body,11,1,1,2016-10-15-2016-10-21,Nykaa
+Fragrance,9,0,0,2016-10-15-2016-10-21,Nykaa
+Hair,10,3,0,2016-10-15-2016-10-21,Nykaa
+Herbal,7,0,0,2016-10-15-2016-10-21,Nykaa
+Home Page,33,8,0,2016-10-15-2016-10-21,Nykaa
+Makeup,12,2,0,2016-10-15-2016-10-21,Nykaa
+Mom & Baby,20,0,0,2016-10-15-2016-10-21,Nykaa
+offers,56,10,1,2016-10-15-2016-10-21,Nykaa
+SALE,292,16,2,2016-10-15-2016-10-21,Nykaa
+Skin,15,4,1,2016-10-15-2016-10-21,Nykaa
+Wellness,8,0,0,2016-10-15-2016-10-21,Nykaa
+Beauty & Personal care,7,2,0,2016-10-01-2016-10-07,Snapdeal
+Food & Gourment,17,0,0,2016-10-01-2016-10-07,Snapdeal
+Home Page,80,13,4,2016-10-01-2016-10-07,Snapdeal
+Household essentials,21,7,4,2016-10-01-2016-10-07,Snapdeal
+Men's Fragrances,1,0,0,2016-10-01-2016-10-07,Snapdeal
+Beauty & Personal care,13,8,0,2016-10-08-2016-10-14,Snapdeal
+Below the fold Cards,4,0,0,2016-10-08-2016-10-14,Snapdeal
+Food & Gourment,10,0,0,2016-10-08-2016-10-14,Snapdeal
+Home Page,56,0,0,2016-10-08-2016-10-14,Snapdeal
+Household essentials,22,10,4,2016-10-08-2016-10-14,Snapdeal
+Men's Fragrances,1,0,0,2016-10-08-2016-10-14,Snapdeal
+RHS Card,0,0,0,2016-10-08-2016-10-14,Snapdeal
+Beauty & Personal care,4,1,0,2016-10-15-2016-10-21,Snapdeal
+Below the fold Cards,7,0,0,2016-10-15-2016-10-21,Snapdeal
+Food & Gourment,6,0,0,2016-10-15-2016-10-21,Snapdeal
+Home Page,70,8,5,2016-10-15-2016-10-21,Snapdeal
+Household essentials,9,2,2,2016-10-15-2016-10-21,Snapdeal
+RHS Card,0,0,0,2016-10-15-2016-10-21,Snapdeal
+Amazon Pantry,30,9,1,2016-10-22-2016-10-28,AMAZON
+Beauty Page,34,20,4,2016-10-22-2016-10-28,AMAZON
+Body Wash,4,4,0,2016-10-22-2016-10-28,AMAZON
+Cleaning Store,12,4,1,2016-10-22-2016-10-28,AMAZON
+Coffee and Espresso,10,8,0,2016-10-22-2016-10-28,AMAZON
+"Coffee, Tea & Beverages Store",4,1,0,2016-10-22-2016-10-28,AMAZON
+Diet & Nutrition,7,0,0,2016-10-22-2016-10-28,AMAZON
+Feminine Hygiene Products,3,0,1,2016-10-22-2016-10-28,AMAZON
+Fragrance,3,1,0,2016-10-22-2016-10-28,AMAZON
+Grocery & Gourmet,49,15,0,2016-10-22-2016-10-28,AMAZON
+Hair Care & Styling,13,8,2,2016-10-22-2016-10-28,AMAZON
+Home Page,90,7,2,2016-10-22-2016-10-28,AMAZON
+Household Supplies,36,16,3,2016-10-22-2016-10-28,AMAZON
+Luxury Beauty,11,0,0,2016-10-22-2016-10-28,AMAZON
+Make up & Nails,9,2,0,2016-10-22-2016-10-28,AMAZON
+Mens Grooming,10,2,0,2016-10-22-2016-10-28,AMAZON
+Personal Care,10,1,1,2016-10-22-2016-10-28,AMAZON
+Skin Care,15,8,2,2016-10-22-2016-10-28,AMAZON
+Snack Food Store,5,1,0,2016-10-22-2016-10-28,AMAZON
+Subscribe & Save,37,21,6,2016-10-22-2016-10-28,AMAZON
+Tea,11,8,0,2016-10-22-2016-10-28,AMAZON
+Home Page,24,1,0,2016-10-22-2016-10-28,BigBasket-BLR
+Household,4,1,1,2016-10-22-2016-10-28,BigBasket-BLR
+Household Detergents,5,1,2,2016-10-22-2016-10-28,BigBasket-BLR
+Personal Care,6,0,2,2016-10-22-2016-10-28,BigBasket-BLR
+Personal Care Cosmetics,6,0,0,2016-10-22-2016-10-28,BigBasket-BLR
+Personal Care Personal Hygiene,2,0,0,2016-10-22-2016-10-28,BigBasket-BLR
+Personal Care Skin Care,7,2,0,2016-10-22-2016-10-28,BigBasket-BLR
+Promotions,626,14,14,2016-10-22-2016-10-28,BigBasket-BLR
+Bath & Body,15,14,1,2016-10-22-2016-10-28,Nykaa
+Fragrance,3,0,0,2016-10-22-2016-10-28,Nykaa
+Hair,24,17,0,2016-10-22-2016-10-28,Nykaa
+Herbal,0,0,0,2016-10-22-2016-10-28,Nykaa
+Home Page,62,34,0,2016-10-22-2016-10-28,Nykaa
+Makeup,21,16,0,2016-10-22-2016-10-28,Nykaa
+Mom & Baby,10,0,0,2016-10-22-2016-10-28,Nykaa
+Offers,60,5,1,2016-10-22-2016-10-28,Nykaa
+Skin,11,6,1,2016-10-22-2016-10-28,Nykaa
+Wellness,5,0,0,2016-10-22-2016-10-28,Nykaa
+Beauty & Personal care,7,2,0,2016-10-22-2016-10-28,Snapdeal
+Below the fold Cards,6,1,0,2016-10-22-2016-10-28,Snapdeal
+Food & Gourment,10,0,0,2016-10-22-2016-10-28,Snapdeal
+Home Page,60,8,0,2016-10-22-2016-10-28,Snapdeal
+Household essentials,18,4,4,2016-10-22-2016-10-28,Snapdeal
+NA,6,,,2016-10-22-2016-10-28,Snapdeal
+Offers,3,0,0,2016-10-22-2016-10-28,Snapdeal
+RHS Card,0,0,0,2016-10-22-2016-10-28,Snapdeal
