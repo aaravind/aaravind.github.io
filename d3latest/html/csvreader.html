@@ -1,60 +1,63 @@
-<!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
+<html lang="en"><head>
+        <meta charset="utf-8">
         <title>CSV charts</title>
         <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" type="text/css">
             <link href="../css/csvreader.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-    	<h1>CSV to Heat map converter <button type="submit" onclick="window.open('../csv/sample2.csv')">Sample CSV</button></h1>
-    	<!-- <div class="sample">Sample file <a href="../csv" download="sample2.csv">Download!</a></div> -->
-    	<div class="main_content">
-    	<div>	
-    	<label for="filepath">CSV File</label> <input type='file' accept='csv/*' onchange='openFile(event)'><br>
-<img id='filepath'>
-</div>	<div>
-    	<label for="title">Title</label><input type="text" value="CSV parser" placeholder="Title" id="title"></input>
+        <h1>CSV to Heat map converter <button type="submit" onclick="window.open('../csv/sample2.csv')">Sample CSV</button></h1>
+        <!-- <div class="sample">Sample file <a href="../csv" download="sample2.csv">Download!</a></div> -->
+
+<canvas id="canvas" width="1050" height="750"></canvas>
+        <div class="main_content">
+        <div>   
+        <label for="filepath">CSV File</label> <input type="file" accept="csv/*" onchange="openFile(event)"><br>
+<img id="filepath">
+</div>  <div>
+        <label for="title">Title</label><input type="text" value="CSV parser" placeholder="Title" id="title">
         </div>
         <div>
-        <label for="xaxis">X axis column</label><input type="text" value="week" placeholder="x axis" id="xaxis"></input>
+        <label for="xaxis">X axis column</label><input type="text" value="WEEK" placeholder="x axis" id="xaxis">
         </div>
         <div>
-       <label for="yaxis"> Y axis column</label><input type="text" value="page" placeholder="y axis" id="yaxis"></input>
+       <label for="yaxis"> Y axis column</label><input type="text" value="Category" placeholder="y axis" id="yaxis">
         </div>
         <div>
-        <label for="zaxis">Filter by column</label><input type="text" value="source" placeholder="Source filter" id="zaxis"></input>
+        <label for="zaxis">Filter by column</label><input type="text" value="SOURCE" placeholder="Source filter" id="zaxis">
         </div>
         <div>
-        <label for="source">Filter by column value</label><input type="text" value="Amazon" placeholder="source" id="source"></input>
+        <label for="source">Filter by column value</label><input type="text" value="AMAZON" placeholder="source" id="source">
         </div>
         <div>
-        <label for="brand_col">Column</label><input type="text" value="hul_brand" placeholder="Brand Column" id="brand_col"></input>
+        <label for="brand_col">Column</label><input type="text" value="Sum of HUL Brands" placeholder="Brand Column" id="brand_col">
         </div>
         <div>
-        <label for="total_brand">Column against</label><input type="text" value="total_brand" placeholder="Brand Against Column" id="brand_agn"></input>
+        <label for="total_brand">Column against</label><input type="text" value="Sum of Count of Brands" placeholder="Brand Against Column" id="brand_agn">
         </div>
         <div>
-        <label for="width">Chart width</label><input type="text" value="750" placeholder="width" id="width"></input>
+        <label for="width">Chart width</label><input type="text" value="900" placeholder="width" id="width">
         </div>
         <div>
-        <label for="height">Chart height</label><input type="text" value="750" placeholder="height" id="height"></input>
+        <label for="height">Chart height</label><input type="text" value="750" placeholder="height" id="height">
         </div>
         <div>
-        <label for="colorfill">Color for chart</label><input class="jscolor" value="008ee4" id="colorfill">
+        <label for="colorfill">Color for chart</label><input class="jscolor" value="008ee4" id="colorfill" autocomplete="off" style="background-image: none; background-color: rgb(0, 142, 228); color: rgb(255, 255, 255);">
         </div>
 <!--         <input class="jscolor" value="008ee4" id="titlefill">
         <input class="jscolor" value="008ee4" id="textfill"> -->
         <div>
-        <input type="button" value="Draw Graph" onclick='inititatedraw("#csvchart")'></input>
-    	</div>
-    	</div>
-    	<div class="loader"><img src="../gif/loader.gif" height="50px"></div>
-    	<div id="csvchart" style="margin:0 auto"></div>
+        <input type="button" value="Draw Graph" onclick="inititatedraw(&quot;#csvchart&quot;)">
+        </div>
+        <div>
+                    <input type="button" id="summaq" value="Export to PNG" style="display: none;">
+        </div>
+        </div>
+        <div class="loader" style="display: none;"><img src="../gif/loader.gif" height="50px"></div>
+
+        <div id="csvchart" style="margin: 0px auto; width: 1050px; height: 750px;"></div>
         <script src="../js/d3.min.js"></script>
         <script src="../js/jscolor.min.js"></script>
-        <script src="../js/csvread.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/alasql/0.3/alasql.min.js"></script>-->
+        <script src="../js/csvreadwithprint.js"></script>
 
-    </body>
-</html>
+</body></html>

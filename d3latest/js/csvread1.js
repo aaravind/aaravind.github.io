@@ -29,6 +29,7 @@ app.readcsv.prototype.dataformation = function (xaxes,yaxes,zaxes){
                                 return d[zaxes];
                             })
                             .entries(d);
+
      this.finalarray = {};
      this.finalarray.unique_x = weekarray;
      this.finalarray.source_each = dataGroup;  
@@ -69,7 +70,6 @@ filteredsource[0].values = filteredsource[0].values.filter(function(d){return d[
       });                      
                    return d3.nest()
                             .key(function (d) {
-                              if(d[d3.select("#brand_col")[0][0].value] != 0)
                                 return d[app.yaxis];
                             })
                             .entries(filteredsource[0].values);
@@ -77,10 +77,10 @@ filteredsource[0].values = filteredsource[0].values.filter(function(d){return d[
 }
 
 app.readcsv.prototype.drawchart = function(chartdata,chartId,title){
-d3.selectAll('#summaq').style('display','none');
-var bottommargin = 0;
+
+var bottommargin = 40;
             var colorfunc = d3.scale.category20c();
-            var margin = { top: 40, right: 0, bottom: (bottommargin + 0), left: 12 };
+            var margin = { top: 40, right: 12, bottom: (bottommargin + 20), left: 12 };
             var chartcontent = d3.select(chartId);
             // var showlegendwidth = chartdata.chart.showlegend == true ? 30 : 0;
             var width = chartcontent[0][0].offsetWidth - margin.left - margin.right - 0;
@@ -96,7 +96,6 @@ var bottommargin = 0;
             var labelsy = chartdata.map(function (d) {
                 return d.key;
             });
-            var labelsy = labelsy.filter(function(d){return (d != 'undefined')});
                        xScale1 = d3.scale.ordinal()
         .domain(labelsx)
         .rangeRoundBands([200, width - 100], 0.1);
@@ -133,7 +132,6 @@ var bottommargin = 0;
          .style("font-weight", "bold")
          .attr('class', 'caption captiontext')
         .style("fill", 'black')
-        .style('font-family','"Roboto Condensed","Source Sans Pro","Helvetica Neue","Myriad Pro","Trebuchet MS",sans-serif')
         .text(title);
 
         svg.append("g")
@@ -154,8 +152,7 @@ var bottommargin = 0;
             svg.append("g")
   .attr("class", "grid exportgrid")
       .call(yAxis1());
-d3.selectAll(chartId + ' .exportgrid .tick text').attr('x', 0).attr('dx', '3').attr('dy', yScale1.rangeBand()/4).style('text-anchor', 'start').text(function (d) { 
-    return d.toUpperCase(); });
+d3.selectAll(chartId + ' .exportgrid .tick text').attr('x', 0).attr('dx', '3').attr('dy', yScale1.rangeBand()/4).style('text-anchor', 'start').text(function (d) { return d.toUpperCase(); });
 d3.selectAll(chartId + ' .domain').attr('d', function () {
                 return '';
             });
@@ -176,9 +173,7 @@ var rectstext = groups.selectAll('rect')
         })
         .enter()
         .append('g');
-rectstext
-        .filter(function(d) { 
-          return d[d3.select("#brand_col")[0][0].value] != 0 }).append('rect')
+rectstext.append('rect')
         .attr('x', function (d) {
             return xScale1(d[app.xaxis])+xScale1.rangeBand()/2;
         })
@@ -194,9 +189,7 @@ rectstext
         })
                 .style('fill', function(d){
                 	return 'rgba('+app.rgb.r+', '+app.rgb.g+', '+app.rgb.b+','+ d.column_percent/100+')'
-                })
-                .style('stroke','black')
-                .style('stroke-width',0.5);
+                });
     rectstext.append('text').attr('x', function (d) {
             return xScale1(d[app.xaxis])+xScale1.rangeBand();
         })
@@ -206,11 +199,7 @@ rectstext
         	return d['column_percent'].toFixed(1) + '%';
         })
         .style('text-anchor','middle'); 
-d3.selectAll(chartId + ' .grid text').style('stroke-width',0).style('fill','black').style('font-size','13px').style('font-family','"Roboto Condensed","Source Sans Pro","Helvetica Neue","Myriad Pro","Trebuchet MS",sans-serif');
-d3.selectAll(chartId + ' .tick text').style('stroke-width',0).style('fill','black').style('font-size','13px').style('font-family','"Roboto Condensed","Source Sans Pro","Helvetica Neue","Myriad Pro","Trebuchet MS",sans-serif');
-d3.selectAll(chartId + ' svg text').style('stroke-width',0).style('fill','black').style('font-size','13px').style('font-family','"Roboto Condensed","Source Sans Pro","Helvetica Neue","Myriad Pro","Trebuchet MS",sans-serif');
-d3.selectAll(chartId + ' .tick line').style('stroke-width',0).attr('stroke','lightgrey').style('opacity',0.7).style('fill','none');
-d3.selectAll('#summaq').style('display','block');
+
 }
 
 
@@ -254,47 +243,3 @@ var openFile = function(event) {
     reader.readAsDataURL(input.files[0]);
   };
 
-var btn = document.getElementById('summaq');
-
-
-function triggerDownload (imgURI) {
-  var evt = new MouseEvent('click', {
-    view: window,
-    bubbles: false,
-    cancelable: true
-  });
-
-  var a = document.createElement('a');
-  a.setAttribute('download', 'MY_COOL_IMAGE.png');
-  a.setAttribute('href', imgURI);
-  a.setAttribute('target', '_blank');
-
-  a.dispatchEvent(evt);
-}
-
-btn.addEventListener('click', function () {
-  var svg = document.querySelector('svg');
-  var canvas = document.getElementById('canvas');
-  canvas.width = d3.select("#width")[0][0].value;
-  canvas.height = d3.select("#height")[0][0].value;
-  var ctx = canvas.getContext('2d');
-  var data = (new XMLSerializer()).serializeToString(svg);
-  var DOMURL = window.URL || window.webkitURL || window;
-
-  var img = new Image();
-  var svgBlob = new Blob([data], {type: 'image/svg+xml;charset=utf-8'});
-  var url = DOMURL.createObjectURL(svgBlob);
-
-  img.onload = function () {
-    ctx.drawImage(img, 0, 0);
-    DOMURL.revokeObjectURL(url);
-
-    var imgURI = canvas
-        .toDataURL('image/png')
-        .replace('image/png', 'image/octet-stream');
-
-    triggerDownload(imgURI);
-  };
-
-  img.src = url;
-});

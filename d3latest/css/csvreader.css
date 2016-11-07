@@ -159,3 +159,12 @@ svg text,div,span,select,.month,.month-title {
   fill: none;
   stroke: #ccc;
 }
+canvas{
+    display: none;
+}
+@media print
+   {
+      .main_content,h1{
+      	display: none;
+      }
+   }
