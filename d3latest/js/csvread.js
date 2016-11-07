@@ -15,6 +15,10 @@ app.hextorgb = function (hex) {
 app.readcsv.prototype.dataformation = function (xaxes,yaxes,zaxes){
 		var asd;
         d3.csv(this.filename, function(d) {
+          d.forEach(function(d) {
+    d[d3.select("#brand_col")[0][0].value]= +d[d3.select("#brand_col")[0][0].value];
+    d[d3.select("#brand_agn")[0][0].value] = +d[d3.select("#brand_agn")[0][0].value];
+  });
 	var weekarray = [];
 	 var week_obj = d3.map(d, function(d){
       return d[xaxes];
@@ -40,13 +44,13 @@ return function(){return asd;};
 app.readcsv.prototype.filtersource = function(source,column,column_against,data){
      var filteredsource = data.source_each.filter(function(d){return d.key == source});
 
-     for(i=0;i<filteredsource[0].values.length;i++){
-     	var tempval = ((filteredsource[0].values[i][column] / filteredsource[0].values[i][column_against]) * 100)/1;
-     	if(!isNaN(tempval))
-     	filteredsource[0].values[i].column_percent = tempval;
-        else
-        filteredsource[0].values[i].column_percent = 0.0;	
-     }
+     // for(i=0;i<filteredsource[0].values.length;i++){
+     // 	var tempval = ((filteredsource[0].values[i][column] / filteredsource[0].values[i][column_against]) * 100)/1;
+     // 	if(!isNaN(tempval))
+     // 	filteredsource[0].values[i].column_percent = tempval;
+     //    else
+     //    filteredsource[0].values[i].column_percent = 0.0;	
+     // }
 filteredsource[0].values = filteredsource[0].values.filter(function(d){return d[app.yaxis] != 'Total'});  
      var weekdata = d3.nest()
                             .key(function (d) {
@@ -69,7 +73,7 @@ filteredsource[0].values = filteredsource[0].values.filter(function(d){return d[
       });                      
                    return d3.nest()
                             .key(function (d) {
-                              if(d[d3.select("#brand_col")[0][0].value] != 0)
+                             // if(d[d3.select("#brand_col")[0][0].value] != 0)
                                 return d[app.yaxis];
                             })
                             .entries(filteredsource[0].values);
@@ -78,6 +82,10 @@ filteredsource[0].values = filteredsource[0].values.filter(function(d){return d[
 
 app.readcsv.prototype.drawchart = function(chartdata,chartId,title){
 d3.selectAll('#summaq').style('display','none');
+for(i=0;i<chartdata.length;i++){
+ var res = alasql('SELECT *,SUM('+app.brand_col+') AS '+app.brand_col+',SUM('+app.brand_agn+') AS '+app.brand_agn+' FROM ? GROUP BY '+ app.xaxis +' ',[chartdata[i].values]);
+ chartdata[i].values = res;
+}
 var bottommargin = 0;
             var colorfunc = d3.scale.category20c();
             var margin = { top: 40, right: 0, bottom: (bottommargin + 0), left: 12 };
@@ -94,15 +102,23 @@ var bottommargin = 0;
             var labelsx = currentformed.unique_x;
 
             var labelsy = chartdata.map(function (d) {
+                           var count =0;
+              for(i=0;i<d.values.length;i++){
+                if(d.values[i][app.brand_col] > 0)
+                  count++;
+              }
+              if(count != 0)
                 return d.key;
+              else
+                return 'undefined';
             });
-            var labelsy = labelsy.filter(function(d){return (d != 'undefined')});
+           var labelsy = labelsy.filter(function(d){return (d != 'undefined')});
                        xScale1 = d3.scale.ordinal()
         .domain(labelsx)
-        .rangeRoundBands([200, width - 100], 0.1);
+        .rangeRoundBands([200, width - 70], 0.1);
             yScale1 = d3.scale.ordinal()
         .domain(labelsy)
-        .rangeRoundBands([50, height], 0.1);
+        .rangeRoundBands([50, height+40], 0.1);
 
             function xAxis1() {
                 return d3.svg.axis() // zxc
@@ -193,17 +209,20 @@ rectstext
             return xScale1.rangeBand() + xScale1.rangeBand()/10;
         })
                 .style('fill', function(d){
-                	return 'rgba('+app.rgb.r+', '+app.rgb.g+', '+app.rgb.b+','+ d.column_percent/100+')'
+                	return 'rgba('+app.rgb.r+', '+app.rgb.g+', '+app.rgb.b+','+ (d[app.brand_col]/d[app.brand_agn])+')'
                 })
                 .style('stroke','black')
                 .style('stroke-width',0.5);
-    rectstext.append('text').attr('x', function (d) {
+    rectstext
+    .filter(function(d) { 
+          return d[d3.select("#brand_col")[0][0].value] != 0 }).append('text')
+    .attr('x', function (d) {
             return xScale1(d[app.xaxis])+xScale1.rangeBand();
         })
         .attr('y', function (d, i) {
             return yScale1(d[app.yaxis]) + yScale1.rangeBand() * 0.7;
         }).text(function(d){
-        	return d['column_percent'].toFixed(1) + '%';
+        	return ((d[app.brand_col]/d[app.brand_agn])*100).toFixed(1) + '%';
         })
         .style('text-anchor','middle'); 
 d3.selectAll(chartId + ' .grid text').style('stroke-width',0).style('fill','black').style('font-size','13px').style('font-family','"Roboto Condensed","Source Sans Pro","Helvetica Neue","Myriad Pro","Trebuchet MS",sans-serif');
@@ -220,6 +239,8 @@ d3.selectAll('#summaq').style('display','block');
   	app.xaxis = xaxis;
   	app.yaxis = yaxis;
   	app.zaxis = zaxis;
+    app.brand_col = brand_col;
+    app.brand_agn = brand_agn;
   	app.rgb = app.hextorgb(d3.select("#colorfill")[0][0].value);
   	 var csvdata = new app.readcsv(app.dataURL);
   	  var formeddata = csvdata.dataformation(xaxis,yaxis,zaxis);
