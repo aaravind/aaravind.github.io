@@ -4,6 +4,7 @@ import {FilterContainer} from './../containers/tours/filter';
 import {CardContainer} from './../containers/tours/cardcontainer';
 import {Info} from './../containers/tours/info';
 import { gettoursdata } from './../actions/toursListActions';
+import { getfiltersdata } from './../actions/filtersListActions';
 import $ from 'jquery';
 class Tours extends React.Component {
 
@@ -30,12 +31,14 @@ function mapStateToProps(state, ownProps){
   return {
     // You can now say this.props.books
     tours_list: state.tourslist,
+    filters_list:state.filters
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return{
-    gettours: tours => dispatch(gettoursdata(tours))
+    gettours: tours => dispatch(gettoursdata(tours)),
+    getfilters : filters => dispatch(getfiltersdata(filters))
   };
 }
 

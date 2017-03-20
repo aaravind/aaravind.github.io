@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import tourData from './../../json/api';
 import Select from 'antd/lib/select';
+import {Starcontainer} from './../../components/star';
 import {Tourcard} from './../../components/tour-card';
 const Option = Select.Option;
 class CardContainer extends React.Component {
@@ -21,12 +22,17 @@ constructor(props,context){
       let tours_popular = cur_tours;
       if(nextpopular){
       tours_popular = nextProps.store.tours_list.data.filter(function (el) {
-            return el.popular == true
+            return el.popular == true && el.cost >= nextProps.store.filters_list.range[0] && el.cost <= nextProps.store.filters_list.range[1]
           });
-      }
-    let beforeupdatedata = Object.assign({}, nextProps.store.tours_list);
+          let beforeupdatedata = Object.assign({}, nextProps.store.tours_list);
     beforeupdatedata.data = tours_popular.slice(0);
     this.props.store.gettours(beforeupdatedata);
+      }
+      else{
+    let beforeupdatedata = Object.assign({}, nextProps.store.filters_list);
+    beforeupdatedata.update = true;
+    this.props.store.getfilters(beforeupdatedata);
+      }
     }
     if(prevsorton != nextsorton || prevsortby != nextsortby){
       let cur_tours = nextProps.store.tours_list.data.slice(0);
@@ -70,7 +76,7 @@ constructor(props,context){
     const tours_list = this.props.store.tours_list.data;
     const popular = this.props.store.tours_list.popular;
     return (
-      <div>
+      <div className="clearboth">
                     <div className="view-container">
           <span className="count left">{'Results: ' + tours_list.length + ' tours'}</span>
               <span className="right">
@@ -104,8 +110,37 @@ constructor(props,context){
             )}
              </div>
              :
-             ''
+             <div className="notours">
+               <p>No tours available for this search</p>
+             </div>
            }
+          </div>
+          <div className="user-review">
+          <div className="inner">
+              <div className="left">
+                <p className="header">
+                <span className="icon bubble_icon"></span>
+                <span className="head">What our guest says</span>
+                </p>
+                <p className="description">I would thoroughly recommend Enchanting Travels – they helped us with every stage of our booking, from first enquiries to choosing hotels and activites/sightseeing in each city. They were attentive and answered all queries quickly. The staff were friendly, knowledgeable and professional and we were all very impressed with the service we received.</p>
+                <p className="reviwer">– Kathleen Platt</p>
+              </div>
+              <div className="right">
+              <div className="review-image">
+              <img src={"http://www.enchantingtravels.com/wp-content/uploads/2015/05/kolkata-3-150x150.jpg"} /></div>
+              </div>
+              <div className="readmore">
+              <span className="left read">Read more reviews</span>
+              <span className="right">
+              <span className="review-star"><b>Excellent</b></span>
+              <Starcontainer count={5} />
+              <span> based on <b>134</b> reviews </span>
+              <span className="trustlogo"></span>
+              </span>
+              </div>
+              </div>
+          <div>
+          </div>
           </div>
       </div>
       )

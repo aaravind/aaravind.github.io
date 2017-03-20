@@ -104,6 +104,23 @@
     display: block;
     }
     }
+    .user-review .inner .right{
+    display:none;
+    }
+    .user-review .inner .left{
+    width:100%;
+        text-align: center;
+    }
+    .user-review .inner .readmore .left{
+    width:100%;
+    text-align:center;
+    }
+    .user-review .inner .readmore .right{
+        width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    display:block;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -163,5 +180,11 @@
     .sort{
     float:right;
     }
+}
+.filter-container > div{
+	width:100%;
+	&:first-child{
+	margin-bottom:15px;
+	}
 }
 }

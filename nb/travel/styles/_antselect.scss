@@ -549,3 +549,26 @@
     border-radius: 5px;
     font-size: 16px;
 }
+.ant-select-selection__rendered ul{
+      list-style: none;
+    margin-left: 0px;
+    padding: 0px;
+}
+.ant-select-selection.ant-select-selection--multiple{
+  min-height:20px !important;
+}
+.ant-select-selection--multiple{
+  .ant-select-selection__rendered{
+        position: relative;
+    margin-top: -15px;
+}
+}
+.ant-select-dropdown-menu-item{
+      text-transform: capitalize;
+    font-size: 15px;
+    font-family: 'soin_sans_pro',Arial,Helvetica,sans-serif;
+    font-weight: normal;
+}
+.ant-select-selection--multiple .ant-select-selection__choice__content{
+  text-transform: capitalize;
+}

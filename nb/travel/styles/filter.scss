@@ -1,0 +1,49 @@
+.filter-container{
+    padding: 30px 30px 30px 20px;
+    font-family: 'soin_sans_pro',Arial,Helvetica,sans-serif;
+    font-weight: normal;
+    color: #595754;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid lightgray;
+    >div{
+    position: relative;
+    display: inline-block;
+    float: left;
+    box-sizing: border-box;
+    width: 50%;
+    padding:0px 10px;
+    p{
+        padding-bottom: 10px;
+    font-size: 23px;
+    letter-spacing: 0.01em;
+    padding-top: 0px;
+    margin: 0px;
+    }
+    .check-box{
+    margin-right:15px;
+    }
+    }
+	.slider{
+	    width: 100%;
+    position: relative;
+	.ant-slider{
+	    height: 5px;
+            margin: 10px 10px 10px 5px;
+	.ant-slider-rail{
+	    height: 4px;
+    margin-top: -4px;
+	}
+	.ant-slider-handle{
+	margin-top:-7px;
+	}
+	}
+}
+.region{
+	    margin-top: 20px;
+}
+.duration{
+	    margin-top: 19px;
+}
+}

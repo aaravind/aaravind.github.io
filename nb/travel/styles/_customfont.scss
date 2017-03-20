@@ -55,3 +55,13 @@
 	content: "\e954";
 	}
 }	
+
+.bubble_icon{
+    font-size: 34px;
+    color: #36312a;
+    position: relative;
+    top: 5px;
+	&::before{
+	    content: "\e957";
+	}
+}
