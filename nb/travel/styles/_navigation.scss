@@ -1,0 +1,93 @@
+@mixin opacity($opacity_value) {
+    -webkit-opacity: $opacity_value;
+    -moz-opacity: $opacity_value;
+    opacity: $opacity_value;
+}
+@mixin transition($transition_value) {
+    -webkit-transition: opacity $transition_value ease-in;
+    -moz-transition: opacity $transition_value ease-in;
+    -o-transition: opacity $transition_value ease-in;
+    transition: opacity $transition_value ease-in;
+    -webkit-transition: background-color $transition_value ease-in;
+    -moz-transition: background-color $transition_value ease-in;
+    -o-transition: background-color $transition_value ease-in;
+    transition: background-color $transition_value ease-in;
+    -webkit-transform: translateZ(0);
+}
+@mixin border-rad($value){
+			-webkit-border-radius: $value;
+			-moz-border-radius: $value;
+			border-radius: $value;
+}
+@mixin box-size(){
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.navigation {
+    margin-top: 65px;
+	nav{
+	    background-color: #36312a;
+	    color: #FFF;
+	    position: relative;
+	    padding: 0px 0px;
+	    margin:0px;
+	    display: block;
+	  .menu{
+			list-style: none;
+		    padding: 0px 20px 0px 0px;
+		    margin: 0px;
+		    li{
+		    text-transform:uppercase;
+		    display: inline-block;
+		    font-family: 'soin_sans_pro','Roboto Condensed', sans-serif;
+		    @include opacity(0.95);
+		    @include transition(0.15s);
+		    position: relative;
+		    font-size: 13px;
+		    padding: 15px 20px;
+		    &.active,&:hover{
+		        background-color: #1B160F;
+		    }
+		    a{
+		        display: block;
+			    height: 25px;
+			    line-height: 25px;
+			    color: #FFF;
+			    font-size: 13px;
+			    text-transform: uppercase;
+			    letter-spacing: 0.1em;
+		    }
+		    &:last-child{
+		        float: right;
+                padding-right: 0px;
+                background-color: transparent;
+                div{
+				    width: 213px;
+				    position: relative;
+				    input{
+				    @include border-rad(5px);
+					@include box-size();    
+					    background-color: #27231e;
+					    padding:10px 20px 10px 15px;
+					    margin-top: -5px;
+					    color: #FFF;
+					    font-size: 13px;
+					    position: relative;
+					    z-index: 5;
+					    outline: 0px;
+					    border: 0px;
+				    }
+				    .search{
+				        display: inline-block;
+					    position: absolute;
+					    right: 25px;
+					    z-index: 999;
+					    top: 3px;
+				    }
+                }
+		    }
+		    }
+			}
+	}
+}

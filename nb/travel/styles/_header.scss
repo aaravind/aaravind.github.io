@@ -1,0 +1,76 @@
+$dotter_color:#999793;
+.top{
+    font-family: 'soin_sans_pro','Roboto Condensed', sans-serif;
+    padding: 0px 20px;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    position:absolute;
+    top: 0px;
+	.inner_content{
+		.left{
+			float:left;
+			padding-top: 15px;
+		   .logo{
+		       float: left;
+			    display: block;
+			    background-image: url(http://www.enchantingtravels.com/wp-content/themes/enchanting/assets/images/header/logo-enchanting.png);
+			    background-image: linear-gradient(transparent, transparent),url(http://www.enchantingtravels.com/wp-content/themes/enchanting/assets/images/header/logo-enchanting.svg);
+			    width: 132px;
+			    height: 38px;
+			    background-repeat: no-repeat;
+			    margin-right: 15px;
+    			margin-top: 0px;
+		   }
+		   .tagline{
+		    display: block;
+		    float: left;
+		    border-left: 1px dotted #999793;
+		    padding-left: 20px;
+		    margin-top: 0px;
+		    color: #36312a;
+		    font-size: 15px;
+		    letter-spacing: 0.01em;
+		    p{
+		        padding: 0px;
+    			margin: 7px 0px;
+		    }
+		   }
+		}
+		.right{
+		    float: right;
+    		height: 65px;
+		div{
+		float: left;
+		    height: 50px;
+		border-right: 1px solid #edecec;
+		    padding-top: 10px;
+		        padding-bottom: 5px;
+		&:last-child{
+		margin-right:0px;
+		border-right: 0px;
+		}
+		&.phno{
+		a{
+		    display: block;
+		    font-size: 14px;
+		    margin: 15px 15px;
+		    }
+		}
+		&.usericon{
+		span{
+                font-size: 26px;
+			    color: #36312a;
+			    margin-top: 10px;
+			    margin-left: 2px;
+			    margin: 10px 15px 15px 20px;
+		}
+		}
+		  .mobile-menu{
+		  display:none;
+		  }
+		}
+		}
+		}
+
+	}

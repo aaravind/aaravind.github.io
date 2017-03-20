@@ -1,0 +1,103 @@
+.card-container{
+    padding: 20px;
+    font-family: 'soin_sans_pro','Roboto Condensed', sans-serif;
+	.inner{
+		.each_tour{
+		     width: 50%;
+		    display: inline-block;
+		    float: left;
+		    padding: 10px;
+		    box-sizing: border-box;
+		        color: #595754;
+		    &:nth-child(odd){
+		    clear:left;
+		    }    
+		 .image-container{
+		 position:relative;
+		 &::before{
+		    display: block;
+		    content: '';
+		    position: absolute;
+		    width: 100%;
+		    height: 60%;
+		    background: -moz-linear-gradient(top, rgba(0,0,0,0) 0, rgba(0,0,0,0.8) 100%);
+		    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0,0,0,0)), color-stop(100%, rgba(0,0,0,0.8)));
+		    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0, rgba(0,0,0,0.8) 100%);
+		    background: -o-linear-gradient(top, rgba(0,0,0,0) 0, rgba(0,0,0,0.8) 100%);
+		    background: -ms-linear-gradient(top, rgba(0,0,0,0) 0, rgba(0,0,0,0.8) 100%);
+		    background: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0.8) 100%);
+		    bottom: 5px;
+		    left: 0;
+		    z-index: 10;
+		    -webkit-transition: height .15s ease-in;
+		    -moz-transition: height .15s ease-in;
+		    -o-transition: height .15s ease-in;
+		    transition: height .15s ease-in;
+		    -webkit-transform: translateZ(0);
+}
+		 img{
+		     position: relative;
+   			 width: 100%;
+		 }
+		 div{
+		    position: absolute;
+		    bottom: 5px;
+		    color: white;
+		    font-size: 23px;
+		    line-height: 1.04em;
+		    padding: 15px 12px;
+		    box-sizing: border-box;
+		    width: 100%;
+		    z-index: 999;
+		 }
+		 }
+		}
+		.tour-info-container{
+		position:relative;
+		 .price-days{
+		     position: relative;
+		     font-size: 23px;
+		     padding: 10px 0px;
+		 span{
+		 &.price{
+         position:relative;
+		 }
+		 &.days{
+		 position:relative;
+		 }
+		 &.font16{
+		 font-size:16px;
+		 }
+		 }
+		 }
+		}
+		.tour-description{
+		position:relative;
+		}
+		.inquire-details{
+		position:relative;
+		p{
+		    display: inline-block;
+		    padding: 5px 20px;
+		    border-radius: 5px;
+		    text-transform: uppercase;
+            font-size: 14px;
+		 &.inquire{
+               border: 2px solid #f0bcb6;
+               color: #de6e62;
+               margin-left:15px;
+               &:hover{
+                 border: 2px solid #de6e62;
+             }
+		 }
+		 &.details{
+		     border: 2px solid #ded3c4;
+             color: #b9a283;
+             &:hover{
+             border: 2px solid #b9a283;
+             }
+		 }
+		 }
+		}
+	}
+}

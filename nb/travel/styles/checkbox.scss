@@ -1,0 +1,41 @@
+.check-box {
+    input[type=checkbox]{
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+        &+label {
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            vertical-align: middle;
+            cursor: pointer;
+            line-height: 1.2em;
+        }
+        &.checked+label{
+         .check{
+         background-position: 0 -20px;
+         }
+        }
+    }
+        .check{
+            display: block;
+            width: 20px;
+            height: 20px;
+            vertical-align: top;
+            background-image: url(http://www.enchantingtravels.com/wp-content/themes/enchanting/assets/images/form/checkbox.png);
+            background-image: linear-gradient(transparent, transparent),url(http://www.enchantingtravels.com/wp-content/themes/enchanting/assets/images/form/checkbox.svg);
+            float: left;
+        }
+        .text{
+            font-size: 16px;
+            line-height: 20px;
+            margin-left: 10px;
+        }
+}

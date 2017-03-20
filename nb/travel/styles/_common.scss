@@ -1,0 +1,145 @@
+        .createtrip{
+		   span{
+		    display: block;
+		    color: #FFF;
+		    font-size: 13px;
+		    height: 36px;
+		    line-height: 36px;
+		    text-transform: uppercase;
+		    -webkit-border-radius: 5px;
+		    -moz-border-radius: 5px;
+		    border-radius: 5px;
+		    -moz-background-clip: padding;
+		    -webkit-background-clip: padding-box;
+		    background-clip: padding-box;
+		    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=85);
+		    -webkit-opacity: .85;
+		    -khtml-opacity: .85;
+		    -moz-opacity: .85;
+		    opacity: .85;
+		    -webkit-transition: opacity .15s ease-in;
+		    -moz-transition: opacity .15s ease-in;
+		    -o-transition: opacity .15s ease-in;
+		    transition: opacity .15s ease-in;
+		    -webkit-transform: translateZ(0);
+		    -webkit-font-smoothing: subpixel-antialiased;
+		    background-color: #de6e62;
+		    margin-left: 20px;
+		    margin-right: 20px;
+		    margin-top: 5px;
+		    padding: 0px 20px;
+		    &:hover{
+		   -webkit-opacity: .85;
+		    -khtml-opacity: .85;
+		    -moz-opacity: .85;
+		    opacity: .85;
+		    }
+		    }
+		}
+		.language{
+		    background-color: #edecec;
+		    width: 80px;
+		    -webkit-border-radius: 5px;
+		    border-radius: 5px;
+		    margin-left: 20px;
+		    margin-top: 14px;
+		    height: 22px !important
+		    ;
+		  a{
+			margin: 2px 15px;
+			    display: block;
+           }
+           .active{
+           display: block !important;
+           }
+           .flag{
+               background-repeat: no-repeat;
+			    background-position: 0 0;
+			    background-image: url(http://www.enchantingtravels.com/wp-content/themes/enchanting/assets/images/header/flags.png);
+			    display: block;
+			    width: 19px;
+			    height: 12px;
+			    &.select{
+			    &::after{
+			        content: "\25BC";
+				    font-size: 13px;
+				    color: #36312a;
+				    margin-left: 30px;
+				    border-left: 1px solid lightgray;
+				    padding-left: 8px;
+				    margin-top: -21px;
+				    display: inline-block;
+				    float: left;
+			    }
+			    }
+			    &.us{
+			    background-position: 0 0;
+			    }
+			    &.gb{
+			        background-position: 0 -24px;
+			    }
+			    &.fr{
+			        background-position: 0 -120px;
+			    }
+           }
+           .dropdown{
+               background-color: #edecec;
+			    position: relative;
+			    margin-top: 10px;
+			    padding: 0px 0px 0px 15px;
+			    list-style: none;
+			    box-sizing: border-box;
+			    display:none;
+			        z-index: 10001;
+			    li{
+			        display: inline-block;
+				    width: inherit;
+				    padding: 5px 0px;
+				    margin: 0px;
+				     cursor: pointer;
+				    a{
+				        margin: 0px;
+					    padding: 0px;
+					    display: inline-block;
+					    span{
+					    float: left;
+					    display: inline-block;
+					    &.text{
+					        float: left;
+						    display: inline-block;
+						    font-size: 12px;
+						    padding-left: 10px;
+						    padding-top: 0px;
+						    margin-top: 0px;
+						    position: relative;
+					    }
+					    }
+				    }
+			    }
+           }
+		  }
+		  .navigation nav .menu li.hide-lg{
+	display:none;
+	}
+	.navigation nav .menu li.show-lg{
+    display:inline-block;
+	}
+	.col25{
+	width: 25%;
+	box-sizing: border-box;
+    float: left;
+	}
+	.col75{
+	width: 75%;
+    box-sizing: border-box;
+    float: left;
+	}
+	.tourscontainer{
+	display: inline-block;
+    height: 100%;
+    background-color: #f2f2f1;
+    margin-top: -5px;
+	}
+	.package{
+	background-color:white;
+	}
