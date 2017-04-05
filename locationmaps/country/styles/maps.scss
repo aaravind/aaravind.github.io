@@ -1,0 +1,38 @@
+.maps{
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    top: 75px;
+}
+.redmarker{
+	width: 15px;
+    height: 15px;
+    background: red;
+    border-radius: 50%;
+}
+.searchlatlong{
+	    padding: 20px;
+    text-align: center;
+    input[type="text"]{
+        position: relative;
+    padding: 10px;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid lightgray;
+    box-shadow: 0 0 0 0 #fff;
+    margin: 0px 10px;
+    }
+    input[type="button"]{
+     position: relative;
+    padding: 10px;
+    border-radius: 5px;
+    outline: 0;
+    border: 1px solid #7b7be0;
+    box-shadow: 0 0 0 0 #fff;
+    margin: 0px 10px;
+    text-transform: uppercase;
+    background: #7b7be0;
+    color: white;
+    }
+}
