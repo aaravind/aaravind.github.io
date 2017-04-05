@@ -1,0 +1,24 @@
+@media only screen and (max-width: 768px){
+	.country-container{
+	.each_country_card{
+	width:33.33%;
+	}
+	}
+}
+
+@media only screen and (max-width: 600px){
+	.country-container{
+	.each_country_card{
+	width:50%;
+	}
+	}
+}
+
+@media only screen and (max-width: 480px){
+	.country-container{
+	display:block;
+	.each_country_card{
+	width:100%;
+	}
+	}
+}

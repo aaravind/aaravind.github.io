@@ -4,7 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import {updatecountryposition} from './../actions/countryActions';
 import $ from 'jquery';
 import {browserHistory} from 'react-router';
-const MarkerComponent = () => <div className="redmarker"></div>;
+const MarkerComponent = () => <div className="redmarker"><img src="http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png"></img></div>;
 class CountryList extends React.Component {
 
 constructor(props){
@@ -15,7 +15,7 @@ constructor(props){
 
   static defaultProps = {
   	center: {lat: 20.5937, lng: 78.9629},
-    zoom: 5
+    zoom: 8
   };
  componentDidMount(){
     let location=this.props.location.query;
@@ -35,22 +35,24 @@ constructor(props){
     browserHistory.push('country-list');
      //window.location.assign(tabName);
   }
+
   render() {
   	let locationposition = {lat: this.props.countrylocation.latitude/1, lng: this.props.countrylocation.longitude/1};
     return (
     	<div>
     	<div className="searchlatlong">
-    	<input type="button" value="Back" onClick={this.back.bind(this)}></input>
+    	<div className="button fa fa-arrow-left" onClick={this.back.bind(this)}></div>
     	<input type="text" placeholder={locationposition.lat}></input>
     	<input type="text" placeholder={locationposition.lng}></input>
-    	<input type="button" value="search" onClick={this.updatepos.bind(this)}></input>
+    	<div className="button fa fa-search" onClick={this.updatepos.bind(this)}></div>
     	</div>
     	<div className="maps">
       <GoogleMapReact
+        options={this.props.countrylocation.mapStyles}
         bootstrapURLKeys={{
           key: "AIzaSyDPC3R_aVyWkFdVmRF86PZI-NWTjuURpus"
           }}
-        defaultCenter={locationposition}
+        center={locationposition}
         defaultZoom={this.props.zoom}>
         <MarkerComponent
           lat={locationposition.lat}

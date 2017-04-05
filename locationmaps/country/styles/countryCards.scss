@@ -25,16 +25,16 @@
 		    background:lightgrey;
 		}
 		div{
-		position:relative;
-		padding: 10px 0px;
+		    position: relative;
+		    padding: 10px 10px;
+		    max-width: 100%;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
 		&.country{
 		text-transform:uppercase;
 		color:"#182233";
 		font-weight:bold;
-		max-width: 100%;
-	    overflow: hidden;
-	    text-overflow: ellipsis;
-	    white-space: nowrap;
 		}
 		}
 		}
