@@ -8,7 +8,8 @@
 		    float: left;
 		    padding: 20px;
 		    box-sizing: border-box;
-            width: 25%;   
+            width: 25%;
+            cursor:pointer;   
 		.inner{
 		    position: relative;
             text-align: center;
@@ -30,6 +31,10 @@
 		text-transform:uppercase;
 		color:"#182233";
 		font-weight:bold;
+		max-width: 100%;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
 		}
 		}
 		}

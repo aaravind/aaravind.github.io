@@ -27,8 +27,8 @@ constructor(props){
    }
    updatepos(target){
    	         const beforefetchdata = Object.assign({}, this.props.countrylocation);
-      beforefetchdata.latitude = target.target.parentElement.children[0].value;
-      beforefetchdata.longitude = target.target.parentElement.children[0].value;
+      beforefetchdata.latitude = target.target.parentElement.children[1].value;
+      beforefetchdata.longitude = target.target.parentElement.children[2].value;
       this.props.updatecountryposition(beforefetchdata);
    }
    back(target){
