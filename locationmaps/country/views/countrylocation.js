@@ -15,7 +15,7 @@ constructor(props){
 
   static defaultProps = {
   	center: {lat: 20.5937, lng: 78.9629},
-    zoom: 8
+    zoom: 5
   };
  componentDidMount(){
     let location=this.props.location.query;
