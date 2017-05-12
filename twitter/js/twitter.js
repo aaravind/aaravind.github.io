@@ -4,7 +4,7 @@ var timerId;
 function refreshtweets(querystring){
 	$('.tweets_container .loader').css('display','block');
 	$('.tweets_container .each_tweet').remove();
-	var url = (querystring=='' || querystring==undefined) ? 'http://nearadz.com/twitterfeed.php' : 'http://nearadz.com/twitterfeed.php?q='+ querystring;
+	var url = (querystring=='' || querystring==undefined) ? 'https://aravindtwitter.herokuapp.com/twittersearch?key="ola"' : 'https://aravindtwitter.herokuapp.com/twittersearch?key='+ querystring;
 	$.ajax({
 	  url: url,
 	  context: document.body
