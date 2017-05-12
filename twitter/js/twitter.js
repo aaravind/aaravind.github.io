@@ -10,12 +10,19 @@ function refreshtweets(querystring){
 	  context: document.body
 	}).done(function(data) {
 		$('.tweets_container .loader').css('display','none');
-	  var tweetdata = JSON.parse(data);
+	  var tweetdata = data.statuses;
 	  if(tweetdata.length != 0){
 	  		  var source   = $("#tweet_template").html();
 	  var template = Handlebars.compile(source);
 		            for(var index in tweetdata){
-		            var html = template(tweetdata[index]);
+		            	var formjson = {};
+		            	formjson.profileurl = '';
+		            	formjson.profileimage = tweetdata[index].user.profile_image_url;
+		            	formjson.name = tweetdata[index].user.name; 
+		            	formjson.screenname = tweetdata[index].user.screen_name;
+		            	formjson.tweetdate =  tweetdata[index].created_at;
+		            	formjson.tweet =  tweetdata[index].text;
+		            var html = template(formjson);
 		              $('.tweets_container').append(html);
 		        }
 		$('.tweets_container .each_tweet').animate({opacity: '1'}, "slow");        
