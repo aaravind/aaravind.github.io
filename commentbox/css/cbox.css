@@ -1,0 +1,115 @@
+body{
+	margin:0px;
+	padding:0px;
+	font-family: 'Roboto', sans-serif;
+}
+	h2{
+		    max-width: 960px;
+		    text-align: center;
+		    margin: 0 auto;
+		    padding-top: 20px;
+	}
+    .comment-box-wrapper{
+		    max-width: 960px;
+		    margin: 0 auto;
+		    padding: 20px;	
+	}
+    .comment-box-type{
+		    display: inline-block;
+    		width: 100%;
+     }
+     .comment-box-img{
+		    float: left;
+			width: 40px;
+			height: 40px;
+			border-radius: 3px;
+     }
+     .comment-box-input-wrapper{
+		    display: block;
+		    overflow: hidden;
+		    padding: 0px 10px;
+     }
+     .comment-box-input{
+     	    display: inline-block;
+		    height: 40px;
+		    -moz-box-sizing: border-box;
+    		-webkit-box-sizing: border-box;
+		    box-sizing: border-box;
+		    width: 100%;
+		    padding: 0px 10px;
+		    border-radius: 5px;
+		    border: 1px solid #ccc;
+		    outline:0px;
+     }
+     .comment-thread-wrapper{
+     	position: relative;
+     	padding: 15px 0px 0px 0px;
+     	clear: both;
+     }
+     .comment-box-wrapper > .comment-thread-wrapper > .each-comment {
+     	padding-right: 10px;
+     	padding-left:0px;
+     }
+     .comment-thread-wrapper .each-comment {
+     	padding-left: 50px
+     }
+     .comment-thread-wrapper .each-comment .left{
+     	float: left;
+     }
+     .comment-thread-wrapper .each-comment .right{
+	    display: block;
+	    padding: 0px 0px 0px 50px;
+	    font-size: 13px;
+        line-height: 20px;
+     }
+     .comment-thread-wrapper .each-comment .right .time{
+     	padding-left:20px;
+     } 
+     .comment-thread-wrapper .each-comment .right .time::before{
+	    content: '.';
+	    padding: 0px 0px 0px 0px;
+	    width: 1px;
+	    height: 1px;
+	    margin-right: 5px;
+	    font-size: 25px;
+	    position: absolute;
+	    top: 8px;
+	    margin-left: -10px;
+     }
+     .comment-thread-wrapper .each-comment .right .comment-box-input-wrapper{
+     	padding-right:0px;
+     }
+     .comment-thread-wrapper .each-comment .right .reply{
+     	cursor: pointer;
+     }
+     .icon{
+        border: solid #aebac1;
+	    border-width: 0 1px 1px 0;
+	    display: inline-block;
+	    padding: 3px;
+	    margin: 0px 10px;
+	    position: relative;
+	    cursor: pointer;
+     }
+     .borderright{
+     	border-right: 1px solid #aebac1;
+     }
+     .icon.icon-up{
+        transform: rotate(-135deg);
+       -webkit-transform: rotate(-135deg);
+       top:1px;
+     }
+     .icon.icon-down{
+        transform: rotate(45deg);
+    	-webkit-transform: rotate(45deg);
+    	top:-2px;
+     }
+     .colorblue{
+     	color : #4bacff;
+     }
+     .colorgray{
+     	color:#aebac1;
+     }
+     .colordarkgray{
+     	color:#6e7275;
+     }
