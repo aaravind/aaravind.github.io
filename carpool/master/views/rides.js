@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import 'whatwg-fetch';
 import {fetchapiandcalldispatch} from './../actions/commonActions';
 import {updatedestinations,updaterides,updateselectedride,setInitialState,updateTab} from './../actions/appActions';
 import {browserHistory} from 'react-router';

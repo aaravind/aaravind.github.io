@@ -1,5 +1,6 @@
 import React from 'react';
 import Constants from './../constants';
+import 'whatwg-fetch';
 import {browserHistory} from 'react-router';
 class Header extends React.Component{
 
