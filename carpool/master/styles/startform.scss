@@ -1,0 +1,83 @@
+$form_label_color:#5c5f59;
+$border_input_color:#ccc;
+$button_bg_color:#159ad3;
+$button_bg_hover_color:#2e81a5;
+$button_color:white;
+$link_color:#59a2c9;
+
+.main-container{
+	.wrapper{
+	    padding: 40px 0px;
+    	position: relative;
+    	form{
+    	    width: 50%;
+		    position: relative;
+		    padding: 20px 40px;
+		    margin: 0 auto;
+		    @include box-shadow($border_input_color,0,0px,3px,0px);
+		    div{
+			        padding-bottom: 15px;
+			    }
+		}
+		.link{
+		    font-size: 13px;
+		    padding: 15px 10px;
+		    text-align: center;
+		    a{
+		    color: $link_color;
+		    text-decoration: none;
+		    text-transform: uppercase;
+		    padding: 0px 5px;
+		    cursor:pointer;
+		    &:hover,&:active{
+		    color: $link_color;
+		    }
+		    }
+		}
+	}
+	div{
+				label{
+				    display: block;
+				    color: $form_label_color;
+    				font-weight: 600;
+				    line-height: 18px;
+    				font-size: 14px;
+    				text-transform: capitalize;
+				}
+				input{
+				display:inline-block;
+					&[type="text"],&[type="password"]{
+					    display: inline-block;
+					    width: 100%;
+					    border: 0px;
+					    border-bottom: 1px solid $border_input_color;
+					    outline: 0px;
+					}
+					&[type="button"]{
+					    display: inline-block;
+					    background: $button_bg_color;
+					    border: 0px;
+					    text-transform: uppercase;
+					    padding: 7px 20px;
+					    color: $button_color;
+					    font-size: 12px;
+					    @include box-shadow($border_input_color,2px,2px,5px,1px);
+					    border-radius: 3px;
+					    outline:0px;
+					    cursor: pointer;
+					    &:hover{
+					        background: $button_bg_hover_color;
+					    }
+					}
+				}
+				&.loginbutton{
+				    text-align: center;
+    				padding: 15px 0px 10px 0px;
+				}
+	}
+			.loader{
+				text-align:center;
+				animation: blinker 2s linear infinite;
+				display: block;
+				}
+}

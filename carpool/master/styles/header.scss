@@ -1,0 +1,33 @@
+$grey_border:#ccc;
+$home_icon_color:#979797;
+.header{
+		padding: 10px 15px;
+	    font-size: 20px;
+	    text-transform: uppercase;
+	    font-weight: bold;
+	    border-bottom: 1px solid #ccc;
+	    @include box-shadow($grey_border,0,5px,5px,-5px);
+	    .home{
+	    color: $home_icon_color;
+		    .material-icons{
+		    font-size:30px;
+		    }
+	    }
+	    .logout{
+	    	float:right;
+	    	top: 2px;
+    		position: relative;	
+		    .material-icons{
+		    font-size:28px;
+		    cursor:pointer;
+		    }
+	    }
+	    h1{
+		    top: -7px;
+		    position: relative;
+		    font-size: 20px;
+		    padding: 0px 10px;
+		    display: inline-block;
+		    margin: 0px;
+	    }
+    	}

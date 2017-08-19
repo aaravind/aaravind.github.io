@@ -1,0 +1,147 @@
+$user_bg_color:#999999;
+$user_color:white;
+$time_color:#6f6969;
+$star_color:#6f6969;
+$rating_color:#68aecd;
+$rating_border:#ccc;
+$inactive_button_color:#ccc;
+$card_active_bg:#99cdff;
+$card_active_color:white;
+$active_left_logo_bg:white;
+$active_left_logo_color:black;
+$call_color:#119615;
+.ride-wrapper{
+    padding: 20px 10px;
+    text-align: center;
+    @include flexBox();
+    @include flexwrap();
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    .each-ride-card{
+    width:50%;
+    padding: 7px 10px;
+    font-size: 13px;
+    cursor:pointer;
+    box-sizing: border-box;
+    .each-ride-card-wrapper{
+    width: 100%;
+    @include flexBox();
+    border: 1px solid $rating_border;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    div{
+    padding:0px;
+    }
+	    .left{
+	    	background:$user_bg_color ;
+		    border-radius: 50%;
+		    width: 40px;
+		    height: 40px;
+		    position: relative;
+    		top: 5px;
+		    i{
+		    display: inline-block;
+		    color: $user_color;
+		    font-size: 30px;
+		    top: 2px;
+		    position: relative;
+		    }
+	    }
+	    .center{
+	        text-align: left;
+   			padding: 0px 10px;
+   			@include flexItem();
+   			letter-spacing: 0.3px;
+		    .top{
+		        padding-bottom: 3px;
+			    .name{
+				    font-size: 16px;
+				    font-weight: bold;
+				    text-transform: capitalize;
+			    }
+			    .duration{
+			        color: $time_color;
+				    padding: 0px 5px;
+				    top: 2px;
+				    position: relative;
+			    }
+		    }
+		    .route,.car-details{
+		    
+			    span{
+			    padding-right: 3px;
+			    b{
+			    padding-left: 3px;
+			    }
+		    }
+		    }
+	    }
+	    .right{
+	         display: flex;
+	    .rating{
+	        border-right: 1px solid $rating_border;
+		    height: 16px;
+		    padding-right: 8px;
+		    color: $rating_color;
+	    }
+	    .favorite{
+	        margin-left: 5px;
+		    i{
+		    color: $star_color;
+    		font-size: 14px;
+    		position: relative;
+    		top: 2px;
+		    }
+	    }
+	    }
+	  }
+	  &.active{
+	  	.each-ride-card-wrapper{
+	  	    background: $card_active_bg;
+    		color: $card_active_color;
+	    	.center .top .duration{
+		  		color: $card_active_color;
+		  	}
+		  	.left{
+		  	    background: $active_left_logo_bg;
+		  	    i{
+		  	    color: $active_left_logo_color;
+	    		font-weight: bold;
+		  	    }
+		  	}
+		  	.call{
+		  	font-size: 50px;
+		    color: $call_color;
+		    top: -1px;
+		    position: relative;
+		    box-sizing: border-box;
+		  	}
+	  	}
+	  	
+	  }
+	  &:hover{
+	  .each-ride-card-wrapper{
+	  @include box-shadow($border_input_color,1px,1px,5px,1px);
+	  }
+	  } 
+    }
+    .norides{
+    width: 100%;
+    }
+
+}
+	.confirmbutton{
+	    padding:0px;
+	    text-align: center;
+		    &.inactive{
+			    input[type="button"],input[type="button"]:hover{
+			    background:$inactive_button_color;
+			    display:inline-block;
+			    cursor:not-allowed;
+			    }
+		    }
+	}
+	.RidesContainer .loader{
+	padding:20px;
+	}
