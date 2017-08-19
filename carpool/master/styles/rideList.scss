@@ -73,6 +73,7 @@ $call_color:#119615;
 			    padding-right: 3px;
 			    b{
 			    padding-left: 3px;
+			    text-transform: capitalize;
 			    }
 		    }
 		    }
@@ -132,7 +133,7 @@ $call_color:#119615;
 
 }
 	.confirmbutton{
-	    padding:0px;
+	    padding:0px 0px 20px 0px;
 	    text-align: center;
 		    &.inactive{
 			    input[type="button"],input[type="button"]:hover{
