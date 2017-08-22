@@ -1,0 +1,52 @@
+@mixin box-shadow($color,$a,$b,$c,$d) {
+    -webkit-box-shadow: $a $b $c $d $color;
+    -moz-box-shadow: $a $b $c $d $color;
+    box-shadow: $a $b $c $d $color;
+}
+@mixin flexBox(){
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox; 
+  display: -webkit-flex;
+  display: flex;  
+}
+@mixin flexItem($val){
+	-webkit-box-flex: $val; 
+	-moz-box-flex: $val; 
+	-webkit-flex: $val;
+	-ms-flex: $val;
+	flex: $val;
+}
+@mixin flexwrap(){
+	display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+@mixin imgContainer($width,$height){
+  .img-wrapper{
+              @include flexBox();
+                text-align: center;
+              @include flexItem(1);
+              justify-content: center;
+              align-items: center;
+              img{
+              width: $width;
+              height: $height;
+              display:inline-block;
+              }
+            }
+}
+@mixin imgNoFlexItemContainer($width,$height){
+  .img-wrapper{
+              @include flexBox();
+                text-align: center;
+              justify-content: center;
+              align-items: center;
+              img{
+              width: $width;
+              height: $height;
+              display:inline-block;
+              }
+            }
+}

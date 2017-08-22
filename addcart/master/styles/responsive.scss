@@ -1,0 +1,16 @@
+@media only screen and (max-width: 768px) {
+    .cart-container {
+        display: flex;
+    	flex-direction: column-reverse;
+    	.total-cart{
+		    position: relative;
+		    width: 100%;
+		    margin: 15px 0px;
+		    display: block;
+		    top: 0px;
+    	}
+    	.cart-list-container{
+    	width:100%;
+    	}
+    }
+}

@@ -1,0 +1,162 @@
+$close_button_color:#aab0b5;
+$cart_color: #858e95;
+$total_card_color:#efefef;
+.addsub {
+		@include flexBox();
+		justify-content: center;
+		 align-items: center;
+		cursor:pointer;
+}
+
+.cart-container{
+	    @include flexBox();
+	    color: $cart_color;
+	    position: relative;
+	    .cart-list-container{
+	    @include flexItem(1);
+	    margin-right: 10px;
+	    padding-bottom: 15px;
+	    border-bottom: 1px solid #ccc;
+	    .cart-wrapper{
+	        @include flexBox();
+	        padding: 5px 0px;
+		    .each-cart{
+		    @include flexBox();
+    		@include flexItem(1);
+    		padding: 5px;
+    		@include box-shadow(#ccc,0px,0px,2px,0px);
+		    @include imgNoFlexItemContainer(35px,35px);
+		    .name{
+		    @include flexItem(1);
+		    align-items: center;
+		    @include flexBox();
+		    padding: 0px 10px;
+		    }
+		    .close{    
+		    font-size: 20px;
+		    top: 5px;
+		    position: relative;
+		    right: 10px;
+		    color: $close_button_color;
+		    cursor:pointer;
+    		}
+		    }
+		    .change-product{
+		        @include flexItem(0.4);
+			    @include flexBox();
+			    justify-content: center;
+			    margin: 0px 10px;
+			    .subtract{
+			    @extend .addsub;
+			    &::before{
+			        content: " ";
+				    position: relative;
+				    border-bottom: 2px solid $close_button_color;
+				    width: 10px;
+			    }
+			    }
+			    .quantity{
+			        width: 35px;
+				    height: 35px;
+				    padding: 5px;
+				    text-align: center;
+				    @include flexBox();
+				    justify-content: center;
+				    align-items: center;
+				    @include box-shadow(#ccc,0px,0px,2px,0px);
+				    margin: 0px 10px;
+			    }
+			    .add{
+			    @extend .addsub;
+			    &::after{
+			    content:"+";
+			    color: $close_button_color;
+    			font-size: 20px;
+			    }
+			    }
+		    }
+		    .amount{
+		        @include flexItem(0.2);
+			    justify-content: center;
+			    @include flexBox();
+			    padding-right: 15px;
+			    align-items: center;
+			    font-weight: bold;
+		    }
+		    &.head{
+		        border-top: 1px solid #ccc;
+   				border-bottom: 1px solid #ccc;
+   				margin: 5px 0px 15px 0px;
+		    	.each-cart{
+		    		@include box-shadow(transparent,0px,0px,0px,0px);
+		    	}
+		    	.change-product{
+		    	    align-items: center;
+		    	}
+		    	.amount{
+		    	    font-weight: 100;
+		    	}
+		    }
+	    }
+	    }
+	    .total-cart{
+	        position: -webkit-sticky;
+		    position: sticky;
+		    top: 20px;
+		    display: inline-block;
+		    vertical-align: top;
+		    z-index: 4;
+		    height: 139px;
+	        width: 300px;
+	        @include box-shadow(#ccc,0px,0px,2px,0px);
+		    border: 1px solid #ccc;
+		    box-sizing: border-box;
+		    right: 0px;
+		    margin: 0px 10px;
+	    p{
+	      padding: 0px;
+   		  margin: 0px;
+   		  @include flexBox();
+   		  padding: 3px 15px;
+   		  line-height: 11px;
+    	  font-size: 14px;
+   		  &.head{
+   		  display:block;
+   		  }
+   		  span{
+   		  display: inline-block;
+    	  @include flexItem(1);
+    	  &.value{
+    	   p{
+    	   text-align:right;
+    	   padding: 0px;
+		   margin: 0px;
+		   float: right;
+		   right: 0px;
+    	   }
+    	  }
+   		  }
+   		  &.ordertotal{
+   		  	background: $total_card_color;
+   		  	padding-top: 10px;
+    		padding-bottom: 10px;
+	   		  	span.value{
+		   		  	p{
+		   		  	    font-weight: bold;
+		   		  	}
+	   		  	}
+   		  }
+   		  &.head{
+   			font-weight: bold;
+   			padding-top: 10px;
+   		  }
+   		  &.items{
+   		    padding-top: 10px;
+    		padding-bottom: 15px;
+   		  }
+   		  &.typediscount{
+   		      padding-bottom: 15px;
+   		  }
+	    }
+	    }
+}

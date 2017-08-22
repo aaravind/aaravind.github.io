@@ -1,0 +1,41 @@
+$font_color_body:#4b443d;
+$notify_color:#70ce5d;
+body{
+	background:white;
+	font-family: 'Roboto Condensed', sans-serif;
+	padding: 0px;
+    margin: 0px;
+    color: $font_color_body;
+	.toast-notification{
+	    width: 100% !important;
+	span{
+	    display: inline-block !important;
+	}
+	}
+	h1{
+	    padding: 0px 10px;
+	    margin: 0px;
+	    font-weight: 100;
+	    font-size: 26px;
+	}
+	.loader{
+				text-align:center;
+				animation: blinker 2s linear infinite;
+				display: block;
+			}
+	.notification-wrapper{
+	    position: fixed;
+	    width: 100%;
+	    text-align: center;
+	    display:none;
+	    z-index: 100;
+	    span{
+	        padding: 5px 15px;
+		    background: $notify_color;
+		    color: white;
+		    top: 15px;
+		    border-radius: 3px;
+		    position: relative;
+	    }
+	}		
+}
