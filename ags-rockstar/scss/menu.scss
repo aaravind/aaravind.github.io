@@ -1,0 +1,133 @@
+$menu-bg:transparent;
+$menu-label:white;
+
+.wrapper{
+  overflow-x:hidden;
+}
+.navbar-global {
+  background-color: indigo;
+}
+
+.navbar-global .navbar-brand {
+  color: $menu-label;
+}
+
+.navbar-global .navbar-user > li > a
+{
+  color: $menu-label;
+}
+
+.navbar-primary {
+  background-color: $menu-bg;
+  background-image: url(../images/sidebar-banner.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  bottom: 0px;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 250px;
+  z-index: 8;
+  overflow: hidden;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.navbar-primary.collapsed {
+  width: 40px;
+}
+
+.navbar-primary.collapsed .glyphicon {
+  font-size: 22px;
+}
+
+.navbar-primary.collapsed .nav-label {
+  display: none;
+}
+.navbar-primary .nav-label img{
+    width: 200px;
+    height: auto;
+    border-radius: 250px;
+}
+.btn-expand-collapse,.btn-expand-collapse:hover,.btn-expand-collapse:focus,.btn-expand-collapse:active {
+    position: fixed;
+    top: 0px;
+    color: white;
+    font-size: 1.2em;
+    padding: 0px 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 8px 0px 0px 4px;
+    background: $menu-bg;
+    text-decoration:none;
+    z-index:10;
+}
+
+.navbar-primary-menu,
+.navbar-primary-menu li {
+  margin:0; padding:0;
+  list-style: none;
+}
+
+.navbar-primary-menu li a,.navbar-primary-menu li a:hover {
+  display: block;
+  padding: 5px 18px 10px 18px;
+  text-align: left;
+  color: $menu-label;
+  background: rgba(0,0,0,0.40);
+  text-decoration:none;
+}
+.navbar-primary-menu li a.active span,.navbar-primary-menu li a:hover span{
+  color:#FEB401;
+  text-decoration:none;
+  border-left: 2px solid;
+  padding-left: 5px;
+}
+
+.navbar-primary-menu li a .glyphicon {
+  margin-right: 6px;
+}
+.navbar-primary-menu li span.logo {
+  margin-top:20px;
+  background: rgba(0,0,0,0);
+  padding: 5px 18px 10px 18px;
+  display: inline-block;
+}
+.navbar-primary-menu li a:hover .glyphicon {
+  color: orchid;
+}
+
+.main-content {
+  margin-top: 20px;
+  margin-left: 250px;
+  padding: 20px;
+  padding-top: 0px;
+}
+
+.collapsed + .main-content {
+    margin-left: 40px;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-right:0px;
+}
+
+@media screen and (min-width: 768px){
+   .collapsed + .main-content {
+    margin-top: 20px;
+    margin-left: 250px;
+    padding: 20px;
+    padding-top: 0px;
+  }
+  .navbar-primary.collapsed {
+  width: 250px;
+}
+
+.navbar-primary.collapsed .glyphicon {
+  font-size: 22px;
+}
+
+.navbar-primary.collapsed .nav-label {
+  display: block;
+}
+}

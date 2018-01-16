@@ -1,0 +1,25 @@
+$bodg_bg:#F0F0F0;
+$header-color:#FEB401;
+
+@font-face {
+    font-family: Futura;
+    src: url(../font/Futura.otf);
+}
+@font-face {
+    font-family: FuturaBold;
+    src: url(../font/FuturaBold.otf);
+}
+body{
+	background-color: $bodg_bg;
+	font-family: 'Futura', sans-serif;
+}
+h1{
+	color: $header-color;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+h3{
+	color: $header-color;
+    font-size: 1.4em;
+    font-weight: bold;
+}

@@ -1,0 +1,97 @@
+$input_border:rgba(112, 112, 112,0.38);
+$input_bg:#F0F0F0;
+$input_button_bg: #FEB401;
+$form_type_inactive:#000;
+$form_type_active:#FEB401;
+.main-content{
+	.nomination-card{
+	    border-radius: 6px;
+	    border: 1px solid #FEB401;
+	    padding: 15px;
+	    margin-bottom:15px;
+	    min-width: 110px;
+	    @media screen and (max-width: 768px){
+			.container{
+			max-width:100%;
+			}
+		}
+	    .title{
+	    font-weight: bold;
+    	font-size: 20px;
+	    }
+	    .nomination-description{
+	    padding:0px;
+	    }
+	    .nomination-form{
+	    .row{
+	        padding: 0px 0px 7px 0px;
+	    label{
+	    font-weight:bold;
+	    }
+		    @media screen and (max-width: 768px){
+			label{
+			padding-left:2px;
+			}
+		}
+	    input,textarea{
+	        border: 1px solid $input_border;
+		    border-radius: 8px;
+		    outline: 0px;
+		    background: $input_bg;
+	    }
+	    .custom-button{
+	        background: $input_button_bg;
+		    border: none;
+		    border-radius: 21px;
+	    }
+	    }
+	    }
+	}
+	.nomination-form-type{
+		padding: 16px 0px;
+		.each-form-type{
+			min-width:200px;
+			margin-right: 15px;
+			cursor:pointer;
+			margin-bottom:10px;
+		}
+		.icon{
+			border-radius: 20px 20px 0px 20px;
+		    padding: 5px 10px;
+		    border: 1px solid $form_type_inactive;
+		    border-bottom: 0px;
+		    color:$form_type_inactive;
+		}
+		.line{
+		    padding: 0px;
+		    border-bottom: 1px solid $form_type_inactive;
+		    border-radius: 0px 0px 0px 20px;
+		    height: 21px;
+		    margin-top: -15px;
+		    z-index: 1;
+		}
+		.description{
+			color:$form_type_inactive;
+		    padding-left: 10px;
+		}
+		.active{
+			.icon{
+			border: 1px solid $form_type_active;
+			border-bottom: 0px;
+			color:$form_type_active;
+			}
+			.line{
+			border-bottom: 1px solid $form_type_active;
+			}
+			.description{
+			color:$form_type_active;
+			padding-left: 10px;
+			}
+		}
+	}
+	@media screen and (max-width: 768px){
+			.nomination-form-type,.each-form-type{
+			min-width:200px;
+			}
+			}
+}
