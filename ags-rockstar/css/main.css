@@ -96,6 +96,9 @@ h3 {
 .navbar-primary.collapsed .glyphicon {
   font-size: 22px; }
 
+.navbar-primary.collapsed .counter-wrapper {
+  display: none; }
+
 .navbar-primary.collapsed .nav-label {
   display: none; }
 
@@ -171,6 +174,9 @@ h3 {
   .navbar-primary.collapsed {
     width: 250px; }
 
+  .navbar-primary.collapsed .counter-wrapper {
+    display: block; }
+
   .navbar-primary.collapsed .glyphicon {
     font-size: 22px; }
 
@@ -234,6 +240,68 @@ h3 {
       text-align: center; }
     .card-wrapper .card .card-text {
       text-align: center; }
+  .card-wrapper.two-card-layout {
+    margin: 0px; }
+    .card-wrapper.two-card-layout .card-container {
+      height: 225px;
+      position: relative;
+      display: inline-block;
+      min-width: 100%; }
+    .card-wrapper.two-card-layout .card {
+      border-bottom: 0px;
+      padding: 0px;
+      box-shadow: 5px 5px 2px 0px rgba(168, 168, 168, 0.5); }
+      .card-wrapper.two-card-layout .card:nth-child(odd) {
+        margin-left: 0px; }
+      .card-wrapper.two-card-layout .card:nth-child(even) {
+        margin-right: 0px; }
+      @media screen and (max-width: 768px) {
+        .card-wrapper.two-card-layout .card:nth-child(odd) {
+          margin-left: 0px;
+          margin-right: 0px; }
+        .card-wrapper.two-card-layout .card:nth-child(even) {
+          margin-left: 0px;
+          margin-right: 0px; } }
+    .card-wrapper.two-card-layout .img-wrapper {
+      position: absolute;
+      left: 0px;
+      width: 40%;
+      bottom: 0px;
+      height: inherit;
+      z-index: 10;
+      box-sizing: border-box; }
+      .card-wrapper.two-card-layout .img-wrapper .card-img-top {
+        max-width: 100%;
+        width: auto;
+        height: inherit;
+        margin: 0px;
+        padding: 15px 0px 25px 0px; }
+    .card-wrapper.two-card-layout .card-body {
+      height: 100%;
+      padding: 0px; }
+    .card-wrapper.two-card-layout .card-title {
+      max-width: 50%;
+      float: right;
+      margin-top: 50px;
+      box-sizing: border-box; }
+    @media screen and (max-width: 380px) {
+      .card-wrapper.two-card-layout .card-title {
+        margin-top: 10px; } }
+    .card-wrapper.two-card-layout .card-text {
+      font-size: 11px;
+      text-align: right;
+      clear: both;
+      background: grey;
+      display: inline-block;
+      position: absolute;
+      bottom: 0px;
+      left: 0px; }
+      .card-wrapper.two-card-layout .card-text p {
+        padding: 0px 10px;
+        line-height: 12px;
+        max-width: 60%;
+        margin: 10px 0px;
+        float: right; }
 
 @media screen and (max-width: 768px) {
   .card-wrapper {
@@ -303,5 +371,71 @@ h3 {
 @media screen and (max-width: 768px) {
   .main-content .nomination-form-type, .main-content .each-form-type {
     min-width: 200px; } }
+
+.counter-wrapper {
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 100%; }
+
+.counter {
+  background: #2C2C2C;
+  -moz-box-shadow: inset 0 0 5px #000000;
+  -webkit-box-shadow: inset 0 0 5px #000000;
+  box-shadow: inset 0 0 5px #000000;
+  min-height: 150px;
+  text-align: center; }
+
+#countdown {
+  color: #FFFFFF;
+  margin: 0 auto;
+  display: inline-block; }
+
+#countdown span {
+  color: #E5E5E5;
+  font-size: 26px;
+  font-weight: normal;
+  text-align: center; }
+
+#countdown span::after {
+  content: ":";
+  margin-left: 5px; }
+
+#countdown span:last-child::after {
+  content: ""; }
+
+.counter-wrapper .description {
+  margin: 0px;
+  padding: 0px;
+  font-size: 13px;
+  color: white; }
+
+.counter-wrapper input[type="button"] {
+  background: #FEB401;
+  border: none;
+  border-radius: 21px;
+  margin: 10px 0px;
+  width: 200px;
+  padding: 5px 0px;
+  text-transform: uppercase;
+  outline: 0px;
+  cursor: pointer; }
+
+.modal-dialog {
+  max-width: 80%;
+  margin: 0px auto;
+  height: 100%; }
+  .modal-dialog .modal-content {
+    border: 0px;
+    height: 100%;
+    background: transparent; }
+    .modal-dialog .modal-content .modal-body {
+      display: flex;
+      align-items: center;
+      background: transparent; }
+
+@media screen and (max-width: 768px) {
+  .modal-dialog {
+    max-width: 100%; } }
 
 /*# sourceMappingURL=main.css.map */

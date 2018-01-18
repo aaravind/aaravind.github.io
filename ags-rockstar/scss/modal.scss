@@ -1,0 +1,20 @@
+.modal-dialog{
+	    max-width: 80%;
+    margin: 0px auto;
+    height:100%;
+    .modal-content{
+    border: 0px;
+    height:100%;
+    background: transparent;
+    .modal-body{
+        display: flex;
+    align-items: center;
+    background: transparent;
+    }
+    }
+}
+@media screen and (max-width: 768px){
+			.modal-dialog{
+	    max-width: 100%;
+			}
+			}

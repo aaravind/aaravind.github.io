@@ -29,6 +29,84 @@
     	text-align: center;
     	}
 	}
+	&.two-card-layout{
+		margin: 0px;
+		.card-container{
+		height: 225px;
+	    position: relative;
+	    display: inline-block;
+	    min-width:100%;
+		}
+		.card{
+    	    border-bottom: 0px;
+    		padding: 0px;
+    		box-shadow: 5px 5px 2px 0px rgba(168, 168, 168,0.5);
+    		&:nth-child(odd){
+    		margin-left:0px
+    		}
+    		&:nth-child(even){
+    		margin-right:0px
+    		}
+    		@media screen and (max-width: 768px){
+			&:nth-child(odd){
+    		margin-left:0px;
+    		margin-right:0px;
+    		}
+    		&:nth-child(even){
+    		margin-left:0px;
+    		margin-right:0px;
+    		}
+			}
+    		}
+    		.img-wrapper{
+			    position: absolute;
+			    left: 0px;
+			    width: 40%;
+			    bottom: 0px;
+			    height: inherit;
+			    z-index: 10;
+			    box-sizing: border-box;
+			    .card-img-top{
+			    max-width: 100%;
+			    width: auto;
+			    height: inherit;
+			    margin: 0px;
+			    padding: 15px 0px 25px 0px;
+	    		}
+    		}
+    		.card-body{
+    		height: 100%;
+    		padding: 0px;
+    		}
+    		.card-title{
+		    max-width: 50%;
+		    float: right;
+		    margin-top: 50px;
+		    box-sizing: border-box;
+    		}
+    		@media screen and (max-width: 380px){
+			.card-title{
+			margin-top:10px;
+			}
+			}
+    		.card-text{
+		    font-size: 11px;
+		    text-align: right;
+		    clear: both;
+		    background: grey;
+		    display: inline-block;
+		    position: absolute;
+		    bottom: 0px;
+		    left: 0px;
+		    p{
+		    padding: 0px 10px;
+		    line-height: 12px;
+		    max-width: 60%;
+		    margin: 10px 0px;
+		    float: right;
+		    }
+    		}
+    	}
 }
 	@media screen and (max-width: 768px){
 	.card-wrapper{

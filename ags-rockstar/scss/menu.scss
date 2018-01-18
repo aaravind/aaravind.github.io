@@ -41,7 +41,9 @@ $menu-label:white;
 .navbar-primary.collapsed .glyphicon {
   font-size: 22px;
 }
-
+.navbar-primary.collapsed .counter-wrapper {
+  display:none;
+}
 .navbar-primary.collapsed .nav-label {
   display: none;
 }
@@ -122,7 +124,9 @@ $menu-label:white;
   .navbar-primary.collapsed {
   width: 250px;
 }
-
+.navbar-primary.collapsed .counter-wrapper {
+  display:block;
+}
 .navbar-primary.collapsed .glyphicon {
   font-size: 22px;
 }
