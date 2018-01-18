@@ -10,6 +10,18 @@
         display: flex;
     align-items: center;
     background: transparent;
+    button{
+    font-size: 20px;
+    position: absolute;
+    top: 25px;
+    background: white;
+    border-radius: 25px;
+    opacity: 1;
+    width: 25px;
+    height: 25px;
+    right: 15px;
+    padding: 0px 5px 5px 5px;
+    }
     }
     }
 }
