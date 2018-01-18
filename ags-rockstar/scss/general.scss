@@ -9,6 +9,9 @@ $header-color:#FEB401;
     font-family: FuturaBold;
     src: url(../font/FuturaBold.otf);
 }
+html,body{
+	height:100%;
+}
 body{
 	background-color: $bodg_bg;
 	font-family: 'Futura', sans-serif;
