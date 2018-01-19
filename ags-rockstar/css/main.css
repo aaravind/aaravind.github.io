@@ -237,12 +237,14 @@ h3 {
       text-transform: uppercase;
       padding: 0px;
       margin: 10px 0px;
-      text-align: center;
-      font-size: 20px; }
+      text-align: center; }
     .card-wrapper .card .card-text {
-      text-align: center;
-      line-height: 18px;
-      font-size: 14px; }
+      text-align: center; }
+  .card-wrapper.four-card-layout .card-title {
+    font-size: 20px; }
+  .card-wrapper.four-card-layout .card-text {
+    line-height: 18px;
+    font-size: 14px; }
   .card-wrapper.two-card-layout {
     margin: 0px; }
     .card-wrapper.two-card-layout .card-container {
