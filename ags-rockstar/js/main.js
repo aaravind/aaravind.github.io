@@ -7,11 +7,10 @@ $("body .nomination-form-type .each-form-type").on("click",function(){
 	$(this).closest(".nomination-form-type").find(".each-form-type").removeClass("active");
 	$(this).toggleClass("active");
 });
-$("body .navbar-primary-menu a").on("click",function(e){
-	e.preventDefault();
-	$(this).closest(".navbar-primary-menu").find("a").removeClass("active");
-	$(this).toggleClass("active");
-});
+// $("body .navbar-primary-menu a").on("click",function(e){
+// 	$(this).closest(".navbar-primary-menu").find("a").removeClass("active");
+// 	$(this).toggleClass("active");
+// });
 
 $('.carousel').carousel({
   interval: 3000,
@@ -73,4 +72,9 @@ $("body .header-year .year span").click(function(e){
  $('#myModal').modal('show').on('hidden.bs.modal', function(){
         $(this).find('video')[0].pause();
     });
+ 	var location_url = window.location.href;
+ 	var page = location_url.substring(location_url.lastIndexOf("/")+1 ,location_url.lastIndexOf("."));
+ 	if($("[data-active-name='"+page+"']")[0] != undefined){
+ 	$("[data-active-name='"+page+"']").addClass("active");
+ 	}
 });
