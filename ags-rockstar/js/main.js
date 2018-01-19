@@ -60,7 +60,6 @@ $("body [data-type='gallery-video']").click(function(e){
  						+"</video>";
 	$('#myModal .modal-wrapper-content').html(imageContent);
 	$('#myModal').modal('show').on('hidden.bs.modal', function(){
-		debugger;
         $(this).find('video')[0].pause();
     });
 });
