@@ -72,7 +72,6 @@ $("body .header-year .year span").click(function(e){
 
     $( document ).ready(function() {
  $('#myModal').modal('show').on('hidden.bs.modal', function(){
-		debugger;
         $(this).find('video')[0].pause();
     });
 });
