@@ -156,7 +156,8 @@ h3 {
   margin-top: 20px;
   margin-left: 250px;
   padding: 20px;
-  padding-top: 0px; }
+  padding-top: 0px;
+  min-width: 300px; }
 
 .collapsed + .main-content {
   margin-left: 40px;
