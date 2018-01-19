@@ -38,8 +38,41 @@ function callCounter(id){
 	}, 1000);
 }
 callCounter('countdown');
+// $("body [data-type='gallery-image'] a").click(function(e){
+// 	e.preventDefault();
+// });
+$("body [data-type='gallery-image']").click(function(e){
+	e.preventDefault();
+	e.stopPropagation();
+	var url = $(this).attr("data-image-url");
+	var imageContent = "<img class='' src='"+ url +"' alt=''>";
+	$('#myModal .modal-wrapper-content').html(imageContent);
+	$('#myModal').modal('show');
+});
+$("body [data-type='gallery-video']").click(function(e){
+	e.preventDefault();
+	e.stopPropagation();
+	var url = $(this).attr("data-video-url");
+	var imageContent = "<video width='100%' controls>"
+  						+"<source src='"+ url +"'"
+  						+" type='video/mp4'>"
+  						+" Your browser does not support HTML5 video."
+ 						+"</video>";
+	$('#myModal .modal-wrapper-content').html(imageContent);
+	$('#myModal').modal('show').on('hidden.bs.modal', function(){
+		debugger;
+        $(this).find('video')[0].pause();
+    });
+});
+$("body .header-year .year span").click(function(e){
+	$(this).closest(".header-year").find("span").removeClass("active");
+	$(this).addClass("active");
+})
 /* End of counter code */
 
     $( document ).ready(function() {
- $('#myModal').modal('show');
+ $('#myModal').modal('show').on('hidden.bs.modal', function(){
+		debugger;
+        $(this).find('video')[0].pause();
+    });
 });
