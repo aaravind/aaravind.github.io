@@ -70,6 +70,10 @@
     		}
 			}
     		}
+    		a{
+    		height:inherit;
+    		width:100%;
+    		}
     		.img-wrapper{
 			    position: absolute;
 			    left: 0px;
@@ -119,6 +123,7 @@
 			    max-width: 100%;
 			    margin: 10px 0px;
 			    float: right;
+			    color:#212529;
 		    }
     		}
     	}
