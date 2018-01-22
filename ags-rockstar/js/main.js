@@ -12,10 +12,6 @@ $("body .nomination-form-type .each-form-type").on("click",function(){
 // 	$(this).toggleClass("active");
 // });
 
-$('.carousel').carousel({
-  interval: 3000,
-  ride:true
-})
 var days, hours, minutes, seconds;
 /* Counter code*/
 function callCounter(id){
@@ -69,12 +65,18 @@ $("body .header-year .year span").click(function(e){
 /* End of counter code */
 
     $( document ).ready(function() {
- $('#myModal').modal('show').on('hidden.bs.modal', function(){
-        $(this).find('video')[0].pause();
-    });
+    	if(window.innerWidth < 480){
+ 			$("body .navbar-primary").addClass("collapsed");
+ 		}
+	 $('#myModal').modal('show').on('hidden.bs.modal', function(){
+	        $(this).find('video')[0].pause();
+	    });
+	 $('body .carousel').carousel({
+	  interval: 2000
+	});
  	var location_url = window.location.href;
  	var page = location_url.substring(location_url.lastIndexOf("/")+1 ,location_url.lastIndexOf("."));
  	if($("[data-active-name='"+page+"']")[0] != undefined){
  	$("[data-active-name='"+page+"']").addClass("active");
- 	}
+ 	};
 });
