@@ -74,6 +74,14 @@ h3 {
 .navbar-global .navbar-user > li > a {
   color: white; }
 
+.logged-in-user {
+  color: #FEB401;
+  text-decoration: none;
+  padding-left: 5px;
+  margin-left: 12px;
+  display: inline-block;
+  padding: 5px 5px; }
+
 .navbar-primary {
   background-color: transparent;
   background-image: url(../images/sidebar-banner.png);
@@ -222,15 +230,18 @@ h3 {
     min-width: 200px;
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.125);
+    border: 0px;
     border-radius: .25rem;
-    box-shadow: 2px 2px 2px 0px #FF0002;
+    border-radius: 0px;
+    padding: 0px;
+    box-shadow: 4px 4px 4px 0px #ccc;
     margin-bottom: 10px; }
     .card-wrapper .card .card-container {
       text-align: center; }
     .card-wrapper .card .card-img-top {
       height: auto;
-      width: 125px;
-      margin-top: 10px; }
+      margin: 0px;
+      border-radius: 0px; }
     .card-wrapper .card .card-body {
       padding-top: 5px; }
     .card-wrapper .card .card-title {
@@ -308,6 +319,10 @@ h3 {
         max-width: 60%;
         margin: 10px 0px;
         float: right; }
+  .card-wrapper.perfomance-award .card .card-img-top {
+    width: auto;
+    height: 100px;
+    margin: 10px 10px; }
 
 @media screen and (max-width: 768px) {
   .card-wrapper {

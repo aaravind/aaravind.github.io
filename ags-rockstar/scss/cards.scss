@@ -4,16 +4,19 @@
 	min-width: 200px;
     background: white;
     border: 1px solid rgba(0, 0, 0, 0.125);
+    border: 0px;
     border-radius: .25rem;
-    box-shadow: 2px 2px 2px 0px #FF0002;
+    border-radius: 0px;
+    padding:0px;
+    box-shadow: 4px 4px 4px 0px #ccc;
     margin-bottom:10px;
     	.card-container{
 	    text-align:center;
     	}
     	.card-img-top{
     	height: auto;
-	    width: 125px;
-	    margin-top: 10px;
+    	margin: 0px;
+    	border-radius: 0px;
     	}
     	.card-body{
     	padding-top:5px;
@@ -115,6 +118,15 @@
 		    float: right;
 		    }
     		}
+    	}
+    	&.perfomance-award {
+    	.card{
+    	.card-img-top {
+    	    width: auto;
+		    height: 100px;
+		    margin: 10px 10px;
+    	}
+    	}
     	}
 }
 	@media screen and (max-width: 768px){

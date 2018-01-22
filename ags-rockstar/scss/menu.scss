@@ -16,7 +16,14 @@ $menu-label:white;
 {
   color: $menu-label;
 }
-
+.logged-in-user{
+    color: #FEB401;
+    text-decoration: none;
+    padding-left: 5px;
+    margin-left: 12px;
+    display: inline-block;
+    padding: 5px 5px;
+}
 .navbar-primary {
   background-color: $menu-bg;
   background-image: url(../images/sidebar-banner.png);
