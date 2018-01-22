@@ -74,6 +74,8 @@ $("body .header-year .year span").click(function(e){
 	 $('body .carousel').carousel({
 	  interval: 2000
 	});
+
+
  	var location_url = window.location.href;
  	var page = location_url.substring(location_url.lastIndexOf("/")+1 ,location_url.lastIndexOf("."));
  	if($("[data-active-name='"+page+"']")[0] != undefined){

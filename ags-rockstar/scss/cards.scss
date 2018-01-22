@@ -91,10 +91,12 @@
     		padding: 0px;
     		}
     		.card-title{
-		    max-width: 50%;
-		    float: right;
-		    margin-top: 50px;
-		    box-sizing: border-box;
+	    width: 60%;
+	    float: right;
+	    margin-top: 50px;
+	    box-sizing: border-box;
+	    padding: 0px 20px;
+	    text-align: center;
     		}
     		@media screen and (max-width: 380px){
 			.card-title{
@@ -102,20 +104,21 @@
 			}
 			}
     		.card-text{
-		    font-size: 11px;
-		    text-align: right;
-		    clear: both;
-		    background: grey;
-		    display: inline-block;
-		    position: absolute;
-		    bottom: 0px;
-		    left: 0px;
+			    font-size: 11px;
+			    text-align: right;
+			    clear: both;
+			    background: grey;
+			    display: inline-block;
+			    position: absolute;
+			    bottom: 0px;
+			    right: 0px;
+			    max-width: 60%;
 		    p{
-		    padding: 0px 10px;
-		    line-height: 12px;
-		    max-width: 60%;
-		    margin: 10px 0px;
-		    float: right;
+			    padding: 0px 10px;
+			    line-height: 12px;
+			    max-width: 100%;
+			    margin: 10px 0px;
+			    float: right;
 		    }
     		}
     	}

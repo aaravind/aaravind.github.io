@@ -51,6 +51,10 @@ $menu-label:white;
 .navbar-primary.collapsed .counter-wrapper {
   display:none;
 }
+.navbar-primary.collapsed .logged-in-user {
+  display:none;
+}
+
 .navbar-primary.collapsed .nav-label {
   display: none;
 }
@@ -133,6 +137,9 @@ $menu-label:white;
   width: 250px;
 }
 .navbar-primary.collapsed .counter-wrapper {
+  display:block;
+}
+.navbar-primary.collapsed .logged-in-user {
   display:block;
 }
 .navbar-primary.collapsed .glyphicon {

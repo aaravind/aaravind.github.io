@@ -107,6 +107,9 @@ h3 {
 .navbar-primary.collapsed .counter-wrapper {
   display: none; }
 
+.navbar-primary.collapsed .logged-in-user {
+  display: none; }
+
 .navbar-primary.collapsed .nav-label {
   display: none; }
 
@@ -186,6 +189,9 @@ h3 {
   .navbar-primary.collapsed .counter-wrapper {
     display: block; }
 
+  .navbar-primary.collapsed .logged-in-user {
+    display: block; }
+
   .navbar-primary.collapsed .glyphicon {
     font-size: 22px; }
 
@@ -196,11 +202,17 @@ h3 {
   margin-right: -20px;
   margin-top: -20px;
   margin-bottom: 20px;
-  min-width: 250px; }
+  min-width: 250px;
+  height: 500px; }
+.carousel .carousel-inner .carousel-item {
+  width: 100%;
+  height: 100%; }
 .carousel .carousel-inner img {
   max-height: 600px;
   width: 100%; }
 @media screen and (max-width: 768px) {
+  .carousel .carousel.slide {
+    height: 300px; }
   .carousel .carousel-inner img {
     max-height: 300px; } }
 .carousel .carousel-control-prev-icon, .carousel .carousel-control-next-icon {
@@ -297,10 +309,12 @@ h3 {
       height: 100%;
       padding: 0px; }
     .card-wrapper.two-card-layout .card-title {
-      max-width: 50%;
+      width: 60%;
       float: right;
       margin-top: 50px;
-      box-sizing: border-box; }
+      box-sizing: border-box;
+      padding: 0px 20px;
+      text-align: center; }
     @media screen and (max-width: 380px) {
       .card-wrapper.two-card-layout .card-title {
         margin-top: 10px; } }
@@ -312,11 +326,12 @@ h3 {
       display: inline-block;
       position: absolute;
       bottom: 0px;
-      left: 0px; }
+      right: 0px;
+      max-width: 60%; }
       .card-wrapper.two-card-layout .card-text p {
         padding: 0px 10px;
         line-height: 12px;
-        max-width: 60%;
+        max-width: 100%;
         margin: 10px 0px;
         float: right; }
   .card-wrapper.perfomance-award .card .card-img-top {
