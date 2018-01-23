@@ -144,4 +144,41 @@
 	.two-card-layout.card-deck{
 	display:block;
 	}
+	.two-card-layout .card{
+	    background: grey;
+	}
+	.two-card-layout.card-deck .card .card-container{
+	 height:100%;
+	} 
+	.two-card-layout.card-deck .card .card-container .img-wrapper{
+	    background: white;
+    		width: 100%;
+    		position:relative;
+    		border: 1px solid white;
+	}
+	.two-card-layout.card-deck .card .card-container .img-wrapper .card-img-top
+	{
+	    height: 175px;
+	}
+	.two-card-layout.card-deck .card .card-container .card-title{
+	    background: white;
+    padding: 10px 10px;
+    margin: 0px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    display: inline-block !important;
+	}
+	.two-card-layout.card-deck .card .card-container .card-text{
+		position:relative;
+		max-width:100%;
+		text-align:center;
+	}
+	.two-card-layout.card-deck a{
+	display	:inline-block;
+	}
+	.two-card-layout.card-deck a,.two-card-layout.card-deck a:hover{
+	border:0px;
+	text-decoration:none;
+	}
 	}

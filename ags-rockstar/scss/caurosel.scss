@@ -18,16 +18,7 @@ $carousel_color:#FEB401;
     width: 100%;
     }
   }
-  @media screen and (max-width: 768px){
-  .carousel.slide{
-  height:300px;
-  }
-  .carousel-inner{
-	img{
-    max-height: 300px;
-    }
-  }
-  }
+
   .carousel-control-prev-icon,.carousel-control-next-icon{
     background-image: none;
     font-size: 2em;
@@ -53,3 +44,13 @@ $carousel_color:#FEB401;
     }
   }
 }
+  @media screen and (max-width: 768px){
+   .carousel.slide{
+  height:300px;
+  }
+  .carousel .carousel-inner{
+	img{
+    max-height: 300px;
+    }
+  }
+  }
