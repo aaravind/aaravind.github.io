@@ -609,4 +609,59 @@ h3 {
     .header-year .year span.active {
       color: #FEB401; }
 
+.comments {
+  clear: both; }
+  .comments .comments-top {
+    font-weight: bold; }
+    .comments .comments-top .left.description p {
+      padding: 0px;
+      margin: 0px; }
+    .comments .comments-top .comments-count {
+      flex: 1;
+      text-align: right; }
+  .comments .comment-here {
+    margin: 20px 0px; }
+    .comments .comment-here .user-image {
+      width: 80px;
+      height: 80px; }
+      .comments .comment-here .user-image img {
+        width: 100%;
+        height: 100%; }
+    .comments .comment-here .comment-description-here {
+      flex: 1;
+      margin: 0px 0px 0px 20px; }
+      .comments .comment-here .comment-description-here textarea {
+        width: 100%;
+        height: 100%;
+        border-radius: 6px;
+        padding: 10px 20px;
+        border: 1px solid #707070;
+        outline: 0px; }
+  .comments .submit-comment {
+    background: #FEB401;
+    border: none;
+    border-radius: 21px;
+    display: inline-block;
+    padding: 2px 15px;
+    cursor: pointer;
+    outline: 0px;
+    margin: 15px 0px; }
+  .comments .pad-zero {
+    padding: 0px; }
+  .comments .each-comment {
+    padding: 0px 0px 0px 100px; }
+    .comments .each-comment .user-image {
+      border: 1px solid #707070;
+      border-radius: 8px;
+      background: white;
+      padding: 5px; }
+    .comments .each-comment .title {
+      margin: 0px;
+      font-weight: bold !important;
+      margin-bottom: 10px; }
+
+@media screen and (max-width: 480px) {
+  .comments .each-comment {
+    padding: 0px; } }
+
 /*# sourceMappingURL=main.css.map */

@@ -68,9 +68,9 @@ $("body .header-year .year span").click(function(e){
     	if(window.innerWidth < 480){
  			$("body .navbar-primary").addClass("collapsed");
  		}
-	 $('#myModal').modal('show').on('hidden.bs.modal', function(){
-	        $(this).find('video')[0].pause();
-	    });
+	 // $('#myModal').modal('show').on('hidden.bs.modal', function(){
+	 //        $(this).find('video')[0].pause();
+	 //    });
 	 $('body .carousel').carousel({
 	  interval: 2000
 	});
