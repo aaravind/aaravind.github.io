@@ -39,6 +39,18 @@
     }
     }
 }
+#comment-modal{
+	.modal-wrapper-content{
+	background:white;
+	.comments{
+	padding:20px;
+	.comments-container{
+	    max-height: 200px;
+    overflow-y: auto;
+	}
+	}
+	}
+}
 @media screen and (max-width: 768px){
 			.modal-dialog{
 	    max-width: 100%;

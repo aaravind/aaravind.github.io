@@ -317,16 +317,49 @@
           <a href="#" class="d-block mb-4 h-100">
             <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
           </a>
+          <div class="like-comment d-flex justify-content-center">
+          	<div class="like-feature active">
+				<img src="../images/HeartBorder.svg"></img>
+				<img src="../images/HeartRed.svg"></img>
+				<p>50</p>
+			</div>
+			<div class="comment-feature">
+				<img src="../images/Comment.svg"></img>
+				<p>60</p>
+			</div>
+          </div>	
         </div>
         <div class="col-lg-3 col-md-6 col-xs-6 each-gallery-card" data-type="gallery-image" data-image-url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmvt1JZKjkl96ra8Fv_zcuw4vg-OZDz4mVQ-RZ9OX_rr_VWvYANA">
           <a href="#" class="d-block mb-4 h-100">
             <img class="img-fluid img-thumbnail" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmvt1JZKjkl96ra8Fv_zcuw4vg-OZDz4mVQ-RZ9OX_rr_VWvYANA" alt="">
           </a>
+          <div class="like-comment d-flex justify-content-center">
+          	<div class="like-feature inactive">
+				<img src="../images/HeartBorder.svg"></img>
+				<img src="../images/HeartRed.svg"></img>
+				<p>50</p>
+			</div>
+			<div class="comment-feature">
+				<img src="../images/Comment.svg"></img>
+				<p>60</p>
+			</div>
+          </div>
         </div>
         <div class="col-lg-3 col-md-6 col-xs-6 each-gallery-card" data-type="gallery-image" data-image-url="http://static.djbooth.net/pics-features/rect/post-malone-rockstar-revenue.jpg">
           <a href="#" class="d-block mb-4 h-100">
             <img class="img-fluid img-thumbnail" src="http://static.djbooth.net/pics-features/rect/post-malone-rockstar-revenue.jpg" alt="">
           </a>
+          <div class="like-comment d-flex justify-content-center">
+          	<div class="like-feature active">
+				<img src="../images/HeartBorder.svg"></img>
+				<img src="../images/HeartRed.svg"></img>
+				<p>50</p>
+			</div>
+			<div class="comment-feature">
+				<img src="../images/Comment.svg"></img>
+				<p>60</p>
+			</div>
+          </div>
         </div>
         <div class="col-lg-3 col-md-6 col-xs-6 each-gallery-card" data-type="gallery-video" data-video-url="https://www.w3schools.com/html/mov_bbb.mp4">
         	<a href="#" class="d-block mb-4 h-100">
@@ -338,6 +371,17 @@
             <img class="img-fluid img-thumbnail" src="https://img.wennermedia.com/article-leads-horizontal/rs-11189-rockstar-624-1370288223.jpg" alt="">
         	</img>
           </a>
+          <div class="like-comment d-flex justify-content-center">
+          	<div class="like-feature active">
+				<img src="../images/HeartBorder.svg"></img>
+				<img src="../images/HeartRed.svg"></img>
+				<p>50</p>
+			</div>
+			<div class="comment-feature">
+				<img src="../images/Comment.svg"></img>
+				<p>60</p>
+			</div>
+          </div>
         </div>
       </div>
       <input class="load-more custom-button" type="submit" value=" Load more" />
@@ -387,7 +431,7 @@
 	<div class="comment-here">
 	<div class="d-flex">
 		<div class="user-image">
-			<img src="../images/user.png"></img>
+			<img src="../images/snapshot.svg"></img>
 		</div>
 		<div class="comment-description-here">
 			<textarea rows="2" name="justification"></textarea>
@@ -399,7 +443,7 @@
 	<div class="comments-container">
 		<div class=" each-comment d-flex">
 			<div class="user-image">
-				<img src="../images/user.png"></img>
+				<img src="../images/snapshot.svg"></img>
 			</div>
 			<div class="comment-description-here">
 				<p class="title">Employee Name</p>
@@ -408,7 +452,7 @@
 		</div>
 		<div class=" each-comment d-flex">
 			<div class="user-image">
-				<img src="../images/user.png"></img>
+				<img src="../images/snapshot.svg"></img>
 			</div>
 			<div class="comment-description-here">
 				<p class="title">Employee Name</p>
@@ -420,6 +464,75 @@
 </div>
 </div>
 <!-- End of Comments -->
+
+<!-- Comment Modal -->
+
+<div class="modal fade" id="comment-modal">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+    
+        <div class="modal-body">
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <div class="modal-wrapper-content">
+         <div class="comments">
+	<div class="comments-top d-flex">
+		<div class="left description">
+			<p>
+				Celebrate ACS Rock Stars 2017
+			</p>
+			<p>
+				Leave your comments here
+			</p>
+		</div>
+		<div class="comments-count">
+			<p>220 comments</p>
+		</div>	
+	</div>
+	<div class="comment-here">
+	<div class="d-flex">
+		<div class="user-image">
+			<img src="../images/snapshot.svg">
+		</div>
+		<div class="comment-description-here">
+			<textarea rows="2" name="justification"></textarea>
+		</div>	
+	</div>
+	<div class="col-md-12 text-right pad-zero">
+	<input class="submit-comment custom-button" type="submit" value="Submit">
+	</div>
+	<div class="comments-container">
+		<div class=" each-comment d-flex">
+			<div class="user-image">
+				<img src="../images/snapshot.svg">
+			</div>
+			<div class="comment-description-here">
+				<p class="title">Employee Name</p>
+				<p class="description">Employee Comment Employee Comment Employee Comment Employee Comment Employee Comment Employee Comment</p>
+			</div>	
+		</div>
+		<div class=" each-comment d-flex">
+			<div class="user-image">
+				<img src="../images/snapshot.svg">
+			</div>
+			<div class="comment-description-here">
+				<p class="title">Employee Name</p>
+				<p class="description">Employee Comment Employee Comment Employee Comment Employee Comment Employee Comment Employee Comment</p>
+			</div>	
+		</div>
+	</div>
+
+</div>
+</div>
+		</div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<!-- End of Comment Modal -->
+
 
 </div>
 </div>

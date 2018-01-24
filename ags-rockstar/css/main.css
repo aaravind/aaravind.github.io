@@ -537,6 +537,14 @@ h3 {
       width: 100%;
       max-height: 500px; }
 
+#comment-modal .modal-wrapper-content {
+  background: white; }
+  #comment-modal .modal-wrapper-content .comments {
+    padding: 20px; }
+    #comment-modal .modal-wrapper-content .comments .comments-container {
+      max-height: 200px;
+      overflow-y: auto; }
+
 @media screen and (max-width: 768px) {
   .modal-dialog {
     max-width: 100%; } }
@@ -572,7 +580,7 @@ h3 {
     position: absolute;
     background: rgba(0, 0, 0, 0.3);
     width: 100%;
-    height: 100%;
+    height: calc(100% - 30px);
     display: flex;
     align-items: center; }
     .container.gallery .play-button-wrapper .play-button {
@@ -592,6 +600,40 @@ h3 {
         top: 5px;
         left: 1px;
         position: relative; }
+  .container.gallery .like-comment {
+    height: 40px;
+    background: white;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    border: 1px solid #dee2e6; }
+    .container.gallery .like-comment .like-feature {
+      display: flex;
+      align-items: center;
+      padding: 0px;
+      margin: 0px;
+      cursor: pointer; }
+      .container.gallery .like-comment .like-feature img {
+        display: none; }
+      .container.gallery .like-comment .like-feature.active img:nth-child(2) {
+        display: block; }
+      .container.gallery .like-comment .like-feature.inactive img:nth-child(1) {
+        display: block; }
+    .container.gallery .like-comment .comment-feature {
+      display: flex;
+      align-items: center;
+      padding: 0px;
+      margin: 0px;
+      margin-left: 10px;
+      cursor: pointer; }
+    .container.gallery .like-comment img {
+      width: 20px;
+      height: 20px; }
+    .container.gallery .like-comment p {
+      flex: 1;
+      margin: 0px;
+      margin-left: 10px;
+      font-size: 13.5px; }
 
 .modal-wrapper-content img {
   width: 100%; }
