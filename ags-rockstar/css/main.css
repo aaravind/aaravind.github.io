@@ -532,9 +532,10 @@ h3 {
         z-index: 10; }
   .modal-dialog .modal-wrapper-content {
     width: 100%;
-    margin: 0 auto; }
+    margin: 0 auto;
+    text-align: center; }
     .modal-dialog .modal-wrapper-content img {
-      width: 100%;
+      width: auto;
       max-height: 500px; }
 
 #comment-modal .modal-wrapper-content {
