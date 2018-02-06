@@ -78,8 +78,34 @@ $("body [data-type='gallery-video']").click(function(e){
     });
 }
 });
+
+// $("body [data-type='gallery-video-with-like']").click(function(e){
+// 	if($(e.target).closest(".like-comment")[0] == undefined){
+// 	e.preventDefault();
+// 	e.stopPropagation();
+// 	var url = $(this).attr("data-video-url");
+// 	var imageContent = "<video width='100%' controls>"
+//   						+"<source src='"+ url +"'"
+//   						+" type='video/mp4'>"
+//   						+" Your browser does not support HTML5 video."
+//  						+"</video>"
+//  						+"<div class='container gallery'><div class='like-comment'>"
+//  						+"<div class='like-feature inactive'>"
+//  						+"<img src='../images/HeartBorder.svg'></img>"
+//  						+"<img src='../images/HeartRed.svg'></img></div></div></div>";
+// 	$('#myModal .modal-wrapper-content').html(imageContent);
+// 	$('#myModal').modal('show').on('hidden.bs.modal', function(){
+//         $(this).find('video')[0].pause();
+//     });
+// }
+// });
+
 $("body .header-year .year span").click(function(e){
 	$(this).closest(".header-year").find("span").removeClass("active");
+	$(this).addClass("active");
+})
+$("body .contest .wrapper span").click(function(e){
+	$(this).closest(".contest").find("span").removeClass("active");
 	$(this).addClass("active");
 })
 /* End of counter code */

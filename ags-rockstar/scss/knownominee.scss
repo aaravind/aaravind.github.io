@@ -1,0 +1,79 @@
+.nominee-container{
+    padding: 15px 0px;
+    background: rgba(255,255,255,0.55);
+    box-shadow: 2px 2px 2px 0px #D1D1D1;
+    border-radius: 2px;
+	p{
+	margin:0px;
+	padding:0px;
+	}
+	.title{
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 15px;
+	}
+	.card-container{
+	    padding: 0px 20px;
+		.each-card{
+			padding: 10px;
+			.each-card-wrapper{
+		    background: #FFFFFF;
+		    box-shadow: 2px 2px 2px 0px #D1D1D1;
+		    border-radius: 2px;
+		    padding:15px;
+		        height: 100%;
+			.image{
+				padding: 0px;
+				img{
+				width: 100%;
+   				height: 100%;
+				}
+			}
+			.user-info{
+			display:block;
+				.about{
+				display:block;
+				p{
+					font-weight:bold;
+					line-height: 20px;
+				&.description{
+				    color: rgba(0,0,0,0.55);
+    				font-size: 11px;
+    				font-weight:100;
+    				line-height: 16px;
+    				padding:10px 0px;
+				}
+				}
+				}
+			}
+			.user-question-answer{
+			display:block;
+				.each-question-answer{
+				display:block;
+					p{
+				    display: block;
+				    font-size: 11px;
+				    line-height: 16px;
+					}
+				}
+			}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 767px){
+			.nominee-container .card-container .each-card .each-card-wrapper{
+	    		display:block !important;
+			}
+			.nominee-container .card-container .each-card .each-card-wrapper .user-info{
+			padding:0px;
+			padding-top:10px;
+			}
+			.nominee-container .card-container .each-card .each-card-wrapper .image img{
+			width: 100%;
+		    height: 200px;
+		    display: inline-block;
+			}
+			}

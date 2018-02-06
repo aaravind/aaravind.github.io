@@ -1,0 +1,93 @@
+.nominee-accordian{
+	padding: 20px 0px;
+	.card{
+	    border: 0px;
+    margin: 5px 0px;
+	.card-header{
+	display: block;
+    background: white;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: 0px 2px 2px 0px #D1D1D1;
+		a{
+		display:block;
+		width:100%;
+		img{
+		height:30px;
+		max-width:200px;
+		}
+		.arrow{
+    border: solid #707070;
+    border-width: 0px 2px 2px 0;
+    display: inline-block;
+    padding: 7px;
+    float: right;
+        margin-top: 12px;
+		transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+        transition: transform 0.4s;
+		}
+		&.collapsed{
+		.arrow{
+	    border: solid #707070;
+	    border-width: 0px 2px 2px 0;
+	    display: inline-block;
+	    padding: 7px;
+	    transform: rotate(45deg);
+	    -webkit-transform: rotate(45deg);
+	    float: right;
+	    margin-top: 3px;
+	    transition: transform 0.4s;
+		}
+		}
+		}
+	}
+	.collapse{
+	    background: rgba(255,255,255,0.66);
+    margin: 2px 0px;
+	}
+	}
+	.nominee-container{
+	    padding: 15px 10px;
+    background: rgba(209, 209, 209,0.5);
+	}
+	.team-name{
+	 font-size: 28px;
+    text-align: center;
+	}
+	.nominee-container.green .card-container .each-card .each-card-wrapper,
+	.nominee-container .card-container .each-card .each-card-wrapper {
+    border: 2px solid #C1D22F;
+    margin: 0px;
+	}
+	.nominee-container.orange .card-container .each-card .each-card-wrapper {
+    border: 2px solid #F47C20;
+    margin: 0px;
+	}
+	.nominee-container.blue .card-container .each-card .each-card-wrapper {
+    border: 2px solid #4AB2E5;
+    margin: 0px;
+	}
+	.nominee-container.red .card-container .each-card .each-card-wrapper {
+    border: 2px solid #D22026;
+    margin: 0px;
+	}
+	.nominee-container .card-container .each-card .each-card-wrapper .user-info .about p{
+	line-height: 24px;
+	}
+	.nominee-container .card-container .each-card .each-card-wrapper .user-info .about .dep p{
+	font-weight: 100;
+    font-size: 12px;
+    line-height: 20px;
+	}
+	.nominee-container .card-container .each-card .each-card-wrapper .content{
+	    padding: 0px;
+    font-size: 12px;
+    font-style: italic;
+    line-height: 15px;
+	p{
+	    text-align: center;
+    padding-top: 15px;
+	}
+	}
+}

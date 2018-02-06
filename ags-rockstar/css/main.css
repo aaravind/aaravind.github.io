@@ -21,6 +21,12 @@ h3 {
   font-size: 1.4em;
   font-weight: bold; }
 
+.pad-10 {
+  padding: 10px 0px; }
+
+body > .wrapper {
+  background: url(../images/acsbackground.png); }
+
 .login-wrapper {
   padding: 0px;
   background: black; }
@@ -706,5 +712,258 @@ h3 {
 @media screen and (max-width: 480px) {
   .comments .each-comment {
     padding: 0px; } }
+.contest .wrapper {
+  text-align: left;
+  padding: 6px 0px;
+  font-size: 22px; }
+  .contest .wrapper span {
+    cursor: pointer; }
+    .contest .wrapper span::after {
+      content: "|";
+      color: #000; }
+    .contest .wrapper span:last-child::after {
+      content: ""; }
+    .contest .wrapper span.active {
+      color: #FEB401; }
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+  position: absolute;
+  left: -9999px; }
+
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+  color: #000; }
+
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ddd;
+  border-radius: 100%;
+  background: #fff; }
+
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: #FEB401;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  border-radius: 100%;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease; }
+
+[type="radio"]:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0); }
+
+[type="radio"]:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1); }
+
+.each-question .question p {
+  margin-bottom: 5px; }
+.each-question .options p {
+  padding: 0px;
+  margin: 0px; }
+  .each-question .options p.right-answer {
+    color: #FEB401; }
+
+h3.color-black {
+  color: black; }
+
+.selection-process-wrapper .img-thumbnail {
+  padding: 0px;
+  margin: 0px;
+  background: transparent;
+  border: 0px;
+  width: 100%;
+  height: 100%; }
+.selection-process-wrapper .vote-wrapper {
+  width: 100%;
+  display: block;
+  text-align: center; }
+  .selection-process-wrapper .vote-wrapper .vote-button {
+    cursor: pointer;
+    background: #FEB401;
+    border: none;
+    border-radius: 21px;
+    display: inline-block;
+    text-transform: capitalize;
+    padding: 2px 15px;
+    outline: 0px;
+    top: -10px;
+    position: relative; }
+.selection-process-wrapper .selection-video .each-gallery-card {
+  position: relative; }
+.selection-process-wrapper .selection-video .like-comment {
+  height: 40px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%; }
+  .selection-process-wrapper .selection-video .like-comment .like-feature {
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer; }
+    .selection-process-wrapper .selection-video .like-comment .like-feature img {
+      width: 20px;
+      height: 20px;
+      display: none; }
+    .selection-process-wrapper .selection-video .like-comment .like-feature.active img:nth-child(2) {
+      display: block; }
+    .selection-process-wrapper .selection-video .like-comment .like-feature.inactive img:nth-child(1) {
+      display: block; }
+
+.nominee-container {
+  padding: 15px 0px;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 2px 2px 2px 0px #D1D1D1;
+  border-radius: 2px; }
+  .nominee-container p {
+    margin: 0px;
+    padding: 0px; }
+  .nominee-container .title {
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 15px; }
+  .nominee-container .card-container {
+    padding: 0px 20px; }
+    .nominee-container .card-container .each-card {
+      padding: 10px; }
+      .nominee-container .card-container .each-card .each-card-wrapper {
+        background: #FFFFFF;
+        box-shadow: 2px 2px 2px 0px #D1D1D1;
+        border-radius: 2px;
+        padding: 15px;
+        height: 100%; }
+        .nominee-container .card-container .each-card .each-card-wrapper .image {
+          padding: 0px; }
+          .nominee-container .card-container .each-card .each-card-wrapper .image img {
+            width: 100%;
+            height: 100%; }
+        .nominee-container .card-container .each-card .each-card-wrapper .user-info {
+          display: block; }
+          .nominee-container .card-container .each-card .each-card-wrapper .user-info .about {
+            display: block; }
+            .nominee-container .card-container .each-card .each-card-wrapper .user-info .about p {
+              font-weight: bold;
+              line-height: 20px; }
+              .nominee-container .card-container .each-card .each-card-wrapper .user-info .about p.description {
+                color: rgba(0, 0, 0, 0.55);
+                font-size: 11px;
+                font-weight: 100;
+                line-height: 16px;
+                padding: 10px 0px; }
+        .nominee-container .card-container .each-card .each-card-wrapper .user-question-answer {
+          display: block; }
+          .nominee-container .card-container .each-card .each-card-wrapper .user-question-answer .each-question-answer {
+            display: block; }
+            .nominee-container .card-container .each-card .each-card-wrapper .user-question-answer .each-question-answer p {
+              display: block;
+              font-size: 11px;
+              line-height: 16px; }
+
+@media screen and (max-width: 767px) {
+  .nominee-container .card-container .each-card .each-card-wrapper {
+    display: block !important; }
+
+  .nominee-container .card-container .each-card .each-card-wrapper .user-info {
+    padding: 0px;
+    padding-top: 10px; }
+
+  .nominee-container .card-container .each-card .each-card-wrapper .image img {
+    width: 100%;
+    height: 200px;
+    display: inline-block; } }
+.nominee-accordian {
+  padding: 20px 0px; }
+  .nominee-accordian .card {
+    border: 0px;
+    margin: 5px 0px; }
+    .nominee-accordian .card .card-header {
+      display: block;
+      background: white;
+      border: 0px;
+      border-radius: 0px;
+      box-shadow: 0px 2px 2px 0px #D1D1D1; }
+      .nominee-accordian .card .card-header a {
+        display: block;
+        width: 100%; }
+        .nominee-accordian .card .card-header a img {
+          height: 30px;
+          max-width: 200px; }
+        .nominee-accordian .card .card-header a .arrow {
+          border: solid #707070;
+          border-width: 0px 2px 2px 0;
+          display: inline-block;
+          padding: 7px;
+          float: right;
+          margin-top: 12px;
+          transform: rotate(-135deg);
+          -webkit-transform: rotate(-135deg);
+          transition: transform 0.4s; }
+        .nominee-accordian .card .card-header a.collapsed .arrow {
+          border: solid #707070;
+          border-width: 0px 2px 2px 0;
+          display: inline-block;
+          padding: 7px;
+          transform: rotate(45deg);
+          -webkit-transform: rotate(45deg);
+          float: right;
+          margin-top: 3px;
+          transition: transform 0.4s; }
+    .nominee-accordian .card .collapse {
+      background: rgba(255, 255, 255, 0.66);
+      margin: 2px 0px; }
+  .nominee-accordian .nominee-container {
+    padding: 15px 10px;
+    background: rgba(209, 209, 209, 0.5); }
+  .nominee-accordian .team-name {
+    font-size: 28px;
+    text-align: center; }
+  .nominee-accordian .nominee-container.green .card-container .each-card .each-card-wrapper,
+  .nominee-accordian .nominee-container .card-container .each-card .each-card-wrapper {
+    border: 2px solid #C1D22F;
+    margin: 0px; }
+  .nominee-accordian .nominee-container.orange .card-container .each-card .each-card-wrapper {
+    border: 2px solid #F47C20;
+    margin: 0px; }
+  .nominee-accordian .nominee-container.blue .card-container .each-card .each-card-wrapper {
+    border: 2px solid #4AB2E5;
+    margin: 0px; }
+  .nominee-accordian .nominee-container.red .card-container .each-card .each-card-wrapper {
+    border: 2px solid #D22026;
+    margin: 0px; }
+  .nominee-accordian .nominee-container .card-container .each-card .each-card-wrapper .user-info .about p {
+    line-height: 24px; }
+  .nominee-accordian .nominee-container .card-container .each-card .each-card-wrapper .user-info .about .dep p {
+    font-weight: 100;
+    font-size: 12px;
+    line-height: 20px; }
+  .nominee-accordian .nominee-container .card-container .each-card .each-card-wrapper .content {
+    padding: 0px;
+    font-size: 12px;
+    font-style: italic;
+    line-height: 15px; }
+    .nominee-accordian .nominee-container .card-container .each-card .each-card-wrapper .content p {
+      text-align: center;
+      padding-top: 15px; }
 
 /*# sourceMappingURL=main.css.map */

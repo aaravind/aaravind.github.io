@@ -1,0 +1,56 @@
+.selection-process-wrapper {
+	.img-thumbnail{
+			padding: 0px;
+		    margin: 0px;
+		    background: transparent;
+		    border: 0px;
+		    width: 100%;
+		    height: 100%;
+	}
+	.vote-wrapper{
+		width: 100%;
+	    display: block;
+	    text-align: center;
+		.vote-button{
+		 cursor:pointer;
+			background: #FEB401;
+    border: none;
+    border-radius: 21px;
+    display: inline-block;
+    text-transform: capitalize;
+    padding: 2px 15px;
+    outline: 0px;
+    top: -10px;
+    position: relative;
+		}
+	}
+	.selection-video{
+	.each-gallery-card{
+	position:relative;
+	}
+	.like-comment{
+	    height: 40px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    .like-feature{
+        display: flex;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;
+    img{
+        width: 20px;
+    height: 20px;
+    display	:none;
+    }
+    &.active img:nth-child(2){
+    display:block;
+    }
+    &.inactive img:nth-child(1){
+    display:block;
+    }
+    }
+	}
+	}
+}
