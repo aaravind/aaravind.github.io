@@ -6,7 +6,7 @@ $carousel_color:#FEB401;
     margin-top: -20px;
     margin-bottom: 20px;
     min-width: 250px;
-    height:500px;
+    height:100%;
 	}	
 	.carousel-inner{
 	.carousel-item{
@@ -14,8 +14,8 @@ $carousel_color:#FEB401;
 	height:100%;
 	}
 	img{
-    max-height: 600px;
-    width: 100%;
+  min-width: 100%;
+  min-height: 100%;
     }
   }
 
@@ -46,11 +46,11 @@ $carousel_color:#FEB401;
 }
   @media screen and (max-width: 768px){
    .carousel.slide{
-  height:300px;
+  
   }
   .carousel .carousel-inner{
 	img{
-    max-height: 300px;
+    
     }
   }
   }

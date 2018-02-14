@@ -209,13 +209,13 @@ body > .wrapper {
   margin-top: -20px;
   margin-bottom: 20px;
   min-width: 250px;
-  height: 500px; }
+  height: 100%; }
 .carousel .carousel-inner .carousel-item {
   width: 100%;
   height: 100%; }
 .carousel .carousel-inner img {
-  max-height: 600px;
-  width: 100%; }
+  min-width: 100%;
+  min-height: 100%; }
 .carousel .carousel-control-prev-icon, .carousel .carousel-control-next-icon {
   background-image: none;
   font-size: 2em;
@@ -237,12 +237,6 @@ body > .wrapper {
   .carousel .carousel-indicators li.active {
     background: #FEB401; }
 
-@media screen and (max-width: 768px) {
-  .carousel.slide {
-    height: 300px; }
-
-  .carousel .carousel-inner img {
-    max-height: 300px; } }
 .card-wrapper {
   padding: 10px 0px; }
   .card-wrapper .card {
@@ -782,6 +776,15 @@ body > .wrapper {
   margin: 0px; }
   .each-question .options p.right-answer {
     color: #FEB401; }
+.each-question .radio-submit {
+  background: #FEB401;
+  border: none;
+  border-radius: 21px;
+  display: inline-block;
+  padding: 2px 15px;
+  cursor: pointer;
+  outline: 0px;
+  margin: 15px 0px; }
 
 h3.color-black {
   color: black; }
