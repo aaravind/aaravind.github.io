@@ -1,0 +1,74 @@
+{
+    "data": [
+        {
+            "id": "book_1",
+            "title": "World Report 2020",
+            "sub-title": "Human Rights Watch",
+            "image-url": "https://images3.penguinrandomhouse.com/cover/9781644210055",
+            "description": "The human rights records of more than ninety countries and territories are put into perspective in Human Rights Watch’s signature yearly report. Reflecting extensive investigative work undertaken by Human Rights Watch staff, in close partnership with domestic human rights activists, the annual World Report is an invaluable resource for journalists, diplomats, and citizens, and is a must-read for anyone interested in the fight to protect human rights in every corner of the globe"
+        },
+        {
+            "id": "book_2",
+            "title": "Knopf Mapguides: Paris",
+            "sub-title": "THE CITY IN SECTION-BY-SECTION MAPS",
+            "image-url": "https://images2.penguinrandomhouse.com/cover/9780307263889",
+            "description": "This opening fold-out contains a general map of Paris to help you visualize the 8 large districts discussed in this guide, and 4 pages of valuable information, handy tips and useful addresses."
+        },
+        {
+            "id": "book_3",
+            "title": "Horizon",
+            "sub-title": "THE CITY IN SECTION-BY-SECTION MAPS",
+            "image-url": "https://images2.penguinrandomhouse.com/cover/9780375708473",
+            "description": "From pole to pole and across decades of lived experience, National Book Award-winning author Barry Lopez delivers his most far-ranging, yet personal, work to date. Horizon moves indelibly, immersively, through the author’s travels to six regions of the world: from Western Oregon to the High Arctic; from the Galápagos to the Kenyan desert; from Botany Bay in Australia to finally, unforgettably, the ice shelves of Antarctica."
+        },
+        {
+            "id": "book_4",
+            "title": "The Summer Kitchen",
+            "sub-title": "Part of Blue Sky Hill Series",
+            "image-url": "https://images3.penguinrandomhouse.com/cover/9781984804266",
+            "description": "From the #1 New York Times bestselling author of The Book of Lost Friends and Before We Were Yours comes an inspiring novel about a lonely woman who finds a connection in the place she least expects. With her adopted son missing and the rest of her family increasingly estranged, SandraKaye Darden is drawn to the little pink house where her Uncle Poppy once provided security. But what begins for Sandra as a simple painting project to help sell the house becomes a secret venture that starts to change everything…"
+        },
+        {
+            "id": "book_5",
+            "title": "Sticker Encyclopedia Animals",
+            "sub-title": "Part of Sticker Encyclopedias",
+            "image-url": "https://images3.penguinrandomhouse.com/cover/9781465490865",
+            "description": "Kids will love learning all about the animal kingdom with this spectacular sticker encyclopedia, packed with fascinating facts and more than 600 stickers! This is the perfect book for becoming an expert on the world’s weirdest and wildest animals. Readers will discover animals of the sea, sky, and land from all around the world. By choosing the sticker that fits in each space, they’ll complete their very own encyclopedia of animals."
+        },
+        {
+            "id": "book_6",
+            "title": "Moral Compass",
+            "sub-title": "By DANIELLE STEEL",
+            "image-url": "https://images2.penguinrandomhouse.com/cover/9780399179532",
+            "description": "Saint Ambrose Prep is a place where the wealthy send their children for the best possible education, with teachers and administrators from the Ivy League, and graduates who become future lawyers, politicians, filmmakers, and CEOs. Traditionally a boys-only school, Saint Ambrose has just enrolled one hundred and forty female students for the first time. Even though most of the kids on the campus have all the privilege in the world, some are struggling, wounded by their parents’ bitter divorces, dealing with insecurity and loneliness."
+        },
+        {
+            "id": "book_7",
+            "title": "Super Mario: Bring on the Bad Guys! (Nintendo)",
+            "sub-title": "By COURTNEY CARBONE",
+            "image-url": "https://images1.penguinrandomhouse.com/cover/9781984849724",
+            "description": "This brand-new full-color activity book with over 500 stickers stars Nintendo’s classic team of Mario and Luigi, and their most fearsome foes! Super Mario fans will love this full-color activity book featuring Mario, Luigi, Princess Peach, and all their foes–Bowser, Koopalings, Wario, Waluigi, and more! It’s filled with action-packed activities and over 500 stickers for gamers of all ages!"
+        },
+        {
+            "id": "book_8",
+            "title": "I Am Mulan (Disney Princess)",
+            "sub-title": "By COURTNEY CARBONE",
+            "image-url": "https://images1.penguinrandomhouse.com/cover/9780736440448",
+            "description": "This new Little Golden Book is about Princess Mulan, star of the Disney classic Mulan–just in time for the live-action film release in March 2020! Meet Princess Mulan, the brave warrior princess, and her friends Mushu, Cri-Kee, and more in this new Little Golden Book featuring beautiful, retro-style art. Girls and boys ages 2 to 5, as well as Little Golden Book collectors of all ages, will love this new storybook based on the Disney classic Mulan. This Little Golden Book is part of the charming “I Am . . .” series, which provides a unique introduction to favorite Disney characters."
+        },
+        {
+            "id": "book_9",
+            "title": "Humpty Dumpty Lived Near a Wall",
+            "sub-title": "By DEREK HUGHES",
+            "image-url": "https://images2.penguinrandomhouse.com/cover/9781524793029",
+            "description": "'Humpty Dumpty lived near a wall…' begins this well-known fable. But this time Humpty is ready for battle, with a secret mission and a touch of mischief. Can all the King’s horses and all the King’s men help put Humpty together again? Or maybe the mission, no matter how small, is simply to question the point of a wall."
+        },
+        {
+            "id": "book_10",
+            "title": "The Perfect Horse",
+            "sub-title": "THE DARING RESCUE OF HORSES KIDNAPPED DURING WORLD WAR II",
+            "image-url": "https://images1.penguinrandomhouse.com/cover/9780525644774",
+            "description": "In this inspiring young readers’ adaptation of Elizabeth Letts’s New York Times bestseller, one American troop will save the world’s most precious horses during the final stretch of World War II."
+        }
+    ]
+}
