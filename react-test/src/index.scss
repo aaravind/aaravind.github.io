@@ -1,0 +1,22 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+.book-list {
+    margin: 0;
+    padding: 0;
+    padding-top: 20px;
+    .book-list-item {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 8rem;
+        cursor: pointer;
+    }
+}
+
+.book-details {
+    .card {
+        width: 22rem;
+        margin-top: 50px;
+        position: fixed;
+    }
+}
