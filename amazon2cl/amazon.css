@@ -1,0 +1,52 @@
+.s-vtabs-contents-container hr {
+    margin-bottom: 0px;
+}
+.s-vtabs-contents-container .s-vtabs-content {
+    padding-top: 1.3rem;
+}
+.search-big {
+    background: linear-gradient(135deg, #82D8E3 0%, #A6E7CE 100%);
+    padding: 8px 12px;
+    height: 60px;
+}
+.nav-searchbar-wrapper {
+    margin-bottom: 8px;
+}
+.nav-search-submit {
+    margin-top: 8px;
+}
+.mic{
+    background-image: url(image/mic.svg);
+    margin-right: 45px;
+    margin-top: 17px;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0px;
+    margin-top: 17px;
+}
+.scan {
+    background-image: url(image/scan.svg);
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 15px;
+    margin-top: 17px;
+}
+
+.back {
+    background-image: url(image/back.png);
+    margin-right: 45px;
+    margin-top: 17px;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 7px;
+    margin-top: 11px;
+}
+.nav-fill {
+    margin-left: 27px;
+}
