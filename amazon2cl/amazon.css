@@ -50,3 +50,12 @@
 .nav-fill {
     margin-left: 27px;
 }
+
+.s-vtabs-tabs-container .s-vtabs-tab.s-vtab-active .s-vtabs-toggletab:before {
+    width: 4px;
+    height: 100%;
+    content: '';
+    position: absolute;
+    left: 0;
+    background: #007185;
+}
